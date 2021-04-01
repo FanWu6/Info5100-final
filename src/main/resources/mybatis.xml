@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+<!--                <property name="url"-->
+<!--                          value="jdbc:mysql://localhost:3306/j24_db?useUnicode=true&amp;characterEncoding=utf-8"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="123456"/>-->
+                <property name="url"
+                          value="jdbc:mysql://rm-uf6z80gsy803c151xwo.mysql.rds.aliyuncs.com:3306/info5100?useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1qaz!QAZ"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="com.neu.infofinal.mapper"/>
+    </mappers>
+</configuration>
