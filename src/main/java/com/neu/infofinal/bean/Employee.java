@@ -1,0 +1,53 @@
+package com.neu.infofinal.bean;
+
+public class Employee {
+    private Integer id;
+
+    private Integer organizationId;
+
+    private Integer enterpriseId;
+
+    private String name;
+
+    private Integer useraccountId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Integer organizationId) {
+        this.organizationId = organizationId;
+    }
+
+    public Integer getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(Integer enterpriseId) {
+        this.enterpriseId = enterpriseId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getUseraccountId() {
+        return useraccountId;
+    }
+
+    public void setUseraccountId(Integer useraccountId) {
+        this.useraccountId = useraccountId;
+    }
+}
