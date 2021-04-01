@@ -44,24 +44,46 @@ public class MyTest {
 
 
     @Test
-    public void mytest1(){
+    public void mytest1(){ //查询所有数据
         UserExample userExample = new UserExample();
 //        addressExample.createCriteria().
         userExample.createCriteria().andIdIsNotNull();
         List<User> selectByExample = userMapper.selectByExample(userExample);
         for (User user:selectByExample) {
-            logger.info(user);
-
-//            address.setName("沃特3");
-//            address.setId(null);
-//            addressMapper.insert(address);
-//            break;
+            System.out.println(user);
         }
 
     }
     
     @Test
-    public void mytest2(){
-        System.out.println("test2");
+    public void mytest2(){ //根据id查某一个数据
+        User selectByPrimaryKey = userMapper.selectByPrimaryKey(1);
+        System.out.println(selectByPrimaryKey);
+       
+    }
+    
+    @Test
+    public void mytest3(){ //更新某一行数据,比如说我想把id为1的user的password改了
+        //先获取id为1的数据
+        User user = userMapper.selectByPrimaryKey(1);
+        user.setPassword("asdqwe");
+        userMapper.updateByPrimaryKey(user);
+       
+    }
+    
+    @Test
+    public void mytest4(){ //插入一条新数据
+        User user = new User();
+        user.setUsername("bowen");
+        user.setPassword("123456");
+        user.setAge(18);
+        user.setGender("male");
+        user.setUpdateDate(new Date());
+        userMapper.insert(user);
+    }
+    
+    @Test
+    public void mytest5(){ //删除一条数据
+        userMapper.deleteByPrimaryKey(5); //删除id为5的那一条
     }
 }
