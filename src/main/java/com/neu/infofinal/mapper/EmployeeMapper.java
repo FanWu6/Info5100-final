@@ -2,6 +2,7 @@ package com.neu.infofinal.mapper;
 
 import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.EmployeeExample;
+import com.neu.infofinal.bean.UserAccount;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +30,6 @@ public interface EmployeeMapper {
     int updateByPrimaryKey(Employee record);
 
     List<Employee> selectCondition(@Param("example") EmployeeExample example, @Param("fields") String fields);
+    
+    List<Employee> queryuseraccount();
 }

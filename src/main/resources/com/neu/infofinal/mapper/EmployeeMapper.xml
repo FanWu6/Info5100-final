@@ -8,6 +8,35 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="useraccount_id" jdbcType="INTEGER" property="useraccountId" />
   </resultMap>
+  
+  <resultMap id="queryuseraccountMap" type="com.neu.infofinal.bean.Employee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="useraccount_id" jdbcType="INTEGER" property="useraccountId" />
+    <collection property="useraccounts" javaType="java.util.List" ofType="com.neu.infofinal.bean.UserAccount">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+    </collection>    
+  </resultMap>
+  
+  <select id="queryuseraccount" resultMap="queryuseraccountMap">
+      select 
+	iet.id ,
+	iet.organization_id ,
+	iet.enterprise_id ,
+	iet.name ,
+	iet.useraccount_id ,
+	iut.id ,
+	iut.password ,
+	iut.username 
+        from info_employee_t iet 
+        left join info_useraccount_t iut 
+        on iet.useraccount_id = iut.id 
+  </select>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

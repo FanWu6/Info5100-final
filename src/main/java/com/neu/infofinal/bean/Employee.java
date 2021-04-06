@@ -1,5 +1,7 @@
 package com.neu.infofinal.bean;
 
+import java.util.List;
+
 public class Employee {
     private Integer id;
 
@@ -10,6 +12,17 @@ public class Employee {
     private String name;
 
     private Integer useraccountId;
+    
+    private List<UserAccount> useraccounts;
+
+    public List<UserAccount> getUseraccounts() {
+        return useraccounts;
+    }
+
+    public void setUseraccounts(List<UserAccount> useraccounts) {
+        this.useraccounts = useraccounts;
+    }
+
 
     public Integer getId() {
         return id;
@@ -50,4 +63,11 @@ public class Employee {
     public void setUseraccountId(Integer useraccountId) {
         this.useraccountId = useraccountId;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", organizationId=" + organizationId + ", enterpriseId=" + enterpriseId + ", name=" + name + ", useraccountId=" + useraccountId + ", useraccounts=" + useraccounts + '}';
+    }
+    
+    
 }
