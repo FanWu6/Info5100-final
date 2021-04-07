@@ -32,11 +32,27 @@ public class UserHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        myOrderBtn = new javax.swing.JLabel();
+        myOrderLable = new javax.swing.JLabel();
         detailBtn = new javax.swing.JLabel();
         detailBack = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        myOrderBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        myOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
+        myOrderBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        myOrderBtn.setText("My Order");
+        add(myOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, 200, 60));
+
+        myOrderLable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/White1.png"))); // NOI18N
+        myOrderLable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                myOrderLableMousePressed(evt);
+            }
+        });
+        add(myOrderLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, -1, -1));
 
         detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         detailBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -58,9 +74,17 @@ public class UserHomePanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_detailBtnMousePressed
 
+    private void myOrderLableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myOrderLableMousePressed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
+        cardLayout.show(rightcontainer, "tenantOrderP");
+    }//GEN-LAST:event_myOrderLableMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel detailBack;
     private javax.swing.JLabel detailBtn;
+    private javax.swing.JLabel myOrderBtn;
+    private javax.swing.JLabel myOrderLable;
     // End of variables declaration//GEN-END:variables
 }
