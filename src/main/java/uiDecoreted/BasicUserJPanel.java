@@ -6,8 +6,9 @@
 package uiDecoreted;
 
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JPanel;
+import uiDecoreted.Tenant.CommentPanel;
+import uiDecoreted.Tenant.TenantOrderPanel;
 import uiDecoreted.Tenant.TenantPanel1;
 import uiDecoreted.Tenant.TenantPanel2;
 import uiDecoreted.Tenant.UserHomePanel;
@@ -32,6 +33,8 @@ public class BasicUserJPanel extends javax.swing.JPanel {
         rightjPanel.add("tP1",new TenantPanel1(rightjPanel));
         rightjPanel.add("tP2",new TenantPanel2(rightjPanel));
         rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel));
+        rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
+        rightjPanel.add("commentP",new CommentPanel(rightjPanel));
         cardLayout.show(rightjPanel,"tP1");
     }
 
