@@ -65,8 +65,10 @@ public class BasicUserJPanel extends javax.swing.JPanel {
         pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Icon-1.png"))); // NOI18N
         add(pic1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 40, 40));
 
+        rentBtn.setBackground(new java.awt.Color(204, 204, 204));
         rentBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        rentBtn.setText("RENT");
+        rentBtn.setForeground(new java.awt.Color(204, 204, 204));
+        rentBtn.setText("RENT1");
         rentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rentBtnMousePressed(evt);
@@ -74,7 +76,9 @@ public class BasicUserJPanel extends javax.swing.JPanel {
         });
         add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 100, 40));
 
+        homeBtn.setBackground(new java.awt.Color(204, 204, 204));
         homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        homeBtn.setForeground(new java.awt.Color(204, 204, 204));
         homeBtn.setText("HOME");
         homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
