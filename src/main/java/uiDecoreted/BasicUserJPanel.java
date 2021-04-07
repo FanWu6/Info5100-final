@@ -48,13 +48,12 @@ public class BasicUserJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
-        pic1 = new javax.swing.JLabel();
         rentBtn = new javax.swing.JLabel();
         homeBtn = new javax.swing.JLabel();
-        pic2 = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
+        nameLabel1 = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -65,51 +64,51 @@ public class BasicUserJPanel extends javax.swing.JPanel {
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
 
-        pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Icon-1.png"))); // NOI18N
-        add(pic1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 40, 40));
-
         rentBtn.setBackground(new java.awt.Color(204, 204, 204));
         rentBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         rentBtn.setForeground(new java.awt.Color(204, 204, 204));
-        rentBtn.setText("RENT1");
         rentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rentBtnMousePressed(evt);
             }
         });
-        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 100, 40));
+        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 40));
 
         homeBtn.setBackground(new java.awt.Color(204, 204, 204));
         homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         homeBtn.setForeground(new java.awt.Color(204, 204, 204));
-        homeBtn.setText("HOME");
         homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 homeBtnMousePressed(evt);
             }
         });
-        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 90, 40));
-
-        pic2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Icon-2.png"))); // NOI18N
-        add(pic2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 40, 40));
+        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 90, 40));
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 backBtnMousePressed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 690, 80, 30));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 740, 80, 30));
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
         add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 120));
 
         nameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        nameLabel.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        nameLabel.setText("Name");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 80, 30));
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(51, 51, 51));
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameLabel.setText("UserName");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 30));
 
-        menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menulayer-800.png"))); // NOI18N
+        nameLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        nameLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nameLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        nameLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameLabel1.setText("notheastern@edu");
+        add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
+
+        menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu1.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Artboard 1@0.75x.png"))); // NOI18N
@@ -142,8 +141,7 @@ public class BasicUserJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel pic1;
-    private javax.swing.JLabel pic2;
+    private javax.swing.JLabel nameLabel1;
     private javax.swing.JLabel rentBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;

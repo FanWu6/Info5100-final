@@ -45,17 +45,17 @@ public class MainJPanel extends javax.swing.JPanel {
                 signInBtnMousePressed(evt);
             }
         });
-        add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 660, 140, 40));
+        add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 610, 270, 60));
 
         registerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 registerBtnMousePressed(evt);
             }
         });
-        add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 746, 110, 10));
+        add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 740, 110, 30));
 
-        signinLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-screen-750.png"))); // NOI18N
-        add(signinLayout, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
+        signinLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Sign In#8-75.png"))); // NOI18N
+        add(signinLayout, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Artboard 1@0.75x.png"))); // NOI18N
         bg.setText("jLabel2");

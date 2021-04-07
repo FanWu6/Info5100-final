@@ -48,14 +48,14 @@ public class MyTest {
         }
     }
     
-    @Test
-    public void mytest5(){
-        List<Employee> queryuseraccount = employeeMapper.queryuseraccount();
-        for(Employee user : queryuseraccount){
-            System.out.println(user);
-            
-        }
-    }
+//    @Test
+//    public void mytest5(){
+//        List<Employee> queryuseraccount = employeeMapper.queryuseraccount();
+//        for(Employee user : queryuseraccount){
+//            System.out.println(user);
+//            
+//        }
+//    }
 
 
 //    @Test

@@ -24,7 +24,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="660" y="660" width="140" height="40"/>
+          <AbsoluteConstraints x="600" y="610" width="270" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -34,19 +34,19 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="675" y="746" width="110" height="10"/>
+          <AbsoluteConstraints x="750" y="740" width="110" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="signinLayout">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/login-screen-750.png"/>
+          <Image iconType="3" name="/images/register/Sign In#8-75.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="30" width="-1" height="-1"/>
+          <AbsoluteConstraints x="510" y="0" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
