@@ -35,6 +35,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         detailBtn = new javax.swing.JLabel();
         detailBack = new javax.swing.JLabel();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N

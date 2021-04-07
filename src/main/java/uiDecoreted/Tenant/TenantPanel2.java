@@ -35,6 +35,7 @@ public class TenantPanel2 extends javax.swing.JPanel {
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N

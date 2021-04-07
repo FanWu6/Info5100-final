@@ -34,6 +34,7 @@ public class MainJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         signInBtn = new javax.swing.JLabel();
+        registerBtn = new javax.swing.JLabel();
         signinLayout = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -45,6 +46,13 @@ public class MainJPanel extends javax.swing.JPanel {
             }
         });
         add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 660, 140, 40));
+
+        registerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                registerBtnMousePressed(evt);
+            }
+        });
+        add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 746, 110, 10));
 
         signinLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-screen-750.png"))); // NOI18N
         add(signinLayout, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
@@ -61,9 +69,16 @@ public class MainJPanel extends javax.swing.JPanel {
         layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 
+    private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_registerBtnMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
+    private javax.swing.JLabel registerBtn;
     private javax.swing.JLabel signInBtn;
     private javax.swing.JLabel signinLayout;
     // End of variables declaration//GEN-END:variables
