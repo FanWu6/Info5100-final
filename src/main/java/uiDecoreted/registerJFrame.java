@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author wufan
  */
-public class registerJFrame extends javax.swing.JFrame {
+public class RegisterJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form registerJFrame
      */
-    public registerJFrame() {
+    public RegisterJFrame() {
         initComponents();
     }
 
@@ -36,8 +36,6 @@ public class registerJFrame extends javax.swing.JFrame {
         txtphone = new javax.swing.JTextField();
         txtpassword = new javax.swing.JTextField();
         txtusername = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         bg = new javax.swing.JLabel();
@@ -53,16 +51,15 @@ public class registerJFrame extends javax.swing.JFrame {
         getContentPane().add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, 20));
 
         create_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        create_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/createaccount.png"))); // NOI18N
         create_img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 create_imgMousePressed(evt);
             }
         });
-        getContentPane().add(create_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 390, 40));
+        getContentPane().add(create_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 270, 70));
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
-        getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 120));
+        getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 120, 120));
 
         txtemail.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
         txtemail.setText("email");
@@ -71,7 +68,7 @@ public class registerJFrame extends javax.swing.JFrame {
                 txtemailMousePressed(evt);
             }
         });
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 230, 40));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 230, 40));
 
         txtphone.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
         txtphone.setText("phone");
@@ -80,7 +77,7 @@ public class registerJFrame extends javax.swing.JFrame {
                 txtphoneMousePressed(evt);
             }
         });
-        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 230, 40));
+        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 230, 40));
 
         txtpassword.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
         txtpassword.setText("password");
@@ -89,22 +86,18 @@ public class registerJFrame extends javax.swing.JFrame {
                 txtpasswordMousePressed(evt);
             }
         });
-        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 230, 40));
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 230, 40));
 
+        txtusername.setBackground(new java.awt.Color(255, 255, 255));
         txtusername.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
         txtusername.setText("username");
+        txtusername.setOpaque(true);
         txtusername.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtusernameMousePressed(evt);
             }
         });
-        getContentPane().add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 230, 40));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 430, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Background.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 430, 60));
+        getContentPane().add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 230, 40));
 
         jRadioButton1.setText("Tenant");
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,7 +105,7 @@ public class registerJFrame extends javax.swing.JFrame {
                 jRadioButton1MousePressed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, -1, -1));
 
         jRadioButton2.setText("HouseHolder");
         jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,15 +113,15 @@ public class registerJFrame extends javax.swing.JFrame {
                 jRadioButton2MousePressed(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, -1, -1));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/registerLayer-750.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/signout8-75.png"))); // NOI18N
         bg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 bgMousePressed(evt);
             }
         });
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 750));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,13 +191,13 @@ public class registerJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -214,7 +207,7 @@ public class registerJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registerJFrame().setVisible(true);
+                new RegisterJFrame().setVisible(true);
             }
         });
     }
@@ -223,8 +216,6 @@ public class registerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel create_img;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField txtemail;

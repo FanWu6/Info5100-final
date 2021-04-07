@@ -72,7 +72,7 @@ public class BasicUserJPanel extends javax.swing.JPanel {
                 rentBtnMousePressed(evt);
             }
         });
-        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 40));
+        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
 
         homeBtn.setBackground(new java.awt.Color(204, 204, 204));
         homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -82,14 +82,14 @@ public class BasicUserJPanel extends javax.swing.JPanel {
                 homeBtnMousePressed(evt);
             }
         });
-        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 90, 40));
+        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 backBtnMousePressed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 740, 80, 30));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 90, 40));
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
         add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 120));
