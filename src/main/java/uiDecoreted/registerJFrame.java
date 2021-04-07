@@ -5,16 +5,18 @@
  */
 package uiDecoreted;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wufan
  */
-public class RegisterJFrame extends javax.swing.JFrame {
+public class registerJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form registerJFrame
      */
-    public RegisterJFrame() {
+    public registerJFrame() {
         initComponents();
     }
 
@@ -29,21 +31,155 @@ public class RegisterJFrame extends javax.swing.JFrame {
 
         backBtn = new javax.swing.JLabel();
         create_img = new javax.swing.JLabel();
+        userPic = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        txtphone = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JTextField();
+        txtusername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backBtnMousePressed(evt);
+            }
+        });
         getContentPane().add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, 20));
 
         create_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         create_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/createaccount.png"))); // NOI18N
+        create_img.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                create_imgMousePressed(evt);
+            }
+        });
         getContentPane().add(create_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 390, 40));
 
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
+        getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 120));
+
+        txtemail.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
+        txtemail.setText("email");
+        txtemail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtemailMousePressed(evt);
+            }
+        });
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 230, 40));
+
+        txtphone.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
+        txtphone.setText("phone");
+        txtphone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtphoneMousePressed(evt);
+            }
+        });
+        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 230, 40));
+
+        txtpassword.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
+        txtpassword.setText("password");
+        txtpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtpasswordMousePressed(evt);
+            }
+        });
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 230, 40));
+
+        txtusername.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
+        txtusername.setText("username");
+        txtusername.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtusernameMousePressed(evt);
+            }
+        });
+        getContentPane().add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 230, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 430, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Background.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 430, 60));
+
+        jRadioButton1.setText("Tenant");
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRadioButton1MousePressed(evt);
+            }
+        });
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
+
+        jRadioButton2.setText("HouseHolder");
+        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRadioButton2MousePressed(evt);
+            }
+        });
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, -1, -1));
+
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/registerLayer-750.png"))); // NOI18N
+        bg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bgMousePressed(evt);
+            }
+        });
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtusernameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtusernameMousePressed
+        // TODO add your handling code here:
+        txtusername.setText("");
+    }//GEN-LAST:event_txtusernameMousePressed
+
+    private void txtpasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpasswordMousePressed
+        // TODO add your handling code here:
+        txtpassword.setText("");
+    }//GEN-LAST:event_txtpasswordMousePressed
+
+    private void txtphoneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtphoneMousePressed
+        // TODO add your handling code here:
+        txtphone.setText("");
+    }//GEN-LAST:event_txtphoneMousePressed
+
+    private void txtemailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtemailMousePressed
+        // TODO add your handling code here:
+        txtemail.setText("");
+    }//GEN-LAST:event_txtemailMousePressed
+
+    private void jRadioButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MousePressed
+        // TODO add your handling code here:
+        this.jRadioButton2.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton1MousePressed
+
+    private void jRadioButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MousePressed
+        // TODO add your handling code here:
+        this.jRadioButton1.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton2MousePressed
+
+    private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
+        // TODO add your handling code here:
+        this.jRadioButton2.setEnabled(true);
+        this.jRadioButton1.setEnabled(true);
+        this.jRadioButton1.setSelected(false);
+        this.jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_bgMousePressed
+
+    private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backBtnMousePressed
+
+    private void create_imgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_create_imgMousePressed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Create an account!", "Warning", JOptionPane.WARNING_MESSAGE);
+
+    }//GEN-LAST:event_create_imgMousePressed
 
     /**
      * @param args the command line arguments
@@ -62,21 +198,23 @@ public class RegisterJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterJFrame().setVisible(true);
+                new registerJFrame().setVisible(true);
             }
         });
     }
@@ -85,5 +223,14 @@ public class RegisterJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel create_img;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtpassword;
+    private javax.swing.JTextField txtphone;
+    private javax.swing.JTextField txtusername;
+    private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables
 }
