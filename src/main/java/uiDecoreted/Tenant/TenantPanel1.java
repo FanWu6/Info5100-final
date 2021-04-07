@@ -5,8 +5,17 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.Util;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -21,6 +30,21 @@ public class TenantPanel1 extends javax.swing.JPanel {
     public TenantPanel1(JPanel rightcontainer) {
         this.rightcontainer = rightcontainer;
         initComponents();
+        
+        //改变table样式
+        Util.tableStyle1(jTable1,jScrollPane1);
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for(int i=0;i<5;i++){
+            Object[] row = new Object[4];
+            row[0] = 15;
+            row[1] = 2;
+            row[2] = 3;
+            row[3] = 4;
+            model.addRow(row);
+        }
+  
     }
 
     /**
@@ -54,17 +78,28 @@ public class TenantPanel1 extends javax.swing.JPanel {
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 70));
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(128, 128, 128));
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
+        jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
+        jTable1.setShowHorizontalLines(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 460));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
