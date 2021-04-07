@@ -71,7 +71,7 @@ public class MainJPanel extends javax.swing.JPanel {
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
         // TODO add your handling code here:
-        RegisterJFrame registerJFrame=new RegisterJFrame();
+        registerJFrame registerJFrame=new registerJFrame();
         registerJFrame.setVisible(true);        
     }//GEN-LAST:event_registerBtnMousePressed
 
