@@ -72,7 +72,7 @@ public class AgencyPanel extends javax.swing.JPanel {
                 ownerBtnMousePressed(evt);
             }
         });
-        add(ownerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
+        add(ownerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 60));
 
         tenantBtn.setBackground(new java.awt.Color(204, 204, 204));
         tenantBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -82,7 +82,7 @@ public class AgencyPanel extends javax.swing.JPanel {
                 tenantBtnMousePressed(evt);
             }
         });
-        add(tenantBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
+        add(tenantBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 80, 50));
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -108,7 +108,7 @@ public class AgencyPanel extends javax.swing.JPanel {
         nameLabel1.setText("notheastern@edu");
         add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
 
-        menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu1.png"))); // NOI18N
+        menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu4.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Artboard 1@0.75x.png"))); // NOI18N

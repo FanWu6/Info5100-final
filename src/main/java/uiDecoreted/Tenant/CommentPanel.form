@@ -21,7 +21,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="commentText">
       <Properties>
         <Property name="text" type="java.lang.String" value="Please enter your comment..."/>
       </Properties>

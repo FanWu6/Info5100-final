@@ -37,17 +37,18 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         housePic = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        roomLabel = new javax.swing.JLabel();
-        priceLabel1 = new javax.swing.JLabel();
+        layoutLabel = new javax.swing.JLabel();
         priceLabel3 = new javax.swing.JLabel();
         priceLabel4 = new javax.swing.JLabel();
         priceLabel5 = new javax.swing.JLabel();
-        bookBtn = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        requesttourbtn = new javax.swing.JLabel();
+        requesttour = new javax.swing.JLabel();
+        requestapplybtn = new javax.swing.JLabel();
+        Requesttoapply = new javax.swing.JLabel();
+        line1 = new javax.swing.JLabel();
+        line2 = new javax.swing.JLabel();
+        line3 = new javax.swing.JLabel();
+        line4 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
         setOpaque(false);
@@ -68,7 +69,7 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 300, 210));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 300, 210));
 
         addressLabel.setText("Address");
         add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, -1, -1));
@@ -76,43 +77,62 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         priceLabel.setText("Price");
         add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 60, 30));
 
-        roomLabel.setText("Superior Double Room");
-        add(roomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
+        layoutLabel.setText("Superior Double Room");
+        add(layoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
 
-        priceLabel1.setText("楼层");
-        add(priceLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 60, 30));
+        priceLabel3.setText("orientation");
+        add(priceLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 90, 30));
 
-        priceLabel3.setText("朝向");
-        add(priceLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 60, 30));
+        priceLabel4.setText("Storey");
+        add(priceLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 60, 30));
 
-        priceLabel4.setText("户型");
-        add(priceLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 60, 30));
-
-        priceLabel5.setText("面积");
+        priceLabel5.setText("Space");
         add(priceLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 60, 30));
 
-        bookBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        bookBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bookBtn.setText("约看Button");
-        add(bookBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 700, 140, 80));
+        requesttourbtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        requesttourbtn.setForeground(new java.awt.Color(255, 255, 255));
+        requesttourbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        requesttourbtn.setText("Request a tour");
+        requesttourbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                requesttourbtnMousePressed(evt);
+            }
+        });
+        add(requesttourbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, 200, 60));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        jLabel1.setText("签约Button");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 730, 130, 50));
+        requesttour.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        requesttour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
+        add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, 200, 60));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 700, 50));
+        requestapplybtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        requestapplybtn.setForeground(new java.awt.Color(255, 255, 255));
+        requestapplybtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        requestapplybtn.setText("Request to apply");
+        requestapplybtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                requestapplybtnMousePressed(evt);
+            }
+        });
+        add(requestapplybtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 710, 200, 60));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 700, 50));
+        Requesttoapply.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        Requesttoapply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
+        add(Requesttoapply, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 710, 200, 60));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 700, 40));
+        line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 700, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 700, 50));
+        line2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 700, 50));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/detailbackground.png"))); // NOI18N
+        line3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 700, 40));
+
+        line4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 700, 50));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/detailbackground_1.png"))); // NOI18N
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,24 +144,33 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         layout.show(rightcontainer, "tP1");
     }//GEN-LAST:event_backBtnMousePressed
 
+    private void requestapplybtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestapplybtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_requestapplybtnMousePressed
+
+    private void requesttourbtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requesttourbtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_requesttourbtnMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
+    private javax.swing.JLabel Requesttoapply;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
-    private javax.swing.JLabel bookBtn;
     private javax.swing.JLabel housePic;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel layoutLabel;
+    private javax.swing.JLabel line1;
+    private javax.swing.JLabel line2;
+    private javax.swing.JLabel line3;
+    private javax.swing.JLabel line4;
     private javax.swing.JLabel priceLabel;
-    private javax.swing.JLabel priceLabel1;
     private javax.swing.JLabel priceLabel3;
     private javax.swing.JLabel priceLabel4;
     private javax.swing.JLabel priceLabel5;
-    private javax.swing.JLabel roomLabel;
+    private javax.swing.JLabel requestapplybtn;
+    private javax.swing.JLabel requesttour;
+    private javax.swing.JLabel requesttourbtn;
     // End of variables declaration//GEN-END:variables
 }

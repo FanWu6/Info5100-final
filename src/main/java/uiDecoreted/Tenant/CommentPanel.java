@@ -6,6 +6,7 @@
 package uiDecoreted.Tenant;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -21,6 +22,7 @@ public class CommentPanel extends javax.swing.JPanel {
     public CommentPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        commentText.setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -32,7 +34,7 @@ public class CommentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        commentText = new javax.swing.JTextField();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         submitBtn = new javax.swing.JLabel();
@@ -42,8 +44,8 @@ public class CommentPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("Please enter your comment...");
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 490, 50));
+        commentText.setText("Please enter your comment...");
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 490, 50));
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,7 +87,7 @@ public class CommentPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField commentText;
     private javax.swing.JLabel post;
     private javax.swing.JLabel submit;
     private javax.swing.JLabel submitBtn;

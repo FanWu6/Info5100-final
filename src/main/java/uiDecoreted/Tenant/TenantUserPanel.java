@@ -10,7 +10,7 @@ import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import jdk.nashorn.internal.objects.Global;
+//import jdk.nashorn.internal.objects.Global;
 import uiDecoreted.Tenant.CommentPanel;
 import uiDecoreted.Tenant.TenantOrderPanel;
 import uiDecoreted.Tenant.RentalListPanel;
