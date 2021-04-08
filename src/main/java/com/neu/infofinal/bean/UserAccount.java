@@ -7,6 +7,8 @@ public class UserAccount {
 
     private String password;
 
+    private Integer type;
+
     public Integer getId() {
         return id;
     }
@@ -31,10 +33,11 @@ public class UserAccount {
         this.password = password == null ? null : password.trim();
     }
 
-    @Override
-    public String toString() {
-        return "UserAccount{" + "id=" + id + ", username=" + username + ", password=" + password + '}';
+    public Integer getType() {
+        return type;
     }
-    
-    
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 }
