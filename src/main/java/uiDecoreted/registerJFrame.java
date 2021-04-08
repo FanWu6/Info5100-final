@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class RegisterJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form registerJFrame
+     * Creates new form RegisterJFrame
      */
     public RegisterJFrame() {
         initComponents();

@@ -27,7 +27,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="0" width="1140" height="810"/>
+          <AbsoluteConstraints x="170" y="10" width="1270" height="810"/>
         </Constraint>
       </Constraints>
 
@@ -147,14 +147,14 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="460" height="810"/>
+          <AbsoluteConstraints x="0" y="0" width="170" height="810"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="bg">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/userLayer/Artboard 1@0.75x.png"/>
+          <Image iconType="3" name="/images/Artboard4@0.75x.png"/>
         </Property>
       </Properties>
       <Constraints>

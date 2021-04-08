@@ -62,7 +62,7 @@ public class AgencyPanel extends javax.swing.JPanel {
         rightjPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightjPanel.setOpaque(false);
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
+        add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 1270, 810));
 
         ownerBtn.setBackground(new java.awt.Color(204, 204, 204));
         ownerBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -109,9 +109,9 @@ public class AgencyPanel extends javax.swing.JPanel {
         add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
 
         menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu1.png"))); // NOI18N
-        add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
+        add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 810));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Artboard 1@0.75x.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Artboard4@0.75x.png"))); // NOI18N
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 810));
     }// </editor-fold>//GEN-END:initComponents
 

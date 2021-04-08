@@ -33,7 +33,7 @@ public class RentalListPanel extends javax.swing.JPanel {
         initComponents();
         
         //改变table样式
-        Util.tableStyle1(jTable1,jScrollPane1);
+        Util.tableStyle1(jTable1,jScrollPane1,new Color(125,100,171));
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);

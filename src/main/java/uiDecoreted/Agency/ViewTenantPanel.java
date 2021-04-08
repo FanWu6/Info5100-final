@@ -31,28 +31,38 @@ public class ViewTenantPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         acceptBtn = new javax.swing.JLabel();
         accept = new javax.swing.JLabel();
         refusebtn = new javax.swing.JLabel();
         refuse = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 90, 30));
+
+        jTable1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "UserName", "Phone", "HouseId", "House Address", "Region"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -60,7 +70,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 960, -1));
 
         acceptBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         acceptBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,10 +81,10 @@ public class ViewTenantPanel extends javax.swing.JPanel {
                 acceptBtnMousePressed(evt);
             }
         });
-        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 690, 200, 50));
+        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 660, 200, 50));
 
         accept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(accept, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 680, 200, 70));
+        add(accept, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 650, 200, 70));
 
         refusebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         refusebtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,13 +95,10 @@ public class ViewTenantPanel extends javax.swing.JPanel {
                 refusebtnMousePressed(evt);
             }
         });
-        add(refusebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 690, 200, 50));
+        add(refusebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 200, 50));
 
         refuse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(refuse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 680, 200, 70));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        add(refuse, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 650, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceptBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptBtnMousePressed

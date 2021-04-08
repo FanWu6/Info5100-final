@@ -5,7 +5,11 @@
  */
 package uiDecoreted.Agency;
 
+import Util.ImageRender;
+import Util.Util;
+import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +24,22 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
     public ViewOwnerPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        
+         //改变table样式
+        Util.tableStyle1(jTable1,jScrollPane1,new Color(238,205,125));
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        jTable1.setRowHeight(105);
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
+//        jTable1.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRender());
+        for(int i=0;i<1;i++){
+            Object[] row = new Object[4];
+            row[0] = "/images/housepicture/housepic1.png";
+            row[1] = Util.strToMultilineHTML("desc1,dec2222222,desc3333333333333", ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+            row[2] = Util.strToMultilineHTML("address1,address13123213,addres123213s1", ",");
+            row[3] = "2500%/mo";
+            model.addRow(row);
+        }
     }
 
     /**
@@ -41,17 +61,27 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Desc", "Address", "Price", "Region"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -59,7 +89,7 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 960, -1));
 
         acceptBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         acceptBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,10 +100,10 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
                 acceptBtnMousePressed(evt);
             }
         });
-        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 690, 200, 50));
+        add(acceptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 660, 200, 50));
 
         accept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(accept, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 680, 200, 70));
+        add(accept, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 650, 200, 70));
 
         refusebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         refusebtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,10 +114,10 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
                 refusebtnMousePressed(evt);
             }
         });
-        add(refusebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 690, 200, 50));
+        add(refusebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 200, 50));
 
         refuse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(refuse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 680, 200, 70));
+        add(refuse, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 650, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceptBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptBtnMousePressed

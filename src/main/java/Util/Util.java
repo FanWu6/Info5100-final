@@ -18,7 +18,8 @@ import javax.swing.table.TableColumn;
  * @author wufan
  */
 public class Util {
-    public static void tableStyle1(JTable table,JScrollPane scrollPane){
+    public static void tableStyle1(JTable table,JScrollPane scrollPane,Color color){
+        
         scrollPane.getViewport().setBackground(new Color(255, 255, 255));
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer(){
             @Override
@@ -32,9 +33,9 @@ public class Util {
             }
             
         };
-        cellRenderer.setBackground(new Color(125,100,171));
+        cellRenderer.setBackground(color); //new Color(125,100,171)
         cellRenderer.setForeground(new Color(255,255,255));
-         for(int i=0;i<4;i++){
+         for(int i=0;i<table.getColumnCount();i++){
             TableColumn column = table.getTableHeader().getColumnModel().getColumn(i);
             column.setHeaderRenderer(cellRenderer);
         }
