@@ -100,14 +100,14 @@ public class MainJPanel extends javax.swing.JPanel {
     private void ownersignbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("3",new OwnerUserPanel(container));
+       container.add("OwnerUserPanel",new OwnerUserPanel(container));
        layout.next(container);
     }//GEN-LAST:event_ownersignbtnActionPerformed
 
     private void ownersignbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtn1ActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)container.getLayout();
-       container.add("4",new AgencyPanel(container));
+       container.add("AgencyPanel",new AgencyPanel(container));
        layout.next(container);
     }//GEN-LAST:event_ownersignbtn1ActionPerformed
 

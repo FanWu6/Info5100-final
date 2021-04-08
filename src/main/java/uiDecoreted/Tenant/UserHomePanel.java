@@ -34,8 +34,10 @@ public class UserHomePanel extends javax.swing.JPanel {
 
         myOrderBtn = new javax.swing.JLabel();
         myOrderLable = new javax.swing.JLabel();
-        detailBtn = new javax.swing.JLabel();
-        detailBack = new javax.swing.JLabel();
+        housePic = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        roomLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,25 +56,18 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(myOrderLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, -1, -1));
 
-        detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        detailBtn.setForeground(new java.awt.Color(255, 255, 255));
-        detailBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        detailBtn.setText("Home");
-        detailBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                detailBtnMousePressed(evt);
-            }
-        });
-        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 680, 200, 50));
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 300, 200));
 
-        detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 70));
+        addressLabel.setText("Address");
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        roomLabel.setText("Superior Double Room");
+        add(roomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/1_Contact.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1100, 730));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_detailBtnMousePressed
 
     private void myOrderLableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myOrderLableMousePressed
         // TODO add your handling code here:
@@ -82,9 +77,11 @@ public class UserHomePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel detailBack;
-    private javax.swing.JLabel detailBtn;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel housePic;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel myOrderBtn;
     private javax.swing.JLabel myOrderLable;
+    private javax.swing.JLabel roomLabel;
     // End of variables declaration//GEN-END:variables
 }

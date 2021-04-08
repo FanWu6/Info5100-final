@@ -7,6 +7,7 @@ package uiDecoreted.Owner;
 
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 import uiDecoreted.Tenant.CommentPanel;
 import uiDecoreted.Tenant.TenantOrderPanel;
@@ -116,10 +117,10 @@ public class OwnerUserPanel extends javax.swing.JPanel {
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
      //   container.remove(this);
-//        Component[] components = container.getComponents();
-//        Component component = components[components.length-1];
-      //  CardLayout layout = (CardLayout)container.getLayout();
-      //  layout.previous(container);
+        Component[] components = container.getComponents();
+        Component component = components[components.length-1];
+        CardLayout layout = (CardLayout)container.getLayout();
+        layout.previous(container);
     }//GEN-LAST:event_backBtnMousePressed
 
     private void rentBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentBtnMousePressed
