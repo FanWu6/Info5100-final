@@ -44,6 +44,11 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         priceLabel5 = new javax.swing.JLabel();
         bookBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,37 +68,52 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 300, 200));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 300, 210));
 
         addressLabel.setText("Address");
-        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, -1));
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, -1, -1));
 
         priceLabel.setText("Price");
-        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 60, 30));
+        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 60, 30));
 
         roomLabel.setText("Superior Double Room");
-        add(roomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, -1));
+        add(roomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
 
         priceLabel1.setText("楼层");
-        add(priceLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 60, 30));
+        add(priceLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 60, 30));
 
         priceLabel3.setText("朝向");
-        add(priceLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 60, 30));
+        add(priceLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 60, 30));
 
         priceLabel4.setText("户型");
-        add(priceLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, 60, 30));
+        add(priceLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 60, 30));
 
         priceLabel5.setText("面积");
-        add(priceLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 60, 30));
+        add(priceLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 60, 30));
 
         bookBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         bookBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bookBtn.setText("约看Button");
-        add(bookBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 680, 140, 80));
+        add(bookBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 700, 140, 80));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         jLabel1.setText("签约Button");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 690, 130, 50));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 730, 130, 50));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 700, 50));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 700, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 700, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 700, 50));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/detailbackground.png"))); // NOI18N
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -109,9 +129,14 @@ public class ViewDetailPanel extends javax.swing.JPanel {
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel backBtn;
+    private javax.swing.JLabel bg;
     private javax.swing.JLabel bookBtn;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JLabel priceLabel1;
     private javax.swing.JLabel priceLabel3;
