@@ -10,6 +10,11 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import uiDecoreted.Agency.AgencyPanel;
 import uiDecoreted.Owner.OwnerUserPanel;
+import uiDecoreted.Admin.AdminPanel;
+import uiDecoreted.Housework.HouseworkPanel;
+import uiDecoreted.Maintenance.MaintenancePanel;
+import uiDecoreted.Move.MovePanel;
+
 
 /**
  *
@@ -36,8 +41,12 @@ public class MainJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ownersignbtn1 = new javax.swing.JButton();
-        ownersignbtn = new javax.swing.JButton();
+        housworkbtn = new javax.swing.JButton();
+        maintenancebtn = new javax.swing.JButton();
+        movebtn = new javax.swing.JButton();
+        adminbtn = new javax.swing.JButton();
+        ownerbtn = new javax.swing.JButton();
+        agencybtn = new javax.swing.JButton();
         signInBtn = new javax.swing.JLabel();
         registerBtn = new javax.swing.JLabel();
         signinLayout = new javax.swing.JLabel();
@@ -45,21 +54,53 @@ public class MainJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ownersignbtn1.setText("agency");
-        ownersignbtn1.addActionListener(new java.awt.event.ActionListener() {
+        housworkbtn.setText("houseworker");
+        housworkbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ownersignbtn1ActionPerformed(evt);
+                housworkbtnActionPerformed(evt);
             }
         });
-        add(ownersignbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
+        add(housworkbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
-        ownersignbtn.setText("owner");
-        ownersignbtn.addActionListener(new java.awt.event.ActionListener() {
+        maintenancebtn.setText("maintenance");
+        maintenancebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ownersignbtnActionPerformed(evt);
+                maintenancebtnActionPerformed(evt);
             }
         });
-        add(ownersignbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
+        add(maintenancebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, -1, -1));
+
+        movebtn.setText("move");
+        movebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                movebtnActionPerformed(evt);
+            }
+        });
+        add(movebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, -1, -1));
+
+        adminbtn.setText("admin");
+        adminbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminbtnActionPerformed(evt);
+            }
+        });
+        add(adminbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
+
+        ownerbtn.setText("owner");
+        ownerbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownerbtnActionPerformed(evt);
+            }
+        });
+        add(ownerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
+
+        agencybtn.setText("agency");
+        agencybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agencybtnActionPerformed(evt);
+            }
+        });
+        add(agencybtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
         signInBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -97,25 +138,57 @@ public class MainJPanel extends javax.swing.JPanel {
 ;
     }//GEN-LAST:event_registerBtnMousePressed
 
-    private void ownersignbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtnActionPerformed
+    private void ownerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
        container.add("OwnerUserPanel",new OwnerUserPanel(container));
        layout.next(container);
-    }//GEN-LAST:event_ownersignbtnActionPerformed
+    }//GEN-LAST:event_ownerbtnActionPerformed
 
-    private void ownersignbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtn1ActionPerformed
+    private void adminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminbtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout layout = (CardLayout)container.getLayout();
+       container.add("AdminPanel",new AdminPanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_adminbtnActionPerformed
+
+    private void agencybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agencybtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)container.getLayout();
        container.add("AgencyPanel",new AgencyPanel(container));
        layout.next(container);
-    }//GEN-LAST:event_ownersignbtn1ActionPerformed
+    }//GEN-LAST:event_agencybtnActionPerformed
+
+    private void housworkbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_housworkbtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout layout = (CardLayout)container.getLayout();
+       container.add("AgencyPanel",new HouseworkPanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_housworkbtnActionPerformed
+
+    private void maintenancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenancebtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout layout = (CardLayout)container.getLayout();
+       container.add("MaintenancePanel",new MaintenancePanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_maintenancebtnActionPerformed
+
+    private void movebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movebtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout layout = (CardLayout)container.getLayout();
+       container.add("MovePanel",new MovePanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_movebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminbtn;
+    private javax.swing.JButton agencybtn;
     private javax.swing.JLabel bg;
-    private javax.swing.JButton ownersignbtn;
-    private javax.swing.JButton ownersignbtn1;
+    private javax.swing.JButton housworkbtn;
+    private javax.swing.JButton maintenancebtn;
+    private javax.swing.JButton movebtn;
+    private javax.swing.JButton ownerbtn;
     private javax.swing.JLabel registerBtn;
     private javax.swing.JLabel signInBtn;
     private javax.swing.JLabel signinLayout;

@@ -39,6 +39,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
         refuse = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

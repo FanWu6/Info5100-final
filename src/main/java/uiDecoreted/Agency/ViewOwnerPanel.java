@@ -38,6 +38,7 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
         refusebtn = new javax.swing.JLabel();
         refuse = new javax.swing.JLabel();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

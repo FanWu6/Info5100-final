@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Admin;
+package uiDecoreted.Housework;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 
@@ -13,23 +14,21 @@ import javax.swing.JPanel;
  *
  * @author wufan
  */
-public class AdminPanel extends javax.swing.JPanel {
+public class HouseworkPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantUserPanel
      */
     JPanel container;
     CardLayout cardLayout;
-    public AdminPanel(JPanel container) {
+    public HouseworkPanel(JPanel container) {
         this.container = container;
         initComponents();
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel));
-        rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel));
-        rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel));
-        cardLayout.show(rightjPanel,"viewHouseworkOrderP");
+        rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
+        cardLayout.show(rightjPanel,"viewRequestP");
     }
 
     /**
@@ -42,9 +41,8 @@ public class AdminPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
-        houseworkBtn = new javax.swing.JLabel();
-        maintenanceBtn = new javax.swing.JLabel();
-        moveBtn = new javax.swing.JLabel();
+        ownerBtn = new javax.swing.JLabel();
+        homeBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -59,36 +57,25 @@ public class AdminPanel extends javax.swing.JPanel {
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
 
-        houseworkBtn.setBackground(new java.awt.Color(204, 204, 204));
-        houseworkBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        houseworkBtn.setForeground(new java.awt.Color(204, 204, 204));
-        houseworkBtn.setText("housework");
-        houseworkBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        ownerBtn.setBackground(new java.awt.Color(204, 204, 204));
+        ownerBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        ownerBtn.setForeground(new java.awt.Color(204, 204, 204));
+        ownerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                houseworkBtnMousePressed(evt);
+                ownerBtnMousePressed(evt);
             }
         });
-        add(houseworkBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 100, 70));
+        add(ownerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
 
-        maintenanceBtn.setBackground(new java.awt.Color(204, 204, 204));
-        maintenanceBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        maintenanceBtn.setForeground(new java.awt.Color(204, 204, 204));
-        maintenanceBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        homeBtn.setBackground(new java.awt.Color(204, 204, 204));
+        homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        homeBtn.setForeground(new java.awt.Color(204, 204, 204));
+        homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                maintenanceBtnMousePressed(evt);
+                homeBtnMousePressed(evt);
             }
         });
-        add(maintenanceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
-
-        moveBtn.setBackground(new java.awt.Color(204, 204, 204));
-        moveBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        moveBtn.setForeground(new java.awt.Color(204, 204, 204));
-        moveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                moveBtnMousePressed(evt);
-            }
-        });
-        add(moveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
+        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -123,38 +110,32 @@ public class AdminPanel extends javax.swing.JPanel {
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
-     //   container.remove(this);
-//        Component[] components = container.getComponents();
-//        Component component = components[components.length-1];
-      //  CardLayout layout = (CardLayout)container.getLayout();
-      //  layout.previous(container);
+        container.remove(this);
+        Component[] components = container.getComponents();
+        Component component = components[components.length-1];
+        CardLayout layout = (CardLayout)container.getLayout();
+        layout.previous(container);
     }//GEN-LAST:event_backBtnMousePressed
 
-    private void houseworkBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_houseworkBtnMousePressed
+    private void ownerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ownerBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewHouseworkOrderP");
-    }//GEN-LAST:event_houseworkBtnMousePressed
+      //  cardLayout.show(rightjPanel,"viewOwnerP");
+    }//GEN-LAST:event_ownerBtnMousePressed
 
-    private void maintenanceBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maintenanceBtnMousePressed
+    private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewMaintenanceOrderP");
-    }//GEN-LAST:event_maintenanceBtnMousePressed
-
-    private void moveBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moveBtnMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewMoveOrderP");
-    }//GEN-LAST:event_moveBtnMousePressed
+        cardLayout.show(rightjPanel,"viewRequestP");
+    }//GEN-LAST:event_homeBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
-    private javax.swing.JLabel houseworkBtn;
-    private javax.swing.JLabel maintenanceBtn;
+    private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
-    private javax.swing.JLabel moveBtn;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel nameLabel1;
+    private javax.swing.JLabel ownerBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables
