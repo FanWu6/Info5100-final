@@ -6,6 +6,7 @@
 package uiDecoreted.Admin;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 
@@ -122,11 +123,11 @@ public class AdminPanel extends javax.swing.JPanel {
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
-     //   container.remove(this);
-//        Component[] components = container.getComponents();
-//        Component component = components[components.length-1];
-      //  CardLayout layout = (CardLayout)container.getLayout();
-      //  layout.previous(container);
+        container.remove(this);
+        Component[] components = container.getComponents();
+        Component component = components[components.length-1];
+        CardLayout layout = (CardLayout)container.getLayout();
+        layout.previous(container);
     }//GEN-LAST:event_backBtnMousePressed
 
     private void houseworkBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_houseworkBtnMousePressed

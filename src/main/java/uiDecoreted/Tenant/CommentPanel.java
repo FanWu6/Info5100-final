@@ -44,8 +44,8 @@ public class CommentPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        commentText.setText("Please enter your comment...");
-        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 490, 50));
+        commentText.setText("Please enter you comment");
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 560, 180));
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,9 +70,9 @@ public class CommentPanel extends javax.swing.JPanel {
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
 
-        post.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Post.png"))); // NOI18N
+        post.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Input.png"))); // NOI18N
         post.setOpaque(true);
-        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 172, -1, -1));
+        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 580, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed

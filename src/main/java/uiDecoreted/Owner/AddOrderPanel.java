@@ -82,7 +82,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
                 addresstxtActionPerformed(evt);
             }
         });
-        add(addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 460, 40));
+        add(addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 460, 40));
 
         pricetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         pricetxt.setForeground(new java.awt.Color(153, 153, 153));
