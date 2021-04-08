@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.ImageRender;
 import Util.Util;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -36,12 +37,15 @@ public class RentalListPanel extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
+        jTable1.setRowHeight(105);
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
+//        jTable1.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRender());
         for(int i=0;i<5;i++){
             Object[] row = new Object[4];
-            row[0] = 15;
-            row[1] = 2;
-            row[2] = 3;
-            row[3] = 4;
+            row[0] = "/images/housepicture/housepic1.png";
+            row[1] = Util.strToMultilineHTML("desc1,dec2222222,desc3333333333333", ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+            row[2] = Util.strToMultilineHTML("address1,address13123213,addres123213s1", ",");
+            row[3] = "2500%/mo";
             model.addRow(row);
         }
   
@@ -60,6 +64,7 @@ public class RentalListPanel extends javax.swing.JPanel {
         detailBack = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,11 +78,12 @@ public class RentalListPanel extends javax.swing.JPanel {
                 detailBtnMousePressed(evt);
             }
         });
-        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 680, 200, 50));
+        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 740, 200, 50));
 
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 70));
+        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 730, 200, 70));
 
+        jTable1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -86,9 +92,18 @@ public class RentalListPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Desc", "Address", "Price"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -96,7 +111,11 @@ public class RentalListPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 850, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
@@ -109,6 +128,7 @@ public class RentalListPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel detailBack;
     private javax.swing.JLabel detailBtn;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

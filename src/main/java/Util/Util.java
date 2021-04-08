@@ -39,4 +39,13 @@ public class Util {
             column.setHeaderRenderer(cellRenderer);
         }
     }
+    
+    public static String strToMultilineHTML(String str,String sp){
+        String html = "<html><body><p align=\"center\">" ;
+        for (String string : str.split(sp)) {
+            html+= string+ "<br/>";
+        }
+        html +=  "</p></body></html";
+        return html;
+    }
 }

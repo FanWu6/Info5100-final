@@ -32,6 +32,8 @@ public class UserHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         myOrderBtn = new javax.swing.JLabel();
         myOrderLable = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
@@ -41,6 +43,16 @@ public class UserHomePanel extends javax.swing.JPanel {
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField1.setText("jTextField1");
+        jTextField1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 380, 40));
+
+        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField2.setText("jTextField1");
+        jTextField2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 380, 40));
 
         myOrderBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         myOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,6 +92,8 @@ public class UserHomePanel extends javax.swing.JPanel {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel myOrderBtn;
     private javax.swing.JLabel myOrderLable;
     private javax.swing.JLabel roomLabel;

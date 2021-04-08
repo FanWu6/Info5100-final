@@ -5,6 +5,8 @@
  */
 package uiDecoreted;
 
+import Util.JTextFieldHintListener;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,12 @@ public class RegisterJFrame extends javax.swing.JFrame {
      */
     public RegisterJFrame() {
         initComponents();
+        
+        usernametxt.addFocusListener(new JTextFieldHintListener(usernametxt, "Username",new Color(153,153,153)));
+        passwordtxt.addFocusListener(new JTextFieldHintListener(passwordtxt, "Password",new Color(153,153,153)));
+        phonetxt.addFocusListener(new JTextFieldHintListener(phonetxt, "Phone",new Color(153,153,153)));
+        emailtxt.addFocusListener(new JTextFieldHintListener(emailtxt, "Email",new Color(153,153,153)));
+        foucstxt.requestFocusInWindow();
     }
 
     /**
@@ -32,15 +40,16 @@ public class RegisterJFrame extends javax.swing.JFrame {
         backBtn = new javax.swing.JLabel();
         create_img = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
-        txtemail = new javax.swing.JTextField();
-        txtphone = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
-        txtusername = new javax.swing.JTextField();
+        usernametxt = new javax.swing.JTextField();
+        passwordtxt = new javax.swing.JTextField();
+        phonetxt = new javax.swing.JTextField();
+        emailtxt = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         bg = new javax.swing.JLabel();
+        foucstxt = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,43 +70,42 @@ public class RegisterJFrame extends javax.swing.JFrame {
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
         getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 120, 120));
 
-        txtemail.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
-        txtemail.setText("email");
-        txtemail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtemailMousePressed(evt);
-            }
-        });
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 230, 40));
+        usernametxt.setBackground(new java.awt.Color(247, 247, 248));
+        usernametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        usernametxt.setForeground(new java.awt.Color(153, 153, 153));
+        usernametxt.setText("Username");
+        usernametxt.setToolTipText("");
+        usernametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        getContentPane().add(usernametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 230, 40));
 
-        txtphone.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
-        txtphone.setText("phone");
-        txtphone.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtphoneMousePressed(evt);
+        passwordtxt.setBackground(new java.awt.Color(247, 247, 248));
+        passwordtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        passwordtxt.setForeground(new java.awt.Color(153, 153, 153));
+        passwordtxt.setText("Password");
+        passwordtxt.setToolTipText("");
+        passwordtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        passwordtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordtxtActionPerformed(evt);
             }
         });
-        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 230, 40));
+        getContentPane().add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 230, 40));
 
-        txtpassword.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
-        txtpassword.setText("password");
-        txtpassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtpasswordMousePressed(evt);
-            }
-        });
-        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 230, 40));
+        phonetxt.setBackground(new java.awt.Color(247, 247, 248));
+        phonetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        phonetxt.setForeground(new java.awt.Color(153, 153, 153));
+        phonetxt.setText("Phone");
+        phonetxt.setToolTipText("");
+        phonetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        getContentPane().add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 230, 40));
 
-        txtusername.setBackground(new java.awt.Color(255, 255, 255));
-        txtusername.setFont(new java.awt.Font("微软雅黑", 1, 18)); // NOI18N
-        txtusername.setText("username");
-        txtusername.setOpaque(true);
-        txtusername.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtusernameMousePressed(evt);
-            }
-        });
-        getContentPane().add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 230, 40));
+        emailtxt.setBackground(new java.awt.Color(247, 247, 248));
+        emailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        emailtxt.setForeground(new java.awt.Color(153, 153, 153));
+        emailtxt.setText("Email");
+        emailtxt.setToolTipText("");
+        emailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        getContentPane().add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 230, 40));
 
         jRadioButton1.setText("Tenant");
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,28 +131,11 @@ public class RegisterJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 800));
 
+        foucstxt.setText("jTextField1");
+        getContentPane().add(foucstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 760, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtusernameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtusernameMousePressed
-        // TODO add your handling code here:
-        txtusername.setText("");
-    }//GEN-LAST:event_txtusernameMousePressed
-
-    private void txtpasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpasswordMousePressed
-        // TODO add your handling code here:
-        txtpassword.setText("");
-    }//GEN-LAST:event_txtpasswordMousePressed
-
-    private void txtphoneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtphoneMousePressed
-        // TODO add your handling code here:
-        txtphone.setText("");
-    }//GEN-LAST:event_txtphoneMousePressed
-
-    private void txtemailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtemailMousePressed
-        // TODO add your handling code here:
-        txtemail.setText("");
-    }//GEN-LAST:event_txtemailMousePressed
 
     private void jRadioButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MousePressed
         // TODO add your handling code here:
@@ -173,6 +164,10 @@ public class RegisterJFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Create an account!", "Warning", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_create_imgMousePressed
+
+    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordtxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,12 +211,13 @@ public class RegisterJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel create_img;
+    private javax.swing.JTextField emailtxt;
+    private javax.swing.JTextField foucstxt;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField txtemail;
-    private javax.swing.JTextField txtpassword;
-    private javax.swing.JTextField txtphone;
-    private javax.swing.JTextField txtusername;
+    private javax.swing.JTextField passwordtxt;
+    private javax.swing.JTextField phonetxt;
     private javax.swing.JLabel userPic;
+    private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }
