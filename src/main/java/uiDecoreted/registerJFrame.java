@@ -37,7 +37,8 @@ public class RegisterJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backBtn = new javax.swing.JLabel();
+        backbtn = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         create_img = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         usernametxt = new javax.swing.JTextField();
@@ -52,12 +53,24 @@ public class RegisterJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        backbtn.setFont(new java.awt.Font("Malayalam MN", 0, 13)); // NOI18N
+        backbtn.setForeground(new java.awt.Color(255, 255, 255));
+        backbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        backbtn.setText("close");
+        backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                backBtnMousePressed(evt);
+                backbtnMousePressed(evt);
             }
         });
-        getContentPane().add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, 20));
+        getContentPane().add(backbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 20));
+
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/WhiteBtn_s.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backMousePressed(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 20));
 
         create_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         create_img.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,9 +168,9 @@ public class RegisterJFrame extends javax.swing.JFrame {
         this.jRadioButton2.setSelected(false);
     }//GEN-LAST:event_bgMousePressed
 
-    private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
+    private void backMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtnMousePressed
+    }//GEN-LAST:event_backMousePressed
 
     private void create_imgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_create_imgMousePressed
         // TODO add your handling code here:
@@ -168,6 +181,11 @@ public class RegisterJFrame extends javax.swing.JFrame {
     private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordtxtActionPerformed
+
+    private void backbtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbtnMousePressed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_backbtnMousePressed
 
     /**
      * @param args the command line arguments
@@ -208,7 +226,8 @@ public class RegisterJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backBtn;
+    private javax.swing.JLabel back;
+    private javax.swing.JLabel backbtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel create_img;
     private javax.swing.JTextField emailtxt;
