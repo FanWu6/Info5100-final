@@ -5,8 +5,10 @@
  */
 package uiDecoreted;
 
+import Util.JTextFieldHintListener;
 import uiDecoreted.Tenant.TenantUserPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 import uiDecoreted.Agency.AgencyPanel;
 import uiDecoreted.Owner.OwnerUserPanel;
@@ -30,6 +32,9 @@ public class MainJPanel extends javax.swing.JPanel {
         this.container = container;
         initComponents();
         
+        usernametxt.addFocusListener(new JTextFieldHintListener(usernametxt, "Username",new Color(153,153,153)));
+        passwordtxt.addFocusListener(new JTextFieldHintListener(passwordtxt, "Password",new Color(153,153,153)));
+        foucstxt.requestFocusInWindow();
     }
 
     /**
@@ -41,6 +46,8 @@ public class MainJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        usernametxt = new javax.swing.JTextField();
+        passwordtxt = new javax.swing.JPasswordField();
         housworkbtn = new javax.swing.JButton();
         maintenancebtn = new javax.swing.JButton();
         movebtn = new javax.swing.JButton();
@@ -51,8 +58,30 @@ public class MainJPanel extends javax.swing.JPanel {
         registerBtn = new javax.swing.JLabel();
         signinLayout = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
+        foucstxt = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usernametxt.setBackground(new java.awt.Color(247, 247, 248));
+        usernametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        usernametxt.setForeground(new java.awt.Color(153, 153, 153));
+        usernametxt.setText("Username");
+        usernametxt.setToolTipText("");
+        usernametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        add(usernametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 230, 40));
+
+        passwordtxt.setBackground(new java.awt.Color(247, 247, 248));
+        passwordtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        passwordtxt.setForeground(new java.awt.Color(153, 153, 153));
+        passwordtxt.setText("password");
+        passwordtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        passwordtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordtxtActionPerformed(evt);
+            }
+        });
+        add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 250, 40));
 
         housworkbtn.setText("houseworker");
         housworkbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +151,12 @@ public class MainJPanel extends javax.swing.JPanel {
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Artboard 1@0.75x.png"))); // NOI18N
         bg.setText("jLabel2");
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 810));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        foucstxt.setViewportView(jTextArea1);
+
+        add(foucstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 470, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInBtnMousePressed
@@ -179,17 +214,25 @@ public class MainJPanel extends javax.swing.JPanel {
        layout.next(container);
     }//GEN-LAST:event_movebtnActionPerformed
 
+    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordtxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminbtn;
     private javax.swing.JButton agencybtn;
     private javax.swing.JLabel bg;
+    private javax.swing.JScrollPane foucstxt;
     private javax.swing.JButton housworkbtn;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton maintenancebtn;
     private javax.swing.JButton movebtn;
     private javax.swing.JButton ownerbtn;
+    private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JLabel registerBtn;
     private javax.swing.JLabel signInBtn;
     private javax.swing.JLabel signinLayout;
+    private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }

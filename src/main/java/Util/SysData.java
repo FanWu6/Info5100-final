@@ -33,6 +33,24 @@ import org.apache.log4j.Logger;
  * @author wufan
  */
 public class SysData {
+    static enum ACCOUNT_TYPE{
+        SYSTEM_ADMIN(0),
+        TENANT(1),
+        LANDLORD(2);
+        
+        private int index;
+
+        private ACCOUNT_TYPE(int index) {
+            this.index = index;
+        }
+        public int getIndex() {
+            return index;
+        }
+        public void setIndex(int index) {
+            this.index = index;
+        }
+    }
+    
     static SqlSessionFactory sqlSessionFactory;
     static SqlSession sqlSession;
     
