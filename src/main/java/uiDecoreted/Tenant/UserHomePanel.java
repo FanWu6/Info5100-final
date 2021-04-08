@@ -9,6 +9,7 @@ import Util.SysData;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -27,6 +28,13 @@ public class UserHomePanel extends javax.swing.JPanel {
         this.tenantAccount = userAccount;
         this.rightcontainer = rightcontainer;
         initComponents();
+        nametxt.setBackground(new Color(0,0,0,0));
+        phonetxt.setBackground(new Color(0,0,0,0));
+        floortxt.setBackground(new Color(0,0,0,0));
+        eamailtxt.setBackground(new Color(0,0,0,0));
+        areatxt.setBackground(new Color(0,0,0,0));
+        subjecttxt.setBackground(new Color(0,0,0,0));
+        messagetxt.setBackground(new Color(0,0,0,0));
         
         getInfo();
         setInfo();
@@ -51,8 +59,13 @@ public class UserHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        nametxt = new javax.swing.JTextField();
+        phonetxt = new javax.swing.JTextField();
+        eamailtxt = new javax.swing.JTextField();
+        floortxt = new javax.swing.JTextField();
+        areatxt = new javax.swing.JTextField();
+        subjecttxt = new javax.swing.JTextField();
+        messagetxt = new javax.swing.JTextField();
         myOrderBtn = new javax.swing.JLabel();
         myOrderLable = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
@@ -60,18 +73,107 @@ public class UserHomePanel extends javax.swing.JPanel {
         roomnameLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("jTextField1");
-        jTextField1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 380, 40));
+        nametxt.setBackground(new java.awt.Color(0, 0, 0));
+        nametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        nametxt.setForeground(new java.awt.Color(153, 153, 153));
+        nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nametxt.setText("Name");
+        nametxt.setToolTipText("");
+        nametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        nametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nametxtActionPerformed(evt);
+            }
+        });
+        add(nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 250, 50));
 
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField2.setText("jTextField1");
-        jTextField2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 380, 40));
+        phonetxt.setBackground(new java.awt.Color(255, 255, 255));
+        phonetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        phonetxt.setForeground(new java.awt.Color(153, 153, 153));
+        phonetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        phonetxt.setText("Phone");
+        phonetxt.setToolTipText("");
+        phonetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        phonetxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phonetxtActionPerformed(evt);
+            }
+        });
+        add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 270, 50));
+
+        eamailtxt.setBackground(new java.awt.Color(255, 255, 255));
+        eamailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        eamailtxt.setForeground(new java.awt.Color(153, 153, 153));
+        eamailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        eamailtxt.setText("Email");
+        eamailtxt.setToolTipText("");
+        eamailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        eamailtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eamailtxtActionPerformed(evt);
+            }
+        });
+        add(eamailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 290, 40));
+
+        floortxt.setBackground(new java.awt.Color(255, 255, 255));
+        floortxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        floortxt.setForeground(new java.awt.Color(153, 153, 153));
+        floortxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        floortxt.setText("3/6");
+        floortxt.setToolTipText("");
+        floortxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        floortxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                floortxtActionPerformed(evt);
+            }
+        });
+        add(floortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 280, 60));
+
+        areatxt.setBackground(new java.awt.Color(255, 255, 255));
+        areatxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        areatxt.setForeground(new java.awt.Color(153, 153, 153));
+        areatxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        areatxt.setText("80m^2");
+        areatxt.setToolTipText("");
+        areatxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        areatxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areatxtActionPerformed(evt);
+            }
+        });
+        add(areatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 280, 50));
+
+        subjecttxt.setBackground(new java.awt.Color(255, 255, 255));
+        subjecttxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        subjecttxt.setForeground(new java.awt.Color(153, 153, 153));
+        subjecttxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        subjecttxt.setText("3/6");
+        subjecttxt.setToolTipText("");
+        subjecttxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        subjecttxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjecttxtActionPerformed(evt);
+            }
+        });
+        add(subjecttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 300, 40));
+
+        messagetxt.setBackground(new java.awt.Color(255, 255, 255));
+        messagetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        messagetxt.setForeground(new java.awt.Color(153, 153, 153));
+        messagetxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        messagetxt.setText("Input here...");
+        messagetxt.setToolTipText("");
+        messagetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        messagetxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messagetxtActionPerformed(evt);
+            }
+        });
+        add(messagetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 790, 130));
 
         myOrderBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         myOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,16 +190,16 @@ public class UserHomePanel extends javax.swing.JPanel {
         add(myOrderLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, -1, -1));
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 300, 200));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 300, 200));
 
         addressLabel.setText("Address");
-        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 360, -1));
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 360, -1));
 
         roomnameLabel.setText("Superior Double Room");
-        add(roomnameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+        add(roomnameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/1_Contact.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1100, 730));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 1030, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void myOrderLableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myOrderLableMousePressed
@@ -106,16 +208,49 @@ public class UserHomePanel extends javax.swing.JPanel {
         cardLayout.show(rightcontainer, "tenantOrderP");
     }//GEN-LAST:event_myOrderLableMousePressed
 
+    private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nametxtActionPerformed
+
+    private void phonetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonetxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phonetxtActionPerformed
+
+    private void eamailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eamailtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eamailtxtActionPerformed
+
+    private void floortxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floortxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_floortxtActionPerformed
+
+    private void areatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areatxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areatxtActionPerformed
+
+    private void subjecttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjecttxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subjecttxtActionPerformed
+
+    private void messagetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagetxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_messagetxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField areatxt;
+    private javax.swing.JTextField eamailtxt;
+    private javax.swing.JTextField floortxt;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField messagetxt;
     private javax.swing.JLabel myOrderBtn;
     private javax.swing.JLabel myOrderLable;
+    private javax.swing.JTextField nametxt;
+    private javax.swing.JTextField phonetxt;
     private javax.swing.JLabel roomnameLabel;
+    private javax.swing.JTextField subjecttxt;
     // End of variables declaration//GEN-END:variables
 
 

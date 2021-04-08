@@ -78,25 +78,25 @@ public class RentalListPanel extends javax.swing.JPanel {
                 detailBtnMousePressed(evt);
             }
         });
-        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 740, 200, 50));
+        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 200, 50));
 
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 730, 200, 70));
+        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, 200, 70));
 
         jTable1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Image", "Desc", "Address", "Price"
+                "Image", "Desc", "Address", "Price", "Region"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,11 +111,16 @@ public class RentalListPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 850, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 960, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 210, 30));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
@@ -123,6 +128,10 @@ public class RentalListPanel extends javax.swing.JPanel {
          CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
         cardLayout.show(rightcontainer, "tP2");
     }//GEN-LAST:event_detailBtnMousePressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
