@@ -5,8 +5,10 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.Util;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,17 @@ public class TenantOrderPanel extends javax.swing.JPanel {
     public TenantOrderPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
+        Util.tableStyle1(jTable1,jScrollPane1);
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for(int i=0;i<5;i++){
+            Object[] row = new Object[4];
+            row[0] = 15;
+            row[1] = 2;
+            row[2] = 3;
+            row[3] = 4;
+            model.addRow(row);}
     }
 
     /**

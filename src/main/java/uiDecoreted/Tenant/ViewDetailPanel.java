@@ -12,13 +12,13 @@ import javax.swing.JPanel;
  *
  * @author wufan
  */
-public class TenantPanel2 extends javax.swing.JPanel {
+public class ViewDetailPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    public TenantPanel2(JPanel rightcontainer) {
+    public ViewDetailPanel(JPanel rightcontainer) {
         this.rightcontainer = rightcontainer;
         initComponents();
     }

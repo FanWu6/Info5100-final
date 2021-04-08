@@ -21,13 +21,13 @@ import javax.swing.table.TableColumn;
  *
  * @author wufan
  */
-public class TenantPanel1 extends javax.swing.JPanel {
+public class RentalListPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form TenantPanel1
+     * Creates new form RentalListPanel
      */
     JPanel rightcontainer;
-    public TenantPanel1(JPanel rightcontainer) {
+    public RentalListPanel(JPanel rightcontainer) {
         this.rightcontainer = rightcontainer;
         initComponents();
         
@@ -78,8 +78,6 @@ public class TenantPanel1 extends javax.swing.JPanel {
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 70));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -95,7 +93,6 @@ public class TenantPanel1 extends javax.swing.JPanel {
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
-        jTable1.setShowHorizontalLines(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 

@@ -5,8 +5,11 @@
  */
 package uiDecoreted;
 
+import uiDecoreted.Tenant.TenantUserPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import uiDecoreted.Agency.AgencyPanel;
+import uiDecoreted.Owner.OwnerUserPanel;
 
 /**
  *
@@ -33,12 +36,30 @@ public class MainJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ownersignbtn1 = new javax.swing.JButton();
+        ownersignbtn = new javax.swing.JButton();
         signInBtn = new javax.swing.JLabel();
         registerBtn = new javax.swing.JLabel();
         signinLayout = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ownersignbtn1.setText("agency");
+        ownersignbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownersignbtn1ActionPerformed(evt);
+            }
+        });
+        add(ownersignbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
+
+        ownersignbtn.setText("owner");
+        ownersignbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownersignbtnActionPerformed(evt);
+            }
+        });
+        add(ownersignbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
 
         signInBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -65,7 +86,7 @@ public class MainJPanel extends javax.swing.JPanel {
     private void signInBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInBtnMousePressed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)container.getLayout();
-        container.add("2",new BasicUserJPanel(container));
+        container.add("2",new TenantUserPanel(container));
         layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 
@@ -76,9 +97,25 @@ public class MainJPanel extends javax.swing.JPanel {
 ;
     }//GEN-LAST:event_registerBtnMousePressed
 
+    private void ownersignbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout layout = (CardLayout)container.getLayout();
+       container.add("3",new OwnerUserPanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_ownersignbtnActionPerformed
+
+    private void ownersignbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownersignbtn1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout)container.getLayout();
+       container.add("4",new AgencyPanel(container));
+       layout.next(container);
+    }//GEN-LAST:event_ownersignbtn1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
+    private javax.swing.JButton ownersignbtn;
+    private javax.swing.JButton ownersignbtn1;
     private javax.swing.JLabel registerBtn;
     private javax.swing.JLabel signInBtn;
     private javax.swing.JLabel signinLayout;

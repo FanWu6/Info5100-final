@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Tenant;
+package uiDecoreted.Owner;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -12,15 +12,15 @@ import javax.swing.JPanel;
  *
  * @author Dengbowen
  */
-public class CommentPanel extends javax.swing.JPanel {
+public class AddOrderPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CommentPanel
+     * Creates new form AddOrderPanel
      */
     JPanel rightcontainer;
-    public CommentPanel(JPanel rightcontainer) {
+    public AddOrderPanel(JPanel rightcontainer) {
         initComponents();
-        this.rightcontainer=rightcontainer;
+        this.rightcontainer = rightcontainer;
     }
 
     /**
@@ -32,18 +32,13 @@ public class CommentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         submitBtn = new javax.swing.JLabel();
         submit = new javax.swing.JLabel();
-        post = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField1.setText("Please enter your comment...");
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 490, 50));
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -54,23 +49,24 @@ public class CommentPanel extends javax.swing.JPanel {
                 backBtnMousePressed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, 60));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 200, 50));
 
-        Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/White1.png"))); // NOI18N
-        add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, -1));
+        Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
+        add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, 70));
 
-        submitBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        submitBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         submitBtn.setText("Submit");
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 200, 60));
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                submitBtnMousePressed(evt);
+            }
+        });
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 700, 200, 50));
 
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
-
-        post.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Post.png"))); // NOI18N
-        post.setOpaque(true);
-        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 172, -1, -1));
+        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 690, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -78,15 +74,17 @@ public class CommentPanel extends javax.swing.JPanel {
         //        Component[] components = container.getComponents();
         //        Component component = components[components.length-1];
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "tenantOrderP");
+        layout.show(rightcontainer, "ownerRentP");
     }//GEN-LAST:event_backBtnMousePressed
+
+    private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel post;
     private javax.swing.JLabel submit;
     private javax.swing.JLabel submitBtn;
     // End of variables declaration//GEN-END:variables

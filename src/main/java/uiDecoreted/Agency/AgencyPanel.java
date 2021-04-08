@@ -3,39 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted;
+package uiDecoreted.Agency;
 
+import uiDecoreted.Owner.*;
+import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import uiDecoreted.Tenant.CommentPanel;
 import uiDecoreted.Tenant.TenantOrderPanel;
-import uiDecoreted.Tenant.TenantPanel1;
-import uiDecoreted.Tenant.TenantPanel2;
+import uiDecoreted.Tenant.RentalListPanel;
+import uiDecoreted.Tenant.ViewDetailPanel;
 import uiDecoreted.Tenant.UserHomePanel;
 
 /**
  *
  * @author wufan
  */
-public class BasicUserJPanel extends javax.swing.JPanel {
+public class AgencyPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form BasicUserJPanel
+     * Creates new form TenantUserPanel
      */
     JPanel container;
     CardLayout cardLayout;
-    public BasicUserJPanel(JPanel container) {
+    public AgencyPanel(JPanel container) {
         this.container = container;
         initComponents();
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("tP1",new TenantPanel1(rightjPanel));
-        rightjPanel.add("tP2",new TenantPanel2(rightjPanel));
-        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel));
-        rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
-        rightjPanel.add("commentP",new CommentPanel(rightjPanel));
-        cardLayout.show(rightjPanel,"tP1");
+        rightjPanel.add("viewTenantP",new ViewTenantPanel(rightjPanel));
+        rightjPanel.add("viewOwnerP",new ViewOwnerPanel(rightjPanel));
+        cardLayout.show(rightjPanel,"viewTenantP");
     }
 
     /**
@@ -48,8 +47,8 @@ public class BasicUserJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
-        rentBtn = new javax.swing.JLabel();
-        homeBtn = new javax.swing.JLabel();
+        ownerBtn = new javax.swing.JLabel();
+        tenantBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -64,25 +63,25 @@ public class BasicUserJPanel extends javax.swing.JPanel {
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
 
-        rentBtn.setBackground(new java.awt.Color(204, 204, 204));
-        rentBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        rentBtn.setForeground(new java.awt.Color(204, 204, 204));
-        rentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        ownerBtn.setBackground(new java.awt.Color(204, 204, 204));
+        ownerBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        ownerBtn.setForeground(new java.awt.Color(204, 204, 204));
+        ownerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                rentBtnMousePressed(evt);
+                ownerBtnMousePressed(evt);
             }
         });
-        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
+        add(ownerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
 
-        homeBtn.setBackground(new java.awt.Color(204, 204, 204));
-        homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        homeBtn.setForeground(new java.awt.Color(204, 204, 204));
-        homeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        tenantBtn.setBackground(new java.awt.Color(204, 204, 204));
+        tenantBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        tenantBtn.setForeground(new java.awt.Color(204, 204, 204));
+        tenantBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                homeBtnMousePressed(evt);
+                tenantBtnMousePressed(evt);
             }
         });
-        add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
+        add(tenantBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 60));
 
         backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -117,33 +116,33 @@ public class BasicUserJPanel extends javax.swing.JPanel {
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
-        container.remove(this);
+     //   container.remove(this);
 //        Component[] components = container.getComponents();
 //        Component component = components[components.length-1];
-        CardLayout layout = (CardLayout)container.getLayout();
-        layout.previous(container);
+      //  CardLayout layout = (CardLayout)container.getLayout();
+      //  layout.previous(container);
     }//GEN-LAST:event_backBtnMousePressed
 
-    private void rentBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentBtnMousePressed
+    private void ownerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ownerBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"tP1");
-    }//GEN-LAST:event_rentBtnMousePressed
+        cardLayout.show(rightjPanel,"viewOwnerP");
+    }//GEN-LAST:event_ownerBtnMousePressed
 
-    private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
+    private void tenantBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tenantBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"userhomeP");
-    }//GEN-LAST:event_homeBtnMousePressed
+        cardLayout.show(rightjPanel,"viewTenantP");
+    }//GEN-LAST:event_tenantBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
-    private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel nameLabel1;
-    private javax.swing.JLabel rentBtn;
+    private javax.swing.JLabel ownerBtn;
     private javax.swing.JPanel rightjPanel;
+    private javax.swing.JLabel tenantBtn;
     private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables
 }
