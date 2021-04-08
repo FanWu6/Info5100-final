@@ -40,4 +40,10 @@ public class UserAccount {
     public void setType(Integer type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "UserAccount{" + "id=" + id + ", username=" + username + ", password=" + password + ", type=" + type + '}';
+    }
+    
 }

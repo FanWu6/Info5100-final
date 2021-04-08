@@ -5,6 +5,9 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.SysData;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,9 +21,25 @@ public class UserHomePanel extends javax.swing.JPanel {
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    public UserHomePanel(JPanel rightcontainer) {
+    UserAccount tenantAccount;
+    House house;
+    public UserHomePanel(JPanel rightcontainer,UserAccount userAccount) {
+        this.tenantAccount = userAccount;
         this.rightcontainer = rightcontainer;
         initComponents();
+        
+        getInfo();
+        setInfo();
+    }
+    
+    public void getInfo() {
+        house = SysData.getHouseByTenantId(tenantAccount.getId());
+    }
+    
+    public void setInfo() {
+        addressLabel.setText(house.getAddress());
+        roomnameLabel.setText(house.getName());
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()))); // NOI18N
     }
 
     /**
@@ -38,7 +57,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         myOrderLable = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
-        roomLabel = new javax.swing.JLabel();
+        roomnameLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
@@ -69,13 +88,13 @@ public class UserHomePanel extends javax.swing.JPanel {
         add(myOrderLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, -1, -1));
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 300, 200));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 300, 200));
 
         addressLabel.setText("Address");
-        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 360, -1));
 
-        roomLabel.setText("Superior Double Room");
-        add(roomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+        roomnameLabel.setText("Superior Double Room");
+        add(roomnameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/1_Contact.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1100, 730));
@@ -96,6 +115,8 @@ public class UserHomePanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel myOrderBtn;
     private javax.swing.JLabel myOrderLable;
-    private javax.swing.JLabel roomLabel;
+    private javax.swing.JLabel roomnameLabel;
     // End of variables declaration//GEN-END:variables
+
+
 }

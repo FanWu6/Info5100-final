@@ -5,8 +5,12 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.GlobalData;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import jdk.nashorn.internal.objects.Global;
 import uiDecoreted.Tenant.CommentPanel;
 import uiDecoreted.Tenant.TenantOrderPanel;
 import uiDecoreted.Tenant.RentalListPanel;
@@ -18,24 +22,48 @@ import uiDecoreted.Tenant.UserHomePanel;
  * @author wufan
  */
 public class TenantUserPanel extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form TenantUserPanel
      */
     JPanel container;
     CardLayout cardLayout;
+    UserAccount userAccount;
+//    House myhouse;
+    
     public TenantUserPanel(JPanel container) {
         this.container = container;
         initComponents();
+        
+         //test data
+         getInfo();
+       
+        //
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("tP1",new RentalListPanel(rightjPanel));
         rightjPanel.add("tP2",new ViewDetailPanel(rightjPanel));
-        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel));
+        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel,userAccount));
         rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
         rightjPanel.add("commentP",new CommentPanel(rightjPanel));
         cardLayout.show(rightjPanel,"tP1");
+        
+        
+        
+        setInfo();
+    }
+    
+    public void getInfo(){
+        for(UserAccount ua:GlobalData.getUserAccounts()){
+            if(ua.getId()==2){
+                this.userAccount = ua;
+                break;
+            }
+        }
+    }
+    public void setInfo(){
+        nameLabel.setText(userAccount.getUsername());
     }
 
     /**
@@ -53,7 +81,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
-        nameLabel1 = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -101,12 +129,12 @@ public class TenantUserPanel extends javax.swing.JPanel {
         nameLabel.setText("UserName");
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 30));
 
-        nameLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        nameLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nameLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        nameLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nameLabel1.setText("notheastern@edu");
-        add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
+        emailLabel.setBackground(new java.awt.Color(255, 255, 255));
+        emailLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(153, 153, 153));
+        emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emailLabel.setText("notheastern@edu");
+        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
 
         menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu1.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
@@ -138,10 +166,10 @@ public class TenantUserPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel nameLabel1;
     private javax.swing.JLabel rentBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;

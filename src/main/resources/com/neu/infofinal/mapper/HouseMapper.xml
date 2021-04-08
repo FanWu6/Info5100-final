@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.infofinal.mapper.HouseMapper">
+  <resultMap id="BaseResultMap" type="com.neu.infofinal.bean.House">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="describ" jdbcType="VARCHAR" property="describ" />
+    <result column="owner_id" jdbcType="INTEGER" property="ownerId" />
+    <result column="tenant_id" jdbcType="INTEGER" property="tenantId" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="orientation" jdbcType="VARCHAR" property="orientation" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="layout" jdbcType="VARCHAR" property="layout" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, address, image, price, describ, owner_id, tenant_id, agency_id, area, orientation, 
+    floor, layout
+  </sql>
+  <select id="selectByExample" parameterType="com.neu.infofinal.bean.HouseExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from info_house_t
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from info_house_t
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from info_house_t
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neu.infofinal.bean.HouseExample">
+    delete from info_house_t
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neu.infofinal.bean.House">
+    insert into info_house_t (id, name, address, 
+      image, price, describ, 
+      owner_id, tenant_id, agency_id, 
+      area, orientation, floor, 
+      layout)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
+      #{ownerId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, 
+      #{area,jdbcType=VARCHAR}, #{orientation,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
+      #{layout,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neu.infofinal.bean.House">
+    insert into info_house_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="describ != null">
+        describ,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="orientation != null">
+        orientation,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="layout != null">
+        layout,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="describ != null">
+        #{describ,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null">
+        #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="layout != null">
+        #{layout,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neu.infofinal.bean.HouseExample" resultType="java.lang.Long">
+    select count(*) from info_house_t
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update info_house_t
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describ != null">
+        describ = #{record.describ,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerId != null">
+        owner_id = #{record.ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tenantId != null">
+        tenant_id = #{record.tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencyId != null">
+        agency_id = #{record.agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orientation != null">
+        orientation = #{record.orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floor != null">
+        floor = #{record.floor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.layout != null">
+        layout = #{record.layout,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update info_house_t
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
+      describ = #{record.describ,jdbcType=VARCHAR},
+      owner_id = #{record.ownerId,jdbcType=INTEGER},
+      tenant_id = #{record.tenantId,jdbcType=INTEGER},
+      agency_id = #{record.agencyId,jdbcType=INTEGER},
+      area = #{record.area,jdbcType=VARCHAR},
+      orientation = #{record.orientation,jdbcType=VARCHAR},
+      floor = #{record.floor,jdbcType=VARCHAR},
+      layout = #{record.layout,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.infofinal.bean.House">
+    update info_house_t
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="describ != null">
+        describ = #{describ,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null">
+        orientation = #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="layout != null">
+        layout = #{layout,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neu.infofinal.bean.House">
+    update info_house_t
+    set name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      describ = #{describ,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=INTEGER},
+      tenant_id = #{tenantId,jdbcType=INTEGER},
+      agency_id = #{agencyId,jdbcType=INTEGER},
+      area = #{area,jdbcType=VARCHAR},
+      orientation = #{orientation,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      layout = #{layout,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectCondition" parameterType="map" resultMap="BaseResultMap">
+    select ${fields} from info_house_t
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

@@ -9,6 +9,8 @@ import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.EmployeeExample;
 import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.EnterpriseExample;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.HouseExample;
 import com.neu.infofinal.bean.Organization;
 import com.neu.infofinal.bean.User;
 import com.neu.infofinal.bean.UserAccount;
@@ -16,6 +18,7 @@ import com.neu.infofinal.bean.UserAccountExample;
 import com.neu.infofinal.bean.UserExample;
 import com.neu.infofinal.mapper.EmployeeMapper;
 import com.neu.infofinal.mapper.EnterpriseMapper;
+import com.neu.infofinal.mapper.HouseMapper;
 import com.neu.infofinal.mapper.OrganizationMapper;
 import com.neu.infofinal.mapper.UserAccountMapper;
 import com.neu.infofinal.mapper.UserMapper;
@@ -54,11 +57,11 @@ public class SysData {
     static SqlSessionFactory sqlSessionFactory;
     static SqlSession sqlSession;
     
-    static UserMapper userMapper;
     static EnterpriseMapper enterpriseMapper;
     static OrganizationMapper organizationMapper;
     static EmployeeMapper employeeMapper;
     static UserAccountMapper userAccountMapper; 
+    static HouseMapper houseMapper; 
     
 
     
@@ -73,20 +76,20 @@ public class SysData {
          sqlSession = sqlSessionFactory.openSession();
          
          //3.
-         userMapper = sqlSession.getMapper(UserMapper.class);
          enterpriseMapper = sqlSession.getMapper(EnterpriseMapper.class);
          organizationMapper = sqlSession.getMapper(OrganizationMapper.class);
          employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
          userAccountMapper = sqlSession.getMapper(UserAccountMapper.class);
+         houseMapper = sqlSession.getMapper(HouseMapper.class);
     }
     
     //User-------------------------------
-    public static List<User> getAllUsers(){
+    public static List<UserAccount> getAllUsers(){
         start();
         
-        UserExample userExample = new UserExample();
-        userExample.createCriteria().andIdIsNotNull();
-        List<User> selectByExample = userMapper.selectByExample(userExample);
+        UserAccountExample useraccountExample = new UserAccountExample();
+        useraccountExample.createCriteria().andIdIsNotNull();
+        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
         //关闭连接和提交数据
         commitAndClose();
         return selectByExample;
@@ -163,6 +166,34 @@ public class SysData {
         return selectByExample.get(0);
     }
     //UserAccount end--
+     
+     //House
+     public static House getHouseByTenantId(int id) {
+        start();
+        HouseExample houseExample = new HouseExample();
+        houseExample.createCriteria().andTenantIdEqualTo(id);
+        List<House> selectByExample = houseMapper.selectByExample(houseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
+     
+     public static List<House> getAllHouses(){
+        start();
+        HouseExample houseExample = new HouseExample();
+        houseExample.createCriteria().andIdIsNotNull();
+        List<House> selectByExample = houseMapper.selectByExample(houseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample;
+     }
+     //House end
     
     
     public static void commitAndClose(){
