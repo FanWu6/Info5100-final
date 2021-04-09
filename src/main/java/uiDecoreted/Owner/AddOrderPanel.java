@@ -103,11 +103,6 @@ public class AddOrderPanel extends javax.swing.JPanel {
         orientationtxt.setText("Orientation");
         orientationtxt.setToolTipText("");
         orientationtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        orientationtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orientationtxtActionPerformed(evt);
-            }
-        });
         add(orientationtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 460, 40));
 
         storeytxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
@@ -236,10 +231,6 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private void pricetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pricetxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pricetxtActionPerformed
-
-    private void orientationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orientationtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orientationtxtActionPerformed
 
     private void storeytxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeytxtActionPerformed
         // TODO add your handling code here:

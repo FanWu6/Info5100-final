@@ -168,7 +168,7 @@ public class MainJPanel extends javax.swing.JPanel {
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
         // TODO add your handling code here:
-        new RegisterJFrame().setVisible(true);       
+        new registerJFrame().setVisible(true);       
 ;
     }//GEN-LAST:event_registerBtnMousePressed
 
@@ -196,7 +196,7 @@ public class MainJPanel extends javax.swing.JPanel {
     private void housworkbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_housworkbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("AgencyPanel",new HouseworkPanel(container));
+       container.add("HouseworkPanel",new HouseworkPanel(container));
        layout.next(container);
     }//GEN-LAST:event_housworkbtnActionPerformed
 

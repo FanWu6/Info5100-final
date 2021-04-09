@@ -52,7 +52,6 @@ public class OwnerRentPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));

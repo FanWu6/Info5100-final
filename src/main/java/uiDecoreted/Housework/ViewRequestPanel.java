@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package uiDecoreted.Housework;
-
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -37,6 +37,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         assigntome = new javax.swing.JLabel();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
+        detailBtn = new javax.swing.JLabel();
+        detailBack = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,7 +54,6 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
@@ -88,6 +89,20 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 680, 200, 70));
+
+        detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        detailBtn.setForeground(new java.awt.Color(255, 255, 255));
+        detailBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detailBtn.setText("Detail");
+        detailBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                detailBtnMousePressed(evt);
+            }
+        });
+        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, 200, 50));
+
+        detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
+        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 680, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assigntomebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtnMousePressed
@@ -98,12 +113,20 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_completedBtnMousePressed
 
+    private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
+        cardLayout.show(rightcontainer, "ViewHouseWorkOrderDetailPanel");
+    }//GEN-LAST:event_detailBtnMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assigntome;
     private javax.swing.JLabel assigntomebtn;
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
+    private javax.swing.JLabel detailBack;
+    private javax.swing.JLabel detailBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
