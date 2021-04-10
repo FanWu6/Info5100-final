@@ -68,8 +68,8 @@ public class AddOrderPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        housepic.setText("housepic");
-        add(housepic, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 170, 110));
+        housepic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic2.png"))); // NOI18N
+        add(housepic, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 280, 200));
 
         addresstxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         addresstxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -82,7 +82,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
                 addresstxtActionPerformed(evt);
             }
         });
-        add(addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 460, 40));
+        add(addresstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 460, 40));
 
         pricetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         pricetxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -185,10 +185,10 @@ public class AddOrderPanel extends javax.swing.JPanel {
                 submitBtnMousePressed(evt);
             }
         });
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 700, 200, 50));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 700, 200, 50));
 
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 690, 200, 70));
+        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, 200, 70));
 
         line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, 50));

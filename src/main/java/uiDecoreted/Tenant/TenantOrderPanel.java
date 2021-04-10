@@ -60,7 +60,7 @@ public class TenantOrderPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Type", "Date", "Status", "Comment"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

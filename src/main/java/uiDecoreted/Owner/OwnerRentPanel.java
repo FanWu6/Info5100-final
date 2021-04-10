@@ -5,8 +5,11 @@
  */
 package uiDecoreted.Owner;
 
+import Util.ImageRender;
+import Util.Util;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +24,11 @@ public class OwnerRentPanel extends javax.swing.JPanel {
     public OwnerRentPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        //改变table样式
+        Util.tableStyle1(jTable1,jScrollPane1);
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
     }
 
     /**
@@ -49,7 +57,7 @@ public class OwnerRentPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Address", "Price", "Status"
             }
         ));
         jTable1.setRowHeight(25);

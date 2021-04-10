@@ -66,12 +66,14 @@ public class UserHomePanel extends javax.swing.JPanel {
         areatxt = new javax.swing.JTextField();
         subjecttxt = new javax.swing.JTextField();
         messagetxt = new javax.swing.JTextField();
+        selectservicecomb = new javax.swing.JComboBox<>();
+        submitBtn = new javax.swing.JLabel();
         myOrderBtn = new javax.swing.JLabel();
         myOrderLable = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
         roomnameLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -91,7 +93,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 250, 50));
 
-        phonetxt.setBackground(new java.awt.Color(255, 255, 255));
         phonetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         phonetxt.setForeground(new java.awt.Color(153, 153, 153));
         phonetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -105,7 +106,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 270, 50));
 
-        eamailtxt.setBackground(new java.awt.Color(255, 255, 255));
         eamailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         eamailtxt.setForeground(new java.awt.Color(153, 153, 153));
         eamailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -119,7 +119,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(eamailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 290, 40));
 
-        floortxt.setBackground(new java.awt.Color(255, 255, 255));
         floortxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         floortxt.setForeground(new java.awt.Color(153, 153, 153));
         floortxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -133,7 +132,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(floortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 280, 60));
 
-        areatxt.setBackground(new java.awt.Color(255, 255, 255));
         areatxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         areatxt.setForeground(new java.awt.Color(153, 153, 153));
         areatxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -147,7 +145,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(areatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 280, 50));
 
-        subjecttxt.setBackground(new java.awt.Color(255, 255, 255));
         subjecttxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         subjecttxt.setForeground(new java.awt.Color(153, 153, 153));
         subjecttxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -161,7 +158,6 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(subjecttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 300, 40));
 
-        messagetxt.setBackground(new java.awt.Color(255, 255, 255));
         messagetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         messagetxt.setForeground(new java.awt.Color(153, 153, 153));
         messagetxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -174,6 +170,16 @@ public class UserHomePanel extends javax.swing.JPanel {
             }
         });
         add(messagetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 790, 130));
+
+        selectservicecomb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(selectservicecomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                submitBtnMousePressed(evt);
+            }
+        });
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 716, 130, 40));
 
         myOrderBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         myOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,14 +198,16 @@ public class UserHomePanel extends javax.swing.JPanel {
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
         add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 300, 200));
 
+        addressLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         addressLabel.setText("Address");
-        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 360, -1));
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 360, -1));
 
+        roomnameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         roomnameLabel.setText("Superior Double Room");
-        add(roomnameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
+        add(roomnameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/1_Contact.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 1030, 730));
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/1_Contact.png"))); // NOI18N
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 1030, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void myOrderLableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myOrderLableMousePressed
@@ -236,21 +244,27 @@ public class UserHomePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_messagetxtActionPerformed
 
+    private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitBtnMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField areatxt;
+    private javax.swing.JLabel bg;
     private javax.swing.JTextField eamailtxt;
     private javax.swing.JTextField floortxt;
     private javax.swing.JLabel housePic;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField messagetxt;
     private javax.swing.JLabel myOrderBtn;
     private javax.swing.JLabel myOrderLable;
     private javax.swing.JTextField nametxt;
     private javax.swing.JTextField phonetxt;
     private javax.swing.JLabel roomnameLabel;
+    private javax.swing.JComboBox<String> selectservicecomb;
     private javax.swing.JTextField subjecttxt;
+    private javax.swing.JLabel submitBtn;
     // End of variables declaration//GEN-END:variables
 
 

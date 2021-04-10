@@ -23,11 +23,13 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="housepic">
       <Properties>
-        <Property name="text" type="java.lang.String" value="housepic"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/housepicture/housepic2.png"/>
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="90" width="170" height="110"/>
+          <AbsoluteConstraints x="480" y="10" width="280" height="200"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -53,7 +55,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="450" y="260" width="460" height="40"/>
+          <AbsoluteConstraints x="430" y="260" width="460" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -292,7 +294,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="700" width="200" height="50"/>
+          <AbsoluteConstraints x="500" y="700" width="200" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -304,7 +306,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="690" width="200" height="70"/>
+          <AbsoluteConstraints x="500" y="690" width="200" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
