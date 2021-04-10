@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package uiDecoreted.Housework;
+import Util.Util;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -20,6 +21,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     public ViewRequestPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
+        Util.tableStyle1(jTable1, jScrollPane1);
+        Util.tableStyle1(jTable3, jScrollPane3);
     }
 
     /**
@@ -31,36 +34,20 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         assigntomebtn = new javax.swing.JLabel();
         assigntome = new javax.swing.JLabel();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
         detailBtn = new javax.swing.JLabel();
         detailBack = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        bkn = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
-        jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 850, -1));
 
         assigntomebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         assigntomebtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,10 +58,10 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                 assigntomebtnMousePressed(evt);
             }
         });
-        add(assigntomebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 690, 200, 50));
+        add(assigntomebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 200, 50));
 
         assigntome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(assigntome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, 200, 70));
+        add(assigntome, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 200, 70));
 
         completedBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         completedBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,10 +72,10 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                 completedBtnMousePressed(evt);
             }
         });
-        add(completedBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 690, 200, 50));
+        add(completedBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 690, 200, 50));
 
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 680, 200, 70));
+        add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 680, 200, 70));
 
         detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         detailBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,10 +86,37 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                 detailBtnMousePressed(evt);
             }
         });
-        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, 200, 50));
+        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 690, 200, 50));
 
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 680, 200, 70));
+        add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 680, 200, 70));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 850, 190));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
+
+        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/main@0,3x.png"))); // NOI18N
+        add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 40, 520, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assigntomebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtnMousePressed
@@ -123,11 +137,14 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assigntome;
     private javax.swing.JLabel assigntomebtn;
+    private javax.swing.JLabel bkn;
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JLabel detailBack;
     private javax.swing.JLabel detailBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,6 +29,8 @@ public class HouseworkPanel extends javax.swing.JPanel {
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
         rightjPanel.add("ViewHouseWorkOrderDetailPanel",new ViewHouseWorkOrderDetailPanel(rightjPanel));
+        rightjPanel.add("MessageHouseworkPanel",new MessageHouseworkPanel(rightjPanel));
+        
         cardLayout.show(rightjPanel,"viewRequestP");
     }
 

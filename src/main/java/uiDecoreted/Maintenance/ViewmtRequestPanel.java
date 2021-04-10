@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Move;
+package uiDecoreted.Maintenance;
 import uiDecoreted.Housework.*;
 import Util.Util;
 import java.awt.CardLayout;
@@ -11,15 +11,15 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Dengbowen
+ * @author tengfei
  */
-public class ViewRequestPanel extends javax.swing.JPanel {
+public class ViewmtRequestPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewRequestPanel
      */
     JPanel rightcontainer;
-    public ViewRequestPanel(JPanel rightcontainer) {
+    public ViewmtRequestPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
         Util.tableStyle1(jTable1, jScrollPane1);
@@ -116,8 +116,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
 
-        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/main@0,3x.png"))); // NOI18N
-        add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 40, 520, 800));
+        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maintenance/maintanx.png"))); // NOI18N
+        add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 40, 520, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assigntomebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtnMousePressed
@@ -131,7 +131,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
-        cardLayout.show(rightcontainer, "ViewMoveOrderDetailPanel");
+        cardLayout.show(rightcontainer, "ViewMaintanOrderDetailPanel");
     }//GEN-LAST:event_detailBtnMousePressed
 
 

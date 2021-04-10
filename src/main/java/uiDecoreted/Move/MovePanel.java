@@ -29,7 +29,9 @@ public class MovePanel extends javax.swing.JPanel {
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
-        cardLayout.show(rightjPanel,"viewRequestP");
+        rightjPanel.add("ViewMoveOrderDetailPanel",new ViewMoveOrderDetailPanel(rightjPanel));
+        rightjPanel.add("MessageMovePanel",new MessageMovePanel(rightjPanel));
+        cardLayout.show(rightjPanel,"ViewRequestPanel");
     }
 
     /**
@@ -125,7 +127,7 @@ public class MovePanel extends javax.swing.JPanel {
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewRequestP");
+        cardLayout.show(rightjPanel,"ViewRequestPanel");
     }//GEN-LAST:event_homeBtnMousePressed
 
 

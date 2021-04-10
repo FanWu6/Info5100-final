@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Housework;
+package uiDecoreted.Maintenance;
 
 import Util.JTextFieldHintListener;
+import uiDecoreted.Housework.*;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -15,19 +16,19 @@ import javax.swing.JPanel;
  *
  * @author tengfei
  */
-public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
+public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    public ViewHouseWorkOrderDetailPanel(JPanel rightcontainer) {
+    public ViewMaintanOrderDetailPanel(JPanel rightcontainer) {
         this.rightcontainer = rightcontainer;
         initComponents();
         txtaddress.addFocusListener(new JTextFieldHintListener(txtaddress, "Username", new Color(153, 153, 153)));
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
-        txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Area", new Color(153, 153, 153)));
+        txtarea.addFocusListener(new JTextFieldHintListener(txtarea, "Area", new Color(153, 153, 153)));
     }
 
     /**
@@ -44,13 +45,11 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         housePic = new javax.swing.JLabel();
         leaveMessage = new javax.swing.JLabel();
         requesttour = new javax.swing.JLabel();
-        txtearea = new javax.swing.JTextField();
-        txtemail = new javax.swing.JTextField();
+        txtarea = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
         txtname = new javax.swing.JTextField();
         txtaddress = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,36 +87,21 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
 
-        txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        txtearea.setForeground(new java.awt.Color(153, 153, 153));
-        txtearea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtearea.setText("area");
-        txtearea.setToolTipText("");
-        txtearea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        txtearea.addActionListener(new java.awt.event.ActionListener() {
+        txtarea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtarea.setForeground(new java.awt.Color(153, 153, 153));
+        txtarea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtarea.setToolTipText("");
+        txtarea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txteareaActionPerformed(evt);
+                txtareaActionPerformed(evt);
             }
         });
-        add(txtearea, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, 270, 40));
-
-        txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        txtemail.setForeground(new java.awt.Color(153, 153, 153));
-        txtemail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtemail.setText("email");
-        txtemail.setToolTipText("");
-        txtemail.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
-        add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
+        add(txtarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
 
         txtphone.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtphone.setForeground(new java.awt.Color(153, 153, 153));
         txtphone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtphone.setText("phone");
         txtphone.setToolTipText("");
         txtphone.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         txtphone.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +114,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         txtname.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtname.setForeground(new java.awt.Color(153, 153, 153));
         txtname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtname.setText("name");
         txtname.setToolTipText("");
         txtname.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         txtname.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +126,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         txtaddress.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtaddress.setForeground(new java.awt.Color(153, 153, 153));
         txtaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtaddress.setText("address");
         txtaddress.setToolTipText("");
         txtaddress.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         txtaddress.addActionListener(new java.awt.event.ActionListener() {
@@ -153,24 +135,21 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 270, 40));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/area@0,4x.png"))); // NOI18N
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/2@0,4x.png"))); // NOI18N
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/visuel@0,5x.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 560, 301));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
 
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "viewRequestP");
+        layout.show(rightcontainer, "ViewmtRequestPanel");
     }//GEN-LAST:event_backBtnMousePressed
 
     private void leaveMessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leaveMessageMousePressed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) rightcontainer.getLayout();
-        layout.show(rightcontainer, "MessageHouseworkPanel");
+        layout.show(rightcontainer, "MessageMaintanPanel");
     }//GEN-LAST:event_leaveMessageMousePressed
 
     private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
@@ -185,13 +164,9 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtphoneActionPerformed
 
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+    private void txtareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtareaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
-
-    private void txteareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteareaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txteareaActionPerformed
+    }//GEN-LAST:event_txtareaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -199,12 +174,10 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel info;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel leaveMessage;
     private javax.swing.JLabel requesttour;
     private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txtearea;
-    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtarea;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables

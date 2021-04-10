@@ -28,8 +28,10 @@ public class MaintenancePanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
-        cardLayout.show(rightjPanel,"viewRequestP");
+        rightjPanel.add("ViewmtRequestPanel",new ViewmtRequestPanel(rightjPanel));
+        rightjPanel.add("ViewMaintanOrderDetailPanel",new ViewMaintanOrderDetailPanel(rightjPanel));
+        rightjPanel.add("MessageMaintanPanel",new MessageMaintanPanel(rightjPanel));
+        cardLayout.show(rightjPanel,"ViewmtRequestPanel");
     }
 
     /**
