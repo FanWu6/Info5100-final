@@ -116,7 +116,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
 
-        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/main@0,3x.png"))); // NOI18N
+        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/move/mainmove@0,3x.png"))); // NOI18N
         add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 40, 520, 800));
     }// </editor-fold>//GEN-END:initComponents
 

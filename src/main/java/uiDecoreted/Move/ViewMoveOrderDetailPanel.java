@@ -28,7 +28,8 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         txtaddress.addFocusListener(new JTextFieldHintListener(txtaddress, "Username", new Color(153, 153, 153)));
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
-        txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Area", new Color(153, 153, 153)));
+        txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Email", new Color(153, 153, 153)));
+        txtdestinaiton.addFocusListener(new JTextFieldHintListener(txtdestinaiton, "Destination", new Color(153, 153, 153)));
     }
 
     /**

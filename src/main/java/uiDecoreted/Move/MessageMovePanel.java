@@ -80,7 +80,7 @@ public class MessageMovePanel extends javax.swing.JPanel {
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "ViewHouseWorkOrderDetailPanel");
+        layout.show(rightcontainer, "ViewMoveOrderDetailPanel");
     }//GEN-LAST:event_backBtnMousePressed
 
 

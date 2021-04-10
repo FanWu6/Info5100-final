@@ -28,7 +28,8 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         txtaddress.addFocusListener(new JTextFieldHintListener(txtaddress, "Username", new Color(153, 153, 153)));
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
-        txtarea.addFocusListener(new JTextFieldHintListener(txtarea, "Area", new Color(153, 153, 153)));
+        txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Email", new Color(153, 153, 153)));
+        txtemail.addFocusListener(new JTextFieldHintListener(txtearea, "Area", new Color(153, 153, 153)));
     }
 
     /**
@@ -45,10 +46,11 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         housePic = new javax.swing.JLabel();
         leaveMessage = new javax.swing.JLabel();
         requesttour = new javax.swing.JLabel();
-        txtarea = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
         txtname = new javax.swing.JTextField();
         txtaddress = new javax.swing.JTextField();
+        txtearea = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
 
         setOpaque(false);
@@ -87,17 +89,17 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
 
-        txtarea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        txtarea.setForeground(new java.awt.Color(153, 153, 153));
-        txtarea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtarea.setToolTipText("");
-        txtarea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        txtarea.addActionListener(new java.awt.event.ActionListener() {
+        txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtemail.setForeground(new java.awt.Color(153, 153, 153));
+        txtemail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtemail.setToolTipText("");
+        txtemail.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtareaActionPerformed(evt);
+                txtemailActionPerformed(evt);
             }
         });
-        add(txtarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
+        add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
 
         txtphone.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtphone.setForeground(new java.awt.Color(153, 153, 153));
@@ -135,7 +137,19 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 270, 40));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/2@0,4x.png"))); // NOI18N
+        txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtearea.setForeground(new java.awt.Color(153, 153, 153));
+        txtearea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtearea.setToolTipText("");
+        txtearea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtearea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txteareaActionPerformed(evt);
+            }
+        });
+        add(txtearea, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, 270, 40));
+
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/area@0,4x.png"))); // NOI18N
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
@@ -164,9 +178,13 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtphoneActionPerformed
 
-    private void txtareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtareaActionPerformed
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtareaActionPerformed
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txteareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txteareaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -177,7 +195,8 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JLabel leaveMessage;
     private javax.swing.JLabel requesttour;
     private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txtarea;
+    private javax.swing.JTextField txtearea;
+    private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables

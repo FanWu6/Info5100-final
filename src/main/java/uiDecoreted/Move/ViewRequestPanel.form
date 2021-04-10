@@ -172,7 +172,7 @@
     <Component class="javax.swing.JLabel" name="bkn">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/housework/main@0,3x.png"/>
+          <Image iconType="3" name="/images/move/mainmove@0,3x.png"/>
         </Property>
       </Properties>
       <Constraints>

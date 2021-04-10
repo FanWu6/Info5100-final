@@ -28,7 +28,7 @@ public class MovePanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
+        rightjPanel.add("ViewRequestPanel",new ViewRequestPanel(rightjPanel));
         rightjPanel.add("ViewMoveOrderDetailPanel",new ViewMoveOrderDetailPanel(rightjPanel));
         rightjPanel.add("MessageMovePanel",new MessageMovePanel(rightjPanel));
         cardLayout.show(rightjPanel,"ViewRequestPanel");
