@@ -11,6 +11,8 @@ import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.EnterpriseExample;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.HouseExample;
+import com.neu.infofinal.bean.Order;
+import com.neu.infofinal.bean.OrderExample;
 import com.neu.infofinal.bean.Organization;
 import com.neu.infofinal.bean.User;
 import com.neu.infofinal.bean.UserAccount;
@@ -19,6 +21,7 @@ import com.neu.infofinal.bean.UserExample;
 import com.neu.infofinal.mapper.EmployeeMapper;
 import com.neu.infofinal.mapper.EnterpriseMapper;
 import com.neu.infofinal.mapper.HouseMapper;
+import com.neu.infofinal.mapper.OrderMapper;
 import com.neu.infofinal.mapper.OrganizationMapper;
 import com.neu.infofinal.mapper.UserAccountMapper;
 import com.neu.infofinal.mapper.UserMapper;
@@ -62,6 +65,7 @@ public class SysData {
     static EmployeeMapper employeeMapper;
     static UserAccountMapper userAccountMapper; 
     static HouseMapper houseMapper; 
+    static OrderMapper orderMapper;
     
 
     
@@ -81,6 +85,7 @@ public class SysData {
          employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
          userAccountMapper = sqlSession.getMapper(UserAccountMapper.class);
          houseMapper = sqlSession.getMapper(HouseMapper.class);
+         orderMapper = sqlSession.getMapper(OrderMapper.class);
     }
     
     //User-------------------------------
@@ -193,7 +198,31 @@ public class SysData {
         
         return selectByExample;
      }
+     
+     
+     public static void addHouse(House house) {
+        start();
+        houseMapper.insert(house);
+        commitAndClose();
+    }
+     
      //House end
+     
+     //Owner
+     
+     //Owner end
+     
+     //Order
+     public static List<Order> getAllOrders(){
+        start();
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andIdIsNotNull();
+        List<Order> selectByExample = orderMapper.selectByExample(orderExample);
+        commitAndClose();
+        
+        return selectByExample;
+    }
+     //Order end 
     
     
     public static void commitAndClose(){

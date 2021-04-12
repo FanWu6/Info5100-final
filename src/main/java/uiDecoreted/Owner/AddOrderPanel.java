@@ -5,8 +5,12 @@
  */
 package uiDecoreted.Owner;
 
+import Util.SysData;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.HashSet;
 import javax.swing.JPanel;
 
 /**
@@ -222,6 +226,16 @@ public class AddOrderPanel extends javax.swing.JPanel {
 
     private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
         // TODO add your handling code here:
+        //根据textfield拿到数据，address ......
+        House house = new House();
+//        house.setId(1);
+        
+        house.setAddress("addreesss");
+        house.setImage("/images/housepicture/housepic2.png");
+        house.setDescrib("dddddddd");
+        house.setOwnerId(1); //UserAccount.getID
+        SysData.addHouse(house);
+        
     }//GEN-LAST:event_submitBtnMousePressed
 
     private void addresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresstxtActionPerformed

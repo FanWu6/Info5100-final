@@ -162,7 +162,7 @@ public class MainJPanel extends javax.swing.JPanel {
     private void signInBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInBtnMousePressed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)container.getLayout();
-        container.add("2",new TenantUserPanel(container));
+        container.add("2",new TenantUserPanel(container,null));
         layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 

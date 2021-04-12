@@ -7,10 +7,12 @@ package uiDecoreted.Tenant;
 
 import Util.ImageRender;
 import Util.Util;
+import com.neu.infofinal.bean.House;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -27,9 +29,11 @@ public class RentalListPanel extends javax.swing.JPanel {
     /**
      * Creates new form RentalListPanel
      */
+    List<House> houses;
     JPanel rightcontainer;
-    public RentalListPanel(JPanel rightcontainer) {
+    public RentalListPanel(JPanel rightcontainer,List<House> houses) {
         this.rightcontainer = rightcontainer;
+        this.houses = houses;
         initComponents();
         
         //改变table样式
@@ -40,13 +44,24 @@ public class RentalListPanel extends javax.swing.JPanel {
         jTable1.setRowHeight(105);
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
 //        jTable1.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRender());
-        for(int i=0;i<5;i++){
-            Object[] row = new Object[4];
-            row[0] = "/images/housepicture/housepic1.png";
-            row[1] = Util.strToMultilineHTML("desc1,dec2222222,desc3333333333333", ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
-            row[2] = Util.strToMultilineHTML("address1,address13123213,addres123213s1", ",");
-            row[3] = "2500%/mo";
-            model.addRow(row);
+//        for(int i=0;i<5;i++){
+//            Object[] row = new Object[4];
+//            row[0] = "/images/housepicture/housepic1.png";
+//            row[1] = Util.strToMultilineHTML("desc1,dec2222222,desc3333333333333", ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+//            row[2] = Util.strToMultilineHTML("address1,address13123213,addres123213s1", ",");
+//            row[3] = "2500%/mo";
+//            model.addRow(row);
+//        }
+        for(House house : houses){
+             Object[] row = new Object[4];
+             //如果house的租客id为空，代表没有租出去，显示
+             if(house.getTenantId()==null){
+                row[0] = house.getImage();
+                row[1] = Util.strToMultilineHTML(house.getDescrib(), ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+                row[2] = Util.strToMultilineHTML(house.getAddress(), ",");
+                row[3] = house.getPrice();
+                model.addRow(row);
+             }
         }
   
     }

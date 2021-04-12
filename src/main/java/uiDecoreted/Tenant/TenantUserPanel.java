@@ -9,6 +9,7 @@ import Util.GlobalData;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JPanel;
 //import jdk.nashorn.internal.objects.Global;
 import uiDecoreted.Tenant.CommentPanel;
@@ -29,9 +30,11 @@ public class TenantUserPanel extends javax.swing.JPanel {
     JPanel container;
     CardLayout cardLayout;
     UserAccount userAccount;
+    List<House> houses;
 //    House myhouse;
     
-    public TenantUserPanel(JPanel container) {
+    public TenantUserPanel(JPanel container,UserAccount userAccount) {
+        this.userAccount = userAccount;
         this.container = container;
         initComponents();
         
@@ -42,9 +45,9 @@ public class TenantUserPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("tP1",new RentalListPanel(rightjPanel));
+        rightjPanel.add("tP1",new RentalListPanel(rightjPanel,houses));
         rightjPanel.add("tP2",new ViewDetailPanel(rightjPanel));
-        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel,userAccount));
+        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel,this.userAccount));
         rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
         rightjPanel.add("commentP",new CommentPanel(rightjPanel));
         cardLayout.show(rightjPanel,"tP1");
@@ -55,12 +58,15 @@ public class TenantUserPanel extends javax.swing.JPanel {
     }
     
     public void getInfo(){
+        //useraccounts
         for(UserAccount ua:GlobalData.getUserAccounts()){
             if(ua.getId()==2){
                 this.userAccount = ua;
                 break;
             }
         }
+        //houses
+        houses = GlobalData.getAllHouse();
     }
     public void setInfo(){
         nameLabel.setText(userAccount.getUsername());

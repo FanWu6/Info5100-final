@@ -5,11 +5,14 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.GlobalData;
 import Util.SysData;
 import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -36,8 +39,8 @@ public class UserHomePanel extends javax.swing.JPanel {
         subjecttxt.setBackground(new Color(0,0,0,0));
         messagetxt.setBackground(new Color(0,0,0,0));
         
-        getInfo();
-        setInfo();
+//        getInfo();
+//        setInfo();
     }
     
     public void getInfo() {
@@ -246,6 +249,10 @@ public class UserHomePanel extends javax.swing.JPanel {
 
     private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
         // TODO add your handling code here:
+        List<Order> allOrders = GlobalData.getAllOrders();
+//        for(){
+//            //显示数据
+//        }
     }//GEN-LAST:event_submitBtnMousePressed
 
 

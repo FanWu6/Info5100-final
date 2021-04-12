@@ -6,6 +6,7 @@
 package Util;
 
 import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.UserAccount;
 import java.util.List;
 
@@ -16,9 +17,11 @@ import java.util.List;
 public class GlobalData {
     static List<UserAccount> userAccounts;
     static List<House> houses;
+    static List<Order> orders;
     static {
         getUserAccounts();
         getAllHouse();
+        getAllOrders();
     }
 
     public static List<UserAccount> getUserAccounts() {
@@ -29,6 +32,11 @@ public class GlobalData {
     public static List<House> getAllHouse() {
         houses = SysData.getAllHouses();
         return houses;
+    }
+
+    public static List<Order> getAllOrders() {
+        orders = SysData.getAllOrders();
+        return orders;
     }
     
     
