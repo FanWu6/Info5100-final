@@ -5,9 +5,13 @@
  */
 package uiDecoreted.Owner;
 
+import Util.GlobalData;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JPanel;
 import uiDecoreted.Tenant.CommentPanel;
 import uiDecoreted.Tenant.TenantOrderPanel;
@@ -26,15 +30,21 @@ public class OwnerUserPanel extends javax.swing.JPanel {
      */
     JPanel container;
     CardLayout cardLayout;
-    public OwnerUserPanel(JPanel container) {
+    UserAccount userAccount;
+    List<House> houses;
+    public OwnerUserPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
+        this.userAccount = userAccount;
         initComponents();
-        
+        getInfo();
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("ownerRentP",new OwnerRentPanel(rightjPanel));
-        rightjPanel.add("addOrderP",new AddOrderPanel(rightjPanel));
+        rightjPanel.add("ownerRentP",new OwnerRentPanel(rightjPanel,this.userAccount,houses));
+        rightjPanel.add("addOrderP",new AddOrderPanel(rightjPanel,this.userAccount));
         cardLayout.show(rightjPanel,"ownerRentP");
+        
+        
+        setInfo();
     }
 
     /**
@@ -47,7 +57,6 @@ public class OwnerUserPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
-        rentBtn = new javax.swing.JLabel();
         homeBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
@@ -62,16 +71,6 @@ public class OwnerUserPanel extends javax.swing.JPanel {
         rightjPanel.setOpaque(false);
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
-
-        rentBtn.setBackground(new java.awt.Color(204, 204, 204));
-        rentBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        rentBtn.setForeground(new java.awt.Color(204, 204, 204));
-        rentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                rentBtnMousePressed(evt);
-            }
-        });
-        add(rentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 100, 70));
 
         homeBtn.setBackground(new java.awt.Color(204, 204, 204));
         homeBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -114,6 +113,21 @@ public class OwnerUserPanel extends javax.swing.JPanel {
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 810));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void getInfo(){
+        //useraccounts
+        houses = GlobalData.getAllHouse();
+        for(UserAccount ua:GlobalData.getUserAccounts()){
+            if(ua.getId()==3){
+                this.userAccount = ua;
+                break;
+            }
+        }
+        //houses
+        
+    }
+    public void setInfo(){
+        nameLabel.setText(userAccount.getUsername());
+    }
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
      //   container.remove(this);
@@ -123,14 +137,9 @@ public class OwnerUserPanel extends javax.swing.JPanel {
         layout.previous(container);
     }//GEN-LAST:event_backBtnMousePressed
 
-    private void rentBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentBtnMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"ownerRentP");
-    }//GEN-LAST:event_rentBtnMousePressed
-
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-      //  cardLayout.show(rightjPanel,"ownerRentP");
+        cardLayout.show(rightjPanel,"ownerRentP");
     }//GEN-LAST:event_homeBtnMousePressed
 
 
@@ -141,7 +150,6 @@ public class OwnerUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel nameLabel1;
-    private javax.swing.JLabel rentBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables

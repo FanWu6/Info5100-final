@@ -207,6 +207,18 @@ public class SysData {
         
         return selectByExample.get(0);
     }
+    /* public static House getHouseByOwnerId(int id) {
+        start();
+        HouseExample houseExample = new HouseExample();
+        houseExample.createCriteria().andOwnerIdEqualTo(id);
+        List<House> selectByExample = houseMapper.selectByExample(houseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }*/
      
      public static List<House> getAllHouses(){
         start();

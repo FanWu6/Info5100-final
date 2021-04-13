@@ -23,16 +23,20 @@ public class AddOrderPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddOrderPanel
      */
+    UserAccount ownerAccount;
     JPanel rightcontainer;
-    public AddOrderPanel(JPanel rightcontainer) {
-        initComponents();
-        this.rightcontainer = rightcontainer;
+    public AddOrderPanel(JPanel rightcontainer,UserAccount ownerAccount) {
+         initComponents();
+         this.rightcontainer = rightcontainer;
+         this.ownerAccount = ownerAccount;
          addresstxt.setBackground(new Color(0,0,0,0));
          layouttxt.setBackground(new Color(0,0,0,0));
          orientationtxt.setBackground(new Color(0,0,0,0));
          pricetxt.setBackground(new Color(0,0,0,0));
-         spacetxt.setBackground(new Color(0,0,0,0));
-         storeytxt.setBackground(new Color(0,0,0,0));
+         areatxt.setBackground(new Color(0,0,0,0));
+         floortxt.setBackground(new Color(0,0,0,0));
+         descriptxt.setBackground(new Color(0,0,0,0));
+         nametxt.setBackground(new Color(0,0,0,0));
          
     }
 
@@ -49,15 +53,19 @@ public class AddOrderPanel extends javax.swing.JPanel {
         addresstxt = new javax.swing.JTextField();
         pricetxt = new javax.swing.JTextField();
         orientationtxt = new javax.swing.JTextField();
-        storeytxt = new javax.swing.JTextField();
-        spacetxt = new javax.swing.JTextField();
+        floortxt = new javax.swing.JTextField();
+        areatxt = new javax.swing.JTextField();
+        descriptxt = new javax.swing.JTextField();
         layouttxt = new javax.swing.JTextField();
+        nametxt = new javax.swing.JTextField();
         address = new javax.swing.JLabel();
         address1 = new javax.swing.JLabel();
         address2 = new javax.swing.JLabel();
         address5 = new javax.swing.JLabel();
         address3 = new javax.swing.JLabel();
         address4 = new javax.swing.JLabel();
+        address6 = new javax.swing.JLabel();
+        address7 = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         submitBtn = new javax.swing.JLabel();
@@ -69,6 +77,8 @@ public class AddOrderPanel extends javax.swing.JPanel {
         line5 = new javax.swing.JLabel();
         line6 = new javax.swing.JLabel();
         line7 = new javax.swing.JLabel();
+        line8 = new javax.swing.JLabel();
+        line9 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,31 +120,44 @@ public class AddOrderPanel extends javax.swing.JPanel {
         orientationtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         add(orientationtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 460, 40));
 
-        storeytxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        storeytxt.setForeground(new java.awt.Color(153, 153, 153));
-        storeytxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        storeytxt.setText("Storey");
-        storeytxt.setToolTipText("");
-        storeytxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        storeytxt.addActionListener(new java.awt.event.ActionListener() {
+        floortxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        floortxt.setForeground(new java.awt.Color(153, 153, 153));
+        floortxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        floortxt.setText("Floor");
+        floortxt.setToolTipText("");
+        floortxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        floortxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                storeytxtActionPerformed(evt);
+                floortxtActionPerformed(evt);
             }
         });
-        add(storeytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 460, 40));
+        add(floortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 460, 40));
 
-        spacetxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        spacetxt.setForeground(new java.awt.Color(153, 153, 153));
-        spacetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        spacetxt.setText("Space");
-        spacetxt.setToolTipText("");
-        spacetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        spacetxt.addActionListener(new java.awt.event.ActionListener() {
+        areatxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        areatxt.setForeground(new java.awt.Color(153, 153, 153));
+        areatxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        areatxt.setText("Area");
+        areatxt.setToolTipText("");
+        areatxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        areatxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spacetxtActionPerformed(evt);
+                areatxtActionPerformed(evt);
             }
         });
-        add(spacetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 460, 40));
+        add(areatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 460, 40));
+
+        descriptxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        descriptxt.setForeground(new java.awt.Color(153, 153, 153));
+        descriptxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        descriptxt.setText("Description");
+        descriptxt.setToolTipText("");
+        descriptxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        descriptxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descriptxtActionPerformed(evt);
+            }
+        });
+        add(descriptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, 460, 40));
 
         layouttxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         layouttxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -147,25 +170,44 @@ public class AddOrderPanel extends javax.swing.JPanel {
                 layouttxtActionPerformed(evt);
             }
         });
-        add(layouttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 460, 40));
+        add(layouttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 560, 460, 40));
+
+        nametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        nametxt.setForeground(new java.awt.Color(153, 153, 153));
+        nametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nametxt.setText("Name");
+        nametxt.setToolTipText("");
+        nametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        nametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nametxtActionPerformed(evt);
+            }
+        });
+        add(nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 460, 40));
 
         address.setText("Address");
         add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
-        address1.setText("Space");
-        add(address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
+        address1.setText("Description");
+        add(address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, -1, -1));
 
         address2.setText("Price");
         add(address2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
 
-        address5.setText("Storey");
+        address5.setText("Floor");
         add(address5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, -1, -1));
 
-        address3.setText("Layout");
+        address3.setText("Name");
         add(address3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         address4.setText("Orientation");
         add(address4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, -1, -1));
+
+        address6.setText("Area");
+        add(address6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
+
+        address7.setText("Layout");
+        add(address7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, -1, -1));
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,7 +238,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, 200, 70));
 
         line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, 50));
+        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 630, -1, 50));
 
         line2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, 50));
@@ -215,6 +257,12 @@ public class AddOrderPanel extends javax.swing.JPanel {
 
         line7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, -1, 50));
+
+        line8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, 50));
+
+        line9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, -1, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -231,9 +279,16 @@ public class AddOrderPanel extends javax.swing.JPanel {
         House house = new House();
 //        house.setId(1);
         
-        house.setAddress("addreesss2222");
+        house.setAddress(addresstxt.getText());
         house.setImage("/images/housepicture/housepic2.png");
-        house.setDescrib("dddddddd312321321");
+        house.setDescrib(descriptxt.getText());
+        house.setPrice(pricetxt.getText());
+        house.setName(nametxt.getText());
+        house.setLayout(layouttxt.getText());
+        house.setFloor(floortxt.getText());
+        house.setOrientation(orientationtxt.getText());
+        house.setArea(areatxt.getText());
+        house.setOwnerId(ownerAccount.getId());
         int id = SysData.addHouse(house);
         
     }//GEN-LAST:event_submitBtnMousePressed
@@ -246,13 +301,21 @@ public class AddOrderPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pricetxtActionPerformed
 
-    private void storeytxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeytxtActionPerformed
+    private void floortxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floortxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_storeytxtActionPerformed
+    }//GEN-LAST:event_floortxtActionPerformed
 
-    private void spacetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spacetxtActionPerformed
+    private void areatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areatxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_spacetxtActionPerformed
+    }//GEN-LAST:event_areatxtActionPerformed
+
+    private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nametxtActionPerformed
+
+    private void descriptxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descriptxtActionPerformed
 
     private void layouttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_layouttxtActionPerformed
         // TODO add your handling code here:
@@ -267,8 +330,13 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel address3;
     private javax.swing.JLabel address4;
     private javax.swing.JLabel address5;
+    private javax.swing.JLabel address6;
+    private javax.swing.JLabel address7;
     private javax.swing.JTextField addresstxt;
+    private javax.swing.JTextField areatxt;
     private javax.swing.JLabel backBtn;
+    private javax.swing.JTextField descriptxt;
+    private javax.swing.JTextField floortxt;
     private javax.swing.JLabel housepic;
     private javax.swing.JTextField layouttxt;
     private javax.swing.JLabel line1;
@@ -278,10 +346,11 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel line5;
     private javax.swing.JLabel line6;
     private javax.swing.JLabel line7;
+    private javax.swing.JLabel line8;
+    private javax.swing.JLabel line9;
+    private javax.swing.JTextField nametxt;
     private javax.swing.JTextField orientationtxt;
     private javax.swing.JTextField pricetxt;
-    private javax.swing.JTextField spacetxt;
-    private javax.swing.JTextField storeytxt;
     private javax.swing.JLabel submit;
     private javax.swing.JLabel submitBtn;
     // End of variables declaration//GEN-END:variables

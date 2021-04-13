@@ -5,9 +5,13 @@
  */
 package uiDecoreted.Owner;
 
+import Util.GlobalData;
 import Util.ImageRender;
 import Util.Tool;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,15 +24,39 @@ public class OwnerRentPanel extends javax.swing.JPanel {
     /**
      * Creates new form OwnerRentPanel
      */
+    UserAccount ownerAccount;
     JPanel rightcontainer;
-    public OwnerRentPanel(JPanel rightcontainer) {
+    List<House> houses;
+    public OwnerRentPanel(JPanel rightcontainer,UserAccount ownerAccount,List<House> houses) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        this.ownerAccount = ownerAccount;
+        this.houses = houses;
         //改变table样式
         Tool.tableStyle1(jTable1,jScrollPane1);
         
+        //DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       // model.setRowCount(0);
+        displayHouseList();
+    }
+    
+     public void displayHouseList() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
+        jTable1.setRowHeight(105);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(new ImageRender());
+        for (House house : houses) {
+            Object[] row = new Object[5];
+            //根据租客的id显示房子信息
+            if (house.getOwnerId() == ownerAccount.getId()) {
+                row[0] = house.getId();
+                row[1] = house.getImage();
+                // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+                row[2] = Tool.strToMultilineHTML(house.getAddress(), ",");
+                row[3] = house.getPrice();
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -51,13 +79,13 @@ public class OwnerRentPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Image", "Address", "Price", "Status"
+                "HouseID", "Image", "Address", "Price", "Status"
             }
         ));
         jTable1.setRowHeight(25);

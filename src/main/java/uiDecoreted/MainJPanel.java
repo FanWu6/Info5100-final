@@ -179,7 +179,7 @@ public class MainJPanel extends javax.swing.JPanel {
     private void ownerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("OwnerUserPanel",new OwnerUserPanel(container));
+       container.add("OwnerUserPanel",new OwnerUserPanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_ownerbtnActionPerformed
 
