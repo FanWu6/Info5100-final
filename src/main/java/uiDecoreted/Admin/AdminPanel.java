@@ -5,6 +5,8 @@
  */
 package uiDecoreted.Admin;
 
+import Util.GlobalData;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -19,11 +21,14 @@ public class AdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form TenantUserPanel
      */
+    UserAccount userAccount;
     JPanel container;
     CardLayout cardLayout;
-    public AdminPanel(JPanel container) {
+    public AdminPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
+        this.userAccount = userAccount;
         initComponents();
+        getInfo();
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
@@ -31,6 +36,24 @@ public class AdminPanel extends javax.swing.JPanel {
         rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel));
         rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel));
         cardLayout.show(rightjPanel,"viewHouseworkOrderP");
+        
+        setInfo();
+    }
+    public void getInfo(){
+        //useraccounts
+        
+        for(UserAccount ua:GlobalData.getUserAccounts()){
+            if(ua.getId()==5){
+                this.userAccount = ua;
+                break;
+            }
+        }
+        //houses
+        //houses = GlobalData.getAllHouse();
+        
+    }
+    public void setInfo(){
+        nameLabel.setText(userAccount.getUsername());
     }
 
     /**

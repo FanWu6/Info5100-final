@@ -186,14 +186,14 @@ public class MainJPanel extends javax.swing.JPanel {
     private void adminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("AdminPanel",new AdminPanel(container));
+       container.add("AdminPanel",new AdminPanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_adminbtnActionPerformed
 
     private void agencybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agencybtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout)container.getLayout();
-       container.add("AgencyPanel",new AgencyPanel(container));
+       container.add("AgencyPanel",new AgencyPanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_agencybtnActionPerformed
 

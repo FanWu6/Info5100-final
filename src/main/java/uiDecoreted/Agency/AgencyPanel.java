@@ -5,6 +5,8 @@
  */
 package uiDecoreted.Agency;
 
+import Util.GlobalData;
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Owner.*;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
@@ -27,15 +29,34 @@ public class AgencyPanel extends javax.swing.JPanel {
      */
     JPanel container;
     CardLayout cardLayout;
-    public AgencyPanel(JPanel container) {
+    UserAccount userAccount;
+    public AgencyPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
+        this.userAccount = userAccount;
         initComponents();
-        
+        getInfo();
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("viewTenantP",new ViewTenantPanel(rightjPanel));
         rightjPanel.add("viewOwnerP",new ViewOwnerPanel(rightjPanel));
         cardLayout.show(rightjPanel,"viewTenantP");
+        setInfo();
+    }
+    public void getInfo(){
+        //useraccounts
+        
+        for(UserAccount ua:GlobalData.getUserAccounts()){
+            if(ua.getId()==4){
+                this.userAccount = ua;
+                break;
+            }
+        }
+        //houses
+        //houses = GlobalData.getAllHouse();
+        
+    }
+    public void setInfo(){
+        nameLabel.setText(userAccount.getUsername());
     }
 
     /**

@@ -115,7 +115,7 @@ public class OwnerUserPanel extends javax.swing.JPanel {
 
     public void getInfo(){
         //useraccounts
-        houses = GlobalData.getAllHouse();
+        
         for(UserAccount ua:GlobalData.getUserAccounts()){
             if(ua.getId()==3){
                 this.userAccount = ua;
@@ -123,6 +123,7 @@ public class OwnerUserPanel extends javax.swing.JPanel {
             }
         }
         //houses
+        houses = GlobalData.getAllHouse();
         
     }
     public void setInfo(){
