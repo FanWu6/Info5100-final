@@ -109,23 +109,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neu.infofinal.bean.House">
-    insert into info_house_t (id, name, address, 
-      image, price, describ, 
-      owner_id, tenant_id, agency_id, 
-      area, orientation, floor, 
-      layout)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{image,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, 
-      #{ownerId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, 
-      #{area,jdbcType=VARCHAR}, #{orientation,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
-      #{layout,jdbcType=VARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into info_house_t (name, address, image, 
+      price, describ, owner_id, 
+      tenant_id, agency_id, area, 
+      orientation, floor, layout
+      )
+    values (#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{price,jdbcType=VARCHAR}, #{describ,jdbcType=VARCHAR}, #{ownerId,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{area,jdbcType=VARCHAR}, 
+      #{orientation,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, #{layout,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.neu.infofinal.bean.House">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into info_house_t
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="name != null">
         name,
       </if>
@@ -164,9 +167,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

@@ -5,7 +5,7 @@
  */
 package uiDecoreted.Move;
 import uiDecoreted.Housework.*;
-import Util.Util;
+import Util.Tool;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,8 +22,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     public ViewRequestPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
-        Util.tableStyle1(jTable1, jScrollPane1);
-        Util.tableStyle1(jTable3, jScrollPane3);
+        Tool.tableStyle1(jTable1, jScrollPane1);
+        Tool.tableStyle1(jTable3, jScrollPane3);
     }
 
     /**

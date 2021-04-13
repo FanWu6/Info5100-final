@@ -11,6 +11,7 @@ import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -230,11 +231,10 @@ public class AddOrderPanel extends javax.swing.JPanel {
         House house = new House();
 //        house.setId(1);
         
-        house.setAddress("addreesss");
+        house.setAddress("addreesss2222");
         house.setImage("/images/housepicture/housepic2.png");
-        house.setDescrib("dddddddd");
-        house.setOwnerId(1); //UserAccount.getID
-        SysData.addHouse(house);
+        house.setDescrib("dddddddd312321321");
+        int id = SysData.addHouse(house);
         
     }//GEN-LAST:event_submitBtnMousePressed
 

@@ -71,13 +71,19 @@ public class SysData {
     static OrderMapper orderMapper;
     static OrderHouseworkMapper orderHouseworkMapper;
     
-    public static void  start(){
+   
+    public static void Config(){
          try {
              sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis.xml"));
          } catch (IOException ex) {
              java.util.logging.Logger.getLogger(SysData.class.getName()).log(Level.SEVERE, null, ex);
          }
-         
+    }
+    
+    public static void  start(){
+        if(sqlSessionFactory==null){
+            Config();
+        }
          //2.
          sqlSession = sqlSessionFactory.openSession();
          
@@ -176,6 +182,19 @@ public class SysData {
     //UserAccount end--
      
      //House
+     public static House getHouseByHouseId(int id) {
+        start();
+        HouseExample houseExample = new HouseExample();
+        houseExample.createCriteria().andIdEqualTo(id);
+        List<House> selectByExample = houseMapper.selectByExample(houseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
+     
      public static House getHouseByTenantId(int id) {
         start();
         HouseExample houseExample = new HouseExample();
@@ -203,10 +222,16 @@ public class SysData {
      }
      
      
-     public static void addHouse(House house) {
+     public static int addHouse(House house) {
         start();
-        houseMapper.insert(house);
+        int id = houseMapper.insert(house);
+        if(id==1){
+            Tool.Success();
+        }else{
+            Tool.Failed();
+        }
         commitAndClose();
+        return id;
     }
      
      //House end

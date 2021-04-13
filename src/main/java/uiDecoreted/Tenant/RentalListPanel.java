@@ -6,7 +6,7 @@
 package uiDecoreted.Tenant;
 
 import Util.ImageRender;
-import Util.Util;
+import Util.Tool;
 import com.neu.infofinal.bean.House;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -37,33 +37,31 @@ public class RentalListPanel extends javax.swing.JPanel {
         initComponents();
         
         //改变table样式
-        Util.tableStyle1(jTable1,jScrollPane1);
         
+        Tool.tableStyle1(jTable1,jScrollPane1);
+       
+       displayHouseList();
+        
+  
+    }
+    
+    public void displayHouseList() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         jTable1.setRowHeight(105);
-        jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
-//        jTable1.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRender());
-//        for(int i=0;i<5;i++){
-//            Object[] row = new Object[4];
-//            row[0] = "/images/housepicture/housepic1.png";
-//            row[1] = Util.strToMultilineHTML("desc1,dec2222222,desc3333333333333", ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
-//            row[2] = Util.strToMultilineHTML("address1,address13123213,addres123213s1", ",");
-//            row[3] = "2500%/mo";
-//            model.addRow(row);
-//        }
-        for(House house : houses){
-             Object[] row = new Object[4];
-             //如果house的租客id为空，代表没有租出去，显示
-             if(house.getTenantId()==null){
-                row[0] = house.getImage();
-                row[1] = Util.strToMultilineHTML(house.getDescrib(), ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
-                row[2] = Util.strToMultilineHTML(house.getAddress(), ",");
-                row[3] = house.getPrice();
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(new ImageRender());
+        for (House house : houses) {
+            Object[] row = new Object[5];
+            //如果house的租客id为空，代表没有租出去，显示
+            if (house.getTenantId() == null) {
+                row[0] = house.getId();
+                row[1] = house.getImage();
+                row[2] = Tool.strToMultilineHTML(house.getDescrib(), ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+                row[3] = Tool.strToMultilineHTML(house.getAddress(), ",");
+                row[4] = house.getPrice();
                 model.addRow(row);
-             }
+            }
         }
-  
     }
 
     /**
@@ -93,7 +91,7 @@ public class RentalListPanel extends javax.swing.JPanel {
                 detailBtnMousePressed(evt);
             }
         });
-        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 200, 50));
+        add(detailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 640, 200, 50));
 
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, 200, 70));
@@ -101,18 +99,25 @@ public class RentalListPanel extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Image", "Desc", "Address", "Price", "Region"
+                "HouseId", "Image", "Desc", "Address", "Price", "Region"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -140,8 +145,15 @@ public class RentalListPanel extends javax.swing.JPanel {
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
         // TODO add your handling code here:
-         CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
-        cardLayout.show(rightcontainer, "tP2");
+        int row = jTable1.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            return;
+        }
+        int houseId = (int)jTable1.getValueAt(row,0);
+        CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
+        rightcontainer.add("ViewDetailPanel",new ViewDetailPanel(rightcontainer,houseId));
+        cardLayout.show(rightcontainer, "ViewDetailPanel");
     }//GEN-LAST:event_detailBtnMousePressed
 
     private void districtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtActionPerformed

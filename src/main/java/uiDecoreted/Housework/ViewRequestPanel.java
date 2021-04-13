@@ -5,7 +5,7 @@
  */
 package uiDecoreted.Housework;
 import Util.SysData;
-import Util.Util;
+import Util.Tool;
 import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.OrderHousework;
 import java.awt.CardLayout;
@@ -27,8 +27,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     public ViewRequestPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
-        Util.tableStyle1(tblHouseworkMy2, jScrollPane1);
-        Util.tableStyle1(tblHousework1, jScrollPane3);
+        Tool.tableStyle1(tblHouseworkMy2, jScrollPane1);
+        Tool.tableStyle1(tblHousework1, jScrollPane3);
         
         getInfo();
 //        setInfo();

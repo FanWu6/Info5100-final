@@ -46,7 +46,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("tP1",new RentalListPanel(rightjPanel,houses));
-        rightjPanel.add("tP2",new ViewDetailPanel(rightjPanel));
+//        rightjPanel.add("tP2",new ViewDetailPanel(rightjPanel));
         rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel,this.userAccount));
         rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
         rightjPanel.add("commentP",new CommentPanel(rightjPanel));

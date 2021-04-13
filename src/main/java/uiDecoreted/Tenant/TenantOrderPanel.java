@@ -5,7 +5,7 @@
  */
 package uiDecoreted.Tenant;
 
-import Util.Util;
+import Util.Tool;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +23,7 @@ public class TenantOrderPanel extends javax.swing.JPanel {
     public TenantOrderPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
-        Util.tableStyle1(jTable1,jScrollPane1);
+        Tool.tableStyle1(jTable1,jScrollPane1);
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);

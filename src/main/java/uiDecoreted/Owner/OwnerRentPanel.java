@@ -6,7 +6,7 @@
 package uiDecoreted.Owner;
 
 import Util.ImageRender;
-import Util.Util;
+import Util.Tool;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +25,7 @@ public class OwnerRentPanel extends javax.swing.JPanel {
         initComponents();
         this.rightcontainer=rightcontainer;
         //改变table样式
-        Util.tableStyle1(jTable1,jScrollPane1);
+        Tool.tableStyle1(jTable1,jScrollPane1);
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);

@@ -5,7 +5,9 @@
  */
 package uiDecoreted;
 
+import Util.GlobalData;
 import Util.JTextFieldHintListener;
+import Util.SysData;
 import uiDecoreted.Tenant.TenantUserPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -35,6 +37,8 @@ public class MainJPanel extends javax.swing.JPanel {
         usernametxt.addFocusListener(new JTextFieldHintListener(usernametxt, "Username",new Color(153,153,153)));
         passwordtxt.addFocusListener(new JTextFieldHintListener(passwordtxt, "Password",new Color(153,153,153)));
         foucstxt.requestFocusInWindow();
+        
+        GlobalData.getUserAccounts();
     }
 
     /**
