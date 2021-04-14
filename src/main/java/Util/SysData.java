@@ -324,6 +324,15 @@ public class SysData {
         return selectByExample;
     }
      
+    public static boolean isOrderPendingByTenantId(int tenantid){
+        start();
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andTenantIdEqualTo(tenantid).andStatusEqualTo(ORDER_STATUS_TYPE.PEND.getStatus());
+        List<Order> selectByExample = orderMapper.selectByExample(orderExample);
+        commitAndClose();
+        return selectByExample.size()!=0;
+    }
+     
     public static void insertOrder(Order order){
         start();
         int insert = orderMapper.insert(order);

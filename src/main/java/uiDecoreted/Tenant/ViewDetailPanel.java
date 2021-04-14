@@ -195,6 +195,11 @@ public class ViewDetailPanel extends javax.swing.JPanel {
             Tool.InfoString("You already have a rental");
             return;
         }
+        if(SysData.isOrderPendingByTenantId(parent.userAccount.getId())){
+            Tool.InfoString("You currently have a order on pending!");
+            return;
+        }
+        
         Order order = new Order();
         order.setTenantId(parent.userAccount.getId());
         order.setHouseId(houseId);
@@ -210,6 +215,10 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         House house = SysData.getHouseByTenantId(parent.userAccount.getId());
         if(house!=null){
             Tool.InfoString("You already have a rental");
+            return;
+        }
+         if(SysData.isOrderPendingByTenantId(parent.userAccount.getId())){
+            Tool.InfoString("You currently have a order on pending!");
             return;
         }
         Order order = new Order();
