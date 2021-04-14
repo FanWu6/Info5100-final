@@ -174,8 +174,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         
         for(OrderHousework ordH:orderHouseworks){
             Object[] row = new Object[5];
-            row[0]=ordH.getTenantName()==null?null:ordH.getTenantName();
-            row[1]=ordH.getSubjectType()==null?null:ordH.getSubjectType();
+//            row[0]=ordH.getTenantName()==null?null:ordH.getTenantName();
+//            row[1]=ordH.getSubjectType()==null?null:ordH.getSubjectType();
         }
     }
 

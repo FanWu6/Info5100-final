@@ -45,19 +45,28 @@ public class SysData {
     static enum ACCOUNT_TYPE{
         SYSTEM_ADMIN(0),
         TENANT(1),
-        LANDLORD(2);
+        LANDLORD(2),
+        AGENCY(3),
+        MANAGER(4),
+        CLEANER(5),
+        MAINTAINER(6),
+        MOVER(7);
         
         private int index;
 
         private ACCOUNT_TYPE(int index) {
             this.index = index;
         }
-        public int getIndex() {
-            return index;
-        }
-        public void setIndex(int index) {
+    }
+    
+    static enum ORDER_TYPE{
+        APPOINTMENT(0),
+        SIGN(1);
+        private int index;
+        private ORDER_TYPE(int index) {
             this.index = index;
         }
+        
     }
     
     static SqlSessionFactory sqlSessionFactory;

@@ -15,7 +15,7 @@ public class OrderHousework {
 
     private Integer houseworkOrderType;
 
-    private Integer status;
+    private String status;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class OrderHousework {
         this.houseworkOrderType = houseworkOrderType;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

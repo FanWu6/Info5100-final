@@ -9,7 +9,7 @@
     <result column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
     <result column="workder_id" jdbcType="INTEGER" property="workderId" />
     <result column="housework_order_type" jdbcType="INTEGER" property="houseworkOrderType" />
-    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -112,7 +112,7 @@
       status)
     values (#{tenantId,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, 
       #{enterpriseId,jdbcType=INTEGER}, #{workderId,jdbcType=INTEGER}, #{houseworkOrderType,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER})
+      #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.infofinal.bean.OrderHousework">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -162,7 +162,7 @@
         #{houseworkOrderType,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -197,7 +197,7 @@
         housework_order_type = #{record.houseworkOrderType,jdbcType=INTEGER},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -213,7 +213,7 @@
       enterprise_id = #{record.enterpriseId,jdbcType=INTEGER},
       workder_id = #{record.workderId,jdbcType=INTEGER},
       housework_order_type = #{record.houseworkOrderType,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -240,7 +240,7 @@
         housework_order_type = #{houseworkOrderType,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -253,7 +253,7 @@
       enterprise_id = #{enterpriseId,jdbcType=INTEGER},
       workder_id = #{workderId,jdbcType=INTEGER},
       housework_order_type = #{houseworkOrderType,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectCondition" parameterType="map" resultMap="BaseResultMap">
