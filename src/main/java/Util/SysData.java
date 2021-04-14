@@ -69,6 +69,26 @@ public class SysData {
         
     }
     
+    static enum ORDER_HOUSEWORK_TYPE{
+        MAINTAIN(0),
+        CLEAN(1),
+        MOVE(2);
+        private int index;
+        private ORDER_HOUSEWORK_TYPE(int index) {
+            this.index = index;
+        } 
+    }
+    
+    static enum ORDER_STATUS_TYPE{
+        PEND("pending"),
+        PROCESS("processing"),
+        FINISH("finished");
+        private String status;
+        private ORDER_STATUS_TYPE(String status) {
+            this.status = status;
+        }
+    }
+    
     static SqlSessionFactory sqlSessionFactory;
     static SqlSession sqlSession;
     
