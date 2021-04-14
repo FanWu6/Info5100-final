@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Owner;
+package uiDecoreted.LandLord;
 
 import Util.GlobalData;
 import Util.ImageRender;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dengbowen
  */
-public class OwnerRentPanel extends javax.swing.JPanel {
+public class LandLordManagePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form OwnerRentPanel
@@ -27,7 +27,7 @@ public class OwnerRentPanel extends javax.swing.JPanel {
     UserAccount ownerAccount;
     JPanel rightcontainer;
     List<House> houses;
-    public OwnerRentPanel(JPanel rightcontainer,UserAccount ownerAccount,List<House> houses) {
+    public LandLordManagePanel(JPanel rightcontainer,UserAccount ownerAccount,List<House> houses) {
         initComponents();
         this.rightcontainer=rightcontainer;
         this.ownerAccount = ownerAccount;
@@ -54,6 +54,7 @@ public class OwnerRentPanel extends javax.swing.JPanel {
                 // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
                 row[2] = Tool.strToMultilineHTML(house.getAddress(), ",");
                 row[3] = house.getPrice();
+                row[4] = house.getAgencyId() == null? "Pending":"Completed";
                 model.addRow(row);
             }
         }

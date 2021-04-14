@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Owner;
+package uiDecoreted.LandLord;
 
 import Util.SysData;
 import com.neu.infofinal.bean.House;

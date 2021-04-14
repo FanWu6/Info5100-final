@@ -7,7 +7,6 @@ package uiDecoreted.Agency;
 
 import Util.GlobalData;
 import com.neu.infofinal.bean.UserAccount;
-import uiDecoreted.Owner.*;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Component;
