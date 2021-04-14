@@ -3,19 +3,19 @@ package com.neu.infofinal.bean;
 public class OrderHousework {
     private Integer id;
 
-    private String tenantName;
+    private Integer tenantId;
 
-    private String floor;
+    private Integer houseId;
 
-    private String phone;
+    private Integer managerId;
 
-    private String email;
+    private Integer enterpriseId;
 
-    private String area;
+    private Integer workderId;
 
-    private Integer subjectType;
+    private Integer houseworkOrderType;
 
-    private String describ;
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -25,59 +25,59 @@ public class OrderHousework {
         this.id = id;
     }
 
-    public String getTenantName() {
-        return tenantName;
+    public Integer getTenantId() {
+        return tenantId;
     }
 
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName == null ? null : tenantName.trim();
+    public void setTenantId(Integer tenantId) {
+        this.tenantId = tenantId;
     }
 
-    public String getFloor() {
-        return floor;
+    public Integer getHouseId() {
+        return houseId;
     }
 
-    public void setFloor(String floor) {
-        this.floor = floor == null ? null : floor.trim();
+    public void setHouseId(Integer houseId) {
+        this.houseId = houseId;
     }
 
-    public String getPhone() {
-        return phone;
+    public Integer getManagerId() {
+        return managerId;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getEnterpriseId() {
+        return enterpriseId;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setEnterpriseId(Integer enterpriseId) {
+        this.enterpriseId = enterpriseId;
     }
 
-    public String getArea() {
-        return area;
+    public Integer getWorkderId() {
+        return workderId;
     }
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
+    public void setWorkderId(Integer workderId) {
+        this.workderId = workderId;
     }
 
-    public Integer getSubjectType() {
-        return subjectType;
+    public Integer getHouseworkOrderType() {
+        return houseworkOrderType;
     }
 
-    public void setSubjectType(Integer subjectType) {
-        this.subjectType = subjectType;
+    public void setHouseworkOrderType(Integer houseworkOrderType) {
+        this.houseworkOrderType = houseworkOrderType;
     }
 
-    public String getDescrib() {
-        return describ;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setDescrib(String describ) {
-        this.describ = describ == null ? null : describ.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

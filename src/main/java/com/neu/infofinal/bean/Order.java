@@ -3,19 +3,15 @@ package com.neu.infofinal.bean;
 public class Order {
     private Integer id;
 
-    private String tenantName;
+    private Integer tenantId;
 
-    private String floor;
+    private Integer houseId;
 
-    private String phone;
+    private Integer agencyId;
 
-    private String email;
+    private Integer orderType;
 
-    private String area;
-
-    private Integer subjectType;
-
-    private String describ;
+    private String status;
 
     public Integer getId() {
         return id;
@@ -25,59 +21,43 @@ public class Order {
         this.id = id;
     }
 
-    public String getTenantName() {
-        return tenantName;
+    public Integer getTenantId() {
+        return tenantId;
     }
 
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName == null ? null : tenantName.trim();
+    public void setTenantId(Integer tenantId) {
+        this.tenantId = tenantId;
     }
 
-    public String getFloor() {
-        return floor;
+    public Integer getHouseId() {
+        return houseId;
     }
 
-    public void setFloor(String floor) {
-        this.floor = floor == null ? null : floor.trim();
+    public void setHouseId(Integer houseId) {
+        this.houseId = houseId;
     }
 
-    public String getPhone() {
-        return phone;
+    public Integer getAgencyId() {
+        return agencyId;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setAgencyId(Integer agencyId) {
+        this.agencyId = agencyId;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getOrderType() {
+        return orderType;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setOrderType(Integer orderType) {
+        this.orderType = orderType;
     }
 
-    public String getArea() {
-        return area;
+    public String getStatus() {
+        return status;
     }
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
-    }
-
-    public Integer getSubjectType() {
-        return subjectType;
-    }
-
-    public void setSubjectType(Integer subjectType) {
-        this.subjectType = subjectType;
-    }
-
-    public String getDescrib() {
-        return describ;
-    }
-
-    public void setDescrib(String describ) {
-        this.describ = describ == null ? null : describ.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

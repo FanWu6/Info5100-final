@@ -3,13 +3,11 @@
 <mapper namespace="com.neu.infofinal.mapper.OrderMapper">
   <resultMap id="BaseResultMap" type="com.neu.infofinal.bean.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="tenant_name" jdbcType="VARCHAR" property="tenantName" />
-    <result column="floor" jdbcType="VARCHAR" property="floor" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="area" jdbcType="VARCHAR" property="area" />
-    <result column="subject_type" jdbcType="INTEGER" property="subjectType" />
-    <result column="describ" jdbcType="VARCHAR" property="describ" />
+    <result column="tenant_id" jdbcType="INTEGER" property="tenantId" />
+    <result column="house_id" jdbcType="INTEGER" property="houseId" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, tenant_name, floor, phone, email, area, subject_type, describ
+    id, tenant_id, house_id, agency_id, order_type, status
   </sql>
   <select id="selectByExample" parameterType="com.neu.infofinal.bean.OrderExample" resultMap="BaseResultMap">
     select
@@ -103,65 +101,51 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neu.infofinal.bean.Order">
-    insert into info_order_t (id, tenant_name, floor, 
-      phone, email, area, 
-      subject_type, describ)
-    values (#{id,jdbcType=INTEGER}, #{tenantName,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
-      #{subjectType,jdbcType=INTEGER}, #{describ,jdbcType=VARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into info_order_t (tenant_id, house_id, agency_id, 
+      order_type, status)
+    values (#{tenantId,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, 
+      #{orderType,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.infofinal.bean.Order">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into info_order_t
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="tenantId != null">
+        tenant_id,
       </if>
-      <if test="tenantName != null">
-        tenant_name,
+      <if test="houseId != null">
+        house_id,
       </if>
-      <if test="floor != null">
-        floor,
+      <if test="agencyId != null">
+        agency_id,
       </if>
-      <if test="phone != null">
-        phone,
+      <if test="orderType != null">
+        order_type,
       </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="area != null">
-        area,
-      </if>
-      <if test="subjectType != null">
-        subject_type,
-      </if>
-      <if test="describ != null">
-        describ,
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
       </if>
-      <if test="tenantName != null">
-        #{tenantName,jdbcType=VARCHAR},
+      <if test="houseId != null">
+        #{houseId,jdbcType=INTEGER},
       </if>
-      <if test="floor != null">
-        #{floor,jdbcType=VARCHAR},
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
       </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null">
-        #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectType != null">
-        #{subjectType,jdbcType=INTEGER},
-      </if>
-      <if test="describ != null">
-        #{describ,jdbcType=VARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -177,26 +161,20 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.tenantName != null">
-        tenant_name = #{record.tenantName,jdbcType=VARCHAR},
+      <if test="record.tenantId != null">
+        tenant_id = #{record.tenantId,jdbcType=INTEGER},
       </if>
-      <if test="record.floor != null">
-        floor = #{record.floor,jdbcType=VARCHAR},
+      <if test="record.houseId != null">
+        house_id = #{record.houseId,jdbcType=INTEGER},
       </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="record.agencyId != null">
+        agency_id = #{record.agencyId,jdbcType=INTEGER},
       </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=INTEGER},
       </if>
-      <if test="record.area != null">
-        area = #{record.area,jdbcType=VARCHAR},
-      </if>
-      <if test="record.subjectType != null">
-        subject_type = #{record.subjectType,jdbcType=INTEGER},
-      </if>
-      <if test="record.describ != null">
-        describ = #{record.describ,jdbcType=VARCHAR},
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -206,13 +184,11 @@
   <update id="updateByExample" parameterType="map">
     update info_order_t
     set id = #{record.id,jdbcType=INTEGER},
-      tenant_name = #{record.tenantName,jdbcType=VARCHAR},
-      floor = #{record.floor,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      area = #{record.area,jdbcType=VARCHAR},
-      subject_type = #{record.subjectType,jdbcType=INTEGER},
-      describ = #{record.describ,jdbcType=VARCHAR}
+      tenant_id = #{record.tenantId,jdbcType=INTEGER},
+      house_id = #{record.houseId,jdbcType=INTEGER},
+      agency_id = #{record.agencyId,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -220,39 +196,31 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.neu.infofinal.bean.Order">
     update info_order_t
     <set>
-      <if test="tenantName != null">
-        tenant_name = #{tenantName,jdbcType=VARCHAR},
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=INTEGER},
       </if>
-      <if test="floor != null">
-        floor = #{floor,jdbcType=VARCHAR},
+      <if test="houseId != null">
+        house_id = #{houseId,jdbcType=INTEGER},
       </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
       </if>
-      <if test="area != null">
-        area = #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="subjectType != null">
-        subject_type = #{subjectType,jdbcType=INTEGER},
-      </if>
-      <if test="describ != null">
-        describ = #{describ,jdbcType=VARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neu.infofinal.bean.Order">
     update info_order_t
-    set tenant_name = #{tenantName,jdbcType=VARCHAR},
-      floor = #{floor,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      subject_type = #{subjectType,jdbcType=INTEGER},
-      describ = #{describ,jdbcType=VARCHAR}
+    set tenant_id = #{tenantId,jdbcType=INTEGER},
+      house_id = #{houseId,jdbcType=INTEGER},
+      agency_id = #{agencyId,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectCondition" parameterType="map" resultMap="BaseResultMap">
