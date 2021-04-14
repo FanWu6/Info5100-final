@@ -37,7 +37,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     }
     
     public void getInfo() {
-        orderHouseworks = SysData.getAllOrderHouseworks();
+        orderHouseworks = SysData.getAllOrderHouseworks(); 
     }
     
     public void setInfo() {
@@ -54,6 +54,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        assigntomebtn1 = new javax.swing.JLabel();
+        assigntome1 = new javax.swing.JLabel();
         assigntomebtn = new javax.swing.JLabel();
         assigntome = new javax.swing.JLabel();
         completedBtn = new javax.swing.JLabel();
@@ -68,6 +70,20 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        assigntomebtn1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        assigntomebtn1.setForeground(new java.awt.Color(255, 255, 255));
+        assigntomebtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assigntomebtn1.setText("Company");
+        assigntomebtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                assigntomebtn1MousePressed(evt);
+            }
+        });
+        add(assigntomebtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 200, 50));
+
+        assigntome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/White1.png"))); // NOI18N
+        add(assigntome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 200, 70));
 
         assigntomebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         assigntomebtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,10 +169,16 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         cardLayout.show(rightcontainer, "ViewHouseWorkOrderDetailPanel");
     }//GEN-LAST:event_detailBtnMousePressed
 
+    private void assigntomebtn1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtn1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assigntomebtn1MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assigntome;
+    private javax.swing.JLabel assigntome1;
     private javax.swing.JLabel assigntomebtn;
+    private javax.swing.JLabel assigntomebtn1;
     private javax.swing.JLabel bkn;
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
@@ -173,6 +195,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(OrderHousework ordH:orderHouseworks){
+            
             Object[] row = new Object[5];
 //            row[0]=ordH.getTenantName()==null?null:ordH.getTenantName();
 //            row[1]=ordH.getSubjectType()==null?null:ordH.getSubjectType();
