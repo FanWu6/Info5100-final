@@ -183,6 +183,11 @@ public class TenantUserPanel extends javax.swing.JPanel {
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
+        House house = SysData.getHouseByTenantId(userAccount.getId());
+        if(house==null){
+            Tool.InfoString("You don't have a rental!!");
+            return;
+        }
         cardLayout.show(rightjPanel,"UserHomePanel");
     }//GEN-LAST:event_homeBtnMousePressed
 

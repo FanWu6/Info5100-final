@@ -154,11 +154,6 @@ public class RentalListPanel extends javax.swing.JPanel {
 
         districtCombo.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         districtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        districtCombo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                districtComboItemStateChanged(evt);
-            }
-        });
         districtCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 districtComboActionPerformed(evt);
@@ -195,10 +190,6 @@ public class RentalListPanel extends javax.swing.JPanel {
             displayHouseList();
         }
     }//GEN-LAST:event_districtComboActionPerformed
-
-    private void districtComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_districtComboItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_districtComboItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

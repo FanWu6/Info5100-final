@@ -355,6 +355,18 @@ public class SysData {
         
         return selectByExample;
      }
+     
+    public static int addOrderHousework(OrderHousework order) {
+        start();
+        int id = orderHouseworkMapper.insert(order);
+        if(id==1){
+            Tool.Success();
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+        return id;
+    }
      //OrderHouseWork end
      
      //Region

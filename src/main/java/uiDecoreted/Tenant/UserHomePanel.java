@@ -7,12 +7,17 @@ package uiDecoreted.Tenant;
 
 import Util.GlobalData;
 import Util.SysData;
+import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.Order;
+import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JPanel;
 
 /**
@@ -27,20 +32,33 @@ public class UserHomePanel extends javax.swing.JPanel {
     JPanel rightcontainer;
     UserAccount tenantAccount;
     House house;
+    List<String> orderType = new ArrayList<>();
     public UserHomePanel(JPanel rightcontainer,UserAccount userAccount) {
         this.tenantAccount = userAccount;
         this.rightcontainer = rightcontainer;
+       
+        
+        
         initComponents();
         nametxt.setBackground(new Color(0,0,0,0));
         phonetxt.setBackground(new Color(0,0,0,0));
         floortxt.setBackground(new Color(0,0,0,0));
-        eamailtxt.setBackground(new Color(0,0,0,0));
+        emailtxt.setBackground(new Color(0,0,0,0));
         areatxt.setBackground(new Color(0,0,0,0));
         subjecttxt.setBackground(new Color(0,0,0,0));
         messagetxt.setBackground(new Color(0,0,0,0));
         
-//        getInfo();
-//        setInfo();
+        
+        orderType.add("Maintain");
+        orderType.add("Clean");
+        orderType.add("Move");
+        selectservicecomb.removeAllItems();
+        for (SysData.ORDER_HOUSEWORK_TYPE type : SysData.ORDER_HOUSEWORK_TYPE.values()){
+            selectservicecomb.addItem(orderType.get(type.getIndex()));
+        }
+        
+        getInfo();
+        setInfo();
     }
     
     public void getInfo() {
@@ -51,6 +69,18 @@ public class UserHomePanel extends javax.swing.JPanel {
         addressLabel.setText(house.getAddress());
         roomnameLabel.setText(house.getName());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()))); // NOI18N
+        //user info
+        Employee employee = SysData.getEmployeeByUserAccountId(tenantAccount.getId());
+        if(employee!=null)
+            nametxt.setText(employee.getName());
+        
+        floortxt.setText(house.getFloor());
+        phonetxt.setText(tenantAccount.getPhone());
+        emailtxt.setText(tenantAccount.getEmail());
+        areatxt.setText(house.getArea());
+        subjecttxt.setText(selectservicecomb.getSelectedItem().toString());
+        
+        
     }
 
     /**
@@ -64,7 +94,7 @@ public class UserHomePanel extends javax.swing.JPanel {
 
         nametxt = new javax.swing.JTextField();
         phonetxt = new javax.swing.JTextField();
-        eamailtxt = new javax.swing.JTextField();
+        emailtxt = new javax.swing.JTextField();
         floortxt = new javax.swing.JTextField();
         areatxt = new javax.swing.JTextField();
         subjecttxt = new javax.swing.JTextField();
@@ -109,18 +139,18 @@ public class UserHomePanel extends javax.swing.JPanel {
         });
         add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 270, 50));
 
-        eamailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        eamailtxt.setForeground(new java.awt.Color(153, 153, 153));
-        eamailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        eamailtxt.setText("Email");
-        eamailtxt.setToolTipText("");
-        eamailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        eamailtxt.addActionListener(new java.awt.event.ActionListener() {
+        emailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        emailtxt.setForeground(new java.awt.Color(153, 153, 153));
+        emailtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        emailtxt.setText("Email");
+        emailtxt.setToolTipText("");
+        emailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        emailtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eamailtxtActionPerformed(evt);
+                emailtxtActionPerformed(evt);
             }
         });
-        add(eamailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 290, 40));
+        add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 290, 40));
 
         floortxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         floortxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -175,14 +205,19 @@ public class UserHomePanel extends javax.swing.JPanel {
         add(messagetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 790, 130));
 
         selectservicecomb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(selectservicecomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+        selectservicecomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectservicecombActionPerformed(evt);
+            }
+        });
+        add(selectservicecomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 160, -1));
 
         submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 submitBtnMousePressed(evt);
             }
         });
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 716, 130, 40));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 710, 130, 40));
 
         myOrderBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         myOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,7 +251,7 @@ public class UserHomePanel extends javax.swing.JPanel {
     private void myOrderLableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myOrderLableMousePressed
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
-        cardLayout.show(rightcontainer, "tenantOrderP");
+        cardLayout.show(rightcontainer, "TenantOrderPanel");
     }//GEN-LAST:event_myOrderLableMousePressed
 
     private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
@@ -227,9 +262,9 @@ public class UserHomePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_phonetxtActionPerformed
 
-    private void eamailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eamailtxtActionPerformed
+    private void emailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_eamailtxtActionPerformed
+    }//GEN-LAST:event_emailtxtActionPerformed
 
     private void floortxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floortxtActionPerformed
         // TODO add your handling code here:
@@ -249,18 +284,30 @@ public class UserHomePanel extends javax.swing.JPanel {
 
     private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
         // TODO add your handling code here:
-        List<Order> allOrders = GlobalData.getAllOrders();
-//        for(){
-//            //显示数据
-//        }
+        OrderHousework order = new OrderHousework();
+        order.setTenantId(tenantAccount.getId());
+        order.setHouseId(house.getId());
+        order.setStatus(SysData.ORDER_STATUS_TYPE.PEND.getStatus());
+        order.setHouseworkOrderType(selectservicecomb.getSelectedIndex());
+        
+        SysData.addOrderHousework(order);
     }//GEN-LAST:event_submitBtnMousePressed
+
+    private void selectservicecombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectservicecombActionPerformed
+        // TODO add your handling code here:
+        int idx = selectservicecomb.getSelectedIndex();
+        if(idx>=0)
+        {
+            subjecttxt.setText(selectservicecomb.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_selectservicecombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField areatxt;
     private javax.swing.JLabel bg;
-    private javax.swing.JTextField eamailtxt;
+    private javax.swing.JTextField emailtxt;
     private javax.swing.JTextField floortxt;
     private javax.swing.JLabel housePic;
     private javax.swing.JTextField messagetxt;
