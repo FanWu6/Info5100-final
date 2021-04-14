@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Move;
+package uiDecoreted.Mover;
 
 import uiDecoreted.Housework.*;
 import java.awt.CardLayout;

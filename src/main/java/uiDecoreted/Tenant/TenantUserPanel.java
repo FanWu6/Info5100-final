@@ -178,7 +178,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         Component currnetComponent = rightjPanel.getComponent(uiList.indexOf("RentalListPanel"));
         RentalListPanel rentalListPanel = (RentalListPanel)currnetComponent;
         rentalListPanel.displayHouseList();
-;
+
     }//GEN-LAST:event_rentBtnMousePressed
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed

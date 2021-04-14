@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Admin;
+package uiDecoreted.Manager;
 
 import javax.swing.JPanel;
 
@@ -11,13 +11,13 @@ import javax.swing.JPanel;
  *
  * @author Dengbowen
  */
-public class ViewMoveOrderPanel extends javax.swing.JPanel {
+public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewHouseworkOrderPanel
      */
     JPanel rightcontainer;
-    public ViewMoveOrderPanel(JPanel rightcontainer) {
+    public ViewMaintenanceOrderPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer = rightcontainer;
     }
@@ -78,8 +78,8 @@ public class ViewMoveOrderPanel extends javax.swing.JPanel {
         assign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(assign, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, 200, 70));
 
-        jLabel1.setText("Move");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        jLabel1.setText("Maintenance");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignBtnMousePressed

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Owner;
+package uiDecoreted.LandLord;
 
 import Util.GlobalData;
 import com.neu.infofinal.bean.House;
@@ -23,7 +23,7 @@ import uiDecoreted.Tenant.UserHomePanel;
  *
  * @author wufan
  */
-public class OwnerUserPanel extends javax.swing.JPanel {
+public class LandLordUserPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantUserPanel
@@ -32,16 +32,17 @@ public class OwnerUserPanel extends javax.swing.JPanel {
     CardLayout cardLayout;
     UserAccount userAccount;
     List<House> houses;
-    public OwnerUserPanel(JPanel container,UserAccount userAccount) {
+    public LandLordUserPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         this.userAccount = userAccount;
         initComponents();
         getInfo();
+        
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("ownerRentP",new OwnerRentPanel(rightjPanel,this.userAccount,houses));
+        rightjPanel.add("landLordManageP",new LandLordManagePanel(rightjPanel,this.userAccount,houses));
         rightjPanel.add("addOrderP",new AddOrderPanel(rightjPanel,this.userAccount));
-        cardLayout.show(rightjPanel,"ownerRentP");
+        cardLayout.show(rightjPanel,"landLordManageP");
         
         
         setInfo();
@@ -114,14 +115,6 @@ public class OwnerUserPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void getInfo(){
-        //useraccounts
-        
-        for(UserAccount ua:GlobalData.getUserAccounts()){
-            if(ua.getId()==3){
-                this.userAccount = ua;
-                break;
-            }
-        }
         //houses
         houses = GlobalData.getAllHouse();
         
@@ -140,7 +133,7 @@ public class OwnerUserPanel extends javax.swing.JPanel {
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"ownerRentP");
+        cardLayout.show(rightjPanel,"landLordManageP");
     }//GEN-LAST:event_homeBtnMousePressed
 
 
