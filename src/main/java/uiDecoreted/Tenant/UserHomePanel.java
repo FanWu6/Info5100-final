@@ -62,13 +62,13 @@ public class UserHomePanel extends javax.swing.JPanel {
     }
     
     public void getInfo() {
-        house = SysData.getHouseByTenantId(tenantAccount.getId());
+        house = SysData.getHouseByTenantId(tenantAccount.getId())==null?null:SysData.getHouseByTenantId(tenantAccount.getId());
     }
     
     public void setInfo() {
-        addressLabel.setText(house.getAddress());
-        roomnameLabel.setText(house.getName());
-        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()))); // NOI18N
+        addressLabel.setText(house.getAddress()==null?null:house.getAddress());
+        roomnameLabel.setText(house.getName()==null?null:house.getName());
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()==null?null:house.getImage()))); // NOI18N
         //user info
         Employee employee = SysData.getEmployeeByUserAccountId(tenantAccount.getId());
         if(employee!=null)
@@ -77,7 +77,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         floortxt.setText(house.getFloor());
         phonetxt.setText(tenantAccount.getPhone());
         emailtxt.setText(tenantAccount.getEmail());
-        areatxt.setText(house.getArea());
+        areatxt.setText(house.getArea()==null?null:house.getArea());
         subjecttxt.setText(selectservicecomb.getSelectedItem().toString());
         
         

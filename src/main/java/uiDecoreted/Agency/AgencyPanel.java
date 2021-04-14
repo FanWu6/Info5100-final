@@ -34,6 +34,7 @@ public class AgencyPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         initComponents();
        // getInfo();
+       
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("viewTenantP",new ViewTenantPanel(rightjPanel,this.userAccount));

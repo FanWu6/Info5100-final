@@ -73,9 +73,10 @@ public class SysData {
         private ORDER_TYPE(int index) {
             this.index = index;
         }
-         public int getIndex() {
+        public int getIndex() {
             return index;
         }
+    
     }
     
     public enum ORDER_HOUSEWORK_TYPE{
