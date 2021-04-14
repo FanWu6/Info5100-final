@@ -65,7 +65,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
         acceptBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         acceptBtn.setForeground(new java.awt.Color(255, 255, 255));
         acceptBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acceptBtn.setText("Accept");
+        acceptBtn.setText("Completed");
         acceptBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 acceptBtnMousePressed(evt);
@@ -79,7 +79,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
         refusebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         refusebtn.setForeground(new java.awt.Color(255, 255, 255));
         refusebtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        refusebtn.setText("Refuse");
+        refusebtn.setText("Assign to me");
         refusebtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 refusebtnMousePressed(evt);
@@ -91,6 +91,11 @@ public class ViewTenantPanel extends javax.swing.JPanel {
         add(refuse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 680, 200, 70));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,6 +106,10 @@ public class ViewTenantPanel extends javax.swing.JPanel {
     private void refusebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refusebtnMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_refusebtnMousePressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
