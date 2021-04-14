@@ -5,21 +5,53 @@
  */
 package uiDecoreted.Agency;
 
+import Util.ImageRender;
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.UserAccount;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Dengbowen
  */
-public class ViewOwnerPanel extends javax.swing.JPanel {
+public class ViewLandLordPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewTenantPanel
      */
+    List<House> houses;
+    UserAccount agencyAccount;
     JPanel rightcontainer;
-    public ViewOwnerPanel(JPanel rightcontainer) {
+    public ViewLandLordPanel(JPanel rightcontainer,UserAccount agencyAccount) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        this.agencyAccount = agencyAccount;
+        displayHouseList();
+    }
+    
+    public void displayHouseList() {
+        houses = SysData.getAllHouses();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        jTable1.setRowHeight(105);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(new ImageRender());
+        for (House house : houses) {
+            Object[] row = new Object[6];
+            if(house.getAgencyId()==agencyAccount.getId() || house.getAgencyId()==null){
+                row[0] = SysData.getUserAccountbyID(house.getOwnerId()).getUsername();
+                row[1] = house.getImage();
+                row[2] = Tool.strToMultilineHTML(house.getDescrib(), ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";
+                row[3] = Tool.strToMultilineHTML(house.getAddress(), ",");
+                row[4] = house.getPrice();
+                row[5] = house.getAgencyId()==null?"pending":"completed";
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -43,13 +75,13 @@ public class ViewOwnerPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Landlord", "Address", "Layout", "Price"
+                "Landlord", "Image", "Description", "Address", "Price", "Status"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));

@@ -227,6 +227,19 @@ public class SysData {
         
         return selectByExample.get(0);
     }
+    
+    public static UserAccount getUserAccountbyID(int Id){
+        start();
+        UserAccountExample useraccountExample = new UserAccountExample();
+        useraccountExample.createCriteria().andIdEqualTo(Id);
+        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
     //UserAccount end--
      
      //House

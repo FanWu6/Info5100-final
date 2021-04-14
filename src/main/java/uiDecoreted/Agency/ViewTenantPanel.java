@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Agency;
 
+import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
 
 /**
@@ -16,10 +17,12 @@ public class ViewTenantPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewTenantPanel
      */
+    UserAccount agencyAccount;
     JPanel rightcontainer;
-    public ViewTenantPanel(JPanel rightcontainer) {
+    public ViewTenantPanel(JPanel rightcontainer,UserAccount agencyAccount) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        this.agencyAccount = agencyAccount;
     }
 
     /**
