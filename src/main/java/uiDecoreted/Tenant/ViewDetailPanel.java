@@ -8,7 +8,10 @@ package uiDecoreted.Tenant;
 import Util.SysData;
 import Util.Tool;
 import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.Order;
 import java.awt.CardLayout;
+import java.util.HashSet;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -21,17 +24,19 @@ public class ViewDetailPanel extends javax.swing.JPanel {
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    int houseId;
-    public ViewDetailPanel(JPanel rightcontainer,int houseId) {
+    Integer houseId;
+    public ViewDetailPanel(JPanel rightcontainer,Integer houseId) {
         this.houseId = houseId;
         this.rightcontainer = rightcontainer;
         initComponents();
         
-        setInfo();
+        if(houseId!=null)
+            setHouseInfo(houseId);
     }
     
-    public void setInfo(){
-        House house = SysData.getHouseByHouseId(this.houseId);
+    public void setHouseInfo(Integer houseId){
+        this.houseId = houseId;
+        House house = SysData.getHouseByHouseId(houseId);
         nameLabel.setText(house.getName());
         addressLabel.setText(Tool.strToMultilineHTML(house.getAddress(),",") );
         priceLabel.setText(house.getPrice());
@@ -179,15 +184,40 @@ public class ViewDetailPanel extends javax.swing.JPanel {
 //        Component[] components = container.getComponents();
 //        Component component = components[components.length-1];
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "tP1");
+        layout.show(rightcontainer, "RentalListPanel");
     }//GEN-LAST:event_backBtnMousePressed
 
     private void requestapplybtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestapplybtnMousePressed
         // TODO add your handling code here:
+        TenantUserPanel parent = (TenantUserPanel)rightcontainer.getParent();
+        House house = SysData.getHouseByTenantId(parent.userAccount.getId());
+        if(house!=null){
+            Tool.InfoString("You already have a rental");
+            return;
+        }
+        Order order = new Order();
+        order.setTenantId(parent.userAccount.getId());
+        order.setHouseId(houseId);
+        order.setOrderType(SysData.ORDER_TYPE.SIGN.getIndex());
+        order.setStatus(SysData.ORDER_STATUS_TYPE.PEND.getStatus());
+        SysData.insertOrder(order);
     }//GEN-LAST:event_requestapplybtnMousePressed
 
     private void requesttourbtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requesttourbtnMousePressed
         // TODO add your handling code here:
+        //约看
+        TenantUserPanel parent = (TenantUserPanel)rightcontainer.getParent();
+        House house = SysData.getHouseByTenantId(parent.userAccount.getId());
+        if(house!=null){
+            Tool.InfoString("You already have a rental");
+            return;
+        }
+        Order order = new Order();
+        order.setTenantId(parent.userAccount.getId());
+        order.setHouseId(houseId);
+        order.setOrderType(SysData.ORDER_TYPE.APPOINTMENT.getIndex());
+        order.setStatus(SysData.ORDER_STATUS_TYPE.PEND.getStatus());
+        SysData.insertOrder(order);
     }//GEN-LAST:event_requesttourbtnMousePressed
 
 

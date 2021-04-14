@@ -27,6 +27,8 @@ public class House {
 
     private String layout;
 
+    private Integer region;
+
     public Integer getId() {
         return id;
     }
@@ -129,5 +131,13 @@ public class House {
 
     public void setLayout(String layout) {
         this.layout = layout == null ? null : layout.trim();
+    }
+
+    public Integer getRegion() {
+        return region;
+    }
+
+    public void setRegion(Integer region) {
+        this.region = region;
     }
 }

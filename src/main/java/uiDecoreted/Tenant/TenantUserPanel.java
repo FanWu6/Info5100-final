@@ -6,9 +6,13 @@
 package uiDecoreted.Tenant;
 
 import Util.GlobalData;
+import Util.SysData;
+import Util.Tool;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 //import jdk.nashorn.internal.objects.Global;
@@ -30,7 +34,8 @@ public class TenantUserPanel extends javax.swing.JPanel {
     JPanel container;
     CardLayout cardLayout;
     UserAccount userAccount;
-    List<House> houses;
+    
+    List<String> uiList;
 //    House myhouse;
     
     public TenantUserPanel(JPanel container,UserAccount userAccount) {
@@ -45,28 +50,36 @@ public class TenantUserPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("tP1",new RentalListPanel(rightjPanel,houses));
-//        rightjPanel.add("tP2",new ViewDetailPanel(rightjPanel));
-        rightjPanel.add("userhomeP",new UserHomePanel(rightjPanel,this.userAccount));
-        rightjPanel.add("tenantOrderP",new TenantOrderPanel(rightjPanel));
-        rightjPanel.add("commentP",new CommentPanel(rightjPanel));
-        cardLayout.show(rightjPanel,"tP1");
+        
+        uiList = new ArrayList<>();
+        uiList.add("RentalListPanel");
+        uiList.add("UserHomePanel");
+        uiList.add("TenantOrderPanel");
+        uiList.add("CommentPanel");
+        uiList.add("ViewDetailPanel");
+        for (int i = 0; i < uiList.size(); i++) {
+            String ui = uiList.get(i);
+            switch(ui){
+                case "RentalListPanel":rightjPanel.add("RentalListPanel",new RentalListPanel(rightjPanel));
+                    break;
+                case "UserHomePanel":rightjPanel.add("UserHomePanel",new UserHomePanel(rightjPanel,this.userAccount));
+                    break;
+                case "TenantOrderPanel":rightjPanel.add("TenantOrderPanel",new TenantOrderPanel(rightjPanel));
+                    break;
+                case "CommentPanel":rightjPanel.add("CommentPanel",new CommentPanel(rightjPanel));
+                    break;
+                case "ViewDetailPanel":rightjPanel.add("ViewDetailPanel",new ViewDetailPanel(rightjPanel,null));
+                    break;
+            }   
+        }
+        
+        cardLayout.show(rightjPanel,"RentalListPanel");
         
         
-        
-        setInfo();
     }
     
     public void getInfo(){
-        //useraccounts
-        for(UserAccount ua:GlobalData.getUserAccounts()){
-            if(ua.getId()==2){
-                this.userAccount = ua;
-                break;
-            }
-        }
         //houses
-        houses = GlobalData.getAllHouse();
     }
     public void setInfo(){
         nameLabel.setText(userAccount.getUsername());
@@ -160,12 +173,17 @@ public class TenantUserPanel extends javax.swing.JPanel {
 
     private void rentBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"tP1");
+        getInfo();
+        cardLayout.show(rightjPanel,"RentalListPanel");
+        Component currnetComponent = rightjPanel.getComponent(uiList.indexOf("RentalListPanel"));
+        RentalListPanel rentalListPanel = (RentalListPanel)currnetComponent;
+        rentalListPanel.displayHouseList();
+;
     }//GEN-LAST:event_rentBtnMousePressed
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"userhomeP");
+        cardLayout.show(rightjPanel,"UserHomePanel");
     }//GEN-LAST:event_homeBtnMousePressed
 
 

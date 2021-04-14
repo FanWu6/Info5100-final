@@ -16,6 +16,8 @@ import com.neu.infofinal.bean.OrderExample;
 import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.OrderHouseworkExample;
 import com.neu.infofinal.bean.Organization;
+import com.neu.infofinal.bean.Region;
+import com.neu.infofinal.bean.RegionExample;
 import com.neu.infofinal.bean.User;
 import com.neu.infofinal.bean.UserAccount;
 import com.neu.infofinal.bean.UserAccountExample;
@@ -26,6 +28,7 @@ import com.neu.infofinal.mapper.HouseMapper;
 import com.neu.infofinal.mapper.OrderHouseworkMapper;
 import com.neu.infofinal.mapper.OrderMapper;
 import com.neu.infofinal.mapper.OrganizationMapper;
+import com.neu.infofinal.mapper.RegionMapper;
 import com.neu.infofinal.mapper.UserAccountMapper;
 import com.neu.infofinal.mapper.UserMapper;
 import java.io.IOException;
@@ -42,7 +45,7 @@ import org.apache.log4j.Logger;
  * @author wufan
  */
 public class SysData {
-    static enum ACCOUNT_TYPE{
+    public enum ACCOUNT_TYPE{
         SYSTEM_ADMIN(0),
         TENANT(1),
         LANDLORD(2),
@@ -57,19 +60,25 @@ public class SysData {
         private ACCOUNT_TYPE(int index) {
             this.index = index;
         }
+        public int getIndex() {
+            return index;
+        }
+        
     }
     
-    static enum ORDER_TYPE{
+    public enum ORDER_TYPE{
         APPOINTMENT(0),
         SIGN(1);
         private int index;
         private ORDER_TYPE(int index) {
             this.index = index;
         }
-        
+         public int getIndex() {
+            return index;
+        }
     }
     
-    static enum ORDER_HOUSEWORK_TYPE{
+    public enum ORDER_HOUSEWORK_TYPE{
         MAINTAIN(0),
         CLEAN(1),
         MOVE(2);
@@ -77,9 +86,12 @@ public class SysData {
         private ORDER_HOUSEWORK_TYPE(int index) {
             this.index = index;
         } 
+         public int getIndex() {
+            return index;
+        }
     }
     
-    static enum ORDER_STATUS_TYPE{
+    public enum ORDER_STATUS_TYPE{
         PEND("pending"),
         PROCESS("processing"),
         FINISH("finished");
@@ -87,6 +99,11 @@ public class SysData {
         private ORDER_STATUS_TYPE(String status) {
             this.status = status;
         }
+
+        public String getStatus() {
+            return status;
+        }
+        
     }
     
     static SqlSessionFactory sqlSessionFactory;
@@ -99,6 +116,7 @@ public class SysData {
     static HouseMapper houseMapper; 
     static OrderMapper orderMapper;
     static OrderHouseworkMapper orderHouseworkMapper;
+    static RegionMapper regionMapper;
     
    
     public static void Config(){
@@ -124,6 +142,7 @@ public class SysData {
          houseMapper = sqlSession.getMapper(HouseMapper.class);
          orderMapper = sqlSession.getMapper(OrderMapper.class);
          orderHouseworkMapper=sqlSession.getMapper(OrderHouseworkMapper.class);
+         regionMapper=sqlSession.getMapper(RegionMapper.class);
     }
     
     //User-------------------------------
@@ -249,6 +268,19 @@ public class SysData {
         return selectByExample.get(0);
     }*/
      
+     public static List<House> getHousesAvailable(){
+        start();
+        HouseExample houseExample = new HouseExample();
+        houseExample.createCriteria().andTenantIdIsNull();
+        List<House> selectByExample = houseMapper.selectByExample(houseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample;
+     }
+     
      public static List<House> getAllHouses(){
         start();
         HouseExample houseExample = new HouseExample();
@@ -291,6 +323,17 @@ public class SysData {
         
         return selectByExample;
     }
+     
+    public static void insertOrder(Order order){
+        start();
+        int insert = orderMapper.insert(order);
+        if(insert==1){
+            Tool.InfoString("insert order success");
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
      //Order end 
     
      //OrderHouseWork
@@ -304,6 +347,17 @@ public class SysData {
         return selectByExample;
      }
      //OrderHouseWork end
+     
+     //Region
+     public static List<Region> getAllRegions(){
+        start();
+        RegionExample regionExample  = new RegionExample();
+        regionExample.createCriteria().andIdIsNotNull();
+        List<Region> selectByExample = regionMapper.selectByExample(regionExample);
+        commitAndClose();
+        return selectByExample;
+     }
+     //Region end
     
     public static void commitAndClose(){
         if (sqlSession != null){

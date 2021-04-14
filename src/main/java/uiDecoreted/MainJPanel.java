@@ -8,6 +8,8 @@ package uiDecoreted;
 import Util.GlobalData;
 import Util.JTextFieldHintListener;
 import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.TenantUserPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -165,8 +167,15 @@ public class MainJPanel extends javax.swing.JPanel {
 
     private void signInBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInBtnMousePressed
         // TODO add your handling code here:
+        UserAccount userAccount = SysData.getUserAccount(usernametxt.getText(), String.valueOf(passwordtxt.getPassword()));
+        if(userAccount==null){
+            Tool.InfoString("Username or password is incorrect!");
+            return;
+        }
         CardLayout layout = (CardLayout)container.getLayout();
-        container.add("2",new TenantUserPanel(container,null));
+        if(SysData.ACCOUNT_TYPE.TENANT.getIndex()==userAccount.getType()){
+            container.add("TenantUserPanel",new TenantUserPanel(container,userAccount));
+        }
         layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -61,5 +62,11 @@ public class Tool {
 
     public static void InfoString(String str) {
         JOptionPane.showMessageDialog(null, str, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static Component getCurrnetComponent(JPanel jPanel){
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        return component;
     }
 }
