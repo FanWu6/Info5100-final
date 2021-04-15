@@ -33,23 +33,18 @@ public class AgencyPanel extends javax.swing.JPanel {
         this.container = container;
         this.userAccount = userAccount;
         initComponents();
-        getInfo();
+       // getInfo();
+       
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewTenantP",new ViewTenantPanel(rightjPanel));
-        rightjPanel.add("viewOwnerP",new ViewOwnerPanel(rightjPanel));
+        rightjPanel.add("viewTenantP",new ViewTenantPanel(rightjPanel,this.userAccount));
+        rightjPanel.add("viewLandLordP",new ViewLandLordPanel(rightjPanel,this.userAccount));
         cardLayout.show(rightjPanel,"viewTenantP");
         setInfo();
     }
     public void getInfo(){
         //useraccounts
         
-        for(UserAccount ua:GlobalData.getUserAccounts()){
-            if(ua.getId()==4){
-                this.userAccount = ua;
-                break;
-            }
-        }
         //houses
         //houses = GlobalData.getAllHouse();
         
@@ -146,7 +141,7 @@ public class AgencyPanel extends javax.swing.JPanel {
 
     private void ownerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ownerBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewOwnerP");
+        cardLayout.show(rightjPanel,"viewLandLordP");
     }//GEN-LAST:event_ownerBtnMousePressed
 
     private void tenantBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tenantBtnMousePressed

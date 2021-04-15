@@ -181,6 +181,10 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("LandLordUserPanel",new LandLordUserPanel(container,userAccount));
         }
         layout.next(container);
+        if(SysData.ACCOUNT_TYPE.AGENCY.getIndex()==userAccount.getType()){
+            container.add("AgencyPanel",new AgencyPanel(container,userAccount));
+        }
+        layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed

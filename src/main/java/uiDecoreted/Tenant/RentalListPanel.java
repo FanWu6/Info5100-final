@@ -45,7 +45,7 @@ public class RentalListPanel extends javax.swing.JPanel {
        
        
         
-       districtCombo.removeAllItems();
+        districtCombo.removeAllItems();
         allRegions = SysData.getAllRegions();
         for (Region region : allRegions){
             districtCombo.addItem(region.getName());

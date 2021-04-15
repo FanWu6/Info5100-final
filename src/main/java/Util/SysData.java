@@ -73,9 +73,10 @@ public class SysData {
         private ORDER_TYPE(int index) {
             this.index = index;
         }
-         public int getIndex() {
+        public int getIndex() {
             return index;
         }
+    
     }
     
     public enum ORDER_HOUSEWORK_TYPE{
@@ -219,6 +220,19 @@ public class SysData {
          start();
         UserAccountExample useraccountExample = new UserAccountExample();
         useraccountExample.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
+        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
+    
+    public static UserAccount getUserAccountbyID(int Id){
+        start();
+        UserAccountExample useraccountExample = new UserAccountExample();
+        useraccountExample.createCriteria().andIdEqualTo(Id);
         List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
         //关闭连接和提交数据
         commitAndClose();
