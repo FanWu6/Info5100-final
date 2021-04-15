@@ -307,6 +307,17 @@ public class SysData {
         return id;
     }
      
+     public static void updateHouse(House house) {
+        start();
+        int update = houseMapper.updateByPrimaryKey(house);
+        if(update==1){
+            Tool.Success();
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
+     
      //House end
      
      //Owner
@@ -343,6 +354,17 @@ public class SysData {
         }
         commitAndClose();
     }
+    
+    public static void updateOrder(Order order){
+        start();
+        int update = orderMapper.updateByPrimaryKey(order);
+        if(update==1){
+            Tool.InfoString("update order success");
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
      //Order end 
     
      //OrderHouseWork
@@ -366,6 +388,17 @@ public class SysData {
         }
         commitAndClose();
         return id;
+    }
+    
+     public static void updateOrderHousework(OrderHousework order){
+        start();
+        int update = orderHouseworkMapper.updateByPrimaryKey(order);
+        if(update==1){
+            Tool.InfoString("update orderhousework success");
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
     }
      //OrderHouseWork end
      

@@ -57,15 +57,15 @@ public class UserHomePanel extends javax.swing.JPanel {
             selectservicecomb.addItem(orderType.get(type.getIndex()));
         }
         
-        getInfo();
         setInfo();
     }
     
-    public void getInfo() {
-        house = SysData.getHouseByTenantId(tenantAccount.getId());
-    }
     
     public void setInfo() {
+         house = SysData.getHouseByTenantId(tenantAccount.getId());
+        if(house==null){
+            return;
+        }
         addressLabel.setText(house.getAddress());
         roomnameLabel.setText(house.getName());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()))); // NOI18N
