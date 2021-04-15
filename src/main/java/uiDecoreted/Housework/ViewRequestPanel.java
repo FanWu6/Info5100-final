@@ -179,6 +179,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         OrderHousework orderHousework = (OrderHousework)tblHouseworkAll.getValueAt(row,0);
         orderHousework.setWorkderId(employee.getId());
         orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()));
+        orderHousework.setEnterpriseId(employee.getEnterpriseId());
         SysData.updateOrderHousework(orderHousework);
         refreshTable1();
         refreshTable2();
