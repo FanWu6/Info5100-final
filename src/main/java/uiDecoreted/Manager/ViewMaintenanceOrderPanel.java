@@ -113,13 +113,13 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Customer", "Type", "Date", "Status", "Comment"
+                "Order ID", "Customer", "Type", "Date", "Status", "Comment"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
