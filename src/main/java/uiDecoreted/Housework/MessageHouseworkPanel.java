@@ -5,6 +5,8 @@
  */
 package uiDecoreted.Housework;
 
+import Util.Tool;
+import com.neu.infofinal.bean.OrderHousework;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -20,9 +22,11 @@ public class MessageHouseworkPanel extends javax.swing.JPanel {
      * Creates new form CommentPanel
      */
     JPanel rightcontainer;
-    public MessageHouseworkPanel(JPanel rightcontainer) {
+    OrderHousework orderHousework;
+    public MessageHouseworkPanel(JPanel rightcontainer,OrderHousework orderHousework) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        this.orderHousework=orderHousework;
         commentText.setBackground(new Color(0,0,0,0));
     }
 
@@ -66,6 +70,11 @@ public class MessageHouseworkPanel extends javax.swing.JPanel {
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         submitBtn.setText("Submit");
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                submitBtnMousePressed(evt);
+            }
+        });
         add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 200, 60));
 
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
@@ -81,6 +90,13 @@ public class MessageHouseworkPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
         layout.show(rightcontainer, "ViewHouseWorkOrderDetailPanel");
     }//GEN-LAST:event_backBtnMousePressed
+
+    private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
+        // TODO add your handling code here:
+        orderHousework.setComment(this.commentText.getText());
+        Tool.InfoString("Comment submitted!");
+
+    }//GEN-LAST:event_submitBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

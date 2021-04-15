@@ -6,6 +6,11 @@
 package uiDecoreted.Housework;
 
 import Util.JTextFieldHintListener;
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -21,14 +26,22 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    public ViewHouseWorkOrderDetailPanel(JPanel rightcontainer) {
+    OrderHousework orderHousework;
+    UserAccount tenantAccount;
+    House tenantHouse; 
+    public ViewHouseWorkOrderDetailPanel(JPanel rightcontainer,OrderHousework orderHousework,int tenantID) {
         this.rightcontainer = rightcontainer;
+        this.orderHousework=orderHousework;
+        tenantAccount=SysData.getUserAccountbyID(tenantID);
+
         initComponents();
         txtaddress.addFocusListener(new JTextFieldHintListener(txtaddress, "Username", new Color(153, 153, 153)));
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
         txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Email", new Color(153, 153, 153)));
         txtearea.addFocusListener(new JTextFieldHintListener(txtearea, "Area", new Color(153, 153, 153)));
+        getinfo();
+        setinfo();
     }
 
     /**
@@ -170,6 +183,8 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
 
     private void leaveMessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leaveMessageMousePressed
         // TODO add your handling code here:
+        rightcontainer.add("MessageHouseworkPanel",new MessageHouseworkPanel(rightcontainer,orderHousework));
+
         CardLayout layout = (CardLayout) rightcontainer.getLayout();
         layout.show(rightcontainer, "MessageHouseworkPanel");
     }//GEN-LAST:event_leaveMessageMousePressed
@@ -209,4 +224,20 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
+    
+    
+    private void getinfo() {
+        tenantHouse=SysData.getHouseByTenantId(tenantAccount.getId());
+    }
+    private void setinfo() {
+//        this.txtaddress.setText(Tool.strToMultilineHTML(tenantHouse.getAddress(),","));
+        this.txtaddress.setText(tenantHouse.getAddress());
+        this.txtearea.setText(tenantHouse.getArea());
+        this.txtemail.setText(tenantAccount.getEmail());
+        this.txtphone.setText(tenantAccount.getPhone());
+        this.txtname.setText(tenantAccount.getUsername());
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
+    }
+
+
 }

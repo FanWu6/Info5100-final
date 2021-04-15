@@ -185,6 +185,10 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("AgencyPanel",new AgencyPanel(container,userAccount));
         }
         layout.next(container);
+        if(SysData.ACCOUNT_TYPE.CLEANER.getIndex()==userAccount.getType()){
+            container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
+        }
+        layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
@@ -216,9 +220,10 @@ public class MainJPanel extends javax.swing.JPanel {
 
     private void housworkbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_housworkbtnActionPerformed
         // TODO add your handling code here:
-       CardLayout layout = (CardLayout)container.getLayout();
-       container.add("HouseworkPanel",new HouseworkPanel(container));
-       layout.next(container);
+//       CardLayout layout = (CardLayout)container.getLayout();
+//       container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
+//       layout.next(container);
+        Tool.InfoString("登陆 clean1 clean1");
     }//GEN-LAST:event_housworkbtnActionPerformed
 
     private void maintenancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenancebtnActionPerformed

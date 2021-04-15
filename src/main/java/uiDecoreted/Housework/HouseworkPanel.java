@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Housework;
 
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -21,15 +22,16 @@ public class HouseworkPanel extends javax.swing.JPanel {
      */
     JPanel container;
     CardLayout cardLayout;
-    public HouseworkPanel(JPanel container) {
+    UserAccount userAccount;
+    public HouseworkPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
+        this.userAccount=userAccount;
         initComponents();
+    
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel));
-        rightjPanel.add("ViewHouseWorkOrderDetailPanel",new ViewHouseWorkOrderDetailPanel(rightjPanel));
-        rightjPanel.add("MessageHouseworkPanel",new MessageHouseworkPanel(rightjPanel));
+        rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel,userAccount));
         
         cardLayout.show(rightjPanel,"viewRequestP");
     }
