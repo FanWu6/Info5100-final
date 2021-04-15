@@ -6,6 +6,10 @@
 package uiDecoreted.Mover;
 
 import Util.JTextFieldHintListener;
+import Util.SysData;
+import com.neu.infofinal.bean.House;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Housework.*;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
@@ -22,14 +26,22 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
      * Creates new form TenantPanel1
      */
     JPanel rightcontainer;
-    public ViewMoveOrderDetailPanel(JPanel rightcontainer) {
+    OrderHousework orderHousework;
+    UserAccount tenantAccount;
+    House tenantHouse;
+    public ViewMoveOrderDetailPanel(JPanel rightcontainer, OrderHousework orderHousework, int tenantID) {
         this.rightcontainer = rightcontainer;
+        this.orderHousework = orderHousework;
+        tenantAccount = SysData.getUserAccountbyID(tenantID);
+
         initComponents();
         txtaddress.addFocusListener(new JTextFieldHintListener(txtaddress, "Username", new Color(153, 153, 153)));
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
         txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Email", new Color(153, 153, 153)));
-        txtdestinaiton.addFocusListener(new JTextFieldHintListener(txtdestinaiton, "Destination", new Color(153, 153, 153)));
+        txtdestinaiton.addFocusListener(new JTextFieldHintListener(txtdestinaiton, "Area", new Color(153, 153, 153)));
+        getinfo();
+        setinfo();
     }
 
     /**
@@ -221,7 +233,19 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdestinaitonActionPerformed
 
+    private void getinfo() {
+        tenantHouse = SysData.getHouseByTenantId(tenantAccount.getId());
+    }
 
+    private void setinfo() {
+//        this.txtaddress.setText(Tool.strToMultilineHTML(tenantHouse.getAddress(),","));
+        this.txtaddress.setText(tenantHouse.getAddress());
+//        this.txtearea.setText(tenantHouse.getArea());
+        this.txtemail.setText(tenantAccount.getEmail());
+        this.txtphone.setText(tenantAccount.getPhone());
+        this.txtname.setText(tenantAccount.getUsername());
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;

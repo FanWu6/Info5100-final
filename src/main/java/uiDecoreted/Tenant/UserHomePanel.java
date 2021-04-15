@@ -6,6 +6,7 @@
 package uiDecoreted.Tenant;
 
 import Util.GlobalData;
+import Util.JTextFieldHintListener;
 import Util.SysData;
 import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.House;
@@ -84,7 +85,8 @@ public class UserHomePanel extends javax.swing.JPanel {
         emailtxt.setText(tenantAccount.getEmail());
         areatxt.setText(house.getArea());
         subjecttxt.setText(selectservicecomb.getSelectedItem().toString());
-        
+        messagetxt.addFocusListener(new JTextFieldHintListener(messagetxt, "Input Here...", new Color(153, 153, 153)));
+
         
     }
 

@@ -183,6 +183,10 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("ManagerPanel",new ManagerPanel(container,userAccount));
         }else if(SysData.ACCOUNT_TYPE.CLEANER.getIndex()==userAccount.getType()){
             container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
+        }else if (SysData.ACCOUNT_TYPE.MAINTAINER.getIndex() == userAccount.getType()) {
+            container.add("MaintenancePanel", new MaintenancePanel(container, userAccount));
+        }else if (SysData.ACCOUNT_TYPE.MOVER.getIndex() == userAccount.getType()) {
+            container.add("MovePanel", new MovePanel(container, userAccount));
         }
         layout.next(container);
         
@@ -225,14 +229,14 @@ public class MainJPanel extends javax.swing.JPanel {
     private void maintenancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenancebtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("MaintenancePanel",new MaintenancePanel(container));
+       container.add("MaintenancePanel",new MaintenancePanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_maintenancebtnActionPerformed
 
     private void movebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movebtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("MovePanel",new MovePanel(container));
+       container.add("MovePanel",new MovePanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_movebtnActionPerformed
 

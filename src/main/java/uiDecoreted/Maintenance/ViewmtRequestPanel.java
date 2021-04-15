@@ -4,10 +4,17 @@
  * and open the template in the editor.
  */
 package uiDecoreted.Maintenance;
+import Util.SysData;
 import uiDecoreted.Housework.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,13 +26,33 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
      * Creates new form ViewRequestPanel
      */
     JPanel rightcontainer;
-    public ViewmtRequestPanel(JPanel rightcontainer) {
+    List<OrderHousework> orderHouseworks;
+    UserAccount userAccount;
+    Employee employee;
+    Enterprise enterprise;
+    public ViewmtRequestPanel(JPanel rightcontainer,UserAccount userAccount) {
         initComponents();
         this.rightcontainer = rightcontainer;
-        Tool.tableStyle1(jTable1, jScrollPane1);
-        Tool.tableStyle1(jTable3, jScrollPane3);
+        this.userAccount = userAccount;
+        Tool.tableStyle1(tblHouseworkAll, jScrollPane1);
+        Tool.tableStyle1(tblHouseworkMy2, jScrollPane3);
+        getInfo();
+        setInfo();
+        refreshTable1();
+        refreshTable2();
     }
 
+    public void getInfo() {
+        orderHouseworks = SysData.getAllOrderHouseworks();
+        this.employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        this.enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
+    }
+
+    public void setInfo() {
+        lblCompany.setText(this.enterprise.getName());
+//        roomnameLabel.setText(house.getName());
+//        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage()))); // NOI18N
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,20 +62,46 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHouseworkAll = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblHouseworkMy2 = new javax.swing.JTable();
         assigntomebtn = new javax.swing.JLabel();
         assigntome = new javax.swing.JLabel();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
         detailBtn = new javax.swing.JLabel();
         detailBack = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         bkn = new javax.swing.JLabel();
+        lblCompany = new javax.swing.JLabel();
+        assigntome1 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblHouseworkAll.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Customer", "Type", "Date", "Status", "Comment"
+            }
+        ));
+        jScrollPane1.setViewportView(tblHouseworkAll);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
+
+        tblHouseworkMy2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Customer", "Type", "Date", "Status", "Comment"
+            }
+        ));
+        jScrollPane3.setViewportView(tblHouseworkMy2);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 850, 190));
 
         assigntomebtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         assigntomebtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,51 +145,115 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         detailBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(detailBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 680, 200, 70));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 850, 190));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
-
         bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maintenance/maintanx.png"))); // NOI18N
         add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 40, 520, 800));
+
+        lblCompany.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        lblCompany.setForeground(new java.awt.Color(255, 255, 255));
+        lblCompany.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCompany.setText("Company");
+        lblCompany.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblCompanyMousePressed(evt);
+            }
+        });
+        add(lblCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 200, 50));
+
+        assigntome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/White1.png"))); // NOI18N
+        add(assigntome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assigntomebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtnMousePressed
         // TODO add your handling code here:
+        int row = tblHouseworkAll.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework) tblHouseworkAll.getValueAt(row, 0);
+        orderHousework.setWorkderId(employee.getId());
+        orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()));
+        orderHousework.setEnterpriseId(employee.getEnterpriseId());
+        SysData.updateOrderHousework(orderHousework);
+        refreshTable1();
+        refreshTable2();
     }//GEN-LAST:event_assigntomebtnMousePressed
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
+        int row = tblHouseworkMy2.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework) tblHouseworkMy2.getValueAt(row, 0);
+        orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.FINISH.getStatus()));
+        SysData.updateOrderHousework(orderHousework);
+        refreshTable1();
+        refreshTable2();
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
         // TODO add your handling code here:
-        CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
+        // TODO add your handling code here:
+        int row = tblHouseworkMy2.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row in my housework order!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework) tblHouseworkMy2.getValueAt(row, 0);
+        int tenantAccount = orderHousework.getTenantId();
+        rightcontainer.add("ViewMaintanOrderDetailPanel", new ViewMaintanOrderDetailPanel(rightcontainer, orderHousework, tenantAccount));
+        CardLayout cardLayout = (CardLayout) rightcontainer.getLayout();
         cardLayout.show(rightcontainer, "ViewMaintanOrderDetailPanel");
     }//GEN-LAST:event_detailBtnMousePressed
 
+    private void lblCompanyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCompanyMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCompanyMousePressed
+    private void refreshTable1() {
+        DefaultTableModel model = (DefaultTableModel) tblHouseworkAll.getModel();
+        model.setRowCount(0);
+        for (OrderHousework ordH : orderHouseworks) {
+            if (ordH.getHouseworkOrderType() == 2) {
+                Object[] row = new Object[6];
+//               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
+                //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
+                row[0] = ordH;
+                row[1] = ordH.getTenantId();
+                row[2] = "Maintenance";
+                row[3] = ordH.getDate();
+                row[4] = ordH.getStatus();
+                row[5] = ordH.getComment();
+                model.addRow(row);
+            }
 
+        }
+    }
+    private void refreshTable2() {
+        DefaultTableModel model = (DefaultTableModel) tblHouseworkMy2.getModel();
+        model.setRowCount(0);
+        for (OrderHousework ordH : orderHouseworks) {
+
+            if (ordH.getHouseworkOrderType() == 2 && ordH.getWorkderId() == employee.getId()) {
+                Object[] row = new Object[6];
+                row[0] = ordH;
+                row[1] = ordH.getTenantId();
+                row[2] = "Maintenance";
+                row[3] = ordH.getDate();
+                row[4] = ordH.getStatus();
+                row[5] = ordH.getComment();
+                model.addRow(row);
+            }
+
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assigntome;
+    private javax.swing.JLabel assigntome1;
     private javax.swing.JLabel assigntomebtn;
     private javax.swing.JLabel bkn;
     private javax.swing.JLabel completed;
@@ -145,7 +262,8 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
     private javax.swing.JLabel detailBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JLabel lblCompany;
+    private javax.swing.JTable tblHouseworkAll;
+    private javax.swing.JTable tblHouseworkMy2;
     // End of variables declaration//GEN-END:variables
 }

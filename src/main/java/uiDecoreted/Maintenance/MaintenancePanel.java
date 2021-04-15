@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Maintenance;
 
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Housework.*;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -22,15 +23,14 @@ public class MaintenancePanel extends javax.swing.JPanel {
      */
     JPanel container;
     CardLayout cardLayout;
-    public MaintenancePanel(JPanel container) {
+    UserAccount userAccount;
+    public MaintenancePanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         initComponents();
-        
+        this.userAccount=userAccount;
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("ViewmtRequestPanel",new ViewmtRequestPanel(rightjPanel));
-        rightjPanel.add("ViewMaintanOrderDetailPanel",new ViewMaintanOrderDetailPanel(rightjPanel));
-        rightjPanel.add("MessageMaintanPanel",new MessageMaintanPanel(rightjPanel));
+        rightjPanel.add("ViewmtRequestPanel",new ViewmtRequestPanel(rightjPanel,userAccount));
         cardLayout.show(rightjPanel,"ViewmtRequestPanel");
     }
 
@@ -127,7 +127,7 @@ public class MaintenancePanel extends javax.swing.JPanel {
 
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"viewRequestP");
+        cardLayout.show(rightjPanel,"ViewmtRequestPanel");
     }//GEN-LAST:event_homeBtnMousePressed
 
 

@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Mover;
 
+import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Housework.*;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -22,15 +23,16 @@ public class MovePanel extends javax.swing.JPanel {
      */
     JPanel container;
     CardLayout cardLayout;
-    public MovePanel(JPanel container) {
+    UserAccount userAccount;
+
+    public MovePanel(JPanel container,UserAccount userAccount) {
         this.container = container;
+        this.userAccount=userAccount;
         initComponents();
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("ViewRequestPanel",new ViewRequestPanel(rightjPanel));
-        rightjPanel.add("ViewMoveOrderDetailPanel",new ViewMoveOrderDetailPanel(rightjPanel));
-        rightjPanel.add("MessageMovePanel",new MessageMovePanel(rightjPanel));
+        rightjPanel.add("ViewRequestPanel",new ViewRequestPanel(rightjPanel,userAccount));
         cardLayout.show(rightjPanel,"ViewRequestPanel");
     }
 
