@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Admin;
+package uiDecoreted.Manager;
 
 import Util.GlobalData;
 import com.neu.infofinal.bean.UserAccount;
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author wufan
  */
-public class AdminPanel extends javax.swing.JPanel {
+public class ManagerPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantUserPanel
@@ -24,7 +24,7 @@ public class AdminPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     JPanel container;
     CardLayout cardLayout;
-    public AdminPanel(JPanel container,UserAccount userAccount) {
+    public ManagerPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         this.userAccount = userAccount;
         initComponents();

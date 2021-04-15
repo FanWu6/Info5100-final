@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Owner;
+package uiDecoreted.LandLord;
 
+import Util.JTextFieldHintListener;
 import Util.SysData;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
@@ -29,14 +30,14 @@ public class AddOrderPanel extends javax.swing.JPanel {
          initComponents();
          this.rightcontainer = rightcontainer;
          this.ownerAccount = ownerAccount;
-         addresstxt.setBackground(new Color(0,0,0,0));
-         layouttxt.setBackground(new Color(0,0,0,0));
-         orientationtxt.setBackground(new Color(0,0,0,0));
-         pricetxt.setBackground(new Color(0,0,0,0));
-         areatxt.setBackground(new Color(0,0,0,0));
-         floortxt.setBackground(new Color(0,0,0,0));
-         descriptxt.setBackground(new Color(0,0,0,0));
-         nametxt.setBackground(new Color(0,0,0,0));
+         addresstxt.addFocusListener(new JTextFieldHintListener(addresstxt, "Address", new Color(153, 153, 153)));
+         layouttxt.addFocusListener(new JTextFieldHintListener(layouttxt, "Layout", new Color(153, 153, 153)));
+         orientationtxt.addFocusListener(new JTextFieldHintListener(orientationtxt, "Orientation", new Color(153, 153, 153)));
+         pricetxt.addFocusListener(new JTextFieldHintListener(pricetxt, "Price", new Color(153, 153, 153)));
+         areatxt.addFocusListener(new JTextFieldHintListener(areatxt, "Area", new Color(153, 153, 153)));
+         floortxt.addFocusListener(new JTextFieldHintListener(floortxt, "Floor", new Color(153, 153, 153)));
+         descriptxt.addFocusListener(new JTextFieldHintListener(descriptxt, "Description", new Color(153, 153, 153)));
+         nametxt.addFocusListener(new JTextFieldHintListener(nametxt, "Name", new Color(153, 153, 153)));
          
     }
 
@@ -270,7 +271,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         //        Component[] components = container.getComponents();
         //        Component component = components[components.length-1];
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "ownerRentP");
+        layout.show(rightcontainer, "landLordManageP");
     }//GEN-LAST:event_backBtnMousePressed
 
     private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed

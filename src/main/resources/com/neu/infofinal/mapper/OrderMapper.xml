@@ -8,6 +8,8 @@
     <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
     <result column="order_type" jdbcType="INTEGER" property="orderType" />
     <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, tenant_id, house_id, agency_id, order_type, status
+    id, tenant_id, house_id, agency_id, order_type, status, date, comment
   </sql>
   <select id="selectByExample" parameterType="com.neu.infofinal.bean.OrderExample" resultMap="BaseResultMap">
     select
@@ -105,9 +107,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into info_order_t (tenant_id, house_id, agency_id, 
-      order_type, status)
+      order_type, status, date, 
+      comment)
     values (#{tenantId,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, 
-      #{orderType,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR})
+      #{orderType,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{comment,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.infofinal.bean.Order">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -130,6 +134,12 @@
       <if test="status != null">
         status,
       </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tenantId != null">
@@ -146,6 +156,12 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,6 +192,12 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=VARCHAR},
       </if>
+      <if test="record.date != null">
+        date = #{record.date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comment != null">
+        comment = #{record.comment,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -188,7 +210,9 @@
       house_id = #{record.houseId,jdbcType=INTEGER},
       agency_id = #{record.agencyId,jdbcType=INTEGER},
       order_type = #{record.orderType,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=VARCHAR}
+      status = #{record.status,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=TIMESTAMP},
+      comment = #{record.comment,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,6 +235,12 @@
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -220,7 +250,9 @@
       house_id = #{houseId,jdbcType=INTEGER},
       agency_id = #{agencyId,jdbcType=INTEGER},
       order_type = #{orderType,jdbcType=INTEGER},
-      status = #{status,jdbcType=VARCHAR}
+      status = #{status,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectCondition" parameterType="map" resultMap="BaseResultMap">

@@ -15,11 +15,11 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 import uiDecoreted.Agency.AgencyPanel;
-import uiDecoreted.Owner.OwnerUserPanel;
-import uiDecoreted.Admin.AdminPanel;
+import uiDecoreted.LandLord.LandLordUserPanel;
+import uiDecoreted.Manager.ManagerPanel;
 import uiDecoreted.Housework.HouseworkPanel;
 import uiDecoreted.Maintenance.MaintenancePanel;
-import uiDecoreted.Move.MovePanel;
+import uiDecoreted.Mover.MovePanel;
 
 
 /**
@@ -177,6 +177,14 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("TenantUserPanel",new TenantUserPanel(container,userAccount));
         }
         layout.next(container);
+        if(SysData.ACCOUNT_TYPE.LANDLORD.getIndex()==userAccount.getType()){
+            container.add("LandLordUserPanel",new LandLordUserPanel(container,userAccount));
+        }
+        layout.next(container);
+        if(SysData.ACCOUNT_TYPE.AGENCY.getIndex()==userAccount.getType()){
+            container.add("AgencyPanel",new AgencyPanel(container,userAccount));
+        }
+        layout.next(container);
     }//GEN-LAST:event_signInBtnMousePressed
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
@@ -188,14 +196,14 @@ public class MainJPanel extends javax.swing.JPanel {
     private void ownerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("OwnerUserPanel",new OwnerUserPanel(container,null));
+       container.add("LandLordUserPanel",new LandLordUserPanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_ownerbtnActionPerformed
 
     private void adminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminbtnActionPerformed
         // TODO add your handling code here:
        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("AdminPanel",new AdminPanel(container,null));
+       container.add("ManagerPanel",new ManagerPanel(container,null));
        layout.next(container);
     }//GEN-LAST:event_adminbtnActionPerformed
 

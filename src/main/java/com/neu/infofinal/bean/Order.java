@@ -1,5 +1,7 @@
 package com.neu.infofinal.bean;
 
+import java.util.Date;
+
 public class Order {
     private Integer id;
 
@@ -12,6 +14,10 @@ public class Order {
     private Integer orderType;
 
     private String status;
+
+    private Date date;
+
+    private String comment;
 
     public Integer getId() {
         return id;
@@ -59,5 +65,21 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment == null ? null : comment.trim();
     }
 }

@@ -32,7 +32,9 @@ import com.neu.infofinal.mapper.RegionMapper;
 import com.neu.infofinal.mapper.UserAccountMapper;
 import com.neu.infofinal.mapper.UserMapper;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -73,9 +75,10 @@ public class SysData {
         private ORDER_TYPE(int index) {
             this.index = index;
         }
-         public int getIndex() {
+        public int getIndex() {
             return index;
         }
+    
     }
     
     public enum ORDER_HOUSEWORK_TYPE{
@@ -227,6 +230,19 @@ public class SysData {
         
         return selectByExample.get(0);
     }
+    
+    public static UserAccount getUserAccountbyID(int Id){
+        start();
+        UserAccountExample useraccountExample = new UserAccountExample();
+        useraccountExample.createCriteria().andIdEqualTo(Id);
+        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
     //UserAccount end--
      
      //House
@@ -307,6 +323,17 @@ public class SysData {
         return id;
     }
      
+     public static void updateHouse(House house) {
+        start();
+        int update = houseMapper.updateByPrimaryKey(house);
+        if(update==1){
+            Tool.Success();
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
+     
      //House end
      
      //Owner
@@ -324,6 +351,16 @@ public class SysData {
         return selectByExample;
     }
      
+    public static List<Order> getOrdersByTenantId(int tenantid){
+        start();
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andTenantIdEqualTo(tenantid);
+        List<Order> selectByExample = orderMapper.selectByExample(orderExample);
+        commitAndClose();
+        
+        return selectByExample;
+    } 
+     
     public static boolean isOrderPendingByTenantId(int tenantid){
         start();
         OrderExample orderExample = new OrderExample();
@@ -335,9 +372,21 @@ public class SysData {
      
     public static void insertOrder(Order order){
         start();
+        order.setDate(new Date());
         int insert = orderMapper.insert(order);
         if(insert==1){
             Tool.InfoString("insert order success");
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
+    
+    public static void updateOrder(Order order){
+        start();
+        int update = orderMapper.updateByPrimaryKey(order);
+        if(update==1){
+            Tool.InfoString("update order success");
         }else{
             Tool.Failed();
         }
@@ -355,6 +404,40 @@ public class SysData {
         
         return selectByExample;
      }
+     
+     public static List<OrderHousework> getOrderHouseworkByTenantId(int tenantid){
+        start();
+         OrderHouseworkExample orderHouseworkExample = new OrderHouseworkExample();
+        orderHouseworkExample.createCriteria().andTenantIdEqualTo(tenantid);
+        List<OrderHousework> selectByExample = orderHouseworkMapper.selectByExample(orderHouseworkExample);
+        commitAndClose();
+        
+        return selectByExample;
+     }
+     
+    public static int addOrderHousework(OrderHousework order) {
+        start();
+        order.setDate(new Date());
+        int id = orderHouseworkMapper.insert(order);
+        if(id==1){
+            Tool.Success();
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+        return id;
+    }
+    
+     public static void updateOrderHousework(OrderHousework order){
+        start();
+        int update = orderHouseworkMapper.updateByPrimaryKey(order);
+        if(update==1){
+            Tool.InfoString("update orderhousework success");
+        }else{
+            Tool.Failed();
+        }
+        commitAndClose();
+    }
      //OrderHouseWork end
      
      //Region

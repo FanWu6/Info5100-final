@@ -9,6 +9,12 @@ public class UserAccount {
 
     private Integer type;
 
+    private String headpic;
+
+    private String email;
+
+    private String phone;
+
     public Integer getId() {
         return id;
     }
@@ -41,9 +47,27 @@ public class UserAccount {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "UserAccount{" + "id=" + id + ", username=" + username + ", password=" + password + ", type=" + type + '}';
+    public String getHeadpic() {
+        return headpic;
     }
-    
+
+    public void setHeadpic(String headpic) {
+        this.headpic = headpic == null ? null : headpic.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
 }
