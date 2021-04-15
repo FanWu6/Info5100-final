@@ -178,7 +178,9 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         }
         OrderHousework orderHousework = (OrderHousework)tblHouseworkAll.getValueAt(row,0);
         orderHousework.setWorkderId(employee.getId());
-        orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.PROCESS));
+        orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()));
+        SysData.updateOrderHousework(orderHousework);
+        refreshTable1();
         refreshTable2();
     }//GEN-LAST:event_assigntomebtnMousePressed
 
@@ -192,6 +194,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         }
         OrderHousework orderHousework = (OrderHousework)tblHouseworkMy2.getValueAt(row,0);
         orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.FINISH.getStatus()));
+        SysData.updateOrderHousework(orderHousework);
+        refreshTable1();
         refreshTable2();
     }//GEN-LAST:event_completedBtnMousePressed
 
