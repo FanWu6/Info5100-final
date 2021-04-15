@@ -5,6 +5,8 @@ public class Enterprise {
 
     private String name;
 
+    private Integer type;
+
     public Integer getId() {
         return id;
     }
@@ -19,5 +21,13 @@ public class Enterprise {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

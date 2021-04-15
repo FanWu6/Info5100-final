@@ -40,11 +40,14 @@ public class ManagerPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
+        System.out.println("1");
         rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        System.out.println("2");
         rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+         System.out.println("3");
         rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
         cardLayout.show(rightjPanel,"viewHouseworkOrderP");
-        
+         System.out.println("4");
         setInfo();
     }
     public void getInfo(){

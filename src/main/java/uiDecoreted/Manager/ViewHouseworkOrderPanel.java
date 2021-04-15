@@ -38,7 +38,7 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         this.enterpriseDirectory = enterpriseDirectory;
         this.orderHouseworks = orderHouseworks;
         Tool.tableStyle1(jTable1, jScrollPane1);
-        Tool.tableStyle1(jTable2, jScrollPane1);
+        Tool.tableStyle1(jTable2, jScrollPane3);
         getInfo();
         displayOrderTable();
         displayCompanyTable();

@@ -175,21 +175,13 @@ public class MainJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)container.getLayout();
         if(SysData.ACCOUNT_TYPE.TENANT.getIndex()==userAccount.getType()){
             container.add("TenantUserPanel",new TenantUserPanel(container,userAccount));
-        }
-        layout.next(container);
-        if(SysData.ACCOUNT_TYPE.LANDLORD.getIndex()==userAccount.getType()){
+        }else if(SysData.ACCOUNT_TYPE.LANDLORD.getIndex()==userAccount.getType()){
             container.add("LandLordUserPanel",new LandLordUserPanel(container,userAccount));
-        }
-        layout.next(container);
-        if(SysData.ACCOUNT_TYPE.AGENCY.getIndex()==userAccount.getType()){
+        }else if(SysData.ACCOUNT_TYPE.AGENCY.getIndex()==userAccount.getType()){
             container.add("AgencyPanel",new AgencyPanel(container,userAccount));
-        }
-        layout.next(container);
-        if(SysData.ACCOUNT_TYPE.MANAGER.getIndex()==userAccount.getType()){
+        }else if(SysData.ACCOUNT_TYPE.MANAGER.getIndex()==userAccount.getType()){
             container.add("ManagerPanel",new ManagerPanel(container,userAccount));
-        }
-        layout.next(container);
-        if(SysData.ACCOUNT_TYPE.CLEANER.getIndex()==userAccount.getType()){
+        }else if(SysData.ACCOUNT_TYPE.CLEANER.getIndex()==userAccount.getType()){
             container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
         }
         layout.next(container);
