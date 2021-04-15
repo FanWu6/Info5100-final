@@ -10,6 +10,9 @@
     <result column="workder_id" jdbcType="INTEGER" property="workderId" />
     <result column="housework_order_type" jdbcType="INTEGER" property="houseworkOrderType" />
     <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, tenant_id, house_id, manager_id, enterprise_id, workder_id, housework_order_type, 
-    status
+    status, date, comment, message
   </sql>
   <select id="selectByExample" parameterType="com.neu.infofinal.bean.OrderHouseworkExample" resultMap="BaseResultMap">
     select
@@ -109,10 +112,12 @@
     </selectKey>
     insert into info_orderhousework_t (tenant_id, house_id, manager_id, 
       enterprise_id, workder_id, housework_order_type, 
-      status)
+      status, date, comment, 
+      message)
     values (#{tenantId,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, 
       #{enterpriseId,jdbcType=INTEGER}, #{workderId,jdbcType=INTEGER}, #{houseworkOrderType,jdbcType=INTEGER}, 
-      #{status,jdbcType=VARCHAR})
+      #{status,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.infofinal.bean.OrderHousework">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -141,6 +146,15 @@
       <if test="status != null">
         status,
       </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tenantId != null">
@@ -163,6 +177,15 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +222,15 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=VARCHAR},
       </if>
+      <if test="record.date != null">
+        date = #{record.date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comment != null">
+        comment = #{record.comment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +245,10 @@
       enterprise_id = #{record.enterpriseId,jdbcType=INTEGER},
       workder_id = #{record.workderId,jdbcType=INTEGER},
       housework_order_type = #{record.houseworkOrderType,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=VARCHAR}
+      status = #{record.status,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=TIMESTAMP},
+      comment = #{record.comment,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +277,15 @@
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -253,7 +297,10 @@
       enterprise_id = #{enterpriseId,jdbcType=INTEGER},
       workder_id = #{workderId,jdbcType=INTEGER},
       housework_order_type = #{houseworkOrderType,jdbcType=INTEGER},
-      status = #{status,jdbcType=VARCHAR}
+      status = #{status,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectCondition" parameterType="map" resultMap="BaseResultMap">

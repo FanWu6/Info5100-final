@@ -1,5 +1,7 @@
 package com.neu.infofinal.bean;
 
+import java.util.Date;
+
 public class OrderHousework {
     private Integer id;
 
@@ -16,6 +18,12 @@ public class OrderHousework {
     private Integer houseworkOrderType;
 
     private String status;
+
+    private Date date;
+
+    private String comment;
+
+    private String message;
 
     public Integer getId() {
         return id;
@@ -80,4 +88,35 @@ public class OrderHousework {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment == null ? null : comment.trim();
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message == null ? null : message.trim();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
+    
+    
 }

@@ -64,7 +64,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
                     break;
                 case "UserHomePanel":rightjPanel.add("UserHomePanel",new UserHomePanel(rightjPanel,this.userAccount));
                     break;
-                case "TenantOrderPanel":rightjPanel.add("TenantOrderPanel",new TenantOrderPanel(rightjPanel));
+                case "TenantOrderPanel":rightjPanel.add("TenantOrderPanel",new TenantOrderPanel(rightjPanel,this.userAccount));
                     break;
                 case "CommentPanel":rightjPanel.add("CommentPanel",new CommentPanel(rightjPanel));
                     break;

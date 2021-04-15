@@ -5,8 +5,12 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.SysData;
+import com.neu.infofinal.bean.OrderHousework;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.util.Set;
 import javax.swing.JPanel;
 
 /**
@@ -19,10 +23,15 @@ public class CommentPanel extends javax.swing.JPanel {
      * Creates new form CommentPanel
      */
     JPanel rightcontainer;
+    OrderHousework orderHousework;
     public CommentPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer=rightcontainer;
         commentText.setBackground(new Color(0,0,0,0));
+    }
+    
+    public void setOrder(OrderHousework orderHousework){
+        this.orderHousework = orderHousework;
     }
 
     /**
@@ -65,6 +74,11 @@ public class CommentPanel extends javax.swing.JPanel {
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         submitBtn.setText("Submit");
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                submitBtnMousePressed(evt);
+            }
+        });
         add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 200, 60));
 
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
@@ -80,8 +94,21 @@ public class CommentPanel extends javax.swing.JPanel {
         //        Component[] components = container.getComponents();
         //        Component component = components[components.length-1];
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "tenantOrderP");
+        layout.show(rightcontainer, "TenantOrderPanel");
+        
+        TenantUserPanel parent = (TenantUserPanel)rightcontainer.getParent();
+        Component currnetComponent = rightcontainer.getComponent(parent.uiList.indexOf("TenantOrderPanel"));
+        TenantOrderPanel tenrOrderPanel = (TenantOrderPanel)currnetComponent;
+        tenrOrderPanel.setOrderInfo();
     }//GEN-LAST:event_backBtnMousePressed
+
+    private void submitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMousePressed
+        // TODO add your handling code here:
+        if(orderHousework!=null){
+            orderHousework.setComment(commentText.getText());
+            SysData.updateOrderHousework(orderHousework);
+        }
+    }//GEN-LAST:event_submitBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

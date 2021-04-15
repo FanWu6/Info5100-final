@@ -32,7 +32,9 @@ import com.neu.infofinal.mapper.RegionMapper;
 import com.neu.infofinal.mapper.UserAccountMapper;
 import com.neu.infofinal.mapper.UserMapper;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -349,6 +351,16 @@ public class SysData {
         return selectByExample;
     }
      
+    public static List<Order> getOrdersByTenantId(int tenantid){
+        start();
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andTenantIdEqualTo(tenantid);
+        List<Order> selectByExample = orderMapper.selectByExample(orderExample);
+        commitAndClose();
+        
+        return selectByExample;
+    } 
+     
     public static boolean isOrderPendingByTenantId(int tenantid){
         start();
         OrderExample orderExample = new OrderExample();
@@ -360,6 +372,7 @@ public class SysData {
      
     public static void insertOrder(Order order){
         start();
+        order.setDate(new Date());
         int insert = orderMapper.insert(order);
         if(insert==1){
             Tool.InfoString("insert order success");
@@ -392,8 +405,19 @@ public class SysData {
         return selectByExample;
      }
      
+     public static List<OrderHousework> getOrderHouseworkByTenantId(int tenantid){
+        start();
+         OrderHouseworkExample orderHouseworkExample = new OrderHouseworkExample();
+        orderHouseworkExample.createCriteria().andTenantIdEqualTo(tenantid);
+        List<OrderHousework> selectByExample = orderHouseworkMapper.selectByExample(orderHouseworkExample);
+        commitAndClose();
+        
+        return selectByExample;
+     }
+     
     public static int addOrderHousework(OrderHousework order) {
         start();
+        order.setDate(new Date());
         int id = orderHouseworkMapper.insert(order);
         if(id==1){
             Tool.Success();

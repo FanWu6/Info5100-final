@@ -14,6 +14,7 @@ import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -119,6 +120,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         nametxt.setText("Name");
         nametxt.setToolTipText("");
         nametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        nametxt.setEnabled(false);
         nametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nametxtActionPerformed(evt);
@@ -132,6 +134,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         phonetxt.setText("Phone");
         phonetxt.setToolTipText("");
         phonetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        phonetxt.setEnabled(false);
         phonetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phonetxtActionPerformed(evt);
@@ -145,6 +148,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         emailtxt.setText("Email");
         emailtxt.setToolTipText("");
         emailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        emailtxt.setEnabled(false);
         emailtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailtxtActionPerformed(evt);
@@ -158,6 +162,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         floortxt.setText("3/6");
         floortxt.setToolTipText("");
         floortxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        floortxt.setEnabled(false);
         floortxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 floortxtActionPerformed(evt);
@@ -171,6 +176,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         areatxt.setText("80m^2");
         areatxt.setToolTipText("");
         areatxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        areatxt.setEnabled(false);
         areatxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 areatxtActionPerformed(evt);
@@ -184,6 +190,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         subjecttxt.setText("3/6");
         subjecttxt.setToolTipText("");
         subjecttxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        subjecttxt.setEnabled(false);
         subjecttxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjecttxtActionPerformed(evt);
@@ -252,6 +259,11 @@ public class UserHomePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
         cardLayout.show(rightcontainer, "TenantOrderPanel");
+        
+       TenantUserPanel parent = (TenantUserPanel)rightcontainer.getParent();
+        Component currnetComponent = rightcontainer.getComponent(parent.uiList.indexOf("TenantOrderPanel"));
+        TenantOrderPanel tenantOrderPanel = (TenantOrderPanel)currnetComponent;
+        tenantOrderPanel.setOrderInfo();
     }//GEN-LAST:event_myOrderLableMousePressed
 
     private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
@@ -289,6 +301,7 @@ public class UserHomePanel extends javax.swing.JPanel {
         order.setHouseId(house.getId());
         order.setStatus(SysData.ORDER_STATUS_TYPE.PEND.getStatus());
         order.setHouseworkOrderType(selectservicecomb.getSelectedIndex());
+        order.setMessage(messagetxt.getText());
         
         SysData.addOrderHousework(order);
     }//GEN-LAST:event_submitBtnMousePressed

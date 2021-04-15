@@ -5,8 +5,14 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.SysData;
 import Util.Tool;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,19 +26,34 @@ public class TenantOrderPanel extends javax.swing.JPanel {
      * Creates new form TenantOrderPanel
      */
     JPanel rightcontainer;
-    public TenantOrderPanel(JPanel rightcontainer) {
+    UserAccount userAccount;
+    List<String> workTyep = new ArrayList<>();
+    public TenantOrderPanel(JPanel rightcontainer,UserAccount userAccount) {
+        this.userAccount = userAccount;
         initComponents();
         this.rightcontainer = rightcontainer;
         Tool.tableStyle1(jTable1,jScrollPane1);
+        workTyep.add("Maintain");
+        workTyep.add("Clean");
+        workTyep.add("Move");
+        
+        
+        
+    }
+    
+    public void setOrderInfo(){
+        List<OrderHousework> orders = SysData.getOrderHouseworkByTenantId(userAccount.getId());
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        for(int i=0;i<5;i++){
-            Object[] row = new Object[4];
-            row[0] = 15;
-            row[1] = 2;
-            row[2] = 3;
-            row[3] = 4;
+        for(int i=0;i<orders.size();i++){
+            OrderHousework order = orders.get(i);
+            Object[] row = new Object[5];
+            row[0] = order;
+            row[1] = workTyep.get(order.getHouseworkOrderType());
+            row[2] = order.getDate();
+            row[3] = order.getStatus();
+            row[4] = order.getComment();
             model.addRow(row);}
     }
 
@@ -57,12 +78,20 @@ public class TenantOrderPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Type", "Date", "Status", "Comment"
+                "OrderId", "Type", "Date", "Status", "Comment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 460));
@@ -101,13 +130,29 @@ public class TenantOrderPanel extends javax.swing.JPanel {
         //        Component[] components = container.getComponents();
         //        Component component = components[components.length-1];
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "userhomeP");
+        layout.show(rightcontainer, "UserHomePanel");
     }//GEN-LAST:event_backBtnMousePressed
 
     private void commentBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commentBtnMousePressed
         // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select!");
+            return;
+        }
+        OrderHousework order = (OrderHousework)jTable1.getValueAt(row,0);
+        if(!order.getStatus().equals(SysData.ORDER_STATUS_TYPE.FINISH.getStatus())){
+            Tool.InfoString("The order is not finished!!");
+            return;
+        }
+        
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "commentP");
+        layout.show(rightcontainer, "CommentPanel");
+        TenantUserPanel parent = (TenantUserPanel)rightcontainer.getParent();
+        Component currnetComponent = rightcontainer.getComponent(parent.uiList.indexOf("CommentPanel"));
+        CommentPanel commentPanel = (CommentPanel)currnetComponent;
+        commentPanel.setOrder(order);
     }//GEN-LAST:event_commentBtnMousePressed
 
 
