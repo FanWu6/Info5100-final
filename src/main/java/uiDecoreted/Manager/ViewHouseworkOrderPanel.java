@@ -55,8 +55,8 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
                     //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
                     row[0] = ordH;
                     row[1] = SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
-                    row[2] = "House Cleanning";
-                    row[3] = ordH.getDate();
+                    row[2] = ordH.getDate();
+                    row[3] = ordH.getEnterpriseId()==null?null:SysData.getEnterpriseById(ordH.getEnterpriseId()).getName();
                     row[4] = ordH.getStatus();
                     row[5] = ordH.getComment();
                     model.addRow(row);
@@ -71,7 +71,8 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (Enterprise enterprise : enterpriseDirectory) {
             int n = 0;
-            if (enterprise.getId() == 3) {
+            if (enterprise.getType() != null) {
+            if (SysData.ACCOUNT_TYPE.CLEANER.getIndex()==enterprise.getType()) {
                 for (Employee em : employeeDirectory) {
 
                     if (em.getEnterpriseId() == enterprise.getId()) {
@@ -79,11 +80,14 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
                     }
                 }
 
-                Object[] row = new Object[2];
-                row[0] = enterprise.getName();
-                row[1] = n;
+                Object[] row = new Object[3];
+                row[0] = enterprise.getId();
+                row[1] = enterprise.getName();
+                row[2] = n;
 
                 model.addRow(row);
+                
+            }
 
             }
         }
@@ -115,13 +119,13 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Company", "Staffs Number"
+                "ID", "Company", "Staffs Number"
             }
         ));
         jTable2.setGridColor(new java.awt.Color(128, 128, 128));
@@ -141,7 +145,7 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Customer", "Type", "Date", "Status", "Comment"
+                "Order ID", "Customer", "Date", "Company", "Status", "Comment"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
@@ -150,12 +154,6 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Type");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Date");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Status");
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("Comment");
-        }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 830, 150));
 
@@ -179,6 +177,22 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
 
     private void assignBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignBtnMousePressed
         // TODO add your handling code here:
+        int row1 = jTable1.getSelectedRow();
+        int row2 = jTable2.getSelectedRow();
+        //        System.out.println(row);
+        if (row1 < 0 || row2<0) {
+            Tool.InfoString("please select a row!");
+            return;
+        }
+        OrderHousework orderhousework =(OrderHousework)jTable1.getValueAt(row1, 0);
+        int enterpriseId = (int)jTable2.getValueAt(row2, 0);
+ 
+                orderhousework.setEnterpriseId(enterpriseId);
+                orderhousework.setStatus("Waiting taking over");
+                SysData.updateOrderHousework(orderhousework);
+         
+        displayOrderTable();
+        
     }//GEN-LAST:event_assignBtnMousePressed
 
 
