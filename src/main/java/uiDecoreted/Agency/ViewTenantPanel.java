@@ -139,12 +139,14 @@ public class ViewTenantPanel extends javax.swing.JPanel {
             Tool.InfoString("please select!");
             return;
         }
-        int orderId = (int) jTable1.getValueAt(selectedRowIndex, 0);
+        int houseId = (int) jTable1.getValueAt(selectedRowIndex, 0);
+        SysData.ORDER_TYPE ordertype = (SysData.ORDER_TYPE)jTable1.getValueAt(selectedRowIndex, 6);
         //System.out.println(houseId);
         for(Order order : orders){
-            if(order.getId()==orderId){
+            if(order.getHouseId()==houseId && SysData.ORDER_TYPE.values()[order.getOrderType()]==ordertype){
                 order.setAgencyId(agencyAccount.getId()); 
                 order.setStatus(SysData.ORDER_STATUS_TYPE.FINISH.getStatus());
+                SysData.updateOrder(order);
             }
         }
         displayOrderList();

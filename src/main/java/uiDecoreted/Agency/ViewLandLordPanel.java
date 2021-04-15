@@ -121,9 +121,11 @@ public class ViewLandLordPanel extends javax.swing.JPanel {
         //System.out.println(houseId);
         for(House house : houses){
             if(house.getId()==houseId){
-                house.setAgencyId(agencyAccount.getId());             
+                house.setAgencyId(agencyAccount.getId());  
+                SysData.updateHouse(house);
             }
         }
+        
         displayHouseList();
     }//GEN-LAST:event_assigntomeBtnMousePressed
 
