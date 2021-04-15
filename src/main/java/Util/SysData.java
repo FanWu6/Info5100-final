@@ -194,6 +194,16 @@ public class SysData {
     //Organization end--
     
     //Employee
+    public static List<Employee> getEmployeeDirectory(){
+        start();
+        EmployeeExample employeeExample = new EmployeeExample();
+        employeeExample.createCriteria().andIdIsNotNull();
+        List<Employee> selectByExample = employeeMapper.selectByExample(employeeExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        return selectByExample;
+    } 
+    
     public static Employee getEmployeeById(int id){
         start();
         Employee selectByPrimaryKey = employeeMapper.selectByPrimaryKey(id);

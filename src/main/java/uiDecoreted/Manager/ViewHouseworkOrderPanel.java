@@ -5,7 +5,15 @@
  */
 package uiDecoreted.Manager;
 
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,10 +24,73 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewHouseworkOrderPanel
      */
+    UserAccount managerAccount;
     JPanel rightcontainer;
-    public ViewHouseworkOrderPanel(JPanel rightcontainer) {
+    List<OrderHousework> orderHouseworks;
+    List<Employee> employeeDirectory;
+    List<Enterprise> enterpriseDirectory;
+
+    public ViewHouseworkOrderPanel(JPanel rightcontainer, UserAccount managerAccount,List<OrderHousework> orderHouseworks,List<Employee> employeeDirectory,List<Enterprise> enterpriseDirectory) {
         initComponents();
         this.rightcontainer = rightcontainer;
+        this.managerAccount = managerAccount;
+        this.employeeDirectory = employeeDirectory;
+        this.enterpriseDirectory = enterpriseDirectory;
+        this.orderHouseworks = orderHouseworks;
+        Tool.tableStyle1(jTable1, jScrollPane1);
+        Tool.tableStyle1(jTable2, jScrollPane1);
+        getInfo();
+        displayOrderTable();
+        displayCompanyTable();
+    }
+
+    private void displayOrderTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (OrderHousework ordH : orderHouseworks) {
+            if (ordH.getHouseworkOrderType() == 0) {
+                if (ordH.getManagerId() == null || ordH.getManagerId() == managerAccount.getId()) {
+                    Object[] row = new Object[6];
+//               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
+                    //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
+                    row[0] = ordH;
+                    row[1] = SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
+                    row[2] = "House Cleanning";
+                    row[3] = ordH.getDate();
+                    row[4] = ordH.getStatus();
+                    row[5] = ordH.getComment();
+                    model.addRow(row);
+                }
+            }
+
+        }
+    }
+
+    public void displayCompanyTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Enterprise enterprise : enterpriseDirectory) {
+            int n = 0;
+            if (enterprise.getId() == 3) {
+                for (Employee em : employeeDirectory) {
+
+                    if (em.getEnterpriseId() == enterprise.getId()) {
+                        n += 1;
+                    }
+                }
+
+                Object[] row = new Object[2];
+                row[0] = enterprise.getName();
+                row[1] = n;
+
+                model.addRow(row);
+
+            }
+        }
+    }
+
+    public void getInfo() {
+        
     }
 
     /**
@@ -31,25 +102,46 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        enterpriseComboBox = new javax.swing.JComboBox<>();
         assignBtn = new javax.swing.JLabel();
         assign = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        bkn = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Customer", "Type", "Date", "Status", "Comment"
+                "Company", "Staffs Number"
+            }
+        ));
+        jTable2.setGridColor(new java.awt.Color(128, 128, 128));
+        jTable2.setRowHeight(25);
+        jTable2.setSelectionBackground(new java.awt.Color(63, 164, 177));
+        jTable2.setSelectionForeground(new java.awt.Color(153, 0, 204));
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTable2);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 430, 160));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Order ID", "Customer", "Type", "Date", "Status", "Comment"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
@@ -58,11 +150,14 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Type");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Date");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Status");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Comment");
+        }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
-
-        enterpriseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 600, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 830, 150));
 
         assignBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         assignBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,13 +168,13 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
                 assignBtnMousePressed(evt);
             }
         });
-        add(assignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 690, 200, 50));
+        add(assignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 690, 200, 50));
 
         assign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(assign, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, 200, 70));
+        add(assign, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 680, 200, 70));
 
-        jLabel1.setText("Housework");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/main@0,3x.png"))); // NOI18N
+        add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 40, 520, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignBtnMousePressed
@@ -90,9 +185,10 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assign;
     private javax.swing.JLabel assignBtn;
-    private javax.swing.JComboBox<String> enterpriseComboBox;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel bkn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

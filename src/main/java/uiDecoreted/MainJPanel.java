@@ -185,16 +185,20 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("AgencyPanel",new AgencyPanel(container,userAccount));
         }
         layout.next(container);
+        if(SysData.ACCOUNT_TYPE.MANAGER.getIndex()==userAccount.getType()){
+            container.add("ManagerPanel",new ManagerPanel(container,userAccount));
+        }
+        layout.next(container);
         if(SysData.ACCOUNT_TYPE.CLEANER.getIndex()==userAccount.getType()){
             container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
         }
         layout.next(container);
+        
     }//GEN-LAST:event_signInBtnMousePressed
 
     private void registerBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMousePressed
         // TODO add your handling code here:
         new registerJFrame().setVisible(true);       
-;
     }//GEN-LAST:event_registerBtnMousePressed
 
     private void ownerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerbtnActionPerformed

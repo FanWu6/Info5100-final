@@ -28,6 +28,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
     UserAccount agencyAccount;
     JPanel rightcontainer;
     List<Order> orders;
+    List<House> houses;
 
     public ViewTenantPanel(JPanel rightcontainer, UserAccount agencyAccount) {
         initComponents();
@@ -147,8 +148,14 @@ public class ViewTenantPanel extends javax.swing.JPanel {
                 order.setAgencyId(agencyAccount.getId()); 
                 order.setStatus(SysData.ORDER_STATUS_TYPE.FINISH.getStatus());
                 SysData.updateOrder(order);
+                if(order.getOrderType()==1){
+                House house = SysData.getHouseByHouseId(houseId);
+                house.setTenantId(order.getTenantId());
+                SysData.updateHouse(house);
+                }
             }
         }
+        
         displayOrderList();
     }//GEN-LAST:event_assigntomebtnMousePressed
 

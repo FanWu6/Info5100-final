@@ -6,9 +6,14 @@
 package uiDecoreted.Manager;
 
 import Util.GlobalData;
+import Util.SysData;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JPanel;
 
 
@@ -24,6 +29,9 @@ public class ManagerPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     JPanel container;
     CardLayout cardLayout;
+    List<OrderHousework> orderHouseworks;
+    List<Employee> employeeDirectory;
+    List<Enterprise> enterpriseDirectory;
     public ManagerPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         this.userAccount = userAccount;
@@ -32,24 +40,17 @@ public class ManagerPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel));
-        rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel));
-        rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel));
+        rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
         cardLayout.show(rightjPanel,"viewHouseworkOrderP");
         
         setInfo();
     }
     public void getInfo(){
-        //useraccounts
-        
-        for(UserAccount ua:GlobalData.getUserAccounts()){
-            if(ua.getId()==5){
-                this.userAccount = ua;
-                break;
-            }
-        }
-        //houses
-        //houses = GlobalData.getAllHouse();
+        orderHouseworks = SysData.getAllOrderHouseworks();
+        enterpriseDirectory = SysData.getEnterpriseDirectory();
+        employeeDirectory = SysData.getEmployeeDirectory();
         
     }
     public void setInfo(){
@@ -140,7 +141,7 @@ public class ManagerPanel extends javax.swing.JPanel {
         menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu3.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Artboard 1@0.75x.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Artboard3@0.75x.png"))); // NOI18N
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 810));
     }// </editor-fold>//GEN-END:initComponents
 

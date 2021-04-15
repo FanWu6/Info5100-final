@@ -5,7 +5,15 @@
  */
 package uiDecoreted.Manager;
 
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.OrderHousework;
+import com.neu.infofinal.bean.UserAccount;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,10 +24,71 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewHouseworkOrderPanel
      */
+    UserAccount managerAccount;
     JPanel rightcontainer;
-    public ViewMaintenanceOrderPanel(JPanel rightcontainer) {
+    List<OrderHousework> orderHouseworks;
+    List<Employee> employeeDirectory;
+    List<Enterprise> enterpriseDirectory;
+    public ViewMaintenanceOrderPanel(JPanel rightcontainer,UserAccount managerAccount,List<OrderHousework> orderHouseworks,List<Employee> employeeDirectory,List<Enterprise> enterpriseDirectory) {
         initComponents();
         this.rightcontainer = rightcontainer;
+        this.managerAccount = managerAccount;
+        this.employeeDirectory = employeeDirectory;
+        this.enterpriseDirectory = enterpriseDirectory;
+        this.orderHouseworks = orderHouseworks;
+        Tool.tableStyle1(jTable1, jScrollPane1);
+        Tool.tableStyle1(jTable2, jScrollPane1);
+        getInfo();
+        displayOrderTable();
+        displayCompanyTable();
+    }
+    private void displayOrderTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (OrderHousework ordH : orderHouseworks) {
+            if (ordH.getHouseworkOrderType() == 1) {
+                if (ordH.getManagerId() == null || ordH.getManagerId() == managerAccount.getId()) {
+                    Object[] row = new Object[6];
+//               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
+                    //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
+                    row[0] = ordH;
+                    row[1] = SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
+                    row[2] = "House Maintain";
+                    row[3] = ordH.getDate();
+                    row[4] = ordH.getStatus();
+                    row[5] = ordH.getComment();
+                    model.addRow(row);
+                }
+            }
+
+        }
+    }
+
+    public void displayCompanyTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Enterprise enterprise : enterpriseDirectory) {
+            int n = 0;
+            if (enterprise.getId() == 4) {
+                for (Employee em : employeeDirectory) {
+
+                    if (em.getEnterpriseId() == enterprise.getId()) {
+                        n += 1;
+                    }
+                }
+
+                Object[] row = new Object[2];
+                row[0] = enterprise.getName();
+                row[1] = n;
+
+                model.addRow(row);
+
+            }
+        }
+    }
+
+    public void getInfo() {
+        
     }
 
     /**
@@ -33,10 +102,11 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        enterpriseComboBox = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         assignBtn = new javax.swing.JLabel();
         assign = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        bkn = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,10 +129,27 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 850, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 860, 150));
 
-        enterpriseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 600, -1, -1));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Company", "Staffs Number"
+            }
+        ));
+        jTable2.setGridColor(new java.awt.Color(128, 128, 128));
+        jTable2.setRowHeight(25);
+        jTable2.setSelectionBackground(new java.awt.Color(63, 164, 177));
+        jTable2.setSelectionForeground(new java.awt.Color(153, 0, 204));
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTable2);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 430, 160));
 
         assignBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         assignBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,8 +165,8 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
         assign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(assign, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 680, 200, 70));
 
-        jLabel1.setText("Maintenance");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        bkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maintenance/maintanx.png"))); // NOI18N
+        add(bkn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 40, 520, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignBtnMousePressed
@@ -90,9 +177,10 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assign;
     private javax.swing.JLabel assignBtn;
-    private javax.swing.JComboBox<String> enterpriseComboBox;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel bkn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
