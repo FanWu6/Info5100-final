@@ -54,12 +54,6 @@ public class MainJPanel extends javax.swing.JPanel {
 
         usernametxt = new javax.swing.JTextField();
         passwordtxt = new javax.swing.JPasswordField();
-        housworkbtn = new javax.swing.JButton();
-        maintenancebtn = new javax.swing.JButton();
-        movebtn = new javax.swing.JButton();
-        adminbtn = new javax.swing.JButton();
-        ownerbtn = new javax.swing.JButton();
-        agencybtn = new javax.swing.JButton();
         signInBtn = new javax.swing.JLabel();
         registerBtn = new javax.swing.JLabel();
         signinLayout = new javax.swing.JLabel();
@@ -88,54 +82,6 @@ public class MainJPanel extends javax.swing.JPanel {
             }
         });
         add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 250, 40));
-
-        housworkbtn.setText("houseworker");
-        housworkbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                housworkbtnActionPerformed(evt);
-            }
-        });
-        add(housworkbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
-
-        maintenancebtn.setText("maintenance");
-        maintenancebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintenancebtnActionPerformed(evt);
-            }
-        });
-        add(maintenancebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, -1, -1));
-
-        movebtn.setText("move");
-        movebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                movebtnActionPerformed(evt);
-            }
-        });
-        add(movebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, -1, -1));
-
-        adminbtn.setText("admin");
-        adminbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminbtnActionPerformed(evt);
-            }
-        });
-        add(adminbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
-
-        ownerbtn.setText("owner");
-        ownerbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ownerbtnActionPerformed(evt);
-            }
-        });
-        add(ownerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
-
-        agencybtn.setText("agency");
-        agencybtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agencybtnActionPerformed(evt);
-            }
-        });
-        add(agencybtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
         signInBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -197,64 +143,15 @@ public class MainJPanel extends javax.swing.JPanel {
         new registerJFrame().setVisible(true);       
     }//GEN-LAST:event_registerBtnMousePressed
 
-    private void ownerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerbtnActionPerformed
-        // TODO add your handling code here:
-       CardLayout layout = (CardLayout)container.getLayout();
-       container.add("LandLordUserPanel",new LandLordUserPanel(container,null));
-       layout.next(container);
-    }//GEN-LAST:event_ownerbtnActionPerformed
-
-    private void adminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminbtnActionPerformed
-        // TODO add your handling code here:
-       CardLayout layout = (CardLayout)container.getLayout();
-       container.add("ManagerPanel",new ManagerPanel(container,null));
-       layout.next(container);
-    }//GEN-LAST:event_adminbtnActionPerformed
-
-    private void agencybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agencybtnActionPerformed
-        // TODO add your handling code here:
-        CardLayout layout = (CardLayout)container.getLayout();
-       container.add("AgencyPanel",new AgencyPanel(container,null));
-       layout.next(container);
-    }//GEN-LAST:event_agencybtnActionPerformed
-
-    private void housworkbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_housworkbtnActionPerformed
-        // TODO add your handling code here:
-//       CardLayout layout = (CardLayout)container.getLayout();
-//       container.add("HouseworkPanel",new HouseworkPanel(container,userAccount));
-//       layout.next(container);
-        Tool.InfoString("登陆 clean1 clean1");
-    }//GEN-LAST:event_housworkbtnActionPerformed
-
-    private void maintenancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenancebtnActionPerformed
-        // TODO add your handling code here:
-       CardLayout layout = (CardLayout)container.getLayout();
-       container.add("MaintenancePanel",new MaintenancePanel(container,null));
-       layout.next(container);
-    }//GEN-LAST:event_maintenancebtnActionPerformed
-
-    private void movebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movebtnActionPerformed
-        // TODO add your handling code here:
-       CardLayout layout = (CardLayout)container.getLayout();
-       container.add("MovePanel",new MovePanel(container,null));
-       layout.next(container);
-    }//GEN-LAST:event_movebtnActionPerformed
-
     private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordtxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adminbtn;
-    private javax.swing.JButton agencybtn;
     private javax.swing.JLabel bg;
     private javax.swing.JScrollPane foucstxt;
-    private javax.swing.JButton housworkbtn;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton maintenancebtn;
-    private javax.swing.JButton movebtn;
-    private javax.swing.JButton ownerbtn;
     private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JLabel registerBtn;
     private javax.swing.JLabel signInBtn;
