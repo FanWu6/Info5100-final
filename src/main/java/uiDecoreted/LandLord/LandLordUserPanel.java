@@ -6,6 +6,9 @@
 package uiDecoreted.LandLord;
 
 import Util.GlobalData;
+import Util.SysData;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.*;
@@ -61,6 +64,7 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
@@ -93,6 +97,13 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
         add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 120));
 
+        enterpriseLabel.setBackground(new java.awt.Color(255, 255, 255));
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(153, 153, 153));
+        enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        enterpriseLabel.setText("enterprise");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 30));
+
         nameLabel.setBackground(new java.awt.Color(255, 255, 255));
         nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -123,7 +134,10 @@ public class LandLordUserPanel extends javax.swing.JPanel {
        
         nameLabel.setText(userAccount.getUsername());
         emailLabel.setText(userAccount.getEmail());
-        userPic.setText(userAccount.getHeadpic());
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
+        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        Enterprise enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
+        enterpriseLabel.setText(enterprise.getName());
     }
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
@@ -145,6 +159,7 @@ public class LandLordUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;

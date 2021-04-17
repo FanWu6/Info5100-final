@@ -6,8 +6,15 @@
 package uiDecoreted;
 
 import Util.JTextFieldHintListener;
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.UserAccount;
 import java.awt.Color;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -18,6 +25,8 @@ public class registerJFrame extends javax.swing.JFrame {
     /**
      * Creates new form registerJFrame
      */
+    String headimg;
+    Boolean isReduplicated = false;
     public registerJFrame() {
         initComponents();
         
@@ -25,7 +34,40 @@ public class registerJFrame extends javax.swing.JFrame {
         passwordtxt.addFocusListener(new JTextFieldHintListener(passwordtxt, "Password",new Color(153,153,153)));
         phonetxt.addFocusListener(new JTextFieldHintListener(phonetxt, "Phone",new Color(153,153,153)));
         emailtxt.addFocusListener(new JTextFieldHintListener(emailtxt, "Email",new Color(153,153,153)));
+        employeenametxt.addFocusListener(new JTextFieldHintListener(employeenametxt, "Name",new Color(153,153,153)));
         foucstxt.requestFocusInWindow();
+        
+        this.jRadioButton1.setSelected(true);
+        headimg = "/images/userLayer/Userpic.png";
+        
+        usernametxt.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                checkUsername();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+               checkUsername();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+               checkUsername();
+            }
+ 
+        });
+    }
+    
+    public void checkUsername(){
+        UserAccount userAccount = SysData.getUserAccountByUsername(usernametxt.getText());
+        if(userAccount!=null){
+            isReduplicated = true;
+            usernametxt.setForeground(Color.RED);
+        }else{
+            isReduplicated = false;
+            usernametxt.setForeground(Color.BLACK);
+        }
     }
 
     /**
@@ -45,6 +87,7 @@ public class registerJFrame extends javax.swing.JFrame {
         passwordtxt = new javax.swing.JTextField();
         phonetxt = new javax.swing.JTextField();
         emailtxt = new javax.swing.JTextField();
+        employeenametxt = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         bg = new javax.swing.JLabel();
@@ -81,7 +124,7 @@ public class registerJFrame extends javax.swing.JFrame {
         getContentPane().add(create_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 270, 70));
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
-        getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 120, 120));
+        getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, 120));
 
         usernametxt.setBackground(new java.awt.Color(247, 247, 248));
         usernametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -110,7 +153,7 @@ public class registerJFrame extends javax.swing.JFrame {
         phonetxt.setText("Phone");
         phonetxt.setToolTipText("");
         phonetxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        getContentPane().add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 230, 40));
+        getContentPane().add(phonetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, 230, 40));
 
         emailtxt.setBackground(new java.awt.Color(247, 247, 248));
         emailtxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
@@ -118,7 +161,25 @@ public class registerJFrame extends javax.swing.JFrame {
         emailtxt.setText("Email");
         emailtxt.setToolTipText("");
         emailtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        emailtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailtxtActionPerformed(evt);
+            }
+        });
         getContentPane().add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 230, 40));
+
+        employeenametxt.setBackground(new java.awt.Color(247, 247, 248));
+        employeenametxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
+        employeenametxt.setForeground(new java.awt.Color(153, 153, 153));
+        employeenametxt.setText("Name");
+        employeenametxt.setToolTipText("");
+        employeenametxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        employeenametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeenametxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(employeenametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 230, 40));
 
         jRadioButton1.setText("Tenant");
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,17 +187,17 @@ public class registerJFrame extends javax.swing.JFrame {
                 jRadioButton1MousePressed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 650, -1, -1));
 
-        jRadioButton2.setText("HouseHolder");
+        jRadioButton2.setText("HouseOwner");
         jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRadioButton2MousePressed(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 650, -1, -1));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/signout8-75.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Signout#8-75.png"))); // NOI18N
         bg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 bgMousePressed(evt);
@@ -152,20 +213,23 @@ public class registerJFrame extends javax.swing.JFrame {
 
     private void jRadioButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MousePressed
         // TODO add your handling code here:
-        this.jRadioButton2.setEnabled(false);
+//        this.jRadioButton1.setSelected(true);
+        this.jRadioButton2.setSelected(false);
+        headimg = "/images/userLayer/Userpic.png";
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
     }//GEN-LAST:event_jRadioButton1MousePressed
 
     private void jRadioButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MousePressed
         // TODO add your handling code here:
-        this.jRadioButton1.setEnabled(false);
+        this.jRadioButton1.setSelected(false);
+//        this.jRadioButton2.setSelected(true);
+        headimg = "/images/userLayer/Userpic2.png";
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
     }//GEN-LAST:event_jRadioButton2MousePressed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         // TODO add your handling code here:
-        this.jRadioButton2.setEnabled(true);
-        this.jRadioButton1.setEnabled(true);
-        this.jRadioButton1.setSelected(false);
-        this.jRadioButton2.setSelected(false);
+     
     }//GEN-LAST:event_bgMousePressed
 
     private void backMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMousePressed
@@ -174,8 +238,34 @@ public class registerJFrame extends javax.swing.JFrame {
 
     private void create_imgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_create_imgMousePressed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Create an account!", "Warning", JOptionPane.WARNING_MESSAGE);
-
+        
+        if(isReduplicated){
+            Tool.InfoString("username is reduplicated!");
+        }else{
+            UserAccount userAccount = new UserAccount();
+            userAccount.setUsername(usernametxt.getText());
+            userAccount.setPassword(passwordtxt.getText());
+            userAccount.setType(jRadioButton1.isSelected() ? 1 : 2);
+            userAccount.setHeadpic(headimg);
+            userAccount.setEmail(emailtxt.getText());
+            userAccount.setPhone(phonetxt.getText());
+            
+            int insertUserAccount = SysData.insertUserAccount(userAccount);
+            if(insertUserAccount<0){
+                return;
+            }
+            UserAccount u = SysData.getUserAccountByUsername(userAccount.getUsername());
+            Employee employee = new Employee();
+            employee.setOrganizationId(1);
+            employee.setEnterpriseId(1);
+            employee.setUseraccountId(u.getId());
+            employee.setName(employeenametxt.getText());
+            int insertEmployee = SysData.insertEmployee(employee);
+            if(insertEmployee>0){
+                Tool.Success();
+                setVisible(false);
+            }
+        }
     }//GEN-LAST:event_create_imgMousePressed
 
     private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
@@ -186,6 +276,14 @@ public class registerJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_backbtnMousePressed
+
+    private void emailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailtxtActionPerformed
+
+    private void employeenametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeenametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeenametxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +341,7 @@ public class registerJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel bg;
     private javax.swing.JLabel create_img;
     private javax.swing.JTextField emailtxt;
+    private javax.swing.JTextField employeenametxt;
     private javax.swing.JTextField foucstxt;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;

@@ -8,6 +8,8 @@ package uiDecoreted.Tenant;
 import Util.GlobalData;
 import Util.SysData;
 import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
@@ -74,7 +76,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         }
         
         cardLayout.show(rightjPanel,"RentalListPanel");
-        
+        setInfo();
         
     }
     
@@ -83,6 +85,11 @@ public class TenantUserPanel extends javax.swing.JPanel {
     }
     public void setInfo(){
         nameLabel.setText(userAccount.getUsername());
+        emailLabel.setText(userAccount.getEmail());
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
+        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        Enterprise enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
+        enterpriseLabel.setText(enterprise.getName());
     }
 
     /**
@@ -100,6 +107,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
@@ -147,6 +155,13 @@ public class TenantUserPanel extends javax.swing.JPanel {
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText("UserName");
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 30));
+
+        enterpriseLabel.setBackground(new java.awt.Color(255, 255, 255));
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(153, 153, 153));
+        enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        enterpriseLabel.setText("enterprise");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 30));
 
         emailLabel.setBackground(new java.awt.Color(255, 255, 255));
         emailLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -196,6 +211,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;

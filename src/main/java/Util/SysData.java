@@ -194,6 +194,18 @@ public class SysData {
     //Organization end--
     
     //Employee
+    public static int insertEmployee(Employee employee){
+         start();
+
+        int insert = employeeMapper.insert(employee);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(insert<0){
+            Tool.Failed();
+        }
+        return insert;
+    }
+    
     public static List<Employee> getEmployeeDirectory(){
         start();
         EmployeeExample employeeExample = new EmployeeExample();
@@ -228,6 +240,31 @@ public class SysData {
     //Employee end--
     
     //UserAccount
+    public static int insertUserAccount(UserAccount userAccount){
+         start();
+
+        int insert = userAccountMapper.insert(userAccount);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(insert<0){
+            Tool.Failed();
+        }
+        return insert;
+    }
+    
+    public static UserAccount getUserAccountByUsername(String username){
+        start();
+        UserAccountExample useraccountExample = new UserAccountExample();
+        useraccountExample.createCriteria().andUsernameEqualTo(username);
+        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(selectByExample.size()==0)
+            return null;
+        
+        return selectByExample.get(0);
+    }
+    
      public static UserAccount getUserAccount(String username,String password){
          start();
         UserAccountExample useraccountExample = new UserAccountExample();
