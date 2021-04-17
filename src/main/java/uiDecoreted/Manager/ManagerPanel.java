@@ -29,32 +29,23 @@ public class ManagerPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     JPanel container;
     CardLayout cardLayout;
-    List<OrderHousework> orderHouseworks;
-    List<Employee> employeeDirectory;
-    List<Enterprise> enterpriseDirectory;
     public ManagerPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         this.userAccount = userAccount;
         initComponents();
-        getInfo();
+
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
         System.out.println("1");
-        rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        rightjPanel.add("viewHouseworkOrderP",new ViewHouseworkOrderPanel(rightjPanel,this.userAccount));
         System.out.println("2");
-        rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        rightjPanel.add("viewMaintenanceOrderP",new ViewMaintenanceOrderPanel(rightjPanel,this.userAccount));
          System.out.println("3");
-        rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel,this.userAccount,this.orderHouseworks,this.employeeDirectory,this.enterpriseDirectory));
+        rightjPanel.add("viewMoveOrderP",new ViewMoveOrderPanel(rightjPanel,this.userAccount));
         cardLayout.show(rightjPanel,"viewHouseworkOrderP");
          System.out.println("4");
         setInfo();
-    }
-    public void getInfo(){
-        orderHouseworks = SysData.getAllOrderHouseworks();
-        enterpriseDirectory = SysData.getEnterpriseDirectory();
-        employeeDirectory = SysData.getEmployeeDirectory();
-        
     }
     public void setInfo(){
         nameLabel.setText(userAccount.getUsername());

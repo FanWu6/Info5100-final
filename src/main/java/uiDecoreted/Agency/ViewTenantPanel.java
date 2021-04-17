@@ -63,7 +63,7 @@ public class ViewTenantPanel extends javax.swing.JPanel {
                     row[5] = house.getPrice();
                     row[6] = SysData.ORDER_TYPE.values()[order.getOrderType()];
                     row[7] = order.getStatus();
-                    model.addRow(row); 
+                    model.addRow(row);
                 }
 
             }
@@ -107,7 +107,15 @@ public class ViewTenantPanel extends javax.swing.JPanel {
             new String [] {
                 "HouseID", "Tenant", "Image", "Description", "Address", "Price", "Request", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -134,28 +142,32 @@ public class ViewTenantPanel extends javax.swing.JPanel {
 
     private void assigntomebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assigntomebtnMousePressed
         // TODO add your handling code here:
-        orders = SysData.getAllOrders(); 
+        orders = SysData.getAllOrders();
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             Tool.InfoString("please select!");
             return;
         }
         int houseId = (int) jTable1.getValueAt(selectedRowIndex, 0);
-        SysData.ORDER_TYPE ordertype = (SysData.ORDER_TYPE)jTable1.getValueAt(selectedRowIndex, 6);
+        SysData.ORDER_TYPE ordertype = (SysData.ORDER_TYPE) jTable1.getValueAt(selectedRowIndex, 6);
         //System.out.println(houseId);
-        for(Order order : orders){
-            if(order.getHouseId()==houseId && SysData.ORDER_TYPE.values()[order.getOrderType()]==ordertype){
-                order.setAgencyId(agencyAccount.getId()); 
-                order.setStatus(SysData.ORDER_STATUS_TYPE.FINISH.getStatus());
-                SysData.updateOrder(order);
-                if(order.getOrderType()==1){
-                House house = SysData.getHouseByHouseId(houseId);
-                house.setTenantId(order.getTenantId());
-                SysData.updateHouse(house);
+        for (Order order : orders) {
+            if (order.getHouseId() == houseId && SysData.ORDER_TYPE.values()[order.getOrderType()] == ordertype) {
+                if (order.getAgencyId() != null) {
+                    Tool.InfoString("This Order has been processed");
+                } else {
+                    order.setAgencyId(agencyAccount.getId());
+                    order.setStatus(SysData.ORDER_STATUS_TYPE.FINISH.getStatus());
+                    SysData.updateOrder(order);
+                    if (order.getOrderType() == 1) {
+                        House house = SysData.getHouseByHouseId(houseId);
+                        house.setTenantId(order.getTenantId());
+                        SysData.updateHouse(house);
+                    }
                 }
             }
         }
-        
+
         displayOrderList();
     }//GEN-LAST:event_assigntomebtnMousePressed
 

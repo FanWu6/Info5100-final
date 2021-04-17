@@ -134,6 +134,7 @@ public class LandLordUserPanel extends javax.swing.JPanel {
     private void homeBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeBtnMousePressed
         // TODO add your handling code here:
         cardLayout.show(rightjPanel,"landLordManageP");
+        
     }//GEN-LAST:event_homeBtnMousePressed
 
 

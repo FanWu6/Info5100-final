@@ -30,21 +30,19 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
     List<Employee> employeeDirectory;
     List<Enterprise> enterpriseDirectory;
 
-    public ViewHouseworkOrderPanel(JPanel rightcontainer, UserAccount managerAccount,List<OrderHousework> orderHouseworks,List<Employee> employeeDirectory,List<Enterprise> enterpriseDirectory) {
+    public ViewHouseworkOrderPanel(JPanel rightcontainer, UserAccount managerAccount) {
         initComponents();
         this.rightcontainer = rightcontainer;
         this.managerAccount = managerAccount;
-        this.employeeDirectory = employeeDirectory;
-        this.enterpriseDirectory = enterpriseDirectory;
-        this.orderHouseworks = orderHouseworks;
         Tool.tableStyle1(jTable1, jScrollPane1);
         Tool.tableStyle1(jTable2, jScrollPane3);
-        getInfo();
+        
         displayOrderTable();
         displayCompanyTable();
     }
 
     private void displayOrderTable() {
+        orderHouseworks = SysData.getAllOrderHouseworks();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         orderHouseworks = SysData.getAllOrderHouseworks();
         model.setRowCount(0);
@@ -68,6 +66,8 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
     }
 
     public void displayCompanyTable() {
+        enterpriseDirectory=SysData.getEnterpriseDirectory();
+        employeeDirectory = SysData.getEmployeeDirectory();
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
         for (Enterprise enterprise : enterpriseDirectory) {
@@ -94,9 +94,6 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         }
     }
 
-    public void getInfo() {
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,7 +125,15 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
             new String [] {
                 "ID", "Company", "Staffs Number"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable2.setGridColor(new java.awt.Color(128, 128, 128));
         jTable2.setRowHeight(25);
         jTable2.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -148,7 +153,15 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
             new String [] {
                 "Order ID", "Customer", "Date", "Company", "Status", "Comment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -181,16 +194,23 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         int row1 = jTable1.getSelectedRow();
         int row2 = jTable2.getSelectedRow();
         //        System.out.println(row);
-        if (row1 < 0 || row2<0) {
-            Tool.InfoString("please select a row!");
+        if (row1 < 0 ) {
+            Tool.InfoString("please select a order!");
+            return;
+        }
+        if(row2<0){
+            Tool.InfoString("please select a company!");
             return;
         }
         OrderHousework orderhousework =(OrderHousework)jTable1.getValueAt(row1, 0);
         int enterpriseId = (int)jTable2.getValueAt(row2, 0);
+        if(orderhousework.getManagerId()!=null){
+            Tool.InfoString("This order has been processed");
+        }else{
  
                 orderhousework.setEnterpriseId(enterpriseId);
-                orderhousework.setStatus("Waiting taking over");
-                SysData.updateOrderHousework(orderhousework);
+                orderhousework.setStatus("Waiting for process");
+                SysData.updateOrderHousework(orderhousework);}
          
         displayOrderTable();
         

@@ -71,6 +71,8 @@ public class LandLordManagePanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        refreshBtn = new javax.swing.JLabel();
+        refresh = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddOrderBtn = new javax.swing.JLabel();
         AddOrder = new javax.swing.JLabel();
@@ -88,7 +90,15 @@ public class LandLordManagePanel extends javax.swing.JPanel {
             new String [] {
                 "HouseID", "Image", "Address", "Price", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
         jTable1.setSelectionForeground(new java.awt.Color(153, 0, 204));
@@ -96,6 +106,20 @@ public class LandLordManagePanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 850, -1));
+
+        refreshBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        refreshBtn.setForeground(new java.awt.Color(255, 255, 255));
+        refreshBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        refreshBtn.setText("Refresh");
+        refreshBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                refreshBtnMousePressed(evt);
+            }
+        });
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(912, 130, 70, 20));
+
+        refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/WhiteBtn_s.png"))); // NOI18N
+        add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,6 +147,11 @@ public class LandLordManagePanel extends javax.swing.JPanel {
         cardLayout.show(rightcontainer, "addOrderP");
     }//GEN-LAST:event_AddOrderBtnMousePressed
 
+    private void refreshBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshBtnMousePressed
+        // TODO add your handling code here:
+        displayHouseList();
+    }//GEN-LAST:event_refreshBtnMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddOrder;
@@ -130,5 +159,7 @@ public class LandLordManagePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel refresh;
+    private javax.swing.JLabel refreshBtn;
     // End of variables declaration//GEN-END:variables
 }

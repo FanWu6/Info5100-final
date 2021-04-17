@@ -84,7 +84,15 @@ public class ViewLandLordPanel extends javax.swing.JPanel {
             new String [] {
                 "HouseID", "Landlord", "Image", "Description", "Address", "Price", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setGridColor(new java.awt.Color(128, 128, 128));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(63, 164, 177));
@@ -121,8 +129,14 @@ public class ViewLandLordPanel extends javax.swing.JPanel {
         //System.out.println(houseId);
         for(House house : houses){
             if(house.getId()==houseId){
+                if(house.getAgencyId()!=null){
+                    Tool.InfoString("This Order has been processed");
+                    
+                }else{
+                    
                 house.setAgencyId(agencyAccount.getId());  
                 SysData.updateHouse(house);
+                }
             }
         }
         

@@ -38,6 +38,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
          floortxt.addFocusListener(new JTextFieldHintListener(floortxt, "Floor", new Color(153, 153, 153)));
          descriptxt.addFocusListener(new JTextFieldHintListener(descriptxt, "Description", new Color(153, 153, 153)));
          nametxt.addFocusListener(new JTextFieldHintListener(nametxt, "Name", new Color(153, 153, 153)));
+         regiontxt.addFocusListener(new JTextFieldHintListener(regiontxt, "Region", new Color(153, 153, 153)));
          
     }
 
@@ -51,6 +52,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         housepic = new javax.swing.JLabel();
+        regiontxt = new javax.swing.JTextField();
         addresstxt = new javax.swing.JTextField();
         pricetxt = new javax.swing.JTextField();
         orientationtxt = new javax.swing.JTextField();
@@ -67,6 +69,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         address4 = new javax.swing.JLabel();
         address6 = new javax.swing.JLabel();
         address7 = new javax.swing.JLabel();
+        address8 = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         submitBtn = new javax.swing.JLabel();
@@ -80,12 +83,26 @@ public class AddOrderPanel extends javax.swing.JPanel {
         line7 = new javax.swing.JLabel();
         line8 = new javax.swing.JLabel();
         line9 = new javax.swing.JLabel();
+        line10 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         housepic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic2.png"))); // NOI18N
-        add(housepic, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 280, 200));
+        add(housepic, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 270, 190));
+
+        regiontxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        regiontxt.setForeground(new java.awt.Color(153, 153, 153));
+        regiontxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        regiontxt.setText("Region");
+        regiontxt.setToolTipText("");
+        regiontxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        regiontxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regiontxtActionPerformed(evt);
+            }
+        });
+        add(regiontxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 460, 40));
 
         addresstxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         addresstxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -210,6 +227,9 @@ public class AddOrderPanel extends javax.swing.JPanel {
         address7.setText("Layout");
         add(address7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, -1, -1));
 
+        address8.setText("Region");
+        add(address8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
+
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -233,16 +253,16 @@ public class AddOrderPanel extends javax.swing.JPanel {
                 submitBtnMousePressed(evt);
             }
         });
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 700, 200, 50));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 690, 200, 50));
 
         submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, 200, 70));
+        add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 200, 70));
 
         line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 630, -1, 50));
 
         line2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, 50));
+        add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 50));
 
         line3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, 50));
@@ -264,6 +284,9 @@ public class AddOrderPanel extends javax.swing.JPanel {
 
         line9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, -1, 50));
+
+        line10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -279,7 +302,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         //根据textfield拿到数据，address ......
         House house = new House();
 //        house.setId(1);
-        
+       // house.setRegion(regiontxt.getText());
         house.setAddress(addresstxt.getText());
         house.setImage("/images/housepicture/housepic2.png");
         house.setDescrib(descriptxt.getText());
@@ -291,6 +314,9 @@ public class AddOrderPanel extends javax.swing.JPanel {
         house.setArea(areatxt.getText());
         house.setOwnerId(ownerAccount.getId());
         int id = SysData.addHouse(house);
+        
+        CardLayout layout = (CardLayout)rightcontainer.getLayout();
+        layout.show(rightcontainer, "landLordManageP");
         
     }//GEN-LAST:event_submitBtnMousePressed
 
@@ -322,6 +348,10 @@ public class AddOrderPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_layouttxtActionPerformed
 
+    private void regiontxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regiontxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regiontxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
@@ -333,6 +363,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel address5;
     private javax.swing.JLabel address6;
     private javax.swing.JLabel address7;
+    private javax.swing.JLabel address8;
     private javax.swing.JTextField addresstxt;
     private javax.swing.JTextField areatxt;
     private javax.swing.JLabel backBtn;
@@ -341,6 +372,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel housepic;
     private javax.swing.JTextField layouttxt;
     private javax.swing.JLabel line1;
+    private javax.swing.JLabel line10;
     private javax.swing.JLabel line2;
     private javax.swing.JLabel line3;
     private javax.swing.JLabel line4;
@@ -352,6 +384,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nametxt;
     private javax.swing.JTextField orientationtxt;
     private javax.swing.JTextField pricetxt;
+    private javax.swing.JTextField regiontxt;
     private javax.swing.JLabel submit;
     private javax.swing.JLabel submitBtn;
     // End of variables declaration//GEN-END:variables
