@@ -71,7 +71,7 @@ public class RentalListPanel extends javax.swing.JPanel {
         for (House house : houses) {
             Object[] row = new Object[6];
             //如果house的租客id为空，代表没有租出去，显示
-            if ((house.getTenantId()==null || house.getTenantId()==0) && house.getRegion()==districtCombo.getSelectedIndex()) {
+            if ((house.getTenantId()==null || house.getTenantId()==0) && house.getRegion()!=null&&house.getRegion()==districtCombo.getSelectedIndex()) {
                 row[0] = house.getId();
                 row[1] = house.getImage();
                 row[2] = Tool.strToMultilineHTML(house.getDescrib(), ",");  // "<html><body><p align=\"center\">数据版本12312321321<br/>v1.0.0<br/>12321321</p></body></html>";

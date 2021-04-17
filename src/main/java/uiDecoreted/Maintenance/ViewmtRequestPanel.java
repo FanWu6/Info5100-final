@@ -218,7 +218,7 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblHouseworkAll.getModel();
         model.setRowCount(0);
         for (OrderHousework ordH : orderHouseworks) {
-            if (ordH.getHouseworkOrderType() == 2) {
+            if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.getIndex()) {
                 Object[] row = new Object[6];
 //               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
                 //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
@@ -238,7 +238,7 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (OrderHousework ordH : orderHouseworks) {
 
-            if (ordH.getHouseworkOrderType() == 2 && ordH.getWorkderId() == employee.getId()) {
+            if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.getIndex() && ordH.getWorkderId() == employee.getId()) {
                 Object[] row = new Object[6];
                 row[0] = ordH;
                 row[1] = ordH.getTenantId();

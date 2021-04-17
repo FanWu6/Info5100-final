@@ -46,6 +46,7 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
 
     private void displayOrderTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        orderHouseworks = SysData.getAllOrderHouseworks();
         model.setRowCount(0);
         for (OrderHousework ordH : orderHouseworks) {
             if (ordH.getHouseworkOrderType() == 0) {
