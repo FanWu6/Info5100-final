@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Systemadmin;
+package uiDecoreted.ServiceAdmin;
 
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author Dengbowen
  */
-public class SysadminPanel extends javax.swing.JPanel {
+public class AdminPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SysadminPanel
@@ -21,20 +21,18 @@ public class SysadminPanel extends javax.swing.JPanel {
     JPanel container;
     CardLayout cardLayout;
     UserAccount userAccount;
-    public SysadminPanel(JPanel container,UserAccount userAccount) {
-        initComponents();
+    public AdminPanel(JPanel container,UserAccount userAccount) {
         this.container = container;
         this.userAccount = userAccount;
         
+        initComponents();
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("EnterpriseP",new EnterprisePanel(rightjPanel,this.userAccount));
-        rightjPanel.add("NetworkP",new NetworkPanel(rightjPanel,this.userAccount));
-        cardLayout.show(rightjPanel,"NetworkP");
-        
+        rightjPanel.add("EmployeeP",new EmployeePanel(rightjPanel,this.userAccount));
+        rightjPanel.add("OrganizationP",new OrganizationPanel(rightjPanel,this.userAccount));
+        cardLayout.show(rightjPanel,"EmployeeP");
         setInfo();
     }
-    
     public void setInfo(){
         nameLabel.setText(userAccount.getUsername());
         emailLabel.setText(userAccount.getEmail());
@@ -51,8 +49,8 @@ public class SysadminPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
-        enterprise = new javax.swing.JLabel();
-        network = new javax.swing.JLabel();
+        employee = new javax.swing.JLabel();
+        organization = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
@@ -68,25 +66,25 @@ public class SysadminPanel extends javax.swing.JPanel {
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 1130, 810));
 
-        enterprise.setFont(new java.awt.Font("Gujarati Sangam MN", 0, 15)); // NOI18N
-        enterprise.setForeground(new java.awt.Color(153, 153, 153));
-        enterprise.setText("Manage Enterprise");
-        enterprise.addMouseListener(new java.awt.event.MouseAdapter() {
+        employee.setFont(new java.awt.Font("Gujarati Sangam MN", 0, 15)); // NOI18N
+        employee.setForeground(new java.awt.Color(153, 153, 153));
+        employee.setText("Manage Employee");
+        employee.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                enterpriseMousePressed(evt);
+                employeeMousePressed(evt);
             }
         });
-        add(enterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
+        add(employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, -1, -1));
 
-        network.setFont(new java.awt.Font("Gujarati Sangam MN", 0, 15)); // NOI18N
-        network.setForeground(new java.awt.Color(153, 153, 153));
-        network.setText("Manage Network");
-        network.addMouseListener(new java.awt.event.MouseAdapter() {
+        organization.setFont(new java.awt.Font("Gujarati Sangam MN", 0, 15)); // NOI18N
+        organization.setForeground(new java.awt.Color(153, 153, 153));
+        organization.setText("Manage Organization");
+        organization.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                networkMousePressed(evt);
+                organizationMousePressed(evt);
             }
         });
-        add(network, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+        add(organization, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         nameLabel.setBackground(new java.awt.Color(255, 255, 255));
         nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -119,15 +117,15 @@ public class SysadminPanel extends javax.swing.JPanel {
         add(logoutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 752, 80, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void networkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_networkMousePressed
+    private void organizationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_organizationMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"NetworkP");
-    }//GEN-LAST:event_networkMousePressed
+        cardLayout.show(rightjPanel,"OrganizationP");
+    }//GEN-LAST:event_organizationMousePressed
 
-    private void enterpriseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterpriseMousePressed
+    private void employeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeMousePressed
         // TODO add your handling code here:
-        cardLayout.show(rightjPanel,"EnterpriseP");
-    }//GEN-LAST:event_enterpriseMousePressed
+        cardLayout.show(rightjPanel,"EmployeeP");
+    }//GEN-LAST:event_employeeMousePressed
 
     private void logoutbtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutbtnMousePressed
         // TODO add your handling code here:
@@ -142,11 +140,11 @@ public class SysadminPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel enterprise;
+    private javax.swing.JLabel employee;
     private javax.swing.JLabel logoutbtn;
     private javax.swing.JLabel menubg;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel network;
+    private javax.swing.JLabel organization;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables
