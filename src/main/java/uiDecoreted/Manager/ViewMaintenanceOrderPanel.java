@@ -195,7 +195,7 @@ public class ViewMaintenanceOrderPanel extends javax.swing.JPanel {
         int row2 = jTable2.getSelectedRow();
         //        System.out.println(row);
         if (row1 < 0 ) {
-            Tool.InfoString("please select a order!");
+            Tool.InfoString("please select an order!");
             return;
         }
         if(row2<0){
