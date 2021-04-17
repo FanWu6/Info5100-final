@@ -40,7 +40,7 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("landLordManageP",new LandLordManagePanel(rightjPanel,this.userAccount,houses));
+        rightjPanel.add("landLordManageP",new LandLordManagePanel(rightjPanel,this.userAccount));
         rightjPanel.add("addOrderP",new AddOrderPanel(rightjPanel,this.userAccount));
         cardLayout.show(rightjPanel,"landLordManageP");
         
@@ -62,7 +62,7 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
-        nameLabel1 = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -100,12 +100,12 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         nameLabel.setText("UserName");
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 30));
 
-        nameLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        nameLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nameLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        nameLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nameLabel1.setText("notheastern@edu");
-        add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
+        emailLabel.setBackground(new java.awt.Color(255, 255, 255));
+        emailLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(153, 153, 153));
+        emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emailLabel.setText("notheastern@edu");
+        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
 
         menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu2.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
@@ -116,11 +116,14 @@ public class LandLordUserPanel extends javax.swing.JPanel {
 
     public void getInfo(){
         //houses
-        houses = GlobalData.getAllHouse();
+       
         
     }
     public void setInfo(){
+       
         nameLabel.setText(userAccount.getUsername());
+        emailLabel.setText(userAccount.getEmail());
+        userPic.setText(userAccount.getHeadpic());
     }
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         // TODO add your handling code here:
@@ -141,10 +144,10 @@ public class LandLordUserPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel homeBtn;
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel nameLabel1;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;
     // End of variables declaration//GEN-END:variables

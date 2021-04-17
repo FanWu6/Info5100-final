@@ -7,6 +7,7 @@ package uiDecoreted.LandLord;
 
 import Util.GlobalData;
 import Util.ImageRender;
+import Util.SysData;
 import Util.Tool;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
@@ -27,11 +28,11 @@ public class LandLordManagePanel extends javax.swing.JPanel {
     UserAccount ownerAccount;
     JPanel rightcontainer;
     List<House> houses;
-    public LandLordManagePanel(JPanel rightcontainer,UserAccount ownerAccount,List<House> houses) {
+    public LandLordManagePanel(JPanel rightcontainer,UserAccount ownerAccount) {
         initComponents();
         this.rightcontainer=rightcontainer;
         this.ownerAccount = ownerAccount;
-        this.houses = houses;
+
         //改变table样式
         Tool.tableStyle1(jTable1,jScrollPane1);
         
@@ -41,13 +42,14 @@ public class LandLordManagePanel extends javax.swing.JPanel {
     }
     
      public void displayHouseList() {
+        houses = SysData.getAllHouses();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         jTable1.setRowHeight(105);
         jTable1.getColumnModel().getColumn(1).setCellRenderer(new ImageRender());
         for (House house : houses) {
             Object[] row = new Object[5];
-            //根据租客的id显示房子信息
+           
             if (house.getOwnerId() == ownerAccount.getId()) {
                 row[0] = house.getId();
                 row[1] = house.getImage();
