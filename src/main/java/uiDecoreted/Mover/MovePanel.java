@@ -109,7 +109,7 @@ public class MovePanel extends javax.swing.JPanel {
         menuBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Menu2.png"))); // NOI18N
         add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 810));
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Artboard 1@0.75x.png"))); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Artboard 1@0.75x.png"))); // NOI18N
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 810));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -168,7 +168,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
 
         commentText.setText("comment from tenant");
         commentText.setOpaque(false);
-        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 540, 120));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed

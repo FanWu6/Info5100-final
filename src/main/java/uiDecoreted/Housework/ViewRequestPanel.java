@@ -240,7 +240,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         for(OrderHousework ordH:orderHouseworks){
             if(ordH.getHouseworkOrderType()==SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()
                     &&ordH.getEnterpriseId()==this.enterprise.getId()
-                    &&ordH.getStatus()==SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()){
+                    &&ordH.getStatus()==SysData.ORDER_STATUS_TYPE.PEND.getStatus()){
                 Object[] row = new Object[6];
                 String s="";
                 if(SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()==ordH.getHouseworkOrderType()){

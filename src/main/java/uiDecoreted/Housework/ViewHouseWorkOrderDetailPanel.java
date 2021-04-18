@@ -57,8 +57,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
-        leaveMessage = new javax.swing.JLabel();
-        requesttour = new javax.swing.JLabel();
         txtearea = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
@@ -70,7 +68,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        commentText.setText("comment from tenant");
+        commentText.setText("No Comment Now");
         commentText.setOpaque(false);
         add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
 
@@ -90,22 +88,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
         add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 300, 210));
-
-        leaveMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        leaveMessage.setForeground(new java.awt.Color(255, 255, 255));
-        leaveMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        leaveMessage.setText("Leave a message");
-        leaveMessage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                leaveMessageMousePressed(evt);
-            }
-        });
-        add(leaveMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
-
-        requesttour.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        requesttour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
 
         txtearea.setEditable(false);
         txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
@@ -191,14 +173,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         layout.show(rightcontainer, "viewRequestP");
     }//GEN-LAST:event_backBtnMousePressed
 
-    private void leaveMessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leaveMessageMousePressed
-        // TODO add your handling code here:
-        rightcontainer.add("MessageHouseworkPanel",new MessageHouseworkPanel(rightcontainer,orderHousework));
-
-        CardLayout layout = (CardLayout) rightcontainer.getLayout();
-        layout.show(rightcontainer, "MessageHouseworkPanel");
-    }//GEN-LAST:event_leaveMessageMousePressed
-
     private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtaddressActionPerformed
@@ -227,8 +201,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel leaveMessage;
-    private javax.swing.JLabel requesttour;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtearea;
     private javax.swing.JTextField txtemail;
