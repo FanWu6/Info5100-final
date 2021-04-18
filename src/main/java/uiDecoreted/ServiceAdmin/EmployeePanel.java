@@ -28,12 +28,17 @@ public class EmployeePanel extends javax.swing.JPanel {
     JPanel rightcontainer;
     Organization organizaion;
     List<Employee> allEmployee;
-    public EmployeePanel(JPanel rightcontainer,Organization organizaion) {
+    SysadminPanel sysadminPanel;
+    public EmployeePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
+        this.sysadminPanel = sysadminPanel;
         this.rightcontainer=rightcontainer;
         this.organizaion=organizaion;
-        getInfo();
-        setInfo();
+    }
+
+    public void setOrganizaion(Organization organizaion) {
+        this.organizaion = organizaion;
+
     }
 
     /**
@@ -139,8 +144,8 @@ public class EmployeePanel extends javax.swing.JPanel {
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
         //insert useraccount first
-        if(usernametxt.getText()==""||passwordtxt.getText()==""||usernametxt.getText()==""
-                ||usernametxt.getText() == null || passwordtxt.getText() == null || usernametxt.getText() == null){
+        if(employeetxt.getText()==""||passwordtxt.getText()==""||usernametxt.getText()==""
+                ||employeetxt.getText() == null || passwordtxt.getText() == null || usernametxt.getText() == null){
             Tool.InfoString("Please complete the form");
         }
         UserAccount userAccount = new UserAccount();
@@ -152,7 +157,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         int insertNetwork = SysData.insertUserAccount(userAccount);
         //inert employee
         Employee employee = new Employee();
-        employee.setName(usernametxt.getText());
+        employee.setName(employeetxt.getText());
         employee.setEnterpriseId(organizaion.getEnterpriseId());
         employee.setOrganizationId(organizaion.getId());
 
@@ -164,10 +169,10 @@ public class EmployeePanel extends javax.swing.JPanel {
 
         if (insertNetwork > 0) {
             setInfo();
-//            sysadminPanel.setInfo();
+            sysadminPanel.setInfo();
+            Tool.InfoString("Add Successfully");
         }
-        setInfo();
-        Tool.InfoString("Add Successfully");
+       
      
     }//GEN-LAST:event_completedBtnMousePressed
 
@@ -203,7 +208,8 @@ public class EmployeePanel extends javax.swing.JPanel {
         allEmployee=SysData.getEmployeeByEpidAndOrid(organizaion.getEnterpriseId(),organizaion.getId());
     }
 
-    private void setInfo() {
+    public void setInfo() {
+        getInfo();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         for (Employee employee : allEmployee) {

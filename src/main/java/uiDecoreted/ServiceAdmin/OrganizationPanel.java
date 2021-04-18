@@ -27,14 +27,19 @@ public class OrganizationPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     JPanel rightcontainer;
     List<Organization> allOrganizations;
-    public OrganizationPanel(JPanel rightcontainer, Enterprise enterprise) {
+    SysadminPanel sysadminPanel;
+    public OrganizationPanel(JPanel rightcontainer,SysadminPanel sysadminPanel ) {
         initComponents();
+        this.sysadminPanel = sysadminPanel;
         this.rightcontainer=rightcontainer;
         this.enterprise=enterprise;
-        getInfo();
-        setInfo();
     }
 
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,10 +141,10 @@ public class OrganizationPanel extends javax.swing.JPanel {
         int insertNetwork = SysData.insertOrganizaion(organization);
         if (insertNetwork > 0) {
             setInfo();
-//            sysadminPanel.setInfo();
+            sysadminPanel.setInfo();
+            Tool.InfoString("Add Successfully");
         }
-        setInfo();
-        Tool.InfoString("Add Successfully");
+        
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void organizationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationtxtActionPerformed
@@ -172,7 +177,8 @@ public class OrganizationPanel extends javax.swing.JPanel {
         allOrganizations=SysData.getOrganizationByEnterpriseId(enterprise.getId());
     }
 
-    private void setInfo() {
+    public void setInfo() {
+        getInfo();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         for (Organization organization : allOrganizations) {

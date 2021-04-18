@@ -27,16 +27,21 @@ public class EnterprisePanel extends javax.swing.JPanel {
      */
     JPanel rightcontainer;
     List<Enterprise> allEnterprises;
+    SysadminPanel sysadminPanel;
     Network network;
     int type = 0;
     String enterpriseType = "";
-    public EnterprisePanel(JPanel rightcontainer,Network network) {
+    public EnterprisePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
         this.rightcontainer=rightcontainer;
-        this.network=network;
-        getInfo();
-        setInfo();
+        this.sysadminPanel = sysadminPanel;
     }
+
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,10 +135,10 @@ public class EnterprisePanel extends javax.swing.JPanel {
         int insertEnter = SysData.insertEnterprise(enterprise);
         if (insertEnter > 0) {
             setInfo();
-//            sysadminPanel.setInfo();
+            sysadminPanel.setInfo();
+            Tool.InfoString("Add Successfully");
         }
-        setInfo();
-        Tool.InfoString("Add Successfully");
+        
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void enterprisetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterprisetxtActionPerformed
@@ -156,6 +161,7 @@ public class EnterprisePanel extends javax.swing.JPanel {
         }
     }
     public void setInfo() {
+        getInfo();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
