@@ -1,12 +1,20 @@
+package uiDecoreted.ServiceAdmin;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Systemadmin;
 
+
+import Util.SysData;
+import com.neu.infofinal.bean.Network;
 import com.neu.infofinal.bean.UserAccount;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +27,25 @@ public class NetworkPanel extends javax.swing.JPanel {
      */
     UserAccount userAccount;
     JPanel rightcontainer;
-    public NetworkPanel(JPanel rightcontainer,UserAccount userAccount) {
+    SysadminPanel sysadminPanel;
+    public NetworkPanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
+        this.sysadminPanel = sysadminPanel;
         this.rightcontainer=rightcontainer;
-        this.userAccount = userAccount;
+    }
+    
+    public void setInfo(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        List<Network> allNetworks = SysData.getAllNetworks();
+         for (Network network : allNetworks) {
+            Object[] row = new Object[2];
+            //如果house的租客id为空，代表没有租出去，显示
+                row[0] = network.getId();
+                row[1] = network.getName();
+                model.addRow(row);       
+        }
     }
 
     /**
@@ -96,7 +119,13 @@ public class NetworkPanel extends javax.swing.JPanel {
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
-
+        Network network = new Network();
+        network.setName(networktxt.getText());
+        int insertNetwork = SysData.insertNetwork(network);
+        if(insertNetwork>0){
+            setInfo();
+            sysadminPanel.setInfo();
+        }
     }//GEN-LAST:event_completedBtnMousePressed
 
 

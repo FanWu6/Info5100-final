@@ -20,6 +20,7 @@ import uiDecoreted.Manager.ManagerPanel;
 import uiDecoreted.Housework.HouseworkPanel;
 import uiDecoreted.Maintenance.MaintenancePanel;
 import uiDecoreted.Mover.MovePanel;
+import uiDecoreted.ServiceAdmin.SysadminPanel;
 
 
 /**
@@ -40,7 +41,6 @@ public class MainJPanel extends javax.swing.JPanel {
         passwordtxt.addFocusListener(new JTextFieldHintListener(passwordtxt, "Password",new Color(153,153,153)));
         foucstxt.requestFocusInWindow();
         
-        GlobalData.getUserAccounts();
     }
 
     /**
@@ -133,6 +133,8 @@ public class MainJPanel extends javax.swing.JPanel {
             container.add("MaintenancePanel", new MaintenancePanel(container, userAccount));
         }else if (SysData.ACCOUNT_TYPE.MOVER.getIndex() == userAccount.getType()) {
             container.add("MovePanel", new MovePanel(container, userAccount));
+        }else if (SysData.ACCOUNT_TYPE.SYSTEM_ADMIN.getIndex() == userAccount.getType()) {
+            container.add("SysadminPanel", new SysadminPanel(container));
         }
         layout.next(container);
         

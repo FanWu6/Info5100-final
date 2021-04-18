@@ -1,9 +1,11 @@
+package uiDecoreted.ServiceAdmin;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uiDecoreted.Systemadmin;
+
 
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
@@ -19,10 +21,9 @@ public class EnterprisePanel extends javax.swing.JPanel {
      */
     UserAccount userAccount;
     JPanel rightcontainer;
-    public EnterprisePanel(JPanel rightcontainer,UserAccount userAccount) {
+    public EnterprisePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
         this.rightcontainer=rightcontainer;
-        this.userAccount = userAccount;
     }
 
     /**
@@ -38,16 +39,12 @@ public class EnterprisePanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
-        passwordtxt = new javax.swing.JTextField();
-        usernametxt = new javax.swing.JTextField();
         enterprisetxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        enterprisetypecombo = new javax.swing.JComboBox<>();
-        networkcombo = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,20 +83,6 @@ public class EnterprisePanel extends javax.swing.JPanel {
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 200, 70));
 
-        passwordtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordtxtActionPerformed(evt);
-            }
-        });
-        add(passwordtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 560, 240, 30));
-
-        usernametxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernametxtActionPerformed(evt);
-            }
-        });
-        add(usernametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 240, 30));
-
         enterprisetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterprisetxtActionPerformed(evt);
@@ -119,19 +102,11 @@ public class EnterprisePanel extends javax.swing.JPanel {
         jLabel1.setText("Network:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 80, 30));
 
-        enterprisetypecombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterprisetypecombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 240, -1));
+        jLabel6.setText("move");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, 30));
 
-        networkcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 240, -1));
-
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel4.setText("Enterprise Admin UserName:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, -1, 30));
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setText("Enterprise Admin Password:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, -1, 30));
+        jLabel4.setText("jLabel4");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
@@ -143,29 +118,17 @@ public class EnterprisePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_enterprisetxtActionPerformed
 
-    private void usernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernametxtActionPerformed
-
-    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordtxtActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JTextField enterprisetxt;
-    private javax.swing.JComboBox<String> enterprisetypecombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> networkcombo;
-    private javax.swing.JTextField passwordtxt;
-    private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }

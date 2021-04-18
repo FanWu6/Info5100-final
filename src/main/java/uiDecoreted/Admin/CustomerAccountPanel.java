@@ -8,7 +8,6 @@ package uiDecoreted.Admin;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
 import uiDecoreted.ServiceAdmin.*;
-import uiDecoreted.Systemadmin.*;
 
 /**
  *

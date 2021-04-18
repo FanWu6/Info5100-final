@@ -11,11 +11,14 @@ import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.EnterpriseExample;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.HouseExample;
+import com.neu.infofinal.bean.Network;
+import com.neu.infofinal.bean.NetworkExample;
 import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.OrderExample;
 import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.OrderHouseworkExample;
 import com.neu.infofinal.bean.Organization;
+import com.neu.infofinal.bean.OrganizationExample;
 import com.neu.infofinal.bean.Region;
 import com.neu.infofinal.bean.RegionExample;
 import com.neu.infofinal.bean.User;
@@ -25,6 +28,7 @@ import com.neu.infofinal.bean.UserExample;
 import com.neu.infofinal.mapper.EmployeeMapper;
 import com.neu.infofinal.mapper.EnterpriseMapper;
 import com.neu.infofinal.mapper.HouseMapper;
+import com.neu.infofinal.mapper.NetworkMapper;
 import com.neu.infofinal.mapper.OrderHouseworkMapper;
 import com.neu.infofinal.mapper.OrderMapper;
 import com.neu.infofinal.mapper.OrganizationMapper;
@@ -120,7 +124,7 @@ public class SysData {
     static OrderMapper orderMapper;
     static OrderHouseworkMapper orderHouseworkMapper;
     static RegionMapper regionMapper;
-    
+    static NetworkMapper networkMapper;
    
     public static void Config(){
          try {
@@ -146,20 +150,32 @@ public class SysData {
          orderMapper = sqlSession.getMapper(OrderMapper.class);
          orderHouseworkMapper=sqlSession.getMapper(OrderHouseworkMapper.class);
          regionMapper=sqlSession.getMapper(RegionMapper.class);
+         networkMapper = sqlSession.getMapper(NetworkMapper.class);
     }
     
-    //User-------------------------------
-    public static List<UserAccount> getAllUsers(){
+    //netWork-------------------------------
+    public static List<Network> getAllNetworks(){
         start();
         
-        UserAccountExample useraccountExample = new UserAccountExample();
-        useraccountExample.createCriteria().andIdIsNotNull();
-        List<UserAccount> selectByExample = userAccountMapper.selectByExample(useraccountExample);
+        NetworkExample networkExample = new NetworkExample();
+        networkExample.createCriteria().andIdIsNotNull();
+        List<Network> selectByExample = networkMapper.selectByExample(networkExample);
         //关闭连接和提交数据
         commitAndClose();
         return selectByExample;
     }
-    //User end---------------------------
+    
+     public static int insertNetwork(Network network){
+        start();
+        int insert = networkMapper.insert(network);
+        //关闭连接和提交数据
+        commitAndClose();
+        if(insert<=0){
+            Tool.Failed();
+        }
+        return insert;
+    }
+    //network end---------------------------
     
     
     
@@ -181,6 +197,16 @@ public class SysData {
         commitAndClose();
         return selectByPrimaryKey;
     }
+    
+     public static List<Enterprise> getEnterpriseByNetworkId(int networkid){
+        start();
+        EnterpriseExample enterpriseExample = new EnterpriseExample();
+        enterpriseExample.createCriteria().andNetworkIdEqualTo(networkid);
+        List<Enterprise> selectByExample = enterpriseMapper.selectByExample(enterpriseExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        return selectByExample;
+    }
     //Enterprise end--
     
     //Organization
@@ -190,6 +216,16 @@ public class SysData {
         //关闭连接和提交数据
         commitAndClose();
         return selectByPrimaryKey;
+    }
+    
+     public static List<Organization> getOrganizationByEnterpriseId(int id){
+        start();
+        OrganizationExample organizationExample = new OrganizationExample();
+        organizationExample.createCriteria().andEnterpriseIdEqualTo(id);
+        List<Organization> selectByExample = organizationMapper.selectByExample(organizationExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        return selectByExample;
     }
     //Organization end--
     
@@ -222,6 +258,16 @@ public class SysData {
         //关闭连接和提交数据
         commitAndClose();
         return selectByPrimaryKey;
+    }
+    
+     public static List<Employee> getEmployeeByEpidAndOrid(int enterpriseid,int organizationid){
+         start();
+        EmployeeExample employeeExample = new EmployeeExample();
+        employeeExample.createCriteria().andEnterpriseIdEqualTo(enterpriseid).andOrganizationIdEqualTo(organizationid);
+        List<Employee> selectByExample = employeeMapper.selectByExample(employeeExample);
+        //关闭连接和提交数据
+        commitAndClose();
+        return selectByExample;
     }
     
     public static Employee getEmployeeByUserAccountId(int userid){

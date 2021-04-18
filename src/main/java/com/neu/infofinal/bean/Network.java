@@ -1,9 +1,7 @@
 package com.neu.infofinal.bean;
 
-public class Organization {
+public class Network {
     private Integer id;
-
-    private Integer enterpriseId;
 
     private String name;
 
@@ -13,14 +11,6 @@ public class Organization {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getEnterpriseId() {
-        return enterpriseId;
-    }
-
-    public void setEnterpriseId(Integer enterpriseId) {
-        this.enterpriseId = enterpriseId;
     }
 
     public String getName() {

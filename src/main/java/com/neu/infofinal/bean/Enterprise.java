@@ -7,6 +7,8 @@ public class Enterprise {
 
     private Integer type;
 
+    private Integer networkId;
+
     public Integer getId() {
         return id;
     }
@@ -30,4 +32,19 @@ public class Enterprise {
     public void setType(Integer type) {
         this.type = type;
     }
+
+    public Integer getNetworkId() {
+        return networkId;
+    }
+
+    public void setNetworkId(Integer networkId) {
+        this.networkId = networkId;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
+    
 }

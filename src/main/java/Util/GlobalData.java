@@ -27,8 +27,8 @@ public class GlobalData {
     }
 
     public static List<UserAccount> getUserAccounts() {
-        userAccounts = SysData.getAllUsers();
-        return userAccounts;
+//        userAccounts = SysData.getAllUsers();
+        return null;
     }
     
     public static List<House> getAllHouse() {

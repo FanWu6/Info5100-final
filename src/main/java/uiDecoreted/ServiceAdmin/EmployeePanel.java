@@ -44,23 +44,23 @@ public class EmployeePanel extends javax.swing.JPanel {
         employeetxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        organizationcombo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name"
+                "EmployeeID", "EmployeeName", "OrganizationId", "enterpriseId", "username", "password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -114,9 +114,6 @@ public class EmployeePanel extends javax.swing.JPanel {
         jLabel2.setText("Organization:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, -1, 30));
 
-        organizationcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 240, -1));
-
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Employee UserName:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, 30));
@@ -124,6 +121,9 @@ public class EmployeePanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Employee Password:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, -1, 30));
+
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
@@ -148,13 +148,13 @@ public class EmployeePanel extends javax.swing.JPanel {
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JTextField employeetxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> organizationcombo;
     private javax.swing.JTextField passwordtxt;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables

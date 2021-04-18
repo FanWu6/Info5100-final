@@ -3,14 +3,14 @@ package com.neu.infofinal.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnterpriseExample {
+public class NetworkExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public EnterpriseExample() {
+    public NetworkExample() {
         oredCriteria = new ArrayList<>();
     }
 
@@ -231,126 +231,6 @@ public class EnterpriseExample {
 
         public Criteria andNameNotBetween(String value1, String value2) {
             addCriterion("name not between", value1, value2, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIsNull() {
-            addCriterion("type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIsNotNull() {
-            addCriterion("type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeEqualTo(Integer value) {
-            addCriterion("type =", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotEqualTo(Integer value) {
-            addCriterion("type <>", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeGreaterThan(Integer value) {
-            addCriterion("type >", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("type >=", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeLessThan(Integer value) {
-            addCriterion("type <", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("type <=", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIn(List<Integer> values) {
-            addCriterion("type in", values, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotIn(List<Integer> values) {
-            addCriterion("type not in", values, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeBetween(Integer value1, Integer value2) {
-            addCriterion("type between", value1, value2, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("type not between", value1, value2, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdIsNull() {
-            addCriterion("network_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdIsNotNull() {
-            addCriterion("network_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdEqualTo(Integer value) {
-            addCriterion("network_id =", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdNotEqualTo(Integer value) {
-            addCriterion("network_id <>", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdGreaterThan(Integer value) {
-            addCriterion("network_id >", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("network_id >=", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdLessThan(Integer value) {
-            addCriterion("network_id <", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdLessThanOrEqualTo(Integer value) {
-            addCriterion("network_id <=", value, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdIn(List<Integer> values) {
-            addCriterion("network_id in", values, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdNotIn(List<Integer> values) {
-            addCriterion("network_id not in", values, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdBetween(Integer value1, Integer value2) {
-            addCriterion("network_id between", value1, value2, "networkId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNetworkIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("network_id not between", value1, value2, "networkId");
             return (Criteria) this;
         }
     }
