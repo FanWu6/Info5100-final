@@ -5,8 +5,14 @@
  */
 package uiDecoreted.ServiceAdmin;
 
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.Organization;
 import com.neu.infofinal.bean.UserAccount;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -18,12 +24,15 @@ public class OrganizationPanel extends javax.swing.JPanel {
     /**
      * Creates new form NetworkPanel
      */
-    UserAccount userAccount;
+    Enterprise enterprise;
     JPanel rightcontainer;
-    public OrganizationPanel(JPanel rightcontainer,UserAccount userAccount) {
+    List<Organization> allOrganizations;
+    public OrganizationPanel(JPanel rightcontainer, Enterprise enterprise) {
         initComponents();
         this.rightcontainer=rightcontainer;
-        this.userAccount = userAccount;
+        this.enterprise=enterprise;
+        getInfo();
+        setInfo();
     }
 
     /**
@@ -39,6 +48,10 @@ public class OrganizationPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
+        txtenterprise = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtOrgType = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         organizationtxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
@@ -79,6 +92,30 @@ public class OrganizationPanel extends javax.swing.JPanel {
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 200, 70));
 
+        txtenterprise.setEditable(false);
+        txtenterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtenterpriseActionPerformed(evt);
+            }
+        });
+        add(txtenterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 240, 30));
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel5.setText("Enterprise Name:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, -1, 30));
+
+        txtOrgType.setEditable(false);
+        txtOrgType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrgTypeActionPerformed(evt);
+            }
+        });
+        add(txtOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 240, 30));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setText("Organization Type:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, 30));
+
         organizationtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationtxtActionPerformed(evt);
@@ -93,20 +130,69 @@ public class OrganizationPanel extends javax.swing.JPanel {
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
-       
+        Organization organization = new Organization();
+        organization.setName(organizationtxt.getText());
+        organization.setEnterpriseId(enterprise.getId());
+        int insertNetwork = SysData.insertOrganizaion(organization);
+        if (insertNetwork > 0) {
+            setInfo();
+//            sysadminPanel.setInfo();
+        }
+        setInfo();
+        Tool.InfoString("Add Successfully");
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void organizationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_organizationtxtActionPerformed
 
+    private void txtOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrgTypeActionPerformed
+
+    private void txtenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenterpriseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtenterpriseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField organizationtxt;
+    private javax.swing.JTextField txtOrgType;
+    private javax.swing.JTextField txtenterprise;
     // End of variables declaration//GEN-END:variables
+
+    private void getInfo() {
+        allOrganizations=SysData.getOrganizationByEnterpriseId(enterprise.getId());
+    }
+
+    private void setInfo() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Organization organization : allOrganizations) {
+            Object[] row = new Object[2];
+            row[0] = organization.getId();
+            row[1] = organization.getName();
+            model.addRow(row);
+        }
+
+        txtenterprise.setText(enterprise.getName());
+        String organizaitonType = "";
+        if (enterprise.getType()==7) {
+            organizaitonType = "Mover";
+        } else if (enterprise.getType() == 5) {
+            organizaitonType = "Cleaner";
+        } else if (enterprise.getType() == 6) {
+            organizaitonType = "Maintainer";
+        }else if(enterprise.getType()==1){
+            organizaitonType="House Agency";
+        }
+        txtOrgType.setText(organizaitonType);
+    }
 }

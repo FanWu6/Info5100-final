@@ -53,6 +53,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        commentText = new javax.swing.JTextField();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
@@ -68,6 +69,10 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        commentText.setText("comment from tenant");
+        commentText.setOpaque(false);
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
 
         backBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,6 +107,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
 
+        txtearea.setEditable(false);
         txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtearea.setForeground(new java.awt.Color(153, 153, 153));
         txtearea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -115,6 +121,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtearea, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, 270, 40));
 
+        txtemail.setEditable(false);
         txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtemail.setForeground(new java.awt.Color(153, 153, 153));
         txtemail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -128,6 +135,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
 
+        txtphone.setEditable(false);
         txtphone.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtphone.setForeground(new java.awt.Color(153, 153, 153));
         txtphone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -141,6 +149,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 270, 40));
 
+        txtname.setEditable(false);
         txtname.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtname.setForeground(new java.awt.Color(153, 153, 153));
         txtname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -154,6 +163,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 270, 40));
 
+        txtaddress.setEditable(false);
         txtaddress.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtaddress.setForeground(new java.awt.Color(153, 153, 153));
         txtaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -213,6 +223,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
+    private javax.swing.JTextField commentText;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
@@ -236,6 +247,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         this.txtemail.setText(tenantAccount.getEmail());
         this.txtphone.setText(tenantAccount.getPhone());
         this.txtname.setText(tenantAccount.getUsername());
+        commentText.setText(orderHousework.getComment());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
     }
 

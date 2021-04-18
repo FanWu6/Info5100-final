@@ -39,7 +39,6 @@ public class SysadminPanel extends javax.swing.JPanel {
         
         cardLayout = new CardLayout();
         rightjPanel.setLayout(cardLayout);
-        rightjPanel.add("EnterpriseP",new EnterprisePanel(rightjPanel,this));
         netpaPanel = new NetworkPanel(rightjPanel,this);
         rightjPanel.add("NetworkP",netpaPanel);
         cardLayout.show(rightjPanel,"NetworkP");
@@ -60,12 +59,18 @@ public class SysadminPanel extends javax.swing.JPanel {
                    netpaPanel.setInfo();
                 }else if(selectedNode.getUserObject() instanceof Network){
                     Network network = (Network)selectedNode.getUserObject();
+                    rightjPanel.add("EnterpriseP", new EnterprisePanel(rightjPanel,network));
+                    cardLayout.show(rightjPanel, "EnterpriseP");
                     System.out.println(network.getName() );
                 }else if(selectedNode.getUserObject() instanceof Enterprise){
                     Enterprise enterprise = (Enterprise)selectedNode.getUserObject();
+                    rightjPanel.add("OrganizationP", new OrganizationPanel(rightjPanel, enterprise));
+                    cardLayout.show(rightjPanel, "OrganizationP");
                     System.out.println(enterprise.getName() );
                 }else if(selectedNode.getUserObject() instanceof Organization){
                     Organization organization = (Organization)selectedNode.getUserObject();
+                    rightjPanel.add("EmployeeP", new EmployeePanel(rightjPanel, organization));
+                    cardLayout.show(rightjPanel, "EmployeeP");
                     System.out.println(organization.getName() );
                 }else if(selectedNode.getUserObject() instanceof Employee){
                     Employee employee = (Employee)selectedNode.getUserObject();

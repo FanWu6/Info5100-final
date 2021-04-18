@@ -21,6 +21,17 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JTextField" name="commentText">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="comment from tenant"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="70" y="520" width="540" height="120"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="backBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -103,6 +114,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtearea">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="14" style="1"/>
         </Property>
@@ -129,6 +141,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtemail">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="14" style="1"/>
         </Property>
@@ -155,6 +168,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtphone">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="14" style="1"/>
         </Property>
@@ -181,6 +195,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtname">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="14" style="1"/>
         </Property>
@@ -207,6 +222,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtaddress">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="14" style="1"/>
         </Property>

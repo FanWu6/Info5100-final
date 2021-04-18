@@ -5,8 +5,15 @@
  */
 package uiDecoreted.ServiceAdmin;
 
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
+import com.neu.infofinal.bean.Organization;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -18,12 +25,15 @@ public class EmployeePanel extends javax.swing.JPanel {
     /**
      * Creates new form NetworkPanel
      */
-    UserAccount userAccount;
     JPanel rightcontainer;
-    public EmployeePanel(JPanel rightcontainer,UserAccount userAccount) {
+    Organization organizaion;
+    List<Employee> allEmployee;
+    public EmployeePanel(JPanel rightcontainer,Organization organizaion) {
         initComponents();
         this.rightcontainer=rightcontainer;
-        this.userAccount = userAccount;
+        this.organizaion=organizaion;
+        getInfo();
+        setInfo();
     }
 
     /**
@@ -46,7 +56,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblOrg = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,13 +132,43 @@ public class EmployeePanel extends javax.swing.JPanel {
         jLabel5.setText("Employee Password:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, -1, 30));
 
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, -1, -1));
+        lblOrg.setText("jLabel1");
+        add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
-       
+        //insert useraccount first
+        if(usernametxt.getText()==""||passwordtxt.getText()==""||usernametxt.getText()==""
+                ||usernametxt.getText() == null || passwordtxt.getText() == null || usernametxt.getText() == null){
+            Tool.InfoString("Please complete the form");
+        }
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(usernametxt.getText());
+        userAccount.setPassword(passwordtxt.getText());
+        
+        Enterprise enterprise=SysData.getEnterpriseById(organizaion.getEnterpriseId());
+        userAccount.setType(enterprise.getType());
+        int insertNetwork = SysData.insertUserAccount(userAccount);
+        //inert employee
+        Employee employee = new Employee();
+        employee.setName(usernametxt.getText());
+        employee.setEnterpriseId(organizaion.getEnterpriseId());
+        employee.setOrganizationId(organizaion.getId());
+
+        //get useraccount from table 
+        userAccount=SysData.getUserAccount(userAccount.getUsername(), userAccount.getPassword());
+        employee.setUseraccountId(Integer.valueOf(userAccount.getId()));
+
+        insertNetwork = SysData.insertEmployee(employee);
+
+        if (insertNetwork > 0) {
+            setInfo();
+//            sysadminPanel.setInfo();
+        }
+        setInfo();
+        Tool.InfoString("Add Successfully");
+     
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void employeetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeetxtActionPerformed
@@ -148,14 +188,38 @@ public class EmployeePanel extends javax.swing.JPanel {
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JTextField employeetxt;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblOrg;
     private javax.swing.JTextField passwordtxt;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
+
+    private void getInfo() {
+        allEmployee=SysData.getEmployeeByEpidAndOrid(organizaion.getEnterpriseId(),organizaion.getId());
+    }
+
+    private void setInfo() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Employee employee : allEmployee) {
+            UserAccount ua=SysData.getUserAccountbyID(employee.getUseraccountId());
+            Object[] row = new Object[6];
+            row[0] = employee.getId();
+            row[1] = employee.getName();
+            row[2]=organizaion.getId();
+            row[3]=organizaion.getEnterpriseId();
+            row[4]=ua.getUsername();
+            row[5]=ua.getPassword();
+            model.addRow(row);
+        }
+
+        lblOrg.setText(organizaion.getName());
+        int type = 0;
+        String enterpriseType = "";
+    }
 }

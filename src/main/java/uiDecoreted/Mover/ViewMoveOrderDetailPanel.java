@@ -55,9 +55,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
 
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
-        housePic = new javax.swing.JLabel();
-        leaveMessage1 = new javax.swing.JLabel();
-        requesttour1 = new javax.swing.JLabel();
         leaveMessage = new javax.swing.JLabel();
         requesttour = new javax.swing.JLabel();
         txtdestinaiton = new javax.swing.JTextField();
@@ -66,8 +63,8 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         txtname = new javax.swing.JTextField();
         txtaddress = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        housePic1 = new javax.swing.JLabel();
+        housePic = new javax.swing.JLabel();
+        commentText = new javax.swing.JTextField();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,25 +82,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
 
         Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
-
-        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 300, 210));
-
-        leaveMessage1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        leaveMessage1.setForeground(new java.awt.Color(255, 255, 255));
-        leaveMessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        leaveMessage1.setText("Distance");
-        leaveMessage1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                leaveMessage1MousePressed(evt);
-            }
-        });
-        add(leaveMessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 60));
-
-        requesttour1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        requesttour1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        requesttour1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/White1.png"))); // NOI18N
-        add(requesttour1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 60));
 
         leaveMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         leaveMessage.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,7 +102,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         txtdestinaiton.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtdestinaiton.setForeground(new java.awt.Color(153, 153, 153));
         txtdestinaiton.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtdestinaiton.setText("destination");
+        txtdestinaiton.setText("area");
         txtdestinaiton.setToolTipText("");
         txtdestinaiton.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         txtdestinaiton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,15 +164,17 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 270, 40));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/move/moveinfo@0,4x.png"))); // NOI18N
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/area@0,4x.png"))); // NOI18N
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/move/图片2.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 27, 235));
+        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 300, 210));
 
-        housePic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 300, 210));
+        commentText.setForeground(new java.awt.Color(153, 153, 153));
+        commentText.setText("comment from tenant");
+        commentText.setOpaque(false);
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -225,10 +205,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
 
-    private void leaveMessage1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leaveMessage1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_leaveMessage1MousePressed
-
     private void txtdestinaitonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdestinaitonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdestinaitonActionPerformed
@@ -244,19 +220,17 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         this.txtemail.setText(tenantAccount.getEmail());
         this.txtphone.setText(tenantAccount.getPhone());
         this.txtname.setText(tenantAccount.getUsername());
+        commentText.setText(orderHousework.getComment());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
+    private javax.swing.JTextField commentText;
     private javax.swing.JLabel housePic;
-    private javax.swing.JLabel housePic1;
     private javax.swing.JLabel info;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel leaveMessage;
-    private javax.swing.JLabel leaveMessage1;
     private javax.swing.JLabel requesttour;
-    private javax.swing.JLabel requesttour1;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtdestinaiton;
     private javax.swing.JTextField txtemail;

@@ -8,6 +8,7 @@ package uiDecoreted.ServiceAdmin;
 
 
 import Util.SysData;
+import Util.Tool;
 import com.neu.infofinal.bean.Network;
 import com.neu.infofinal.bean.UserAccount;
 import java.util.HashSet;
@@ -126,6 +127,7 @@ public class NetworkPanel extends javax.swing.JPanel {
             setInfo();
             sysadminPanel.setInfo();
         }
+        Tool.InfoString("Add Successfully");
     }//GEN-LAST:event_completedBtnMousePressed
 
 

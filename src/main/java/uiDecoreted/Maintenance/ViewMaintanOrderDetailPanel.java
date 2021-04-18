@@ -64,6 +64,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         txtaddress = new javax.swing.JTextField();
         txtearea = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
+        commentText = new javax.swing.JTextField();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -164,6 +165,10 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/area@0,4x.png"))); // NOI18N
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
+
+        commentText.setText("comment from tenant");
+        commentText.setOpaque(false);
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -208,11 +213,13 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         this.txtemail.setText(tenantAccount.getEmail());
         this.txtphone.setText(tenantAccount.getPhone());
         this.txtname.setText(tenantAccount.getUsername());
+        commentText.setText(orderHousework.getComment());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
+    private javax.swing.JTextField commentText;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel info;
     private javax.swing.JLabel leaveMessage;

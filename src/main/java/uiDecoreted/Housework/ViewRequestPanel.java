@@ -43,8 +43,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         Tool.tableStyle1(tblHouseworkMy2, jScrollPane3);     
         getInfo();
         setInfo();
-        refreshTable1();
-        refreshTable2();
+        refreshAllTable();
+
     }
     
     public void getInfo() {
@@ -181,8 +181,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()));
         orderHousework.setEnterpriseId(employee.getEnterpriseId());
         SysData.updateOrderHousework(orderHousework);
-        refreshTable1();
-        refreshTable2();
+        refreshAllTable();
     }//GEN-LAST:event_assigntomebtnMousePressed
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
@@ -196,8 +195,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         OrderHousework orderHousework = (OrderHousework)tblHouseworkMy2.getValueAt(row,0);
         orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.FINISH.getStatus()));
         SysData.updateOrderHousework(orderHousework);
-        refreshTable1();
-        refreshTable2();
+        refreshAllTable();
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void detailBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailBtnMousePressed
@@ -240,13 +238,21 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblHouseworkAll.getModel();
         model.setRowCount(0);
         for(OrderHousework ordH:orderHouseworks){
-            if(ordH.getHouseworkOrderType()==SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()){
+            if(ordH.getHouseworkOrderType()==SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()
+                    &&ordH.getEnterpriseId()==this.enterprise.getId()
+                    &&ordH.getStatus()==SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()){
                 Object[] row = new Object[6];
-//               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
-            //            row[1]=SysData.ORDER_HOUSEWORK_TYPE.values()[ordH.getHouseworkOrderType()];
+                String s="";
+                if(SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()==ordH.getHouseworkOrderType()){
+                    s=SysData.ORDER_HOUSEWORK_TYPE.CLEAN.name();
+                }else if(SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.getIndex() == ordH.getHouseworkOrderType()){
+                    s = SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.name();
+                }else if(SysData.ORDER_HOUSEWORK_TYPE.MOVE.getIndex() == ordH.getHouseworkOrderType()){
+                    s = SysData.ORDER_HOUSEWORK_TYPE.MOVE.name();
+                }
                 row[0]=ordH;
                 row[1]=ordH.getTenantId();
-                row[2]="House Cleanning";
+                row[2]=s;
                 row[3]=ordH.getDate();
                 row[4]=ordH.getStatus();
                 row[5]=ordH.getComment();
@@ -273,5 +279,10 @@ public class ViewRequestPanel extends javax.swing.JPanel {
             }
 
         }
+    }
+
+    private void refreshAllTable() {
+        refreshTable1();
+        refreshTable2();
     }
 }

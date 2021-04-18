@@ -207,6 +207,16 @@ public class SysData {
         commitAndClose();
         return selectByExample;
     }
+     public static int insertEnterprise(Enterprise enterprise) {
+        start();
+        int insert = enterpriseMapper.insert(enterprise);
+        //关闭连接和提交数据
+        commitAndClose();
+        if (insert <= 0) {
+            Tool.Failed();
+        }
+        return insert;
+    }
     //Enterprise end--
     
     //Organization
@@ -226,6 +236,16 @@ public class SysData {
         //关闭连接和提交数据
         commitAndClose();
         return selectByExample;
+    }
+     public static int insertOrganizaion(Organization organizaion) {
+        start();
+        int insert = organizationMapper.insert(organizaion);
+        //关闭连接和提交数据
+        commitAndClose();
+        if (insert <= 0) {
+            Tool.Failed();
+        }
+        return insert;
     }
     //Organization end--
     

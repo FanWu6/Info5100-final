@@ -7,8 +7,14 @@ package uiDecoreted.ServiceAdmin;
  */
 
 
+import Util.SysData;
+import Util.Tool;
+import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.Network;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -19,11 +25,17 @@ public class EnterprisePanel extends javax.swing.JPanel {
     /**
      * Creates new form NetworkPanel
      */
-    UserAccount userAccount;
     JPanel rightcontainer;
-    public EnterprisePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
+    List<Enterprise> allEnterprises;
+    Network network;
+    int type = 0;
+    String enterpriseType = "";
+    public EnterprisePanel(JPanel rightcontainer,Network network) {
         initComponents();
         this.rightcontainer=rightcontainer;
+        this.network=network;
+        getInfo();
+        setInfo();
     }
 
     /**
@@ -43,8 +55,8 @@ public class EnterprisePanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEnterType = new javax.swing.JLabel();
+        lblNetwork = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,22 +114,62 @@ public class EnterprisePanel extends javax.swing.JPanel {
         jLabel1.setText("Network:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 80, 30));
 
-        jLabel6.setText("move");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, 30));
+        lblEnterType.setText("move");
+        add(lblEnterType, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, 30));
 
-        jLabel4.setText("jLabel4");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
+        lblNetwork.setText("jLabel4");
+        add(lblNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
         // TODO add your handling code here:
-       
+        Enterprise enterprise = new Enterprise();
+        enterprise.setName(enterprisetxt.getText());
+        enterprise.setNetworkId(network.getId());
+        enterprise.setType(type);
+        int insertEnter = SysData.insertEnterprise(enterprise);
+        if (insertEnter > 0) {
+            setInfo();
+//            sysadminPanel.setInfo();
+        }
+        setInfo();
+        Tool.InfoString("Add Successfully");
     }//GEN-LAST:event_completedBtnMousePressed
 
     private void enterprisetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterprisetxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_enterprisetxtActionPerformed
+    private void getInfo() {
+        allEnterprises = SysData.getEnterpriseByNetworkId(network.getId());
+        if (network.getId() == 4) {
+            type = 7;
+            enterpriseType = "Mover Enterprise";
+        } else if (network.getId() == 3) {
+            type = 5;
+            enterpriseType = "Clean Enterprise";
+        } else if (network.getId() == 2) {
+            type = 6;
+            enterpriseType = "Repair Enterprise";
+        }else if(network.getId()==1){
+            type=1;
+            enterpriseType="Rental Enterprise";
+        }
+    }
+    public void setInfo() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
 
+
+        for (Enterprise enterprise : allEnterprises) {
+            Object[] row = new Object[2];
+            row[0] = enterprise.getId();
+            row[1] = enterprise.getName();
+            model.addRow(row);
+        }
+        
+        lblNetwork.setText(network.getName());
+        lblEnterType.setText(enterpriseType);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel completed;
@@ -126,9 +178,11 @@ public class EnterprisePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblEnterType;
+    private javax.swing.JLabel lblNetwork;
     // End of variables declaration//GEN-END:variables
+
+
 }
