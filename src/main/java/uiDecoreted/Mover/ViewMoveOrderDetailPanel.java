@@ -171,6 +171,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
         add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 300, 210));
 
+        commentText.setEditable(false);
         commentText.setForeground(new java.awt.Color(153, 153, 153));
         commentText.setText("comment from tenant");
         commentText.setOpaque(false);

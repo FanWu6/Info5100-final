@@ -166,6 +166,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
 
+        commentText.setEditable(false);
         commentText.setText("comment from tenant");
         commentText.setOpaque(false);
         add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 540, 120));

@@ -5,6 +5,9 @@
  */
 package uiDecoreted.Maintenance;
 
+import Util.SysData;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Housework.*;
 import java.awt.CardLayout;
@@ -32,6 +35,11 @@ public class MaintenancePanel extends javax.swing.JPanel {
         rightjPanel.setLayout(cardLayout);
         rightjPanel.add("ViewmtRequestPanel",new ViewmtRequestPanel(rightjPanel,userAccount));
         cardLayout.show(rightjPanel,"ViewmtRequestPanel");
+        Employee employee=SysData.getEmployeeByUserAccountId(userAccount.getId());
+        Enterprise enterprise=SysData.getEnterpriseById(employee.getEnterpriseId());
+        nameLabel.setText(userAccount.getUsername());
+        nameLabel1.setText(userAccount.getEmail());
+        nameLabel2.setText(enterprise.getName());
     }
 
     /**
@@ -44,6 +52,7 @@ public class MaintenancePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
+        nameLabel2 = new javax.swing.JLabel();
         ownerBtn = new javax.swing.JLabel();
         homeBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
@@ -59,6 +68,13 @@ public class MaintenancePanel extends javax.swing.JPanel {
         rightjPanel.setOpaque(false);
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
+
+        nameLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        nameLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nameLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        nameLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameLabel2.setText("company");
+        add(nameLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 30));
 
         ownerBtn.setBackground(new java.awt.Color(204, 204, 204));
         ownerBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -138,6 +154,7 @@ public class MaintenancePanel extends javax.swing.JPanel {
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel nameLabel1;
+    private javax.swing.JLabel nameLabel2;
     private javax.swing.JLabel ownerBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;

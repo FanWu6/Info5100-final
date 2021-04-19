@@ -68,6 +68,7 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        commentText.setEditable(false);
         commentText.setText("No Comment Now");
         commentText.setOpaque(false);
         add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));

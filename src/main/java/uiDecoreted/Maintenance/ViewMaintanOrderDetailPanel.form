@@ -243,6 +243,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="commentText">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="comment from tenant"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>

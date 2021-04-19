@@ -5,6 +5,9 @@
  */
 package uiDecoreted.Housework;
 
+import Util.SysData;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -34,6 +37,11 @@ public class HouseworkPanel extends javax.swing.JPanel {
         rightjPanel.add("viewRequestP",new ViewRequestPanel(rightjPanel,userAccount));
         
         cardLayout.show(rightjPanel,"viewRequestP");
+        Employee employee=SysData.getEmployeeByUserAccountId(userAccount.getId());
+        Enterprise enterprise=SysData.getEnterpriseById(employee.getEnterpriseId());
+        nameLabel.setText(userAccount.getUsername());
+        nameLabel1.setText(userAccount.getEmail());
+        nameLabel2.setText(enterprise.getName());
     }
 
     /**
@@ -50,6 +58,7 @@ public class HouseworkPanel extends javax.swing.JPanel {
         homeBtn = new javax.swing.JLabel();
         backBtn = new javax.swing.JLabel();
         userPic = new javax.swing.JLabel();
+        nameLabel2 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         nameLabel1 = new javax.swing.JLabel();
         menuBg = new javax.swing.JLabel();
@@ -91,6 +100,13 @@ public class HouseworkPanel extends javax.swing.JPanel {
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
         add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 120));
+
+        nameLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        nameLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nameLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        nameLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameLabel2.setText("company");
+        add(nameLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 30));
 
         nameLabel.setBackground(new java.awt.Color(255, 255, 255));
         nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -140,6 +156,7 @@ public class HouseworkPanel extends javax.swing.JPanel {
     private javax.swing.JLabel menuBg;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel nameLabel1;
+    private javax.swing.JLabel nameLabel2;
     private javax.swing.JLabel ownerBtn;
     private javax.swing.JPanel rightjPanel;
     private javax.swing.JLabel userPic;
