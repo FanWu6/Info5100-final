@@ -208,7 +208,8 @@ public class ViewMoveOrderPanel extends javax.swing.JPanel {
         }else{
  
                 orderhousework.setEnterpriseId(enterpriseId);
-                orderhousework.setStatus("Waiting for process");
+                orderhousework.setManagerId(managerAccount.getId());
+                //orderhousework.setStatus("Waiting for process");
                 SysData.updateOrderHousework(orderhousework);}
          
         displayOrderTable();
