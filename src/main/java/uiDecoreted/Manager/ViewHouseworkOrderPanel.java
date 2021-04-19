@@ -47,7 +47,7 @@ public class ViewHouseworkOrderPanel extends javax.swing.JPanel {
         orderHouseworks = SysData.getAllOrderHouseworks();
         model.setRowCount(0);
         for (OrderHousework ordH : orderHouseworks) {
-            if (ordH.getHouseworkOrderType() == 0) {
+            if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()) {
                 if (ordH.getManagerId() == null || ordH.getManagerId() == managerAccount.getId()) {
                     Object[] row = new Object[6];
 //               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();

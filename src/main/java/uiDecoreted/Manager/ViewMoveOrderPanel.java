@@ -47,7 +47,7 @@ public class ViewMoveOrderPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         for (OrderHousework ordH : orderHouseworks) {
-            if (ordH.getHouseworkOrderType() == 2) {
+            if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.MOVE.getIndex()) {
                 if (ordH.getManagerId() == null || ordH.getManagerId() == managerAccount.getId()) {
                     Object[] row = new Object[6];
 //               row[0]= SysData.getUserAccountbyID(ordH.getTenantId()).getUsername();
