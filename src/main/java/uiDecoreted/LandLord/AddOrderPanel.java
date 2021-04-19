@@ -302,7 +302,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         //根据textfield拿到数据，address ......
         House house = new House();
 //        house.setId(1);
-       // house.setRegion(regiontxt.getText());
+        house.setRegion(Integer.valueOf(regiontxt.getText()));
         house.setAddress(addresstxt.getText());
         house.setImage("/images/housepicture/housepic2.png");
         house.setDescrib(descriptxt.getText());

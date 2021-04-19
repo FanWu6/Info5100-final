@@ -36,7 +36,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
     JPanel container;
     CardLayout cardLayout;
     UserAccount userAccount;
-    
+    UserHomePanel userHomePanel;
     List<String> uiList;
 //    House myhouse;
     
@@ -64,7 +64,9 @@ public class TenantUserPanel extends javax.swing.JPanel {
             switch(ui){
                 case "RentalListPanel":rightjPanel.add("RentalListPanel",new RentalListPanel(rightjPanel));
                     break;
-                case "UserHomePanel":rightjPanel.add("UserHomePanel",new UserHomePanel(rightjPanel,this.userAccount));
+                case "UserHomePanel":
+                    userHomePanel = new UserHomePanel(rightjPanel,this.userAccount);
+                    rightjPanel.add("UserHomePanel",userHomePanel);
                     break;
                 case "TenantOrderPanel":rightjPanel.add("TenantOrderPanel",new TenantOrderPanel(rightjPanel,this.userAccount));
                     break;
@@ -84,10 +86,10 @@ public class TenantUserPanel extends javax.swing.JPanel {
         //houses
     }
     public void setInfo(){
-        nameLabel.setText(userAccount.getUsername());
+        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        nameLabel.setText(employee.getName());
         emailLabel.setText(userAccount.getEmail());
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
-        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
         Enterprise enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
         enterpriseLabel.setText(enterprise.getName());
     }
@@ -150,7 +152,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
         add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 120));
 
         nameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(51, 51, 51));
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText("UserName");
@@ -204,6 +206,7 @@ public class TenantUserPanel extends javax.swing.JPanel {
             return;
         }
         cardLayout.show(rightjPanel,"UserHomePanel");
+        userHomePanel.setInfo();
     }//GEN-LAST:event_homeBtnMousePressed
 
 

@@ -153,7 +153,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         userAccount.setPassword(passwordtxt.getText());
         
         Enterprise enterprise=SysData.getEnterpriseById(organizaion.getEnterpriseId());
-        userAccount.setType(enterprise.getType());
+        userAccount.setType(organizaion.getId());
         int insertNetwork = SysData.insertUserAccount(userAccount);
         //inert employee
         Employee employee = new Employee();

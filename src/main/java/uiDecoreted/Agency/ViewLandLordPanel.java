@@ -37,7 +37,9 @@ public class ViewLandLordPanel extends javax.swing.JPanel {
     
     public void displayHouseList() {
         houses = SysData.getAllHouses();
-        
+        if(houses==null){
+            return;
+        }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         jTable1.setRowHeight(105);

@@ -27,6 +27,7 @@ public class registerJFrame extends javax.swing.JFrame {
      */
     String headimg;
     Boolean isReduplicated = false;
+    int organizationId;
     public registerJFrame() {
         initComponents();
         
@@ -39,6 +40,7 @@ public class registerJFrame extends javax.swing.JFrame {
         
         this.jRadioButton1.setSelected(true);
         headimg = "/images/userLayer/Userpic.png";
+        organizationId = SysData.ACCOUNT_TYPE.TENANT.getIndex();
         
         usernametxt.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -217,6 +219,7 @@ public class registerJFrame extends javax.swing.JFrame {
         this.jRadioButton2.setSelected(false);
         headimg = "/images/userLayer/Userpic.png";
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
+        organizationId = SysData.ACCOUNT_TYPE.TENANT.getIndex();
     }//GEN-LAST:event_jRadioButton1MousePressed
 
     private void jRadioButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MousePressed
@@ -225,6 +228,7 @@ public class registerJFrame extends javax.swing.JFrame {
 //        this.jRadioButton2.setSelected(true);
         headimg = "/images/userLayer/Userpic2.png";
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
+        organizationId = SysData.ACCOUNT_TYPE.LANDLORD.getIndex();
     }//GEN-LAST:event_jRadioButton2MousePressed
 
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
@@ -256,7 +260,8 @@ public class registerJFrame extends javax.swing.JFrame {
             }
             UserAccount u = SysData.getUserAccountByUsername(userAccount.getUsername());
             Employee employee = new Employee();
-            employee.setOrganizationId(1);
+            employee.setOrganizationId(organizationId);
+            
             employee.setEnterpriseId(1);
             employee.setUseraccountId(u.getId());
             employee.setName(employeenametxt.getText());
