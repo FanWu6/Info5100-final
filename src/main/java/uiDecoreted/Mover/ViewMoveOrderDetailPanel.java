@@ -55,8 +55,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
 
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
-        leaveMessage = new javax.swing.JLabel();
-        requesttour = new javax.swing.JLabel();
         txtdestinaiton = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
@@ -65,6 +63,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         info = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
         commentText = new javax.swing.JTextField();
+        post = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,22 +81,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
 
         Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
-
-        leaveMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        leaveMessage.setForeground(new java.awt.Color(255, 255, 255));
-        leaveMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        leaveMessage.setText("Leave a message");
-        leaveMessage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                leaveMessageMousePressed(evt);
-            }
-        });
-        add(leaveMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
-
-        requesttour.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
-        requesttour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        requesttour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(requesttour, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 60));
 
         txtdestinaiton.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtdestinaiton.setForeground(new java.awt.Color(153, 153, 153));
@@ -172,10 +155,12 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 300, 210));
 
         commentText.setEditable(false);
-        commentText.setForeground(new java.awt.Color(153, 153, 153));
-        commentText.setText("comment from tenant");
-        commentText.setOpaque(false);
-        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 540, 120));
+        commentText.setText("Comment from tennat");
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 560, 180));
+
+        post.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Input.png"))); // NOI18N
+        post.setOpaque(true);
+        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 580, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
@@ -183,12 +168,6 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
         layout.show(rightcontainer, "ViewRequestPanel");
     }//GEN-LAST:event_backBtnMousePressed
-
-    private void leaveMessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leaveMessageMousePressed
-        // TODO add your handling code here:
-        CardLayout layout = (CardLayout) rightcontainer.getLayout();
-        layout.show(rightcontainer, "MessageMovePanel");
-    }//GEN-LAST:event_leaveMessageMousePressed
 
     private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
         // TODO add your handling code here:
@@ -230,8 +209,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JTextField commentText;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel info;
-    private javax.swing.JLabel leaveMessage;
-    private javax.swing.JLabel requesttour;
+    private javax.swing.JLabel post;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtdestinaiton;
     private javax.swing.JTextField txtemail;

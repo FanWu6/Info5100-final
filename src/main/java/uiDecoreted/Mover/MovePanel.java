@@ -42,6 +42,7 @@ public class MovePanel extends javax.swing.JPanel {
         nameLabel.setText(userAccount.getUsername());
         nameLabel1.setText(userAccount.getEmail());
         nameLabel2.setText(enterprise.getName());
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
     }
 
     /**
