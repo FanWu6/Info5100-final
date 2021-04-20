@@ -11,10 +11,19 @@ import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author Dengbowen
@@ -26,6 +35,9 @@ public class AddOrderPanel extends javax.swing.JPanel {
      */
     UserAccount ownerAccount;
     JPanel rightcontainer;
+    JFileChooser chooser;
+    ImageIcon imgThisImg;
+     String fileName;
     public AddOrderPanel(JPanel rightcontainer,UserAccount ownerAccount) {
          initComponents();
          this.rightcontainer = rightcontainer;
@@ -89,6 +101,11 @@ public class AddOrderPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         housepic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic2.png"))); // NOI18N
+        housepic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                housepicMousePressed(evt);
+            }
+        });
         add(housepic, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 270, 190));
 
         regiontxt.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
@@ -304,7 +321,8 @@ public class AddOrderPanel extends javax.swing.JPanel {
 //        house.setId(1);
         house.setRegion(Integer.valueOf(regiontxt.getText()));
         house.setAddress(addresstxt.getText());
-        house.setImage("/images/housepicture/housepic2.png");
+         //filename 是图片的路径
+        house.setImage(fileName);
         house.setDescrib(descriptxt.getText());
         house.setPrice(pricetxt.getText());
         house.setName(nametxt.getText());
@@ -351,6 +369,29 @@ public class AddOrderPanel extends javax.swing.JPanel {
     private void regiontxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regiontxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regiontxtActionPerformed
+
+    private void housepicMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_housepicMousePressed
+        // TODO add your handling code here:
+                // TODO add your handling code here:
+        String absoluteFileName;
+        chooser = new JFileChooser();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+        chooser.setCurrentDirectory(workingDirectory); 
+
+        int result=chooser.showSaveDialog(null);
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+//                "JPG & GIF &PGC &PAD files", "jpg", "gif", "pgc", "pad");
+//        chooser.setFileFilter(filter);
+        
+        absoluteFileName = chooser.getSelectedFile().getPath();
+        //截取\images\housepicture\hosuepic5.png
+        fileName=absoluteFileName.substring(absoluteFileName.lastIndexOf("images")-1);
+        fileName=fileName.replaceAll("\\\\", "/");
+        System.out.println(fileName);
+        imgThisImg = new ImageIcon(new ImageIcon(absoluteFileName)
+                .getImage().getScaledInstance(this.housepic.getWidth(), this.housepic.getHeight(), Image.SCALE_DEFAULT));
+        this.housepic.setIcon(imgThisImg);
+    }//GEN-LAST:event_housepicMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
