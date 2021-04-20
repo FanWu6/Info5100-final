@@ -9,11 +9,15 @@ import Util.SysData;
 import Util.Tool;
 import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
 import com.neu.infofinal.bean.Organization;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import jchart.PieChart_AWT;
+import org.jfree.ui.RefineryUtilities;
 
 
 /**
@@ -29,15 +33,24 @@ public class EmployeePanel extends javax.swing.JPanel {
     Organization organizaion;
     List<Employee> allEmployee;
     SysadminPanel sysadminPanel;
+    List<Order> orders;
     public EmployeePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
         this.sysadminPanel = sysadminPanel;
         this.rightcontainer=rightcontainer;
         this.organizaion=organizaion;
+        analysisbtn.setVisible(false);
+        
+        
     }
 
     public void setOrganizaion(Organization organizaion) {
         this.organizaion = organizaion;
+        if(organizaion.getId()==3){
+        analysisbtn.setVisible(true);
+        } else{
+            analysisbtn.setVisible(false);
+        }
 
     }
 
@@ -52,6 +65,7 @@ public class EmployeePanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        analysisbtn = new javax.swing.JButton();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
         passwordtxt = new javax.swing.JTextField();
@@ -85,6 +99,14 @@ public class EmployeePanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
+
+        analysisbtn.setText("Analysis");
+        analysisbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analysisbtnActionPerformed(evt);
+            }
+        });
+        add(analysisbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
 
         completedBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         completedBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,8 +210,15 @@ public class EmployeePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordtxtActionPerformed
 
+    private void analysisbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analysisbtnActionPerformed
+        // TODO add your handling code here:
+        Analysis();
+        
+    }//GEN-LAST:event_analysisbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton analysisbtn;
     private javax.swing.JLabel completed;
     private javax.swing.JLabel completedBtn;
     private javax.swing.JTextField employeetxt;
@@ -210,6 +239,7 @@ public class EmployeePanel extends javax.swing.JPanel {
 
     public void setInfo() {
         getInfo();
+       
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         for (Employee employee : allEmployee) {
@@ -226,6 +256,26 @@ public class EmployeePanel extends javax.swing.JPanel {
 
         lblOrg.setText(organizaion.getName());
         int type = 0;
-        String enterpriseType = "";
+        String enterpriseType = "";    
+    }
+    private void Analysis(){
+        getInfo();
+        orders = SysData.getAllOrders();
+        HashMap<String, Integer> map = new HashMap<>();
+        for(Employee employee : allEmployee){
+            int i = 0;
+            for(Order od:orders){
+                if(od.getAgencyId() == employee.getUseraccountId()){
+                    i = i+1;
+                }
+            }
+            map.put(employee.getName(), i);
+        }
+      PieChart_AWT demo = new PieChart_AWT( "Agency Performence",map);  
+      demo.pack();
+      demo.setSize( 1160 , 400 );    
+      RefineryUtilities.centerFrameOnScreen( demo );    
+      demo.setVisible( true );
+        
     }
 }

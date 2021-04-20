@@ -12,6 +12,7 @@ import Util.Tool;
 import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.Network;
 import com.neu.infofinal.bean.UserAccount;
+import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -176,6 +177,7 @@ public class EnterprisePanel extends javax.swing.JPanel {
         lblNetwork.setText(network.getName());
         lblEnterType.setText(enterpriseType);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel completed;
