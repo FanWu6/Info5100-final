@@ -1,4 +1,4 @@
-package uiDecoreted.ServiceAdmin;
+package uiDecoreted.SystemAdmin;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

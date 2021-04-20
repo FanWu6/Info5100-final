@@ -5,6 +5,7 @@
  */
 package uiDecoreted.Tenant;
 
+import Util.JTextFieldHintListener;
 import Util.SysData;
 import com.neu.infofinal.bean.OrderHousework;
 import java.awt.CardLayout;
@@ -27,7 +28,7 @@ public class CommentPanel extends javax.swing.JPanel {
     public CommentPanel(JPanel rightcontainer) {
         initComponents();
         this.rightcontainer=rightcontainer;
-        commentText.setBackground(new Color(0,0,0,0));
+        commentText.addFocusListener(new JTextFieldHintListener(commentText, "Please enter your comment", new Color(153, 153, 153)));
     }
     
     public void setOrder(OrderHousework orderHousework){

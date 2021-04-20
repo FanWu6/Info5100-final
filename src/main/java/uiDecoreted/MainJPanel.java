@@ -20,7 +20,7 @@ import uiDecoreted.Manager.ManagerPanel;
 import uiDecoreted.Housework.HouseworkPanel;
 import uiDecoreted.Maintenance.MaintenancePanel;
 import uiDecoreted.Mover.MovePanel;
-import uiDecoreted.ServiceAdmin.SysadminPanel;
+import uiDecoreted.SystemAdmin.SysadminPanel;
 
 
 /**
