@@ -48,10 +48,10 @@ public class ManagerPanel extends javax.swing.JPanel {
         setInfo();
     }
     public void setInfo(){
-        
-        nameLabel.setText(userAccount.getUsername());
+        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        nameLabel.setText(employee.getName());
         emailLabel.setText(userAccount.getEmail());
-        userPic.setText(userAccount.getHeadpic());
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
     }
 
     /**

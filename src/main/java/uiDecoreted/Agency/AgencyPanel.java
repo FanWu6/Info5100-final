@@ -6,6 +6,9 @@
 package uiDecoreted.Agency;
 
 import Util.GlobalData;
+import Util.SysData;
+import com.neu.infofinal.bean.Employee;
+import com.neu.infofinal.bean.Enterprise;
 import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
@@ -50,9 +53,11 @@ public class AgencyPanel extends javax.swing.JPanel {
         
     }
     public void setInfo(){
-        nameLabel.setText(userAccount.getUsername());
+        Employee employee=SysData.getEmployeeByUserAccountId(userAccount.getId());
+        Enterprise enterprise=SysData.getEnterpriseById(employee.getEnterpriseId());
+        nameLabel.setText(employee.getName());
         emailLabel.setText(userAccount.getEmail());
-        userPic.setText(userAccount.getHeadpic());
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
     }
 
     /**

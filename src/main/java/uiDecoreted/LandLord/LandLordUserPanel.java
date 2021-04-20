@@ -131,11 +131,11 @@ public class LandLordUserPanel extends javax.swing.JPanel {
         
     }
     public void setInfo(){
-       
-        nameLabel.setText(userAccount.getUsername());
+        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+        nameLabel.setText(employee.getName());
         emailLabel.setText(userAccount.getEmail());
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
-        Employee employee = SysData.getEmployeeByUserAccountId(userAccount.getId());
+
         Enterprise enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
         enterpriseLabel.setText(enterprise.getName());
     }

@@ -39,7 +39,7 @@ public class HouseworkPanel extends javax.swing.JPanel {
         cardLayout.show(rightjPanel,"viewRequestP");
         Employee employee=SysData.getEmployeeByUserAccountId(userAccount.getId());
         Enterprise enterprise=SysData.getEnterpriseById(employee.getEnterpriseId());
-        nameLabel.setText(userAccount.getUsername());
+         nameLabel.setText(employee.getName());
         nameLabel1.setText(userAccount.getEmail());
         nameLabel2.setText(enterprise.getName());
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
