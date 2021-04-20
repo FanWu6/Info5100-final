@@ -11,7 +11,11 @@ import Util.Tool;
 import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
 import java.util.HashSet;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -25,9 +29,11 @@ public class registerJFrame extends javax.swing.JFrame {
     /**
      * Creates new form registerJFrame
      */
-    String headimg;
     Boolean isReduplicated = false;
     int organizationId;
+    JFileChooser chooser;
+    ImageIcon imgThisImg;
+    String fileName;
     public registerJFrame() {
         initComponents();
         
@@ -39,7 +45,7 @@ public class registerJFrame extends javax.swing.JFrame {
         foucstxt.requestFocusInWindow();
         
         this.jRadioButton1.setSelected(true);
-        headimg = "/images/userLayer/Userpic.png";
+        fileName = "/images/userLayer/Userpic.png";
         organizationId = SysData.ACCOUNT_TYPE.TENANT.getIndex();
         
         usernametxt.getDocument().addDocumentListener(new DocumentListener() {
@@ -126,6 +132,11 @@ public class registerJFrame extends javax.swing.JFrame {
         getContentPane().add(create_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 270, 70));
 
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Userpic.png"))); // NOI18N
+        userPic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userPicMousePressed(evt);
+            }
+        });
         getContentPane().add(userPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, 120));
 
         usernametxt.setBackground(new java.awt.Color(247, 247, 248));
@@ -217,8 +228,7 @@ public class registerJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        this.jRadioButton1.setSelected(true);
         this.jRadioButton2.setSelected(false);
-        headimg = "/images/userLayer/Userpic.png";
-        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(fileName)));
         organizationId = SysData.ACCOUNT_TYPE.TENANT.getIndex();
     }//GEN-LAST:event_jRadioButton1MousePressed
 
@@ -226,8 +236,7 @@ public class registerJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jRadioButton1.setSelected(false);
 //        this.jRadioButton2.setSelected(true);
-        headimg = "/images/userLayer/Userpic2.png";
-        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(headimg)));
+        userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(fileName)));
         organizationId = SysData.ACCOUNT_TYPE.LANDLORD.getIndex();
     }//GEN-LAST:event_jRadioButton2MousePressed
 
@@ -250,7 +259,7 @@ public class registerJFrame extends javax.swing.JFrame {
             userAccount.setUsername(usernametxt.getText());
             userAccount.setPassword(passwordtxt.getText());
             userAccount.setType(jRadioButton1.isSelected() ? 1 : 2);
-            userAccount.setHeadpic(headimg);
+            userAccount.setHeadpic(fileName);
             userAccount.setEmail(emailtxt.getText());
             userAccount.setPhone(phonetxt.getText());
             
@@ -289,6 +298,31 @@ public class registerJFrame extends javax.swing.JFrame {
     private void employeenametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeenametxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_employeenametxtActionPerformed
+
+    private void userPicMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPicMousePressed
+        // TODO add your handling code here:
+        String absoluteFileName;
+        chooser = new JFileChooser();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+        chooser.setCurrentDirectory(workingDirectory);
+
+        int result = chooser.showSaveDialog(null);
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+//                "JPG & GIF &PGC &PAD files", "jpg", "gif", "pgc", "pad");
+//        chooser.setFileFilter(filter);
+        try{
+        absoluteFileName = chooser.getSelectedFile().getPath();
+        //截取\images\housepicture\hosuepic5.png
+        fileName = absoluteFileName.substring(absoluteFileName.lastIndexOf("images") - 1);
+        fileName = fileName.replaceAll("\\\\", "/");
+        System.out.println(fileName);
+        imgThisImg = new ImageIcon(new ImageIcon(absoluteFileName)
+                .getImage().getScaledInstance(this.userPic.getWidth(), this.userPic.getHeight(), Image.SCALE_DEFAULT));
+        this.userPic.setIcon(imgThisImg);
+        }catch(Exception ex){
+            Tool.InfoString("Please select an image");
+        }
+    }//GEN-LAST:event_userPicMousePressed
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,7 @@ package uiDecoreted.LandLord;
 
 import Util.JTextFieldHintListener;
 import Util.SysData;
+import Util.Tool;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.UserAccount;
 import java.awt.CardLayout;
@@ -372,7 +373,6 @@ public class AddOrderPanel extends javax.swing.JPanel {
 
     private void housepicMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_housepicMousePressed
         // TODO add your handling code here:
-                // TODO add your handling code here:
         String absoluteFileName;
         chooser = new JFileChooser();
         File workingDirectory = new File(System.getProperty("user.dir"));
@@ -382,7 +382,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
 //        FileNameExtensionFilter filter = new FileNameExtensionFilter(
 //                "JPG & GIF &PGC &PAD files", "jpg", "gif", "pgc", "pad");
 //        chooser.setFileFilter(filter);
-        
+        try{
         absoluteFileName = chooser.getSelectedFile().getPath();
         //截取\images\housepicture\hosuepic5.png
         fileName=absoluteFileName.substring(absoluteFileName.lastIndexOf("images")-1);
@@ -391,6 +391,9 @@ public class AddOrderPanel extends javax.swing.JPanel {
         imgThisImg = new ImageIcon(new ImageIcon(absoluteFileName)
                 .getImage().getScaledInstance(this.housepic.getWidth(), this.housepic.getHeight(), Image.SCALE_DEFAULT));
         this.housepic.setIcon(imgThisImg);
+        }catch(Exception ex){
+            Tool.InfoString("Please select an image");
+        }
     }//GEN-LAST:event_housepicMousePressed
 
 
