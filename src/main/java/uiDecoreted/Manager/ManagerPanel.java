@@ -52,6 +52,9 @@ public class ManagerPanel extends javax.swing.JPanel {
         nameLabel.setText(employee.getName());
         emailLabel.setText(userAccount.getEmail());
         userPic.setIcon(new javax.swing.ImageIcon(getClass().getResource(userAccount.getHeadpic())));
+        Enterprise enterprise = SysData.getEnterpriseById(employee.getEnterpriseId());
+        enterpriseLabel.setText(enterprise.getName());
+        
     }
 
     /**
@@ -64,6 +67,7 @@ public class ManagerPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         rightjPanel = new javax.swing.JPanel();
+        enterpriseLabel = new javax.swing.JLabel();
         houseworkBtn = new javax.swing.JLabel();
         maintenanceBtn = new javax.swing.JLabel();
         moveBtn = new javax.swing.JLabel();
@@ -80,6 +84,13 @@ public class ManagerPanel extends javax.swing.JPanel {
         rightjPanel.setOpaque(false);
         rightjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(rightjPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 1140, 810));
+
+        enterpriseLabel.setBackground(new java.awt.Color(255, 255, 255));
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(153, 153, 153));
+        enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        enterpriseLabel.setText("enterprise");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 30));
 
         houseworkBtn.setBackground(new java.awt.Color(204, 204, 204));
         houseworkBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -171,6 +182,7 @@ public class ManagerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel houseworkBtn;
     private javax.swing.JLabel maintenanceBtn;
     private javax.swing.JLabel menuBg;
