@@ -130,7 +130,7 @@ public class ViewDetailPanel extends javax.swing.JPanel {
 
         storeyTitle1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         storeyTitle1.setText("Description");
-        add(storeyTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 100, 20));
+        add(storeyTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 100, 20));
 
         storeyTitle2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         storeyTitle2.setText("Layout");
@@ -175,23 +175,28 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         Requesttoapply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Requesttoapply, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 710, 200, 60));
 
+        LayoutLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         LayoutLabel.setText("value");
-        add(LayoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 230, -1));
+        add(LayoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 230, -1));
 
+        AreaLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         AreaLabel.setText("value");
-        add(AreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 220, -1));
+        add(AreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 220, -1));
 
+        orientationLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         orientationLabel.setText("value");
-        add(orientationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 220, -1));
+        add(orientationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 220, -1));
 
+        describLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         describLabel.setText("value");
-        add(describLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, 230, -1));
+        add(describLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, 230, -1));
 
+        storeyLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         storeyLabel.setText("value");
-        add(storeyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 230, -1));
+        add(storeyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 230, -1));
 
         line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 700, 50));
+        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 700, 50));
 
         line2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 700, 50));
