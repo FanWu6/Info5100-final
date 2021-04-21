@@ -39,7 +39,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         txtname.addFocusListener(new JTextFieldHintListener(txtname, "Name", new Color(153, 153, 153)));
         txtphone.addFocusListener(new JTextFieldHintListener(txtphone, "Phone", new Color(153, 153, 153)));
         txtemail.addFocusListener(new JTextFieldHintListener(txtemail, "Email", new Color(153, 153, 153)));
-        txtdestinaiton.addFocusListener(new JTextFieldHintListener(txtdestinaiton, "Area", new Color(153, 153, 153)));
+        txtarea.addFocusListener(new JTextFieldHintListener(txtarea, "Area", new Color(153, 153, 153)));
         getinfo();
         setinfo();
     }
@@ -55,7 +55,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
 
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
-        txtdestinaiton = new javax.swing.JTextField();
+        txtarea = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
         txtname = new javax.swing.JTextField();
@@ -82,18 +82,18 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
 
-        txtdestinaiton.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        txtdestinaiton.setForeground(new java.awt.Color(153, 153, 153));
-        txtdestinaiton.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtdestinaiton.setText("area");
-        txtdestinaiton.setToolTipText("");
-        txtdestinaiton.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        txtdestinaiton.addActionListener(new java.awt.event.ActionListener() {
+        txtarea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtarea.setForeground(new java.awt.Color(153, 153, 153));
+        txtarea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtarea.setText("area");
+        txtarea.setToolTipText("");
+        txtarea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdestinaitonActionPerformed(evt);
+                txtareaActionPerformed(evt);
             }
         });
-        add(txtdestinaiton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 270, 40));
+        add(txtarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 270, 40));
 
         txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtemail.setForeground(new java.awt.Color(153, 153, 153));
@@ -185,9 +185,9 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
 
-    private void txtdestinaitonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdestinaitonActionPerformed
+    private void txtareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtareaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdestinaitonActionPerformed
+    }//GEN-LAST:event_txtareaActionPerformed
 
     private void getinfo() {
         tenantHouse = SysData.getHouseByTenantId(tenantAccount.getId());
@@ -196,7 +196,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
     private void setinfo() {
 //        this.txtaddress.setText(Tool.strToMultilineHTML(tenantHouse.getAddress(),","));
         this.txtaddress.setText(tenantHouse.getAddress());
-//        this.txtearea.setText(tenantHouse.getArea());
+        this.txtarea.setText(tenantHouse.getArea());
         this.txtemail.setText(tenantAccount.getEmail());
         this.txtphone.setText(tenantAccount.getPhone());
         this.txtname.setText(tenantAccount.getUsername());
@@ -211,7 +211,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
     private javax.swing.JLabel info;
     private javax.swing.JLabel post;
     private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txtdestinaiton;
+    private javax.swing.JTextField txtarea;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtphone;

@@ -191,6 +191,10 @@ public class ViewRequestPanel extends javax.swing.JPanel {
             return;
         }
         OrderHousework orderHousework = (OrderHousework)tblHouseworkMy2.getValueAt(row,0);
+        if(orderHousework.getStatus().equals(SysData.ORDER_STATUS_TYPE.FINISH.getStatus())){
+            Tool.InfoString("No need to complete twice!");
+            return;
+        }
         orderHousework.setStatus(String.valueOf(SysData.ORDER_STATUS_TYPE.FINISH.getStatus()));
         SysData.updateOrderHousework(orderHousework);
         refreshAllTable();

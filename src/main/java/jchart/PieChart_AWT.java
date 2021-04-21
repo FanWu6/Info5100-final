@@ -84,7 +84,6 @@ public class PieChart_AWT extends ApplicationFrame
         final PiePlot p = (PiePlot) subchart.getPlot();
         p.setLabelFont(new Font("SansSerif", Font.PLAIN, 16));
 //        p.setInteriorGap(0.30);
-
       return chart;
    }
 }

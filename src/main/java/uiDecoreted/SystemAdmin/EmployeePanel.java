@@ -48,8 +48,8 @@ public class EmployeePanel extends javax.swing.JPanel {
     }
 
     public void setOrganizaion(Organization organizaion) {
-        this.organizaion = organizaion;
-        if(organizaion.getId()==3){
+        this.organizaion = organizaion;        
+        if(organizaion.getId()==SysData.ACCOUNT_TYPE.AGENCY.getIndex()){
         analysisbtn.setVisible(true);
         } else{
             analysisbtn.setVisible(false);
@@ -163,7 +163,7 @@ public class EmployeePanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, -1, 30));
 
         lblOrg.setText("jLabel1");
-        add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, -1, -1));
+        add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
@@ -274,7 +274,7 @@ public class EmployeePanel extends javax.swing.JPanel {
             }
             map.put(employee.getName(), i);
         }
-      PieChart_AWT demo = new PieChart_AWT( "Agency Performence",map);  
+      PieChart_AWT demo = new PieChart_AWT( "Agency Performance",map);  
       demo.pack();
       demo.setSize( 1160 , 400 );    
       RefineryUtilities.centerFrameOnScreen( demo );    

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -85,10 +85,15 @@ public class Generator {
     */
 
     public static void main(String[] args){
-        String address = FakerUtl.buildingNumber();
-        System.out.println(address);
-        int price = FakerUtl.randomIntNum(1900, 2300);
-        System.out.println(price);
+        
+        for(int i=0;i<20;i++){
+            System.out.println("Data set "+i);
+            String address = FakerUtl.buildingNumber();
+            System.out.println(address); 
+            int price = FakerUtl.randomIntNum(1900, 2300);
+            System.out.println(price);
+            System.out.println(FakerUtl.fullName());
+        }
     }
     
 }

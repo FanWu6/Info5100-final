@@ -53,12 +53,12 @@ public class OrganizationPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
-        txtenterprise = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtOrgType = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         organizationtxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtenterprise = new javax.swing.JLabel();
+        txtOrgType = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,25 +97,9 @@ public class OrganizationPanel extends javax.swing.JPanel {
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 200, 70));
 
-        txtenterprise.setEditable(false);
-        txtenterprise.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtenterpriseActionPerformed(evt);
-            }
-        });
-        add(txtenterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 240, 30));
-
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Enterprise Name:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, -1, 30));
-
-        txtOrgType.setEditable(false);
-        txtOrgType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrgTypeActionPerformed(evt);
-            }
-        });
-        add(txtOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 240, 30));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Organization Type:");
@@ -131,6 +115,12 @@ public class OrganizationPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel3.setText("Organization Name:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, -1, 30));
+
+        txtenterprise.setText("name");
+        add(txtenterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 380, 160, 30));
+
+        txtOrgType.setText("type");
+        add(txtOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completedBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtnMousePressed
@@ -151,14 +141,6 @@ public class OrganizationPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_organizationtxtActionPerformed
 
-    private void txtOrgTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgTypeActionPerformed
-
-    private void txtenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenterpriseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtenterpriseActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel completed;
@@ -169,8 +151,8 @@ public class OrganizationPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField organizationtxt;
-    private javax.swing.JTextField txtOrgType;
-    private javax.swing.JTextField txtenterprise;
+    private javax.swing.JLabel txtOrgType;
+    private javax.swing.JLabel txtenterprise;
     // End of variables declaration//GEN-END:variables
 
     private void getInfo() {
