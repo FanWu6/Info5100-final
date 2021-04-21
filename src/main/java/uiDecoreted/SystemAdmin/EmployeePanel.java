@@ -9,6 +9,7 @@ import Util.SysData;
 import Util.Tool;
 import com.neu.infofinal.bean.Employee;
 import com.neu.infofinal.bean.Enterprise;
+import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
@@ -16,6 +17,7 @@ import com.neu.infofinal.bean.Organization;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import jchart.BarChart_AWT;
 import jchart.PieChart_AWT;
 import org.jfree.ui.RefineryUtilities;
 
@@ -34,6 +36,7 @@ public class EmployeePanel extends javax.swing.JPanel {
     List<Employee> allEmployee;
     SysadminPanel sysadminPanel;
     List<Order> orders;
+    List<House> houses;
     public EmployeePanel(JPanel rightcontainer,SysadminPanel sysadminPanel) {
         initComponents();
         this.sysadminPanel = sysadminPanel;
@@ -260,12 +263,12 @@ public class EmployeePanel extends javax.swing.JPanel {
     }
     private void Analysis(){
         getInfo();
-        orders = SysData.getAllOrders();
+        houses = SysData.getAllHouses();
         HashMap<String, Integer> map = new HashMap<>();
         for(Employee employee : allEmployee){
             int i = 0;
-            for(Order od:orders){
-                if(od.getAgencyId() == employee.getUseraccountId()){
+            for(House hs:houses){
+                if(hs.getAgencyId() == employee.getUseraccountId()){
                     i = i+1;
                 }
             }
@@ -276,6 +279,11 @@ public class EmployeePanel extends javax.swing.JPanel {
       demo.setSize( 1160 , 400 );    
       RefineryUtilities.centerFrameOnScreen( demo );    
       demo.setVisible( true );
+      
+      BarChart_AWT chart = new BarChart_AWT("House Price Statistics", "Average House pirce in each Region");
+      chart.pack( );        
+      RefineryUtilities.centerFrameOnScreen( chart );        
+      chart.setVisible( true ); 
         
     }
 }

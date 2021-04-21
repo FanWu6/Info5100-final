@@ -42,7 +42,7 @@
                 <Column editable="false" title="Image" type="java.lang.Object"/>
                 <Column editable="false" title="Description" type="java.lang.Object"/>
                 <Column editable="false" title="Address" type="java.lang.Object"/>
-                <Column editable="false" title="Price" type="java.lang.Object"/>
+                <Column editable="false" title="Price($/m)" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>
             </Property>

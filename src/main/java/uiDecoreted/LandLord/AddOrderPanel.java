@@ -227,7 +227,7 @@ public class AddOrderPanel extends javax.swing.JPanel {
         address1.setText("Description");
         add(address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, -1, -1));
 
-        address2.setText("Price");
+        address2.setText("Price($/month)");
         add(address2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
 
         address5.setText("Floor");

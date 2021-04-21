@@ -16,6 +16,8 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import jchart.BarChart_AWT;
+import org.jfree.ui.RefineryUtilities;
 
 /**
  *
@@ -36,6 +38,7 @@ public class EnterprisePanel extends javax.swing.JPanel {
         initComponents();
         this.rightcontainer=rightcontainer;
         this.sysadminPanel = sysadminPanel;
+       // analysisbtn.setVisible(false);
     }
 
     public void setNetwork(Network network) {
@@ -158,7 +161,7 @@ public class EnterprisePanel extends javax.swing.JPanel {
             enterpriseType = "Repair Enterprise";
         }else if(network.getId()==1){
             type=1;
-            enterpriseType="Rental Enterprise";
+            enterpriseType="Rental Enterprise";           
         }
     }
     public void setInfo() {
@@ -176,6 +179,11 @@ public class EnterprisePanel extends javax.swing.JPanel {
         
         lblNetwork.setText(network.getName());
         lblEnterType.setText(enterpriseType);
+        //if(network.getId()==1){
+       //     analysisbtn.setVisible(true);
+       // }else{
+       //     analysisbtn.setVisible(false);
+       // }
     }
     
 

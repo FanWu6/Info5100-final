@@ -84,7 +84,7 @@ public class ViewLandLordPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "HouseID", "Landlord", "Image", "Description", "Address", "Price", "Status"
+                "HouseID", "Landlord", "Image", "Description", "Address", "Price($/m)", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

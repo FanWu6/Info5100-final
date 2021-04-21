@@ -43,6 +43,8 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         AreaLabel.setText(house.getArea());
         orientationLabel.setText(house.getOrientation());
         storeyLabel.setText(house.getFloor());
+        LayoutLabel.setText(house.getLayout());
+        describLabel.setText(house.getDescrib());
         
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(house.getImage())));
     }
@@ -60,21 +62,27 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         Backbak = new javax.swing.JLabel();
         housePic = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
+        priceLabel1 = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         orintationTitle = new javax.swing.JLabel();
+        storeyTitle1 = new javax.swing.JLabel();
+        storeyTitle2 = new javax.swing.JLabel();
         storeyTitle = new javax.swing.JLabel();
         spaceTitle = new javax.swing.JLabel();
         requesttourbtn = new javax.swing.JLabel();
         requesttour = new javax.swing.JLabel();
         requestapplybtn = new javax.swing.JLabel();
         Requesttoapply = new javax.swing.JLabel();
+        LayoutLabel = new javax.swing.JLabel();
         AreaLabel = new javax.swing.JLabel();
         orientationLabel = new javax.swing.JLabel();
+        describLabel = new javax.swing.JLabel();
         storeyLabel = new javax.swing.JLabel();
         line1 = new javax.swing.JLabel();
         line2 = new javax.swing.JLabel();
         line3 = new javax.swing.JLabel();
+        line5 = new javax.swing.JLabel();
         line4 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
@@ -100,12 +108,17 @@ public class ViewDetailPanel extends javax.swing.JPanel {
 
         addressLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         addressLabel.setText("Address");
-        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 260, -1));
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 260, -1));
+
+        priceLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        priceLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        priceLabel1.setText("$/month");
+        add(priceLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 280, 110, 30));
 
         priceLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         priceLabel.setForeground(new java.awt.Color(255, 0, 51));
         priceLabel.setText("Price");
-        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 220, 30));
+        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 160, 30));
 
         nameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         nameLabel.setText("Superior Double Room");
@@ -113,15 +126,23 @@ public class ViewDetailPanel extends javax.swing.JPanel {
 
         orintationTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         orintationTitle.setText("orientation");
-        add(orintationTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 110, 30));
+        add(orintationTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 100, 20));
+
+        storeyTitle1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        storeyTitle1.setText("Description");
+        add(storeyTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 100, 20));
+
+        storeyTitle2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        storeyTitle2.setText("Layout");
+        add(storeyTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, 60, 20));
 
         storeyTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        storeyTitle.setText("Storey");
-        add(storeyTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 60, 30));
+        storeyTitle.setText("Floor");
+        add(storeyTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 50, 20));
 
         spaceTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         spaceTitle.setText("Area");
-        add(spaceTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 60, 30));
+        add(spaceTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 40, 20));
 
         requesttourbtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         requesttourbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,23 +175,32 @@ public class ViewDetailPanel extends javax.swing.JPanel {
         Requesttoapply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Requesttoapply, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 710, 200, 60));
 
+        LayoutLabel.setText("value");
+        add(LayoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 230, -1));
+
         AreaLabel.setText("value");
         add(AreaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 220, -1));
 
         orientationLabel.setText("value");
         add(orientationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 220, -1));
 
+        describLabel.setText("value");
+        add(describLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, 230, -1));
+
         storeyLabel.setText("value");
         add(storeyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 230, -1));
 
         line1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
-        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 700, 50));
+        add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 700, 50));
 
         line2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 700, 50));
 
         line3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 700, 40));
+
+        line5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
+        add(line5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 700, 50));
 
         line4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register/Line.png"))); // NOI18N
         add(line4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 700, 50));
@@ -233,24 +263,30 @@ public class ViewDetailPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AreaLabel;
     private javax.swing.JLabel Backbak;
+    private javax.swing.JLabel LayoutLabel;
     private javax.swing.JLabel Requesttoapply;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel backBtn;
     private javax.swing.JLabel bg;
+    private javax.swing.JLabel describLabel;
     private javax.swing.JLabel housePic;
     private javax.swing.JLabel line1;
     private javax.swing.JLabel line2;
     private javax.swing.JLabel line3;
     private javax.swing.JLabel line4;
+    private javax.swing.JLabel line5;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel orientationLabel;
     private javax.swing.JLabel orintationTitle;
     private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel priceLabel1;
     private javax.swing.JLabel requestapplybtn;
     private javax.swing.JLabel requesttour;
     private javax.swing.JLabel requesttourbtn;
     private javax.swing.JLabel spaceTitle;
     private javax.swing.JLabel storeyLabel;
     private javax.swing.JLabel storeyTitle;
+    private javax.swing.JLabel storeyTitle1;
+    private javax.swing.JLabel storeyTitle2;
     // End of variables declaration//GEN-END:variables
 }

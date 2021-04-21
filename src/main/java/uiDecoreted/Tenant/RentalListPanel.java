@@ -126,7 +126,7 @@ public class RentalListPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "HouseId", "Image", "Desc", "Address", "Price", "Region"
+                "HouseId", "Image", "Desc", "Address", "Price($/m)", "Region"
             }
         ) {
             Class[] types = new Class [] {

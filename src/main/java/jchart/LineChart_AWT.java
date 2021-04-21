@@ -50,10 +50,6 @@ public class LineChart_AWT extends ApplicationFrame
        }
       return dataset;
    }
-   public static void main( String[ ] args ) 
-   {
-      
-   }
 }
 
 
