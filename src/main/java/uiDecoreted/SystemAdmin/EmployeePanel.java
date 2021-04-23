@@ -14,10 +14,13 @@ import com.neu.infofinal.bean.Order;
 import com.neu.infofinal.bean.UserAccount;
 import javax.swing.JPanel;
 import com.neu.infofinal.bean.Organization;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import jchart.BarChart_AWT;
+import jchart.BarChart_Tenantpopulation_AWT;
+import jchart.LineChart_AWT;
 import jchart.PieChart_AWT;
 import org.jfree.ui.RefineryUtilities;
 
@@ -284,6 +287,33 @@ public class EmployeePanel extends javax.swing.JPanel {
       chart.pack( );        
       RefineryUtilities.centerFrameOnScreen( chart );        
       chart.setVisible( true ); 
-        
+      
+    BarChart_Tenantpopulation_AWT charttenant = new BarChart_Tenantpopulation_AWT("Tenant Number Statistics", "Tenant number in each Region");
+    charttenant.pack( );        
+    RefineryUtilities.centerFrameOnScreen( charttenant );        
+    charttenant.setVisible( true ); 
+    
+    //LineChart
+    List<List<Integer>> regionPrice =chart.getRegionPriceAndTenantNumber();
+    List<Integer> gpas=new ArrayList<>();
+     int count=0;
+     
+     //按房价上升排序
+     regionPrice.sort((list1,list2)->{
+         return list1.get(0)-list2.get(0);
+     });
+     for(List<Integer> list:regionPrice){
+         gpas.add(list.get(1)); 
+     }
+     
+     LineChart_AWT chart_lineAWT = new LineChart_AWT(
+             "Population Vs Price",
+             "Population Vs Price",
+             gpas,
+             "Tenant population");
+     chart_lineAWT.setSize(560,367);
+//        chart.pack();
+     RefineryUtilities.centerFrameOnScreen(chart_lineAWT);
+     chart_lineAWT.setVisible(true);
     }
 }
