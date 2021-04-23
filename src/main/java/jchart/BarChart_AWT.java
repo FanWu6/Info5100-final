@@ -60,44 +60,57 @@ public class BarChart_AWT extends ApplicationFrame
       List<Integer> curP$N=new ArrayList<>();      
       int price1 = 0;
       int n1 = 0;
+      int c1=0;
       for(House house:houses){
           if(house.getRegion()==0){
               price1 = price1 + Integer.parseInt(house.getPrice());
-              n1=n1+1;    
+              n1=n1+1;
+            if(house.getTenantId()!=null){
+              c1++;
           }
+          }
+
       }
       int priceR1 = price1/n1;
       curP$N.add(priceR1);
-      curP$N.add(n1);
+      curP$N.add(c1);
 
       regionPriceAndTenantNumber.add(new ArrayList<>(curP$N));
       
       curP$N=new ArrayList<>();
       int price2 = 0;
       int n2 = 0;
+      c1=0;
       for(House house:houses){
           if(house.getRegion()==1){
               price2 = price2 + Integer.parseInt(house.getPrice());
-              n2=n2+1;    
+              n2=n2+1;
+                          if(house.getTenantId()!=null){
+              c1++;
+          }
           }
       }
       int priceR2 = price2/n2;
         curP$N.add(priceR2);
-              curP$N.add(n2);
+              curP$N.add(c1);
       regionPriceAndTenantNumber.add(new ArrayList<>(curP$N));
       
     curP$N=new ArrayList<>();
       int price3 = 0;
       int n3 = 0;
+      c1=0;
       for(House house:houses){
           if(house.getRegion()==2){
               price3 = price3 + Integer.parseInt(house.getPrice());
               n3=n3+1;    
+            if(house.getTenantId()!=null){
+              c1++;
+          }
           }
       }
-      int priceR3 = price1/n3;
-              curP$N.add(priceR3);
-                    curP$N.add(n3);
+    int priceR3 = price1/n3;
+    curP$N.add(priceR3);
+    curP$N.add(c1);
       regionPriceAndTenantNumber.add(new ArrayList<>(curP$N));
       
           curP$N=new ArrayList<>();
@@ -106,12 +119,15 @@ public class BarChart_AWT extends ApplicationFrame
       for(House house:houses){
           if(house.getRegion()==3){
               price4 = price4 + Integer.parseInt(house.getPrice());
-              n4=n4+1;    
+              n4=n4+1;  
+            if(house.getTenantId()!=null){
+              c1++;
+          }
           }
       }
       int priceR4 = price4/n4;
         curP$N.add(priceR4);
-        curP$N.add(n4);
+        curP$N.add(c1);
       regionPriceAndTenantNumber.add(new ArrayList<>(curP$N));
       
       dataset.addValue(priceR1,"price", Region1);

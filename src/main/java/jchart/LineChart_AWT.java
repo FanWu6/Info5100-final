@@ -26,7 +26,7 @@ public class LineChart_AWT extends ApplicationFrame
       super(applicationTitle);
       JFreeChart lineChart = ChartFactory.createLineChart(
          chartTitle,
-         "Tenant Population","Price",
+         "Price","Tenant Population",
          createDataset(arr,name),
          PlotOrientation.VERTICAL,
          true,true,false);

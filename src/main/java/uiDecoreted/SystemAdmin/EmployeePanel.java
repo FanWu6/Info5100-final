@@ -310,7 +310,7 @@ public class EmployeePanel extends javax.swing.JPanel {
              "Population Vs Price",
              "Population Vs Price",
              gpas,
-             "Tenant population");
+             "Population Vs Price");
      chart_lineAWT.setSize(560,367);
 //        chart.pack();
      RefineryUtilities.centerFrameOnScreen(chart_lineAWT);
