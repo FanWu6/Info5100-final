@@ -295,21 +295,21 @@ public class EmployeePanel extends javax.swing.JPanel {
     
     //LineChart
     List<List<Integer>> regionPrice =chart.getRegionPriceAndTenantNumber();
-    List<Integer> gpas=new ArrayList<>();
+//    List<Integer> gpas=new ArrayList<>();
      int count=0;
      
      //按房价上升排序
      regionPrice.sort((list1,list2)->{
          return list1.get(0)-list2.get(0);
      });
-     for(List<Integer> list:regionPrice){
-         gpas.add(list.get(1)); 
-     }
+//     for(List<Integer> list:regionPrice){
+//         gpas.add(list.get(1)); 
+//     }
      
      LineChart_AWT chart_lineAWT = new LineChart_AWT(
              "Population Vs Price",
              "Population Vs Price",
-             gpas,
+             regionPrice,
              "Population Vs Price");
      chart_lineAWT.setSize(560,367);
 //        chart.pack();

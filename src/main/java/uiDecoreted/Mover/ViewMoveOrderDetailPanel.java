@@ -10,10 +10,9 @@ import Util.SysData;
 import com.neu.infofinal.bean.House;
 import com.neu.infofinal.bean.OrderHousework;
 import com.neu.infofinal.bean.UserAccount;
-import uiDecoreted.Housework.*;
-import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -29,9 +28,13 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
     OrderHousework orderHousework;
     UserAccount tenantAccount;
     House tenantHouse;
-    public ViewMoveOrderDetailPanel(JPanel rightcontainer, OrderHousework orderHousework, int tenantID) {
+    boolean[] process;
+
+    public ViewMoveOrderDetailPanel(JPanel rightcontainer, OrderHousework orderHousework, int tenantID,boolean[] process) {
         this.rightcontainer = rightcontainer;
         this.orderHousework = orderHousework;
+        this.process = process;
+
         tenantAccount = SysData.getUserAccountbyID(tenantID);
 
         initComponents();
@@ -64,6 +67,14 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         housePic = new javax.swing.JLabel();
         commentText = new javax.swing.JTextField();
         post = new javax.swing.JLabel();
+        icon4 = new javax.swing.JLabel();
+        lblenter3 = new javax.swing.JLabel();
+        icon3 = new javax.swing.JLabel();
+        lblenter2 = new javax.swing.JLabel();
+        icon2 = new javax.swing.JLabel();
+        lblenter1 = new javax.swing.JLabel();
+        icon1 = new javax.swing.JLabel();
+        lblenter = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,7 +104,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
                 txtareaActionPerformed(evt);
             }
         });
-        add(txtarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 270, 40));
+        add(txtarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 270, 40));
 
         txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtemail.setForeground(new java.awt.Color(153, 153, 153));
@@ -106,7 +117,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
                 txtemailActionPerformed(evt);
             }
         });
-        add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 400, 270, 40));
+        add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 270, 40));
 
         txtphone.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtphone.setForeground(new java.awt.Color(153, 153, 153));
@@ -119,7 +130,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
                 txtphoneActionPerformed(evt);
             }
         });
-        add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 270, 40));
+        add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 350, 270, 40));
 
         txtname.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtname.setForeground(new java.awt.Color(153, 153, 153));
@@ -132,7 +143,7 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
                 txtnameActionPerformed(evt);
             }
         });
-        add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, 270, 40));
+        add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 270, 40));
 
         txtaddress.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtaddress.setForeground(new java.awt.Color(153, 153, 153));
@@ -145,28 +156,77 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
                 txtaddressActionPerformed(evt);
             }
         });
-        add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 270, 40));
+        add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 270, 40));
 
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/area@0,4x.png"))); // NOI18N
-        add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
+        add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 300, 210));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 300, 210));
 
         commentText.setEditable(false);
         commentText.setText("Comment from tennat");
-        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 560, 180));
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 560, 180));
 
         post.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userLayer/Input.png"))); // NOI18N
         post.setOpaque(true);
-        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 580, 200));
+        add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 580, 200));
+
+        icon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/043-house.png"))); // NOI18N
+        icon4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon4MousePressed(evt);
+            }
+        });
+        add(icon4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
+
+        lblenter3.setText("UnLoad");
+        add(lblenter3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
+
+        icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/move/028-car.png"))); // NOI18N
+        icon3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon3MousePressed(evt);
+            }
+        });
+        add(icon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        lblenter2.setText("Moving");
+        add(lblenter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+
+        icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/017-portfolio.png"))); // NOI18N
+        icon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon2MousePressed(evt);
+            }
+        });
+        add(icon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+
+        lblenter1.setText("Pack Up");
+        add(lblenter1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
+
+        icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/007-house-1 (1).png"))); // NOI18N
+        icon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon1MousePressed(evt);
+            }
+        });
+        add(icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+
+        lblenter.setText("Enter");
+        add(lblenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
 
-        CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "ViewRequestPanel");
+        rightcontainer.remove(this);
+        Component[] componentArray = rightcontainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ViewRequestPanel dwjp = (ViewRequestPanel) component;
+        dwjp.setCompleteButton(process);
+        CardLayout layout = (CardLayout) rightcontainer.getLayout();
+        layout.previous(rightcontainer);
     }//GEN-LAST:event_backBtnMousePressed
 
     private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
@@ -189,6 +249,30 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtareaActionPerformed
 
+    private void icon4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon4MousePressed
+        // TODO add your handling code here:
+        process[3]=true;
+        lblenter3.setText("UnPacked");
+    }//GEN-LAST:event_icon4MousePressed
+
+    private void icon3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon3MousePressed
+        // TODO add your handling code here:
+        process[2]=true;
+        lblenter2.setText("Moved");
+    }//GEN-LAST:event_icon3MousePressed
+
+    private void icon2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon2MousePressed
+        // TODO add your handling code here:
+        process[1]=true;
+        lblenter1.setText("Packed");
+    }//GEN-LAST:event_icon2MousePressed
+
+    private void icon1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon1MousePressed
+        // TODO add your handling code here:
+        process[0]=true;
+        lblenter.setText("Entered");
+    }//GEN-LAST:event_icon1MousePressed
+
     private void getinfo() {
         tenantHouse = SysData.getHouseByTenantId(tenantAccount.getId());
     }
@@ -202,13 +286,41 @@ public class ViewMoveOrderDetailPanel extends javax.swing.JPanel {
         this.txtname.setText(tenantAccount.getUsername());
         commentText.setText(orderHousework.getComment());
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
+        
+        this.txtaddress.setText(tenantHouse.getAddress());
+        this.txtarea.setText(tenantHouse.getArea());
+        this.txtemail.setText(tenantAccount.getEmail());
+        this.txtphone.setText(tenantAccount.getPhone());
+        this.txtname.setText(tenantAccount.getUsername());
+        commentText.setText(orderHousework.getComment());
+        if (process[0] == true) {
+            lblenter.setText("Entered");
+        }
+        if (process[1] == true) {
+            lblenter1.setText("Packed");
+        }
+        if (process[2] == true) {
+            lblenter2.setText("Moved");
+        }
+        if (process[3] == true) {
+            lblenter3.setText("UnPacked");
+        }
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
     private javax.swing.JTextField commentText;
     private javax.swing.JLabel housePic;
+    private javax.swing.JLabel icon1;
+    private javax.swing.JLabel icon2;
+    private javax.swing.JLabel icon3;
+    private javax.swing.JLabel icon4;
     private javax.swing.JLabel info;
+    private javax.swing.JLabel lblenter;
+    private javax.swing.JLabel lblenter1;
+    private javax.swing.JLabel lblenter2;
+    private javax.swing.JLabel lblenter3;
     private javax.swing.JLabel post;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtarea;

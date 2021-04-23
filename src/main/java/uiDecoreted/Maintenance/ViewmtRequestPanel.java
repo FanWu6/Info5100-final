@@ -39,7 +39,8 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         getInfo();
         setInfo();
         refreshAllTable();
-
+        this.commentText.setVisible(false);
+        this.lblMessage.setVisible(false);
     }
 
     public void getInfo() {
@@ -62,12 +63,16 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        commentText = new javax.swing.JTextField();
+        lblMessage = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHouseworkAll = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHouseworkMy2 = new javax.swing.JTable();
         assigntomebtn = new javax.swing.JLabel();
         assigntome = new javax.swing.JLabel();
+        completedBtn1 = new javax.swing.JLabel();
+        completed1 = new javax.swing.JLabel();
         completedBtn = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
         detailBtn = new javax.swing.JLabel();
@@ -77,7 +82,19 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         assigntome1 = new javax.swing.JLabel();
 
         setOpaque(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        commentText.setText("No Message Now");
+        add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 300, 170));
+
+        lblMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/maintenance/dialog1.png"))); // NOI18N
+        lblMessage.setPreferredSize(new java.awt.Dimension(400, 400));
+        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
 
         tblHouseworkAll.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,19 +103,35 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
             new String [] {
                 "ID", "Customer", "Type", "Date", "Status", "Comment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblHouseworkAll);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
 
         tblHouseworkMy2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Customer", "Type", "Date", "Status", "Comment"
+                "ID", "Customer", "Type", "Date", "Status", "Comment", "Message"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblHouseworkMy2);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 850, 190));
@@ -117,6 +150,20 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         assigntome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(assigntome, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 200, 70));
 
+        completedBtn1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        completedBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        completedBtn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completedBtn1.setText("Negotiate");
+        completedBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                completedBtn1MousePressed(evt);
+            }
+        });
+        add(completedBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 690, 200, 50));
+
+        completed1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
+        add(completed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 680, 200, 70));
+
         completedBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         completedBtn.setForeground(new java.awt.Color(255, 255, 255));
         completedBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,10 +173,10 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
                 completedBtnMousePressed(evt);
             }
         });
-        add(completedBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 690, 200, 50));
+        add(completedBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 690, 200, 50));
 
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
-        add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 680, 200, 70));
+        add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 680, 200, 70));
 
         detailBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
         detailBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,6 +263,37 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
     private void lblCompanyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCompanyMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblCompanyMousePressed
+
+    private void completedBtn1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedBtn1MousePressed
+        // TODO add your handling code here:
+        this.commentText.setVisible(true);
+        this.lblMessage.setVisible(true);
+        int row = tblHouseworkMy2.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row in my housework order!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework) tblHouseworkMy2.getValueAt(row, 0);
+        int tenantAccount = orderHousework.getTenantId();
+        this.commentText.setText(orderHousework.getMessage());
+    }//GEN-LAST:event_completedBtn1MousePressed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        this.commentText.setVisible(false);
+        this.lblMessage.setVisible(false);
+        int row = tblHouseworkMy2.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row in my housework order!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework) tblHouseworkMy2.getValueAt(row, 0);
+        int tenantAccount = orderHousework.getTenantId();
+        orderHousework.setMessage(commentText.getText());
+        SysData.updateOrderHousework(orderHousework);
+    }//GEN-LAST:event_formMousePressed
     private void refreshTable1() {
         DefaultTableModel model = (DefaultTableModel) tblHouseworkAll.getModel();
         model.setRowCount(0);
@@ -223,7 +301,7 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
             if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.getIndex()
                     && ordH.getEnterpriseId() == this.enterprise.getId()
                     &&(!ordH.getStatus().equals(SysData.ORDER_STATUS_TYPE.FINISH.getStatus())&&!ordH.getStatus().equals(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()))){
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 String s = "";
                 if (SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex() == ordH.getHouseworkOrderType()) {
                     s = SysData.ORDER_HOUSEWORK_TYPE.CLEAN.name();
@@ -238,6 +316,7 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
                 row[3] = ordH.getDate();
                 row[4] = ordH.getStatus();
                 row[5] = ordH.getComment();
+                row[6] = ordH.getMessage();
                 model.addRow(row);
             }
 
@@ -249,13 +328,14 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         for (OrderHousework ordH : orderHouseworks) {
 
             if (ordH.getHouseworkOrderType() == SysData.ORDER_HOUSEWORK_TYPE.MAINTAIN.getIndex() && ordH.getWorkderId() == employee.getId()) {
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0] = ordH;
                 row[1] = ordH.getTenantId();
                 row[2] = "Maintenance";
                 row[3] = ordH.getDate();
                 row[4] = ordH.getStatus();
                 row[5] = ordH.getComment();
+                row[6] = ordH.getMessage();
                 model.addRow(row);
             }
 
@@ -266,13 +346,17 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
     private javax.swing.JLabel assigntome1;
     private javax.swing.JLabel assigntomebtn;
     private javax.swing.JLabel bkn;
+    private javax.swing.JTextField commentText;
     private javax.swing.JLabel completed;
+    private javax.swing.JLabel completed1;
     private javax.swing.JLabel completedBtn;
+    private javax.swing.JLabel completedBtn1;
     private javax.swing.JLabel detailBack;
     private javax.swing.JLabel detailBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCompany;
+    private javax.swing.JLabel lblMessage;
     private javax.swing.JTable tblHouseworkAll;
     private javax.swing.JTable tblHouseworkMy2;
     // End of variables declaration//GEN-END:variables

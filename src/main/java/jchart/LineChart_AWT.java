@@ -21,7 +21,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class LineChart_AWT extends ApplicationFrame
 {
-   public LineChart_AWT( String applicationTitle , String chartTitle,List<Integer> arr,String name )
+   public LineChart_AWT( String applicationTitle , String chartTitle,List<List<Integer>> arr,String name )
    {
       super(applicationTitle);
       JFreeChart lineChart = ChartFactory.createLineChart(
@@ -36,11 +36,11 @@ public class LineChart_AWT extends ApplicationFrame
       setContentPane( chartPanel );
    }
 
-   private DefaultCategoryDataset createDataset(List<Integer> arr,String name )
+   private DefaultCategoryDataset createDataset(List<List<Integer>> arr,String name )
    {
       DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
        for (int i = 0; i < arr.size(); i++) {
-           dataset.addValue( arr.get(i) , name ,""+i);           
+           dataset.addValue( arr.get(i).get(1) , name ,""+arr.get(i).get(0));           
        }
       return dataset;
    }

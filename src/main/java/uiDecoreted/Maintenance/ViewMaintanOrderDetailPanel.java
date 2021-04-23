@@ -83,8 +83,9 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
 
         housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 300, 210));
+        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 300, 210));
 
+        txtemail.setEditable(false);
         txtemail.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtemail.setForeground(new java.awt.Color(153, 153, 153));
         txtemail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -97,6 +98,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 270, 40));
 
+        txtphone.setEditable(false);
         txtphone.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtphone.setForeground(new java.awt.Color(153, 153, 153));
         txtphone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -109,6 +111,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 270, 40));
 
+        txtname.setEditable(false);
         txtname.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtname.setForeground(new java.awt.Color(153, 153, 153));
         txtname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -121,6 +124,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 270, 40));
 
+        txtaddress.setEditable(false);
         txtaddress.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtaddress.setForeground(new java.awt.Color(153, 153, 153));
         txtaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -133,6 +137,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         });
         add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 270, 40));
 
+        txtearea.setEditable(false);
         txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtearea.setForeground(new java.awt.Color(153, 153, 153));
         txtearea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -149,6 +154,7 @@ public class ViewMaintanOrderDetailPanel extends javax.swing.JPanel {
         add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 368, 608));
         info.getAccessibleContext().setAccessibleDescription("");
 
+        commentText.setEditable(false);
         commentText.setText("Comment from tennant");
         add(commentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 560, 180));
 

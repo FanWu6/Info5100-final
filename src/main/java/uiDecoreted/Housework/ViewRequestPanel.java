@@ -163,14 +163,14 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         tblHouseworkMy2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Customer", "Type", "Date", "Status", "Comment"
+                "ID", "Customer", "Type", "Date", "Status", "Comment", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -188,14 +188,14 @@ public class ViewRequestPanel extends javax.swing.JPanel {
 
         tblHouseworkAll.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Customer", "Type", "Date", "Status", "Comment"
+                "ID", "Customer", "Type", "Date", "Status", "Comment", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -310,7 +310,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                     &&ordH.getEnterpriseId()==this.enterprise.getId()
                     &&(!ordH.getStatus().equals(SysData.ORDER_STATUS_TYPE.FINISH.getStatus())&&!ordH.getStatus().equals(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus()))){
                 System.out.println(ordH.getStatus());System.out.println(SysData.ORDER_STATUS_TYPE.PROCESS.getStatus());
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 String s="";
                 if(SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()==ordH.getHouseworkOrderType()){
                     s=SysData.ORDER_HOUSEWORK_TYPE.CLEAN.name();
@@ -325,6 +325,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
                 row[3]=ordH.getDate();
                 row[4]=ordH.getStatus();
                 row[5]=ordH.getComment();
+                row[6]=ordH.getMessage();
                 model.addRow(row);
             }
 
@@ -337,13 +338,14 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         for(OrderHousework ordH:orderHouseworks){
             
             if(ordH.getHouseworkOrderType()==SysData.ORDER_HOUSEWORK_TYPE.CLEAN.getIndex()&&ordH.getWorkderId()==employee.getId()){
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0]=ordH;
                 row[1]=ordH.getTenantId();
                 row[2]="House Cleanning";
                 row[3]=ordH.getDate();
                 row[4]=ordH.getStatus();
                 row[5]=ordH.getComment();
+                row[6] = ordH.getMessage();
                 model.addRow(row);
             }
 
