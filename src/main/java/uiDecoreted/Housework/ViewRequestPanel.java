@@ -35,6 +35,8 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     Employee employee;
     Enterprise enterprise;
+    boolean[] process={false,false,false,false};
+    int prevRow=-1;
     public ViewRequestPanel(JPanel rightcontainer,UserAccount userAccount) {
         initComponents();
         this.rightcontainer = rightcontainer;
@@ -44,7 +46,23 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         getInfo();
         setInfo();
         refreshAllTable();
+        setCompleteButton(process);
+    }
 
+    public void setCompleteButton(boolean[] process) {
+        boolean flag=true;
+        for(boolean b:process){
+            if(b==false){
+                flag=false;
+                completedBtn.setVisible(false);
+                completed.setVisible(false);
+                return;
+            }
+        }
+        if(flag==true){
+            completedBtn.setVisible(true);
+            completed.setVisible(true);
+        }
     }
     
     public void getInfo() {
@@ -145,7 +163,20 @@ public class ViewRequestPanel extends javax.swing.JPanel {
             new String [] {
                 "ID", "Customer", "Type", "Date", "Status", "Comment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblHouseworkMy2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblHouseworkMy2MousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblHouseworkMy2);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 850, 190));
@@ -157,7 +188,15 @@ public class ViewRequestPanel extends javax.swing.JPanel {
             new String [] {
                 "ID", "Customer", "Type", "Date", "Status", "Comment"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblHouseworkAll);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 850, 160));
@@ -210,7 +249,7 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         }
         OrderHousework orderHousework = (OrderHousework)tblHouseworkMy2.getValueAt(row,0);
         int tenantAccount=orderHousework.getTenantId();
-        rightcontainer.add("ViewHouseWorkOrderDetailPanel",new ViewHouseWorkOrderDetailPanel(rightcontainer,orderHousework,tenantAccount));  
+        rightcontainer.add("ViewHouseWorkOrderDetailPanel",new ViewHouseWorkOrderDetailPanel(rightcontainer,orderHousework,tenantAccount,process));  
         CardLayout cardLayout = (CardLayout)rightcontainer.getLayout();
         cardLayout.show(rightcontainer, "ViewHouseWorkOrderDetailPanel");
     }//GEN-LAST:event_detailBtnMousePressed
@@ -218,6 +257,28 @@ public class ViewRequestPanel extends javax.swing.JPanel {
     private void lblCompanyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCompanyMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblCompanyMousePressed
+
+    private void tblHouseworkMy2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHouseworkMy2MousePressed
+        // TODO add your handling code here:
+        int row = tblHouseworkMy2.getSelectedRow();
+        //        System.out.println(row);
+        if (row < 0) {
+            Tool.InfoString("please select a row in my housework order!");
+            return;
+        }
+        OrderHousework orderHousework = (OrderHousework)tblHouseworkMy2.getValueAt(row,0);
+        int tenantAccount=orderHousework.getTenantId();
+        if(prevRow==-1){
+            prevRow=row;
+        }
+        if(prevRow!=-1&&prevRow!=row){
+            prevRow=tenantAccount;
+            for(int i=0;i<process.length;i++){
+                process[i]=false;
+            }
+        }
+        setCompleteButton(process);
+    }//GEN-LAST:event_tblHouseworkMy2MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

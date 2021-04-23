@@ -14,6 +14,8 @@ import com.neu.infofinal.bean.UserAccount;
 import uiDecoreted.Tenant.*;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import javafx.scene.text.Font;
 import javax.swing.JPanel;
 
 /**
@@ -29,9 +31,12 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
     OrderHousework orderHousework;
     UserAccount tenantAccount;
     House tenantHouse; 
-    public ViewHouseWorkOrderDetailPanel(JPanel rightcontainer,OrderHousework orderHousework,int tenantID) {
+    
+    boolean[] process;
+    public ViewHouseWorkOrderDetailPanel(JPanel rightcontainer,OrderHousework orderHousework,int tenantID,boolean[] process) {
         this.rightcontainer = rightcontainer;
         this.orderHousework=orderHousework;
+        this.process=process;
         tenantAccount=SysData.getUserAccountbyID(tenantID);
 
         initComponents();
@@ -56,7 +61,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         commentText = new javax.swing.JTextField();
         backBtn = new javax.swing.JLabel();
         Backbak = new javax.swing.JLabel();
-        housePic = new javax.swing.JLabel();
         txtearea = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         txtphone = new javax.swing.JTextField();
@@ -64,6 +68,14 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         txtaddress = new javax.swing.JTextField();
         info = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        icon4 = new javax.swing.JLabel();
+        lblenter3 = new javax.swing.JLabel();
+        icon3 = new javax.swing.JLabel();
+        lblenter2 = new javax.swing.JLabel();
+        icon2 = new javax.swing.JLabel();
+        lblenter1 = new javax.swing.JLabel();
+        icon1 = new javax.swing.JLabel();
+        lblenter = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,9 +98,6 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
 
         Backbak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Button/Splash.png"))); // NOI18N
         add(Backbak, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 70));
-
-        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housepicture/housepic1.png"))); // NOI18N
-        add(housePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 300, 210));
 
         txtearea.setEditable(false);
         txtearea.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
@@ -166,12 +175,65 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/visuel@0,5x.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 560, 301));
+
+        icon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/043-house.png"))); // NOI18N
+        icon4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon4MousePressed(evt);
+            }
+        });
+        add(icon4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
+
+        lblenter3.setText("Close Door");
+        add(lblenter3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
+
+        icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/017-portfolio.png"))); // NOI18N
+        icon3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon3MousePressed(evt);
+            }
+        });
+        add(icon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+        lblenter2.setText("Privacy");
+        add(lblenter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+
+        icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/012-dinner.png"))); // NOI18N
+        icon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon2MousePressed(evt);
+            }
+        });
+        add(icon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
+
+        lblenter1.setText("Clean");
+        add(lblenter1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+
+        icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/housework/007-house-1 (1).png"))); // NOI18N
+        icon1.setPreferredSize(new java.awt.Dimension(64, 64));
+        icon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                icon1MousePressed(evt);
+            }
+        });
+        add(icon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+
+        lblenter.setText("Enter");
+        add(lblenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
-
+//
+//        CardLayout layout = (CardLayout)rightcontainer.getLayout();
+//        layout.show(rightcontainer, "viewRequestP");
+//        
+        rightcontainer.remove(this);
+        Component[] componentArray = rightcontainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ViewRequestPanel dwjp = (ViewRequestPanel) component;
+        dwjp.setCompleteButton(process);
         CardLayout layout = (CardLayout)rightcontainer.getLayout();
-        layout.show(rightcontainer, "viewRequestP");
+        layout.previous(rightcontainer);
     }//GEN-LAST:event_backBtnMousePressed
 
     private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
@@ -194,14 +256,45 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txteareaActionPerformed
 
+    private void icon1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon1MousePressed
+        // TODO add your handling code here:
+        process[0]=true;
+        lblenter.setText("Entered");
+    }//GEN-LAST:event_icon1MousePressed
+
+    private void icon2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon2MousePressed
+        // TODO add your handling code here:
+        process[1]=true;
+        lblenter1.setText("Cleaned");
+    }//GEN-LAST:event_icon2MousePressed
+
+    private void icon3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon3MousePressed
+        // TODO add your handling code here:
+        process[2]=true;
+        lblenter2.setText("Untouched");
+    }//GEN-LAST:event_icon3MousePressed
+
+    private void icon4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon4MousePressed
+        // TODO add your handling code here:
+        process[3]=true;
+        lblenter3.setText("Door Closed");        
+    }//GEN-LAST:event_icon4MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backbak;
     private javax.swing.JLabel backBtn;
     private javax.swing.JTextField commentText;
-    private javax.swing.JLabel housePic;
+    private javax.swing.JLabel icon1;
+    private javax.swing.JLabel icon2;
+    private javax.swing.JLabel icon3;
+    private javax.swing.JLabel icon4;
     private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblenter;
+    private javax.swing.JLabel lblenter1;
+    private javax.swing.JLabel lblenter2;
+    private javax.swing.JLabel lblenter3;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtearea;
     private javax.swing.JTextField txtemail;
@@ -214,14 +307,25 @@ public class ViewHouseWorkOrderDetailPanel extends javax.swing.JPanel {
         tenantHouse=SysData.getHouseByTenantId(tenantAccount.getId());
     }
     private void setinfo() {
-//        this.txtaddress.setText(Tool.strToMultilineHTML(tenantHouse.getAddress(),","));
         this.txtaddress.setText(tenantHouse.getAddress());
         this.txtearea.setText(tenantHouse.getArea());
         this.txtemail.setText(tenantAccount.getEmail());
         this.txtphone.setText(tenantAccount.getPhone());
         this.txtname.setText(tenantAccount.getUsername());
         commentText.setText(orderHousework.getComment());
-        housePic.setIcon(new javax.swing.ImageIcon(getClass().getResource(tenantHouse.getImage())));
+        if(process[0]==true){
+            lblenter.setText("Entered");
+        }
+        if(process[1]==true){
+            lblenter1.setText("Cleaned");
+        }
+        if(process[2]==true){
+            lblenter2.setText("Untouched");
+        }
+        if(process[3]==true){
+            lblenter3.setText("Door Closed");  
+        }
+                
     }
 
 
