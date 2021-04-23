@@ -46,6 +46,11 @@ public class ViewRequestPanel extends javax.swing.JPanel {
         getInfo();
         setInfo();
         refreshAllTable();
+        try{
+        prevRow=tblHouseworkMy2.getSelectedRow();
+        }catch(Exception ex){
+            
+        }
         setCompleteButton(process);
     }
 
