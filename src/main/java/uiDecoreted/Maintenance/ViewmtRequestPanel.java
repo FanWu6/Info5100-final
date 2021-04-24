@@ -293,6 +293,8 @@ public class ViewmtRequestPanel extends javax.swing.JPanel {
         int tenantAccount = orderHousework.getTenantId();
         orderHousework.setMessage(commentText.getText());
         SysData.updateOrderHousework(orderHousework);
+        
+        refreshAllTable();
     }//GEN-LAST:event_formMousePressed
     private void refreshTable1() {
         DefaultTableModel model = (DefaultTableModel) tblHouseworkAll.getModel();
